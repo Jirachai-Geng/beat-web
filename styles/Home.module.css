@@ -4,7 +4,8 @@
 
 .containerGame {
   text-align: center;
-  background: url(/backgroudGame.svg)  no-repeat ;
+  /* background: url(/backgroudGame.svg)  no-repeat ; */
+  background: url(/Frame-1.png) no-repeat;
   background-size: 100% 100%;
   font-family: 'Prompt';
   font-style: normal;
@@ -17,6 +18,22 @@
   order: 0;
   flex-grow: 0;
   min-height: 800px;
+}
+
+.containerVDO {
+  text-align: center;
+  background:  url(/assets/Frame-VDO.png) no-repeat;
+  background-size: 100% 100%;
+  font-family: 'Prompt';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #FFFFFF;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 
@@ -35,10 +52,12 @@
   display: flex;
   flex: 1;
   padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
+  background: #000;
+  border-top: 0.5px solid #DEE2E4;
   justify-content: center;
   align-items: center;
 }
+
 
 .footer a {
   display: flex;
@@ -135,14 +154,18 @@
 }
 
 @media (prefers-color-scheme: dark) {
+
   .card,
   .footer {
     border-color: #222;
   }
+
   .code {
     background: #111;
   }
+
   .logo img {
     filter: invert(1);
   }
 }
+

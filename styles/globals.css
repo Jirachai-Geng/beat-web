@@ -2,8 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Prompt;
 }
 
 a {
@@ -19,6 +18,7 @@ a {
   html {
     color-scheme: dark;
   }
+
   body {
     color: white;
     background: black;
@@ -26,7 +26,21 @@ a {
 }
 
 .App-logo {
-  max-height: 30px;
+  max-height: 40px;
+}
+
+@font-face {
+  font-family: "PromptBold";
+  src: url('/assets/fonts/Prompt/Prompt-Bold.ttf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PromptLight";
+  src: url('/assets/fonts/Prompt/Prompt-Light.ttf');
+  font-weight: 400;
+  font-style: normal;
 }
 
 
@@ -43,5 +57,43 @@ a {
     linear-gradient(216.61deg, rgba(255, 255, 255, 0.3) -35.29%, rgba(255, 255, 255, 0) 49.08%);
 }
 
+.text_title {
+  font-family: 'PromptLight';
+  margin-bottom: 36px !important;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #B3B3B3;
+}
 
+.text {
+  font-family: 'PromptLight';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+  color: #FFF;
+}
 
+.text-menu {
+  font-family: 'PromptBold';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: center;
+  color: #FFFFFF;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  padding: 35px;
+}
+
+.text_pointer{
+  cursor: pointer;
+}
+
+.content-left {
+  justify-content: center;
+}
