@@ -24,3 +24,24 @@ a {
     background: black;
   }
 }
+
+.App-logo {
+  max-height: 30px;
+}
+
+
+.Card {
+  height: 540px;
+  width: 345px;
+  left: 0px;
+  top: 0px;
+  border-radius: 12px;
+  padding: 44px, 24px, 44px, 24px;
+
+  background: linear-gradient(198.91deg, rgba(26, 26, 26, 0.7) -47.59%, rgba(64, 64, 64, 0.7) 218.14%),
+    linear-gradient(40.22deg, rgba(255, 255, 255, 0.5) -23.77%, rgba(255, 255, 255, 0) 53.59%),
+    linear-gradient(216.61deg, rgba(255, 255, 255, 0.3) -35.29%, rgba(255, 255, 255, 0) 49.08%);
+}
+
+
+
