@@ -2,12 +2,8 @@ import { Fragment, useRef, useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
 
 const Footer = () => {
-    const canvasRef = useRef<HTMLCanvasElement>(null);
-    const [isShowGame, setShowGame] = useState(false);
-
     return (
         <div style={{ width: '100%' }}>
             <Container>
@@ -36,10 +32,6 @@ const Footer = () => {
                     </Col>
                 </Row>
             </Container>
-
-
-
-
         </div >
     );
 };
