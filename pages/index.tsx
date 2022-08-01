@@ -4,16 +4,9 @@ import styles from '../styles/Home.module.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import Footer from './components/footer';
 import Container from 'react-bootstrap/Container';
-import { Stack } from 'react-bootstrap';
-import Game from './components/game'
-import Carrer from './components/carrer';
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
-import Sport from './components/sport';
-import Beyond from './components/beyond';
-import { Tooltip } from '@nextui-org/react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const scrollToFoter = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 const scrollToHome = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
