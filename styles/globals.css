@@ -84,37 +84,8 @@ a {
   text-align: center;
 }
 
-.carrer-button {
-  font-family: 'PromptMedium';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 36px;
-  justify-content: center;
-  align-items: center;
-  padding: 17px 36px;
-  width: 210px;
-  height: 64px;
-  background: #FFFFFF;
-  color: #FF5100;
-  border: none;
-  position: absolute;
-  right: 64px;
-  top: 942px;
-}
 
-.Card {
-  height: 540px;
-  width: 345px;
-  left: 0px;
-  top: 0px;
-  border-radius: 12px;
-  padding: 44px, 24px, 44px, 24px;
 
-  background: linear-gradient(198.91deg, rgba(26, 26, 26, 0.7) -47.59%, rgba(64, 64, 64, 0.7) 218.14%),
-    linear-gradient(40.22deg, rgba(255, 255, 255, 0.5) -23.77%, rgba(255, 255, 255, 0) 53.59%),
-    linear-gradient(216.61deg, rgba(255, 255, 255, 0.3) -35.29%, rgba(255, 255, 255, 0) 49.08%);
-}
 
 .text_title {
   font-family: 'PromptLight';
@@ -182,20 +153,59 @@ a {
   flex-grow: 0;
 }
 
-.containerCareer {
-  flex: none;
-  background-size: 100% 100%;
-  height: 400px;
-  background: url(/assets/Career.png) no-repeat;
-}
-
-
 .containerSport {
   height: 964px;
   background: #000;
 }
 
+.backgroundDark {
+  background: #000;
+}
 
+.background2 {
+  height: 400px;
+  background: url(/assets/banner_new2.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+.backgroundJoinUs {
+  height: 400px;
+  background-color: #1A1A1A;
+}
+
+
+.textJoinUs {
+  font-family: 'SpaceAge';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 64px;
+  padding-left: 0px !important;
+  padding-top: 86px !important;
+  padding-right: 64px !important;
+  padding-bottom: 36px !important;
+  text-align: right;
+  color: #FFFFFF;
+}
+
+.carrer-button {
+  font-family: 'PromptMedium';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  width: 210px !important;
+  height: 64px;
+  background: #FFFFFF;
+  color: #FF5100;
+  border: none;
+}
+
+.myCentreAlign {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .firstContainer {
   display: flex;
@@ -206,15 +216,9 @@ a {
   background: yellow;
 }
 
-.lastContainer {
-  display: flex;
-  height: 100vh;
-  background: yellow;
-}
+
 
 .containerbeyond {
-  flex: none;
-  background-size: 100% 100%;
   height: 837px;
   background: url(/assets/Frame-3.png) no-repeat;
 }
@@ -226,4 +230,3 @@ a {
 .content-left {
   justify-content: center;
 }
-

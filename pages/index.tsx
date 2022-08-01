@@ -9,6 +9,7 @@ import Game from './components/game'
 import Carrer from './components/carrer';
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import Sport from './components/sport';
+import Beyond from './components/beyond';
 
 const scrollToFoter = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 const scrollToHome = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
@@ -43,8 +44,8 @@ const Home: NextPage = () => {
         <div ref={CarrerRef}>
           <Carrer />
         </div>
-        <div className='containerbeyond'></div>
-        
+        <Beyond />
+
         <Sport />
 
 

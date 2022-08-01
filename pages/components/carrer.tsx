@@ -1,29 +1,42 @@
-import { Fragment, useRef, useState } from "react";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card'
-import { UnityGame } from "./unityGame";
 import Container from 'react-bootstrap/Container';
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useState } from 'react';
+import { Modal } from 'react-bootstrap';
+import { Module } from './module';
+import router from 'next/router';
 
 const Career = () => {
+    const [isShowModul, setShowModul] = useState(false);
 
     return (
-        <div >
-            <Container fluid >
-                <Row className="containerCareer">
-                    {/* Game */}
-                    <Col sm={8}>
+        <div className='backgroundDark d-flex align-items-center'>
+            <Container fluid>
+                <Row className="p-0">
+                    <Col sm={8} className="background2">
                     </Col>
 
-                    {/* score */}
-                    <Col sm={4}>
-                        <button className="carrer-button">
-                            Apply Now
-                        </button>
+                    <Col sm={4} className="backgroundJoinUs d-flex flex-column">
+                        <Row className="myCentreAlign">
+                            <Row className="textJoinUs">
+                                want to join us
+                                <div>
+                                    <button id='elRef' className="carrer-button" onClick={() => setShowModul(true)}>
+                                        Apply Now
+                                    </button>
+
+                                </div>
+
+                            </Row>
+                        </Row>
                     </Col>
                 </Row>
             </Container >
+            {isShowModul ? (
+                <Modal key={router.asPath} />
+            ): null}
+            
+                    
         </div >
     )
 }
