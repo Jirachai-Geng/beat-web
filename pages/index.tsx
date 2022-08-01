@@ -10,6 +10,8 @@ import Carrer from './components/carrer';
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import Sport from './components/sport';
 import Beyond from './components/beyond';
+import { Tooltip } from '@nextui-org/react';
+
 
 const scrollToFoter = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 const scrollToHome = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
@@ -35,6 +37,12 @@ const Home: NextPage = () => {
           <div className='text_pointer' onClick={ScrollFooter}>FAQ</div>
           <div className='text_pointer' onClick={ScrollCarrer}>Career</div>
           <div className='text_pointer' onClick={ScrollFooter}>Contact Us</div>
+          <Tooltip content={"English (US)"} placement="bottom">
+            <div style={{ borderRadius: '5px', width: '21px' }} >
+              <img src="/assets/pic_i18/America.svg" alt="" />
+            </div>
+          </Tooltip>
+
         </Stack>
       </div>
       <Fragment>
