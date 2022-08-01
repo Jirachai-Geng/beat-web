@@ -3,6 +3,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: Prompt;
+  overflow-x: hidden;
+
 }
 
 a {
@@ -26,7 +28,7 @@ a {
 }
 
 .App-logo {
-  max-height: 40px;
+  max-height: 44px;
 }
 
 @font-face {
@@ -36,6 +38,16 @@ a {
   font-style: normal;
 }
 
+
+@font-face {
+  font-family: "PromptMedium";
+  src: url('/assets/fonts/Prompt/Prompt-Medium.ttf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+
+
 @font-face {
   font-family: "PromptLight";
   src: url('/assets/fonts/Prompt/Prompt-Light.ttf');
@@ -43,6 +55,53 @@ a {
   font-style: normal;
 }
 
+@font-face {
+  font-family: "SpaceAge";
+  src: url('/assets/fonts/Space_age/space-age.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+.game-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 17px 36px;
+  gap: 16px;
+  position: absolute;
+  width: 226px;
+  height: 64px;
+  left: 429px;
+  top: 471px;
+  background: #FF5100;
+  border: none;
+  font-family: 'PromptMedium';
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 36px;
+  letter-spacing: 0px;
+  text-align: center;
+}
+
+.carrer-button {
+  font-family: 'PromptMedium';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  justify-content: center;
+  align-items: center;
+  padding: 17px 36px;
+  width: 210px;
+  height: 64px;
+  background: #FFFFFF;
+  color: #FF5100;
+  border: none;
+  position: absolute;
+  right: 64px;
+  top: 942px;
+}
 
 .Card {
   height: 540px;
@@ -77,23 +136,94 @@ a {
 }
 
 .text-menu {
-  font-family: 'PromptBold';
+  font-family: 'PromptMedium';
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #1A1A1A;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  padding: 20px 43px 35px 35px;
+  height: 92px;
+}
+
+.containerGame {
+  /* width: 74% !important; */
+  max-width: 1000 px;
+  text-align: center;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/assets/gameBackground.jpg) no-repeat;
+  background-size: 100% 100%;
+  font-family: 'Prompt';
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: 24px;
   text-align: center;
   color: #FFFFFF;
   flex: none;
   order: 0;
   flex-grow: 0;
-  padding: 35px;
+  min-height: 599px;
 }
 
-.text_pointer{
+.containerScore {
+  font-family: 'SpaceAge';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  color: #1A1A1A;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.containerCareer {
+  flex: none;
+  background-size: 100% 100%;
+  height: 400px;
+  background: url(/assets/Career.png) no-repeat;
+}
+
+
+.containerSport {
+  height: 964px;
+  background: #000;
+}
+
+
+
+.firstContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: yellow;
+}
+
+.lastContainer {
+  display: flex;
+  height: 100vh;
+  background: yellow;
+}
+
+.containerbeyond {
+  flex: none;
+  background-size: 100% 100%;
+  height: 837px;
+  background: url(/assets/Frame-3.png) no-repeat;
+}
+
+.text_pointer {
   cursor: pointer;
 }
 
 .content-left {
   justify-content: center;
 }
+

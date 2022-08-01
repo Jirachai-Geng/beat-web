@@ -2,23 +2,6 @@
   padding: 0 2rem;
 }
 
-.containerGame {
-  text-align: center;
-  /* background: url(/backgroudGame.svg)  no-repeat ; */
-  background: url(/Frame-1.png) no-repeat;
-  background-size: 100% 100%;
-  font-family: 'Prompt';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  text-align: center;
-  color: #FFFFFF;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  min-height: 800px;
-}
 
 .containerVDO {
   text-align: center;
@@ -53,7 +36,6 @@
   flex: 1;
   padding: 2rem 0;
   background: #000;
-  border-top: 0.5px solid #DEE2E4;
   justify-content: center;
   align-items: center;
 }

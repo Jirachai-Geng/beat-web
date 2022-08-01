@@ -1,0 +1,45 @@
+.OurPartner {
+    box-sizing: border-box;
+    background: url(/assets/partner/OurPartner.svg) no-repeat;
+    background-clip: padding-box;
+}
+
+
+.partner_1 {
+    box-sizing: border-box;
+    height: 300px;
+    background: url(/assets/partner/Plantoys.svg) no-repeat;
+    background-clip: padding-box;
+}
+
+.partner_2 {
+    box-sizing: border-box;
+    height: 300px;
+    background: url(/assets/partner/Berg.svg) no-repeat;
+    background-clip: padding-box;
+}
+
+.partner_3 {
+    box-sizing: border-box;
+    height: 300px;
+    background: url(/assets/partner/Thaifight.svg) no-repeat;
+    background-clip: padding-box;
+}
+
+.line{
+    border-top: 0.5px solid #DEE2E4;
+    padding: 64px;
+}
+
+.textMap{
+    font-family: 'SpaceAge';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 56px;
+    color: #FFFFFF;
+}
+
+.showmap{
+    min-height: 519px;
+}
