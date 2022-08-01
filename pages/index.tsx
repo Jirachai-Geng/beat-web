@@ -11,7 +11,9 @@ import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import Sport from './components/sport';
 import Beyond from './components/beyond';
 import { Tooltip } from '@nextui-org/react';
-
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const scrollToFoter = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 const scrollToHome = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
@@ -23,44 +25,44 @@ const Home: NextPage = () => {
   const CarrerRef = useRef(null)
 
   const ScrollHome = () => scrollToHome(HomeRef)
-  const ScrollCarrer = () => scrollToCarrer(CarrerRef)
   const ScrollFooter = () => scrollToFoter(FooterRef)
 
   return (
-    <div className={styles.App}>
-      <div className='text-menu'>
-        <Stack direction="horizontal" gap={5}>
-          <img src='/assets/logo.svg' className="App-logo" alt="logo" />
-          <div className="text_pointer ms-auto" onClick={ScrollHome}>Home</div>
-          <div className='text_pointer'> Press </div>
-          <div className='text_pointer' onClick={ScrollFooter}>Safety Standard</div>
-          <div className='text_pointer' onClick={ScrollFooter}>FAQ</div>
-          <div className='text_pointer' onClick={ScrollCarrer}>Career</div>
-          <div className='text_pointer' onClick={ScrollFooter}>Contact Us</div>
-          <Tooltip content={"English (US)"} placement="bottom">
-            <div style={{ borderRadius: '5px', width: '21px' }} >
-              <img src="/assets/pic_i18/America.svg" alt="" />
-            </div>
-          </Tooltip>
+    <div>
+      <Navbar expand="lg">
+        <Container fluid ref={HomeRef}>
+          <Navbar.Brand><img src='/assets/logo.svg' className="App-logo" alt="logo" /></Navbar.Brand>
+          {/* <Tooltip  content={"English (US)"} placement="bottom">
+                <div style={{ borderRadius: '5px' }} >
+                  <img src="/assets/pic_i18/America.svg" alt="" />
+                </div>
+              </Tooltip> */}
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav" className="ContainRight">
+            <Nav className="text-menu gap-menu">
+              <Nav.Link className="text-menu" onClick={ScrollHome}> Home </Nav.Link>
+              <Nav.Link className="text-menu" onClick={ScrollFooter}> Contact Us</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
-        </Stack>
+
+      <div className={styles.App}>
+        <video autoPlay={true} muted loop controls style={{ width: '100%' }}>
+          <source src="/assets/web-vdo.mp4" />
+        </video>
+
+
+        <footer ref={FooterRef} className={styles.footer}>
+          <Footer />
+        </footer>
       </div>
-      <Fragment>
-        <div ref={HomeRef}>
-          <Game />
-        </div>
-        <div ref={CarrerRef}>
-          <Carrer />
-        </div>
-        <Beyond />
-
-        <Sport />
 
 
-      </Fragment>
-      <footer ref={FooterRef} className={styles.footer}>
-        <Footer />
-      </footer>
+
+
+
     </div>
 
   )
