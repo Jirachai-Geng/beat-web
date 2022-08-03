@@ -21,10 +21,10 @@ const Home: NextPage = () => {
   const ScrollFooter = () => scrollToFoter(FooterRef)
 
   return (
-    <div>
-      <Navbar expand="lg">
+    <div className={styles.App}>
+      <Navbar expand="lg" className='bg-light'>
         <Container fluid ref={HomeRef}>
-          <Navbar.Brand><img src='/assets/logo.svg' className="App-logo" alt="logo" /></Navbar.Brand>
+          <Navbar.Brand><img src='/assets/logo.svg' onClick={ScrollHome} className="App-logo" alt="logo" /></Navbar.Brand>
           {/* <Tooltip  content={"English (US)"} placement="bottom">
                 <div style={{ borderRadius: '5px' }} >
                   <img src="/assets/pic_i18/America.svg" alt="" />
@@ -32,17 +32,16 @@ const Home: NextPage = () => {
               </Tooltip> */}
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav" className="ContainRight">
-            <Nav className="text-menu gap-menu">
-              <Nav.Link className="text-menu" onClick={ScrollHome}> Home </Nav.Link>
-              <Nav.Link className="text-menu" onClick={ScrollFooter}> Contact Us</Nav.Link>
+            <Nav className="size-menu text-center">
+              <Nav.Link className={styles.text_link} onClick={ScrollHome}> Home </Nav.Link>
+              <Nav.Link  className={styles.text_link} onClick={ScrollFooter}> Contact Us</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
 
-
-      <div className={styles.App}>
-        <video autoPlay={true} muted loop controls style={{ width: '100%' }}>
+      <div className={styles.AppContent}>
+        <video autoPlay={true} muted loop controls style={{ width: '100%',opacity: '100%'}}>
           <source src="/assets/web-vdo.mp4" />
         </video>
 
@@ -53,11 +52,7 @@ const Home: NextPage = () => {
       </div>
 
 
-
-
-
     </div>
-
   )
 }
 

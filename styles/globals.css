@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: Prompt;
   overflow-x: hidden;
+  height: 100vh;
 }
 
 a {
@@ -15,30 +16,23 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-
-  body {
-    color: white;
-    background: black;
-  }
-}
 
 
 @media screen and (min-width: 992px) {
-  .gap-menu {
-    gap: 20px !important;
-  }
   .ContainRight {
     justify-content: right;
     display: flex;
   }
+
   .App-logo {
     max-height: 44px;
-    margin-left: 0px ;
+    margin-left: 0px;
   }
+
+  .size-menu {
+    gap: 28px !important;
+    padding: 20px 43px 35px 35px;
+  }  
 }
 
 @media screen and (min-width: 992px) {
@@ -46,6 +40,11 @@ a {
     max-height: 44px;
     margin-left: 52px;
   }
+
+  .size-menu {
+    gap: 20px !important;
+    padding: 20px 43px 35px 35px;
+  } 
 }
 
 
@@ -68,10 +67,9 @@ a {
 
 
 @font-face {
-  font-family: "PromptLight";
-  src: url('/assets/fonts/Prompt/Prompt-Light.ttf');
-  font-weight: 400;
-  font-style: normal;
+  font-family: "Prompt";
+  src: url('/assets/fonts/Prompt/Prompt-Regular.ttf');
+  font-weight: 300 500 700 900;
 }
 
 @font-face {
@@ -105,41 +103,6 @@ a {
 
 
 
-
-.text_title {
-  font-family: 'PromptLight';
-  margin-bottom: 36px !important;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 30px;
-  color: #B3B3B3;
-}
-
-
-.text {
-  font-family: 'PromptLight';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 28px;
-  color: #FFF;
-}
-
-.text-menu {
-  font-family: 'PromptMedium';
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0px;
-  text-align: center;
-  color: #1A1A1A !important;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  height: 92px;
-  padding: 20px 43px 35px 35px;
-}
 
 .containerGame {
   /* width: 74% !important; */
@@ -226,17 +189,6 @@ a {
   justify-content: center;
   align-items: center;
 }
-
-.firstContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: yellow;
-}
-
-
 
 .containerbeyond {
   height: 837px;

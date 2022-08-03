@@ -6,14 +6,15 @@ import styles from '../../styles/Partner.module.css'
 
 const Footer = () => {
     return (
-        <div style={{ width: '100%' }}>
-            <Container className={styles.line}>
+        <div style={{ width: '100%'}}>
+            <Container>
+                <Row className={styles.line}></Row>
                 <Row>
-                    <Col xxl={5}>
-                        <div className='text_title'>
+                    <Col xxl={5} >
+                        <div className={styles.text_title}>
                             Contact Information
                         </div>
-                        <div className='text'>
+                        <div className={styles.text}>
                             <p>Beat Active </p>
                             <p>Tel : 02-888-8222</p>
                             <p>199/001 Soi Sukhumvit, Example for veryyy long information, and adresss, Bangkok 10110</p>

@@ -3,7 +3,6 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import { useState } from 'react';
 import { Modal } from 'react-bootstrap';
-import { Module } from './module';
 import router from 'next/router';
 
 const Career = () => {
