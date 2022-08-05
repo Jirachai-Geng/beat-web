@@ -14,17 +14,19 @@ import { Tooltip } from '@nextui-org/react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import ReactPlayer from 'react-player'
 
 const scrollToFoter = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 const scrollToHome = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
-const scrollToCarrer = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
+const scrollToCareer = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 
 const Home: NextPage = () => {
   const HomeRef = useRef(null)
   const FooterRef = useRef(null)
-  const CarrerRef = useRef(null)
+  const CareerRef = useRef(null)
 
   const ScrollHome = () => scrollToHome(HomeRef)
+  const ScrollCareer = () => scrollToCareer(CareerRef)
   const ScrollFooter = () => scrollToFoter(FooterRef)
 
   return (
@@ -39,20 +41,26 @@ const Home: NextPage = () => {
               </Tooltip> */}
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav" className="ContainRight">
-            <Nav className="text-menu gap-menu">
-              <Nav.Link className="text-menu" onClick={ScrollHome}> Home </Nav.Link>
-              <Nav.Link className="text-menu" onClick={ScrollFooter}> Contact Us</Nav.Link>
+            <Nav className="size-menu text-center">
+              <Nav.Link className={styles.text_link} onClick={ScrollHome}> Home </Nav.Link>
+              <Nav.Link className={styles.text_link} onClick={ScrollCareer}> Career </Nav.Link>
+              <Nav.Link className={styles.text_link} onClick={ScrollFooter}> Contact Us</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
 
+      <div className={styles.AppContent}>
 
-      <div className={styles.App}>
-        <video autoPlay={true} muted loop controls style={{ width: '100%' }}>
+        <video autoPlay={true} muted loop controls style={{ width: '100%', opacity: '100%' }}>
           <source src="/assets/web-vdo.mp4" />
         </video>
-
+        <div style={{ padding: '50px 0px' }}>
+          <Game />
+        </div>
+        <div ref={CareerRef} style={{ padding: '50px 0px' }}>
+          <Carrer />
+        </div>
 
         <footer ref={FooterRef} className={styles.footer}>
           <Footer />

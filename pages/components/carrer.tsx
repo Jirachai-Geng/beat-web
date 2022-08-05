@@ -21,7 +21,7 @@ const Career = () => {
                             <Row className="textJoinUs">
                                 want to join us
                                 <div>
-                                    <button id='elRef' className="carrer-button" onClick={() => setShowModul(true)}>
+                                    <button className="carrer-button" onClick={() => setShowModul(true)}>
                                         Apply Now
                                     </button>
 

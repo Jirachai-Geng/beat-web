@@ -26,20 +26,51 @@
     background-clip: padding-box;
 }
 
-.line{
+.line {
+    margin-top: 28px;
     border-top: 0.5px solid #DEE2E4;
-    padding: 64px;
+    margin: 12px;
 }
 
-.textMap{
+.contantLine {
+    margin-top: 28px;
+    margin: 12px;
+}
+
+.text_title {
+    font-family: 'Prompt';
+    margin-bottom: 36px !important;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #B3B3B3;
+    margin: 12px;
+}
+
+.text {
+    margin: 12px;
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: #FFF;
+}
+
+
+.textMap {
     font-family: 'SpaceAge';
     font-style: normal;
     font-weight: 400;
     font-size: 48px;
     line-height: 56px;
     color: #FFFFFF;
+    margin: 12px;
+
 }
 
-.showmap{
+
+.showmap {
     min-height: 519px;
 }

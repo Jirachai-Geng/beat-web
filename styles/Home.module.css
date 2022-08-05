@@ -2,13 +2,19 @@
   padding: 0 2rem;
 }
 
-.App{
+.App {
   background-color: #000;
+}
+
+.AppContent {
+  background-color: #000;
+  overflow: auto;
+  height: auto;
 }
 
 .containerVDO {
   text-align: center;
-  background:  url(/assets/Frame-VDO.png) no-repeat;
+  background: url(/assets/Frame-VDO.png) no-repeat;
   background-size: 100% 100%;
   font-family: 'Prompt';
   font-style: normal;
@@ -20,6 +26,19 @@
   flex: none;
   order: 0;
   flex-grow: 0;
+}
+
+.background-dark {
+  background: #000 !important;
+}
+
+.text_link {
+  font-family: 'Prompt';
+  font-style: normal;
+  color: #1A1A1A !important;
+  font-weight: 500 !important;
+  font-size: 16px !important;
+  line-height: 24px;
 }
 
 
@@ -84,7 +103,7 @@
   padding: 0.75rem;
   font-size: 1.1rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
+    Bitstream Vera Sans Mono, Courier New, monospace, Prompt;
 }
 
 .grid {
@@ -152,4 +171,3 @@
     filter: invert(1);
   }
 }
-

@@ -1,0 +1,49 @@
+.background_white {
+    background: #fff !important;
+}
+
+.textScore {
+    font-family: 'SpaceAge';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    color: #1A1A1A;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    padding: 26px;
+}
+
+.content::-webkit-scrollbar {
+    /* This is the magic bit for WebKit */
+    display: none;
+}
+
+.tableScore {
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    vertical-align: middle !important;
+}
+
+.textOrange {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FF5100 !important;
+}
+
+
+
+.numberCircle {
+    border-radius: 50%;
+    padding-top: 6px;
+    width: 36px;
+    height: 36px;
+    background: #1A1A1A !important;
+    color: #fff;
+    text-align: center;
+}
