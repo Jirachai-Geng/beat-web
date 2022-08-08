@@ -171,3 +171,20 @@
     filter: invert(1);
   }
 }
+
+.container{
+  min-height: 1500px;
+}
+.image{
+  width: 980px;
+  position : fixed; 
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  opacity: 0;
+  transition: all 1s;
+}
+.active {
+  opacity: 1;
+}

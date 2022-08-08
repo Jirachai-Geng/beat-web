@@ -9,7 +9,9 @@
   "dependencies": {
     "@nextui-org/react": "^1.0.0-beta.9",
     "bootstrap": "^5.2.0",
+    "cors": "^2.8.5",
     "express": "^4.18.1",
+    "mongodb": "^4.8.1",
     "next": "^12.2.3",
     "next-auth": "^4.10.2",
     "next-videos": "^1.5.0",

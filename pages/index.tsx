@@ -1,8 +1,7 @@
-import type { NextPage } from 'next'
+import type { InferGetStaticPropsType, NextPage } from 'next'
 import { Fragment, MutableRefObject, useEffect, useRef } from 'react'
 import styles from '../styles/Home.module.css'
 import 'bootstrap/dist/css/bootstrap.css';
-import Footer from './components/footer';
 import Container from 'react-bootstrap/Container';
 import { Stack } from 'react-bootstrap';
 import Game from './components/game'
@@ -15,12 +14,26 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import ReactPlayer from 'react-player'
+import Footer from './components/footer';
 
 const scrollToFoter = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 const scrollToHome = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 const scrollToCareer = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 
-const Home: NextPage = () => {
+export const getStaticProps = async () => {
+  const res = await fetch('http://localhost:3000/api/hello/');
+  const data = await res.json();
+
+  return {
+      props: {
+          swapis: data,
+      },
+  };
+};
+
+const Home = ({ swapis }: InferGetStaticPropsType<typeof getStaticProps>) =>  {
+  console.log(swapis)
+
   const HomeRef = useRef(null)
   const FooterRef = useRef(null)
   const CareerRef = useRef(null)
@@ -66,11 +79,6 @@ const Home: NextPage = () => {
           <Footer />
         </footer>
       </div>
-
-
-
-
-
     </div>
 
   )

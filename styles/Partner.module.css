@@ -74,3 +74,31 @@
 .showmap {
     min-height: 519px;
 }
+
+.btnGoTop {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 36px;
+    gap: 16px;
+    width: 100px;
+    height: 64px;
+    background: #FFFFFF;
+    animation-duration: 3s;
+    animation-name: slidein;
+}
+
+
+
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}

@@ -29,7 +29,7 @@ const Game = () => {
     // get table row data
     const tdData = () => {
 
-        return TableData.map((data) => {
+        return TableData.map((data:any) => {
             return (
                 <tr style={{ justifyContent: "space-between",padding:"20px !important" }}>
                     {

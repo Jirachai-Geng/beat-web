@@ -1,10 +1,23 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment, JSXElementConstructor, ReactElement, ReactFragment, ReactPortal, useRef, useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import styles from '../../styles/Partner.module.css'
+import handler, { connectToDatabase } from "../api/hello";
+import hello from "../api/hello";
+import { GetStaticProps, GetStaticPaths, GetServerSideProps, InferGetStaticPropsType } from 'next'
+import type { AppProps } from 'next/app'
 
 const Footer = () => {
+    const goToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    };
+
+    console.log(FilmList)
+
     return (
         <div style={{ width: '100%' }}>
             <Container>
@@ -31,6 +44,7 @@ const Footer = () => {
             </Container> */}
 
             <Container>
+
                 <Row className={styles.line}>
                     <Col xxl={5}>
                         <div className={styles.text_title}>
@@ -46,6 +60,7 @@ const Footer = () => {
 
                     </Col>
                     <Col xxl={2}>
+                        <button onClick={goToTop} className={styles.btnGoTop}>Top</button>
                     </Col>
                 </Row>
             </Container>
@@ -53,5 +68,31 @@ const Footer = () => {
     );
 };
 
+
+export const getStaticProps = async () => {
+    const res = await fetch('https://www.swapi.tech/api/');
+    const data = await res.json();
+
+    return {
+        props: {
+            swapis: data,
+        },
+    };
+};
+
+const FilmList = ({ swapis }: InferGetStaticPropsType<typeof getStaticProps>) => {
+    console.log(swapis)
+    return (
+        <>
+            <h2>List of Films</h2>
+            {Object.entries({}).map(([key, value]) => (
+                console.log(value)
+            ))}
+        </>
+    );
+};
+
 export default Footer;
+
+
 
