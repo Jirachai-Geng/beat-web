@@ -21,18 +21,22 @@ a {
   .gap-menu {
     gap: 20px !important;
   }
+
   .ContainRight {
     justify-content: right;
     display: flex;
   }
+
   .App-logo {
     max-height: 44px;
-    margin-left: 0px ;
+    margin-left: 0px;
+    cursor:pointer !important;
   }
+
   .size-menu {
     gap: 28px !important;
     padding: 20px 43px 35px 35px;
-  }  
+  }
 }
 
 @media screen and (min-width: 992px) {
@@ -44,7 +48,7 @@ a {
   .size-menu {
     gap: 20px !important;
     padding: 20px 43px 35px 35px;
-  } 
+  }
 }
 
 
@@ -79,7 +83,7 @@ a {
   font-style: normal;
 }
 
-.endcontainer{
+.endcontainer {
   display: flex;
   width: 100%;
   align-self: flex-end;
@@ -136,10 +140,11 @@ a {
 
 
 td {
-  padding-top:20px !important;
-  padding-bottom:20px !important;
-  padding-right:20px;   
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  padding-right: 20px;
 }
+
 .containerSport {
   height: 964px;
   background: #000;
@@ -206,4 +211,18 @@ td {
 
 .content-left {
   justify-content: center;
+}
+
+
+.navbar-toggler,
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.navbar-toggler-icon  {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb( 26, 26, 26)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
 }

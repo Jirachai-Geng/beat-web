@@ -46,7 +46,7 @@ const Home = ({ swapis }: InferGetStaticPropsType<typeof getStaticProps>) =>  {
     <div>
       <Navbar expand="lg">
         <Container fluid ref={HomeRef}>
-          <Navbar.Brand><img src='/assets/logo.svg' className="App-logo" alt="logo" /></Navbar.Brand>
+          <Navbar.Brand><img src='/assets/logo.svg' onClick={ScrollHome} className="App-logo" alt="logo" /></Navbar.Brand>
           {/* <Tooltip  content={"English (US)"} placement="bottom">
                 <div style={{ borderRadius: '5px' }} >
                   <img src="/assets/pic_i18/America.svg" alt="" />
