@@ -26,15 +26,16 @@
     background-clip: padding-box;
 }
 
+
+
 .line {
-    margin-top: 28px;
+    margin-top: 30px;
     border-top: 0.5px solid #DEE2E4;
     margin: 12px;
 }
 
-.contantLine {
-    margin-top: 28px;
-    margin: 12px;
+.content {
+    padding-top: 48px !important;
 }
 
 .text_title {
@@ -46,6 +47,7 @@
     line-height: 30px;
     color: #B3B3B3;
     margin: 12px;
+    padding-top: 36px !important;
 }
 
 .text {
@@ -67,7 +69,6 @@
     line-height: 56px;
     color: #FFFFFF;
     margin: 12px;
-
 }
 
 

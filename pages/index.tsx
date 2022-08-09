@@ -4,7 +4,6 @@ import styles from '../styles/Home.module.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import Container from 'react-bootstrap/Container';
 import { Stack } from 'react-bootstrap';
-import Game from './components/game'
 import Carrer from './components/carrer';
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import Sport from './components/sport';
@@ -20,20 +19,8 @@ const scrollToFoter = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.cur
 const scrollToHome = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 const scrollToCareer = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 
-export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:3000/api/hello/');
-  const data = await res.json();
 
-  return {
-      props: {
-          swapis: data,
-      },
-  };
-};
-
-const Home = ({ swapis }: InferGetStaticPropsType<typeof getStaticProps>) =>  {
-  console.log(swapis)
-
+const Home = () => {
   const HomeRef = useRef(null)
   const FooterRef = useRef(null)
   const CareerRef = useRef(null)
@@ -42,45 +29,41 @@ const Home = ({ swapis }: InferGetStaticPropsType<typeof getStaticProps>) =>  {
   const ScrollCareer = () => scrollToCareer(CareerRef)
   const ScrollFooter = () => scrollToFoter(FooterRef)
 
+
   return (
     <div>
-      <Navbar expand="lg">
-        <Container fluid ref={HomeRef}>
-          <Navbar.Brand><img src='/assets/logo.svg' onClick={ScrollHome} className="App-logo" alt="logo" /></Navbar.Brand>
-          {/* <Tooltip  content={"English (US)"} placement="bottom">
+      <div className="App">
+          <Navbar expand="lg" className='bg-light'>
+            <Container fluid ref={HomeRef}>
+              <Navbar.Brand><img src='/assets/logo.svg' onClick={ScrollHome} className="App-logo" alt="logo" /></Navbar.Brand>
+              {/* <Tooltip  content={"English (US)"} placement="bottom">
                 <div style={{ borderRadius: '5px' }} >
                   <img src="/assets/pic_i18/America.svg" alt="" />
                 </div>
               </Tooltip> */}
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav" className="ContainRight">
-            <Nav className="size-menu text-center">
-              <Nav.Link className={styles.text_link} onClick={ScrollHome}> Home </Nav.Link>
-              <Nav.Link className={styles.text_link} onClick={ScrollCareer}> Career </Nav.Link>
-              <Nav.Link className={styles.text_link} onClick={ScrollFooter}> Contact Us</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+              <Navbar.Collapse id="responsive-navbar-nav" className="ContainRight">
+                <Nav className="size-menu text-center">
+                  <Nav.Link className={styles.text_link} onClick={ScrollHome}> Home </Nav.Link>
+                  <Nav.Link className={styles.text_link} onClick={ScrollFooter}> Contact Us</Nav.Link>
+                </Nav>
+              </Navbar.Collapse>
+            </Container>
+          </Navbar>
 
-      <div className={styles.AppContent}>
+          <div className={styles.AppContent}>
 
-        <video autoPlay={true} muted loop controls style={{ width: '100%', opacity: '100%' }}>
-          <source src="/assets/web-vdo.mp4" />
-        </video>
-        <div style={{ padding: '50px 0px' }}>
-          <Game />
+            <video autoPlay={true} muted loop controls style={{ width: '100%', opacity: '100%' }}>
+              <source src="/assets/web-vdo.mp4" />
+            </video>
+
+            <footer ref={FooterRef} className={styles.footer}>
+              <Footer />
+            </footer>
         </div>
-        <div ref={CareerRef} style={{ padding: '50px 0px' }}>
-          <Carrer />
-        </div>
-
-        <footer ref={FooterRef} className={styles.footer}>
-          <Footer />
-        </footer>
       </div>
-    </div>
 
+    </div>
   )
 }
 

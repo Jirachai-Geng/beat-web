@@ -19,33 +19,12 @@ const Footer = () => {
     console.log(FilmList)
 
     return (
-        <div style={{ width: '100%' }}>
-            <Container>
-                <Row className={styles.contantLine}>
-                    <Col className={styles.OurPartner} xxl={3}></Col>
-                    <Col className={styles.partner_1} xxl={3}></Col>
-                    <Col className={styles.partner_2} xxl={3}></Col>
-                    <Col className={styles.partner_3} xxl={3}></Col>
-                </Row>
-            </Container>
-
-            {/* map */}
-            {/* <Container >
+        <div style={{ width: '100%', height: '100%'}}>
+            <Container className={styles.content}>
                 <Row className={styles.line}>
-                    <Col className="d-flex align-items-start">
-                        <p className={styles.textMap}>
-                            MAP
-                        </p>
-                    </Col>
                 </Row>
+
                 <Row>
-                    <img src='/assets/map.png' className={styles.showmap} alt="logo" />
-                </Row>
-            </Container> */}
-
-            <Container>
-
-                <Row className={styles.line}>
                     <Col xxl={5}>
                         <div className={styles.text_title}>
                             Contact Information
@@ -60,7 +39,6 @@ const Footer = () => {
 
                     </Col>
                     <Col xxl={2}>
-                        <button onClick={goToTop} className={styles.btnGoTop}>Top</button>
                     </Col>
                 </Row>
             </Container>
