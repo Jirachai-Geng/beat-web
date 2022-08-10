@@ -127,7 +127,7 @@ const Game = () => {
                                                 {session.user.name}
                                             </p>
 
-                                            <button className={styles.btnEmail} onClick={() => signIn()}>
+                                            <button className={styles.btnEmail} onClick={handleClickGame}>
                                                 Let’s Play  →
                                             </button>
                                         </div>
