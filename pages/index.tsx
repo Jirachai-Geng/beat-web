@@ -1,4 +1,4 @@
-import type { InferGetStaticPropsType, NextPage } from 'next'
+import type { InferGetServerSidePropsType, InferGetStaticPropsType, NextPage } from 'next'
 import { Fragment, MutableRefObject, useEffect, useRef } from 'react'
 import styles from '../styles/Home.module.css'
 import 'bootstrap/dist/css/bootstrap.css';
@@ -15,24 +15,29 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import ReactPlayer from 'react-player'
 import Footer from './components/footer';
+import { CtxOrReq } from 'next-auth/client/_utils';
+import { FaGithub, FaTwitter, FaGoogle, FaFacebook } from "react-icons/fa";
+import { getProviders, signIn, getCsrfToken, useSession } from "next-auth/react"
+import { useRouter } from "next/router";
 
 const scrollToFoter = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 const scrollToHome = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 const scrollToCareer = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 
-export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:3000/api/hello/');
-  const data = await res.json();
+// export const getStaticProps = async () => {
+//   const res = await fetch('http://localhost:3000/api/hello/');
+//   const data = await res.json();
 
-  return {
-      props: {
-          swapis: data,
-      },
-  };
-};
+//   return {
+//       props: {
+//           swapis: data,
+//       },
+//   };
+// };
 
-const Home = ({ swapis }: InferGetStaticPropsType<typeof getStaticProps>) =>  {
-  console.log(swapis)
+// const Home = ({ swapis }: InferGetStaticPropsType<typeof getStaticProps>) =>  {
+
+const Home = () =>  {
 
   const HomeRef = useRef(null)
   const FooterRef = useRef(null)
@@ -68,10 +73,10 @@ const Home = ({ swapis }: InferGetStaticPropsType<typeof getStaticProps>) =>  {
         <video autoPlay={true} muted loop controls style={{ width: '100%', opacity: '100%' }}>
           <source src="/assets/web-vdo.mp4" />
         </video>
-        <div style={{ padding: '50px 0px' }}>
+        <div style={{ paddingTop: '50px' }}>
           <Game />
         </div>
-        <div ref={CareerRef} style={{ padding: '50px 0px' }}>
+        <div ref={CareerRef} >
           <Carrer />
         </div>
 

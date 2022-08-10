@@ -5,7 +5,6 @@ import Col from 'react-bootstrap/Col';
 import styles from '../../styles/Partner.module.css'
 import handler, { connectToDatabase } from "../api/hello";
 import hello from "../api/hello";
-import { GetStaticProps, GetStaticPaths, GetServerSideProps, InferGetStaticPropsType } from 'next'
 import type { AppProps } from 'next/app'
 
 const Footer = () => {
@@ -15,17 +14,14 @@ const Footer = () => {
             behavior: 'smooth',
         });
     };
-
-    console.log(FilmList)
-
     return (
         <div style={{ width: '100%' }}>
             <Container>
                 <Row className={styles.contantLine}>
-                    <Col className={styles.OurPartner} xxl={3}></Col>
-                    <Col className={styles.partner_1} xxl={3}></Col>
-                    <Col className={styles.partner_2} xxl={3}></Col>
-                    <Col className={styles.partner_3} xxl={3}></Col>
+                    <Col className={styles.OurPartner} xxl={3}> <img src="/assets/partner/OurPartner.svg" alt="" /></Col>
+                    <Col className={styles.OurPartner} xxl={3}> <img src="/assets/partner/Plantoys.svg" alt="" /></Col>
+                    <Col className={styles.OurPartner} xxl={3}> <img src="/assets/partner/Berg.svg" alt="" /></Col>
+                    <Col className={styles.OurPartner} xxl={3}> <img src="/assets/partner/Thaifight.svg" alt="" /></Col>
                 </Row>
             </Container>
 
@@ -68,29 +64,6 @@ const Footer = () => {
     );
 };
 
-
-export const getStaticProps = async () => {
-    const res = await fetch('https://www.swapi.tech/api/');
-    const data = await res.json();
-
-    return {
-        props: {
-            swapis: data,
-        },
-    };
-};
-
-const FilmList = ({ swapis }: InferGetStaticPropsType<typeof getStaticProps>) => {
-    console.log(swapis)
-    return (
-        <>
-            <h2>List of Films</h2>
-            {Object.entries({}).map(([key, value]) => (
-                console.log(value)
-            ))}
-        </>
-    );
-};
 
 export default Footer;
 

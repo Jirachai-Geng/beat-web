@@ -13,8 +13,9 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  
-  res.status(200).json(await getPosts(req, res))
+  res.setHeader('Content-Type', 'application/json');
+
+  res.status(200).json({'name':'test'})
 }
 
 

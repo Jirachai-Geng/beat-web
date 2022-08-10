@@ -36,6 +36,28 @@
     color: #FF5100 !important;
 }
 
+.textLogIn {
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.textLabel {
+    font-family: 'Prompt';
+    font-style: normal;
+    text-align: start;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    padding-left: 15px;
+    display: initial;
+}
 
 
 .numberCircle {
@@ -45,5 +67,156 @@
     height: 36px;
     background: #1A1A1A !important;
     color: #fff;
+    text-align: center;
+}
+
+
+.containerGame {
+    display: flex;
+    background-size: 100% 100%;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    background: #000 !important;
+}
+
+.backgroundBanner {
+    display: flex;
+    background-size: 100% 100% !important;
+    min-height: 599px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/assets/gameBackground.jpg) no-repeat;
+}
+
+
+.containerLogin {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    background-size: 100% 100% !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+
+.slidingBackground {
+    background: url(/assets/orangeWave.svg), #000 repeat-x;
+    width: 2151px;
+    animation: slide 10s linear infinite;
+    background-size: 100% 100%;
+    background-repeat: repeat;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+@keyframes slide {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(-717px, 0, 0);
+    }
+}
+
+.iconUser {
+    width: 100%;
+    height: 48px;
+    padding-left: 52px;
+    background: url(/assets/icons/iUser.png) no-repeat scroll 14px 14px, #4D4D4D;
+    background-size: 20px;
+    border: hidden;
+    margin-bottom: 24px;
+}
+
+.iconUser::placeholder {
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: #FFFFFF;
+}
+
+.iconMail {
+    width: 100%;
+    height: 48px;
+    padding-left: 52px;
+    background: url(/assets/icons/iEmail.png) no-repeat scroll 14px 14px, #4D4D4D;
+    background-size: 20px;
+    border: hidden;
+    margin-bottom: 24px;
+}
+
+.iconMail::placeholder {
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: #FFFFFF;
+}
+
+.btnEmail {
+    background: #FF5100;
+    color: #FFFFFF;
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    border: none;
+    width: 100%;
+    height: 48px;
+    margin-top: 24px !important;
+}
+
+.btnFacebook {
+    background: #2D609B;
+    color: #FFFFFF;
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    border: none;
+    width: 100%;
+    height: 48px;
+}
+
+.animatedBackground {
+    align-items: center;
+    background: url(/assets/orangeWave.png), #000;
+    height: 100%;
+    background-repeat: repeat;
+    background-position: 0 0;
+    background-size: auto 100%;
+    /*adjust s value for speed*/
+    animation: animatedBackground 50s linear infinite;
+}
+
+@keyframes animatedBackground {
+    from {
+        background-position: 0 0;
+    }
+
+    /*use negative width if you want it to flow right to left else and positive for left to right*/
+    to {
+        background-position: 10000px 0;
+    }
+}
+
+.line {
+    margin-top: 28px;
+    border-top: 0.5px solid #DEE2E4;
+    margin-bottom: 28px;
+}
+
+.textFaceBook {
+    color: #FFFFFF;
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    align-items: center;
     text-align: center;
 }
