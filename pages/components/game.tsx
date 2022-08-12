@@ -1,12 +1,12 @@
-import { Fragment, useEffect, useRef, useState } from "react";
+import { FormEvent, Fragment, useEffect, useRef, useState } from "react";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import { useSession, signIn, signOut } from "next-auth/react"
 import styles from '../../styles/Game.module.css'
 import Facebook from "next-auth/providers/facebook";
-import { Unity, useUnityContext } from "react-unity-webgl";
-import { Form, InputGroup } from "react-bootstrap";
+import { Unity, useUnityContext  } from "react-unity-webgl";
+import { Form, InputGroup, Modal } from "react-bootstrap";
 import { FaFacebook, FaUser } from "react-icons/fa";
 import { useRouter } from "next/router";
 
@@ -60,6 +60,9 @@ const Game = () => {
     const { width, height } = useContainerDimensions(componentRef)
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
+    let Height = (width * 9) / 16
+    let mobile:boolean
+
     const TableData = [
         { id: 1, fullName: "Patsachol Tangsong...", score: '10,000' },
         { id: 2, fullName: "Klay Thomas", score: '8,800' },
@@ -95,7 +98,6 @@ const Game = () => {
         })
     }
 
-    let Height = (width * 9) / 16
     const [isActive, setIsActive] = useState(false);
     const handleClick = () => {
         setIsActive(current => !current);
@@ -103,18 +105,56 @@ const Game = () => {
 
     const [isPlaygame, setIsPlaygame] = useState(false);
     const handleClickGame = () => {
-        setIsPlaygame(true);
+        if (width > 400){
+            setIsPlaygame(true);
+        }else {
+            setShowModulSetScreen(true)
+        }
+        
     };
-    console.log(session)
-    console.log(isPlaygame)
+
+    const [email, setEmail] = useState("")
+    const [UserName, setUserName] = useState("")
+    const onSubmit = async (e: FormEvent) => {
+        e.preventDefault()
+        console.log(email)
+        let userAuth = {
+            'userAuth': {
+                type: 'email',
+                name: UserName,
+                social_url: email,
+                picture_url: null,
+            }
+        }
+        localStorage.setItem('userAuth', JSON.stringify(userAuth))
+        setIsPlaygame(true)
+    }
+
+    const setUserFacebook = () => {
+        let userAuth = {
+            'userAuth': {
+                type: 'facebook',
+                name: session?.user.name,
+                social_url: session?.user.email,
+                picture_url: session?.user.image,
+            }
+        }
+        localStorage.setItem('userAuth', JSON.stringify(userAuth))
+    }
+
+    const [isShowModulSetScreen, setShowModulSetScreen] = useState(false);
+    const handleCloseSetScreen = () => setShowModulSetScreen(false);
+    // console.log(session)
+    // console.log(isPlaygame)
 
     return (
         <div>
+             <script type="text/javascript" src="/game.js"></script>
             <Container fluid>
                 {!isPlaygame ? (
                     <Row className={styles.background_white}>
                         {session ? (
-                            <Col sm={9} className={styles.containerLogin} ref={componentRef}>
+                            <Col sm={9} className={styles.containerLogin} ref={componentRef} >
                                 <Row className={styles.animatedBackground} style={{ width: '100%' }}>
                                     <Col sm={4}></Col>
                                     <Col sm={4} style={{ display: 'flex', justifyContent: 'space-around', flexDirection: 'column', height: '100%' }}>
@@ -122,11 +162,16 @@ const Game = () => {
                                             Proven your speed and accuracy with
                                             Beat Active game.
                                         </p>
+                                        <div className={styles.center}>
+                                            <img className={styles.ImgFaceBook} src={`${session.user.image}`} alt="UserImage" />
+                                            {/* <img src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=5442137125846980&height=250&width=250&ext=1662759925&hash=AeQaN7g3qvjntjfApmc"/> */}
+                                        </div>
+
                                         <div>
+
                                             <p className={styles.textFaceBook}>
                                                 {session.user.name}
                                             </p>
-
                                             <button className={styles.btnEmail} onClick={handleClickGame}>
                                                 Let’s Play  →
                                             </button>
@@ -154,23 +199,27 @@ const Game = () => {
                                             Beat Active game.
                                         </p>
 
-                                        <form action="/send-data-here" method="post">
-                                            <input className={styles.iconUser} placeholder="User Name" type="text" id="UserName" name="UserName" />
+                                        <form onSubmit={onSubmit} method="post">
+                                            <input className={styles.iconUser} placeholder="User Name"
+                                                value={UserName} onChange={e => setUserName(e.target.value)}
+                                                type="text" id="UserName" name="UserName" />
 
-                                            <input className={styles.iconMail} placeholder="Email*" type="text" id="Email" name="Email" required />
+                                            <input className={styles.iconMail} placeholder="Email*"
+                                                value={email} onChange={e => setEmail(e.target.value)}
+                                                type="text" id="Email" name="Email" required />
 
                                             <input type="checkbox" id="privacy" name="privacy" />
                                             <label className={styles.textLabel}>
                                                 Accept the terms and conditions also privacy policy.
                                             </label>
 
-                                            <button type="submit" className={styles.btnEmail}>
+                                            <button type="submit" onClick={handleClickGame} className={styles.btnEmail}>
                                                 Let’s Play  →
                                             </button>
                                         </form>
 
                                         <div className={styles.line}> </div>
-                                        <button className={styles.btnFacebook} onClick={() => signIn('facebook')}>
+                                        <button className={styles.btnFacebook} onClick={() => { setUserFacebook() ,signIn('facebook') }}>
                                             Login with Facebook
                                         </button>
                                     </Col>
@@ -191,7 +240,7 @@ const Game = () => {
                         </Col>
                     </Row>
 
-                ) : 
+                ) :
                     <Row className={styles.background_white}>
                         <Col className={styles.containerGame}>
                             <Unity
@@ -213,10 +262,27 @@ const Game = () => {
                             </table>
                         </Col>
                     </Row>
-                
+
                 }
             </Container>
+
+            
+            <Modal
+                show={isShowModulSetScreen}
+                onHide={handleCloseSetScreen}
+                dialogClassName="modal-content">
+
+                <Modal.Body style={{ display: 'flex', justifyContent: 'space-around', flexDirection: 'column', height: '100%' }}>
+                    <div style={{ display: 'flex' }}>
+                        <div> ข้อมูลส่วนตัว </div>
+                        <div onClick={handleCloseSetScreen} className='btnClose'></div>
+                    </div>
+              
+                </Modal.Body>
+            </Modal>
         </div >
+
+        
     )
 }
 

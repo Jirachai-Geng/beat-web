@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: Prompt;
   overflow-x: hidden;
+  padding-right: 0 !important;
   /* height: 100vh; */
 }
 
@@ -30,7 +31,7 @@ a {
   .App-logo {
     max-height: 44px;
     margin-left: 0px;
-    cursor:pointer !important;
+    cursor: pointer !important;
   }
 
   .size-menu {
@@ -73,7 +74,7 @@ a {
 @font-face {
   font-family: "Prompt";
   src: url('/assets/fonts/Prompt/Prompt-Regular.ttf');
-  font-weight: 300 500 700 900;
+  font-weight: 300 400 500 600 700 900;
 }
 
 @font-face {
@@ -210,6 +211,59 @@ td {
   box-shadow: none !important;
 }
 
-.navbar-toggler-icon  {
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+    -webkit-transition-delay: 9999s;
+
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: #FFFFFF !important;
+}
+
+.navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb( 26, 26, 26)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
+}
+
+.modal-content {
+  min-width: 556px;
+  min-height: 352px;  
+  border-radius: none;
+  padding: 8px 12px;
+  margin: 0 auto;
+  background: #000 !important;
+}
+
+
+.modal-header {
+  font-family: 'PromptBold';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  color: #FFFFFF;
+}
+
+.modal-body {
+  font-family: 'Prompt';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
+}
+
+.btnClose {
+  box-sizing: content-box;
+  border: 0;
+  cursor: pointer;
+  background: url(/assets/icons/close.png) no-repeat !important;
+  padding: calc(var(--bs-modal-header-padding-y) * 0.5) calc(var(--bs-modal-header-padding-x) * 0.5);
+  margin: calc(var(--bs-modal-header-padding-y) * -0.5) calc(var(--bs-modal-header-padding-x) * -0.5) calc(var(--bs-modal-header-padding-y) * -0.5) auto;
 }

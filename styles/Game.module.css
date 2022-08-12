@@ -125,6 +125,13 @@
     background-size: 20px;
     border: hidden;
     margin-bottom: 24px;
+
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: #FFFFFF !important;
 }
 
 .iconUser::placeholder {
@@ -144,6 +151,13 @@
     background-size: 20px;
     border: hidden;
     margin-bottom: 24px;
+
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: #FFFFFF !important;
 }
 
 .iconMail::placeholder {
@@ -219,4 +233,16 @@
     line-height: 30px;
     align-items: center;
     text-align: center;
+}
+
+.ImgFaceBook {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

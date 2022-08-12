@@ -55,8 +55,8 @@ const Footer = () => {
                     <Col xxl={{ span: 4, offset: 1 }}>
 
                     </Col>
-                    <Col xxl={2}>
-                        <button onClick={goToTop} className={styles.btnGoTop}>Top</button>
+                    <Col className={styles.boxRelative} xxl={2}>
+                        <button onClick={goToTop} className={styles.btnGoTop}> ↑ </button>
                     </Col>
                 </Row>
             </Container>

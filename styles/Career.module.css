@@ -1,0 +1,31 @@
+.textLabel {
+    font-family: 'Prompt';
+    font-style: normal;
+    text-align: start;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    padding-left: 15px;
+    display: initial;
+}
+
+.btnPolicy {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 12px;
+
+    background: #FF5100;
+    color: #FFFFFF;
+}
+
+.background_dark {
+    background: #000 !important;
+}
+
+.modal-content {
+    width:50%;
+    margin:0 auto;
+    background: #000 !important;
+}

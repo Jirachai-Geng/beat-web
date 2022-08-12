@@ -1,5 +1,5 @@
 import type { InferGetServerSidePropsType, InferGetStaticPropsType, NextPage } from 'next'
-import { Fragment, MutableRefObject, useEffect, useRef } from 'react'
+import { Fragment, MutableRefObject, useEffect, useRef, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import Container from 'react-bootstrap/Container';
@@ -42,7 +42,6 @@ const Home = () =>  {
   const HomeRef = useRef(null)
   const FooterRef = useRef(null)
   const CareerRef = useRef(null)
-
   const ScrollHome = () => scrollToHome(HomeRef)
   const ScrollCareer = () => scrollToCareer(CareerRef)
   const ScrollFooter = () => scrollToFoter(FooterRef)
