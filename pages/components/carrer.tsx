@@ -98,17 +98,21 @@ const Career = () => {
         <div className='backgroundDark d-flex align-items-center'>
             <Container fluid>
                 <Row className="p-0" ref={componentRef}>
-                    <Col sm={8} className="background2" style={{ height: (width > 992) ? "400px" :  "162px"}}>
+                    <Col sm={8} className={styles.background2} style={{ height: (width > 992) ? "400px" : "162px" }}>
                     </Col>
 
-                    <Col sm={4} className="backgroundJoinUs d-flex flex-column">
+                    <Col sm={4} className="backgroundJoinUs d-flex flex-column" style={{ height: (width > 992) ? "400px" : "162px" }}>
                         <Row className="myCentreAlign">
-                            <Row className={(width > 992) ? "textJoinUs" :  "textJoinUsMobile"}>
-                                <div> want to join us </div>
+                            <Row className={(width > 992) ? styles.textJoinUs : styles.textJoinUsMobile}>
+                                <div style={{ display: "flex", alignItems: "center" , justifyContent: "center"}}>
+                                    <p>want to join us</p>
+                                </div>
 
                                 <div>
-                                    <button className="carrer-button" onClick={() => setShowModul(true)}>
-                                        Apply Now
+                                    <button className={(width > 992) ? styles.btnCarrer : styles.btnCarrerMobile} onClick={() => setShowModul(true)}>
+                                        {
+                                            (width > 400) ? <span>Apply Now</span> : <span> Join Us </span> 
+                                        }
                                     </button>
 
                                 </div>
@@ -159,7 +163,7 @@ const Career = () => {
                         <div> ข้อมูลส่วนตัว </div>
                         <div onClick={handleCloseCareer1} className='btnClose'></div>
                     </div>
-              
+
                 </Modal.Body>
             </Modal>
 

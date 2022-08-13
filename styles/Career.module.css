@@ -15,7 +15,6 @@
     justify-content: center;
     align-items: center;
     padding: 8px 12px;
-
     background: #FF5100;
     color: #FFFFFF;
 }
@@ -25,7 +24,63 @@
 }
 
 .modal-content {
-    width:50%;
-    margin:0 auto;
+    width: 50%;
+    margin: 0 auto;
     background: #000 !important;
+}
+
+.background2 {
+    background: url(/assets/career.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.textJoinUs {
+    font-family: 'SpaceAge';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 64px;
+    padding-left: 0px !important;
+    padding-top: 86px !important;
+    padding-right: 64px !important;
+    padding-bottom: 36px !important;
+    text-align: right;
+    color: #FFFFFF;
+}
+
+.textJoinUsMobile {
+    font-family: 'SpaceAge';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 36px;
+    text-align: center;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: 'space-around';
+    height: 100%;
+}
+
+.btnCarrer {
+    font-family: 'PromptMedium';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    width: 210px !important;
+    height: 64px;
+    background: #FFFFFF;
+    color: #FF5100;
+    border: none;
+}
+
+.btnCarrerMobile {
+    font-family: 'PromptMedium';
+    align-items: center;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 12px 44px;
+    background: #FFFFFF;
+    color: #FF5100;
+    border: none;
 }

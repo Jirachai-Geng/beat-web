@@ -1,4 +1,4 @@
-import { Fragment, JSXElementConstructor, ReactElement, ReactFragment, ReactPortal, useRef, useState } from "react";
+import { Fragment, JSXElementConstructor, ReactElement, ReactFragment, ReactPortal, useEffect, useRef, useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -7,7 +7,37 @@ import handler, { connectToDatabase } from "../api/hello";
 import hello from "../api/hello";
 import type { AppProps } from 'next/app'
 
+export const useContainerDimensions = (myRef: any) => {
+    const getDimensions = () => ({
+        width: myRef.current.offsetWidth,
+        height: myRef.current.offsetHeight
+    })
+
+    const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+
+    useEffect(() => {
+        const handleResize = () => {
+            setDimensions(getDimensions())
+        }
+
+        if (myRef.current) {
+            setDimensions(getDimensions())
+        }
+
+        window.addEventListener("resize", handleResize)
+
+        return () => {
+            window.removeEventListener("resize", handleResize)
+        }
+    }, [myRef])
+
+    return dimensions;
+};
+
 const Footer = () => {
+    const componentRef = useRef()
+    const { width, height } = useContainerDimensions(componentRef)
+
     const goToTop = () => {
         window.scrollTo({
             top: 0,
@@ -15,13 +45,21 @@ const Footer = () => {
         });
     };
     return (
-        <div style={{ width: '100%' }}>
-            <Container>
-                <Row className={styles.contantLine}>
-                    <Col className={styles.OurPartner} sm={3}> <img src="/assets/partner/OurPartner.svg" alt="" /></Col>
-                    <Col className={styles.OurPartner} sm={3}> <img src="/assets/partner/Plantoys.svg" alt="" /></Col>
-                    <Col className={styles.OurPartner} sm={3}> <img src="/assets/partner/Berg.svg" alt="" /></Col>
-                    <Col className={styles.OurPartner} sm={3}> <img src="/assets/partner/Thaifight.svg" alt="" /></Col>
+        <div style={{ width: '100%', padding: "0px !impotant" }}>
+            <Container fluid>
+                <Row className={styles.contantLine} ref={componentRef}>
+                    <Col className={styles.OurPartner} sm={3}>
+                        <div className={(width > 992) ? styles.textParner : styles.textParnerMobile}>
+                            <p>Our </p>
+                            <p>Partner </p>
+                        </div>
+                    </Col>
+                    <Col className={styles.OurPartner} sm={3}>
+                        <img style={{ height: (width > 992) ? "300px" : "200px" }} src="/assets/partner/Plantoys.svg" alt="" /></Col>
+                    <Col className={styles.OurPartner} sm={3}>
+                        <img style={{ height: (width > 992) ? "300px" : "200px" }} src="/assets/partner/Berg.svg" alt="" /></Col>
+                    <Col className={styles.OurPartner} sm={3}>
+                        <img style={{ height: (width > 992) ? "300px" : "200px" }} src="/assets/partner/Thaifight.svg" alt="" /></Col>
                 </Row>
             </Container>
 
@@ -39,8 +77,7 @@ const Footer = () => {
                 </Row>
             </Container> */}
 
-            <Container>
-
+            <Container fluid>
                 <Row className={styles.line}>
                     <Col xxl={5}>
                         <div className={styles.text_title}>

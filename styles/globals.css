@@ -143,58 +143,18 @@ td {
   background: #000;
 }
 
-.background2 {
-  background: url(/assets/career.png) no-repeat;
-  background-size: 100% 100%;
-}
+
 
 .backgroundJoinUs {
+  align-items: center;
   background-color: #1A1A1A;
-}
-
-
-.textJoinUs {
-  font-family: 'SpaceAge';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 56px;
-  line-height: 64px;
-  padding-left: 0px !important;
-  padding-top: 86px !important;
-  padding-right: 64px !important;
-  padding-bottom: 36px !important;
-  text-align: right;
-  color: #FFFFFF;
-}
-
-.textJoinUsMobile {
-  font-family: 'SpaceAge';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 36px;
-  text-align: center;
-  color: #FFFFFF;
-}
-
-
-.carrer-button {
-  font-family: 'PromptMedium';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 36px;
-  width: 210px !important;
-  height: 64px;
-  background: #FFFFFF;
-  color: #FF5100;
-  border: none;
 }
 
 .myCentreAlign {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
 
