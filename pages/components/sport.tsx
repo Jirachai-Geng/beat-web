@@ -5,8 +5,8 @@ import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container';
 import styles from '../../styles/Sport.module.css'
 
-const Sport = () => {
 
+const Sport = () => {
     return (
         <div className="containerSport d-flex align-items-center">
             <Container>

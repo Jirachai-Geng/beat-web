@@ -84,3 +84,26 @@
     color: #FF5100;
     border: none;
 }
+
+.career1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0px 200px;
+    min-height: 442px;
+    height: 100%;
+}
+
+
+.fill {
+    width: 100%;
+    height: 48px;    
+    padding-left: 16px;
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: #FFFFFF !important;
+    background: #4D4D4D;
+}

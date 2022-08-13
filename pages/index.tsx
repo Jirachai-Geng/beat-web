@@ -19,13 +19,14 @@ import { CtxOrReq } from 'next-auth/client/_utils';
 import { FaGithub, FaTwitter, FaGoogle, FaFacebook } from "react-icons/fa";
 import { getProviders, signIn, getCsrfToken, useSession } from "next-auth/react"
 import { useRouter } from "next/router";
+import { Stepper,Step } from 'react-form-stepper';
 
 const scrollToFoter = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 const scrollToHome = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 const scrollToCareer = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 
 // export const getStaticProps = async () => {
-//   const res = await fetch('http://localhost:3000/api/hello/');
+//   const res = await fetch('{{url}}/{{v1}}/gamescore/');
 //   const data = await res.json();
 
 //   return {
@@ -78,6 +79,10 @@ const Home = () =>  {
         <div ref={CareerRef} >
           <Carrer />
         </div>
+
+        {/* <div>
+          <Sport />
+        </div> */}
 
         <footer ref={FooterRef} className={styles.footer}>
           <Footer />

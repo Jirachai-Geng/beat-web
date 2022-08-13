@@ -1,5 +1,6 @@
 .background_white {
     background: #fff !important;
+    height: 599px;
 }
 
 .background_hide {
@@ -87,7 +88,7 @@
 .backgroundBanner {
     display: flex;
     background-size: 100% 100% !important;
-    min-height: 599px;
+    height: 599px;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/assets/gameBackground.jpg) no-repeat;
 }
 
@@ -102,10 +103,10 @@
 .containerLogin {
     display: flex;
     overflow: hidden;
-    position: relative;
     background-size: 100% 100% !important;
     padding-left: 0px !important;
     padding-right: 0px !important;
+    height: 599 !important;
 }
 
 
@@ -211,7 +212,7 @@
 .animatedBackground {
     align-items: center;
     background: url(/assets/orangeWave.png), #000;
-    height: 100%;
+    height: 599px !important;
     padding: 0px !important;
     margin: 0px !important;
     background-repeat: repeat;
@@ -270,4 +271,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.modalScreen {
+    height: 100%;
+}
+
+.textHeader{
+  font-family: 'PromptMedium';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
 }

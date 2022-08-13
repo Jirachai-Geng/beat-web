@@ -46,9 +46,9 @@ const Footer = () => {
     };
     return (
         <div style={{ width: '100%', padding: "0px !impotant" }}>
-            <Container fluid>
+            <Container fluid style={{padding: "0px 64px"}}>
                 <Row className={styles.contantLine} ref={componentRef}>
-                    <Col className={styles.OurPartner} sm={3}>
+                    <Col sm={3}>
                         <div className={(width > 992) ? styles.textParner : styles.textParnerMobile}>
                             <p>Our </p>
                             <p>Partner </p>
@@ -77,8 +77,11 @@ const Footer = () => {
                 </Row>
             </Container> */}
 
-            <Container fluid>
+            <Container fluid style={{padding: "0 64px"}}>
                 <Row className={styles.line}>
+
+                </Row>
+                <Row>
                     <Col xxl={5}>
                         <div className={styles.text_title}>
                             Contact Information
