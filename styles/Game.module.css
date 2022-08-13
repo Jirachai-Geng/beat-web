@@ -2,6 +2,11 @@
     background: #fff !important;
 }
 
+.background_hide {
+    flex: none;
+    margin-left:0px !important;
+}
+
 .textScore {
     font-family: 'SpaceAge';
     font-style: normal;
@@ -84,6 +89,13 @@
     background-size: 100% 100% !important;
     min-height: 599px;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/assets/gameBackground.jpg) no-repeat;
+}
+
+.backgroundBannerMobile {
+    display: flex;
+    background-size: 100% 100% !important;
+    min-height: 563px !important;
+    background: url(/assets/banner2.png)
 }
 
 
@@ -200,12 +212,25 @@
     align-items: center;
     background: url(/assets/orangeWave.png), #000;
     height: 100%;
+    padding: 0px !important;
+    margin: 0px !important;
     background-repeat: repeat;
     background-position: 0 0;
     background-size: auto 100%;
     /*adjust s value for speed*/
     animation: animatedBackground 50s linear infinite;
 }
+
+.animatedBackgroundMobile {
+    align-items: center;
+    background: url(/assets/orangeWave.png), #000;
+    min-height: 563px !important;
+    background-repeat: repeat;
+    background-position: 0 0;
+    background-size: auto 100%;
+    animation: animatedBackground 50s linear infinite;
+}
+
 
 @keyframes animatedBackground {
     from {

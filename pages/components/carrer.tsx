@@ -1,7 +1,7 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import router from 'next/router';
 import { setCookie } from 'cookies-next';
@@ -12,12 +12,42 @@ export interface FormProps {
     isChecked: boolean;
 }
 
+export const useContainerDimensions = (myRef: any) => {
+    const getDimensions = () => ({
+        width: myRef.current.offsetWidth,
+        height: myRef.current.offsetHeight
+    })
+
+    const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+
+    useEffect(() => {
+        const handleResize = () => {
+            setDimensions(getDimensions())
+        }
+
+        if (myRef.current) {
+            setDimensions(getDimensions())
+        }
+
+        window.addEventListener("resize", handleResize)
+
+        return () => {
+            window.removeEventListener("resize", handleResize)
+        }
+    }, [myRef])
+
+    return dimensions;
+};
+
 const Career = () => {
     const [isShowModul, setShowModul] = useState(false);
     const handleShow = () => setShowModul(true);
     const handleClose = () => setShowModul(false);
 
     const [checked, setChecked] = useState(false);
+
+    const componentRef = useRef()
+    const { width, height } = useContainerDimensions(componentRef)
 
     const acceptPolicy = (checked: any) => {
         setCookie('Privacy_Policy', 'Privacy Policy');
@@ -67,14 +97,15 @@ const Career = () => {
     return (
         <div className='backgroundDark d-flex align-items-center'>
             <Container fluid>
-                <Row className="p-0">
-                    <Col sm={8} className="background2">
+                <Row className="p-0" ref={componentRef}>
+                    <Col sm={8} className="background2" style={{ height: (width > 992) ? "400px" :  "162px"}}>
                     </Col>
 
                     <Col sm={4} className="backgroundJoinUs d-flex flex-column">
                         <Row className="myCentreAlign">
-                            <Row className="textJoinUs">
-                                want to join us
+                            <Row className={(width > 992) ? "textJoinUs" :  "textJoinUsMobile"}>
+                                <div> want to join us </div>
+
                                 <div>
                                     <button className="carrer-button" onClick={() => setShowModul(true)}>
                                         Apply Now

@@ -18,10 +18,10 @@ const Footer = () => {
         <div style={{ width: '100%' }}>
             <Container>
                 <Row className={styles.contantLine}>
-                    <Col className={styles.OurPartner} xxl={3}> <img src="/assets/partner/OurPartner.svg" alt="" /></Col>
-                    <Col className={styles.OurPartner} xxl={3}> <img src="/assets/partner/Plantoys.svg" alt="" /></Col>
-                    <Col className={styles.OurPartner} xxl={3}> <img src="/assets/partner/Berg.svg" alt="" /></Col>
-                    <Col className={styles.OurPartner} xxl={3}> <img src="/assets/partner/Thaifight.svg" alt="" /></Col>
+                    <Col className={styles.OurPartner} sm={3}> <img src="/assets/partner/OurPartner.svg" alt="" /></Col>
+                    <Col className={styles.OurPartner} sm={3}> <img src="/assets/partner/Plantoys.svg" alt="" /></Col>
+                    <Col className={styles.OurPartner} sm={3}> <img src="/assets/partner/Berg.svg" alt="" /></Col>
+                    <Col className={styles.OurPartner} sm={3}> <img src="/assets/partner/Thaifight.svg" alt="" /></Col>
                 </Row>
             </Container>
 

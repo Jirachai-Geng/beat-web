@@ -38,6 +38,7 @@ a {
     gap: 28px !important;
     padding: 20px 43px 35px 35px;
   }
+
 }
 
 @media screen and (min-width: 992px) {
@@ -143,13 +144,11 @@ td {
 }
 
 .background2 {
-  height: 400px;
-  background: url(/assets/banner_new2.png) no-repeat;
+  background: url(/assets/career.png) no-repeat;
   background-size: 100% 100%;
 }
 
 .backgroundJoinUs {
-  height: 400px;
   background-color: #1A1A1A;
 }
 
@@ -167,6 +166,17 @@ td {
   text-align: right;
   color: #FFFFFF;
 }
+
+.textJoinUsMobile {
+  font-family: 'SpaceAge';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 36px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
 
 .carrer-button {
   font-family: 'PromptMedium';

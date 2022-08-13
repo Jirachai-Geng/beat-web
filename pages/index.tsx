@@ -72,7 +72,7 @@ const Home = () =>  {
         <video autoPlay={true} muted loop controls style={{ width: '100%', opacity: '100%' }}>
           <source src="/assets/web-vdo.mp4" />
         </video>
-        <div style={{ paddingTop: '50px' }}>
+        <div>
           <Game />
         </div>
         <div ref={CareerRef} >

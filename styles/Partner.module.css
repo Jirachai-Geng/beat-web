@@ -2,6 +2,8 @@
     box-sizing: border-box;
     display: flex;
     align-items: center !important;
+    padding: 0px !important;
+    justify-content: center;
 }
 
 .line {

@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import { useSession, signIn, signOut } from "next-auth/react"
 import styles from '../../styles/Game.module.css'
 import Facebook from "next-auth/providers/facebook";
-import { Unity, useUnityContext  } from "react-unity-webgl";
+import { Unity, useUnityContext } from "react-unity-webgl";
 import { Form, InputGroup, Modal } from "react-bootstrap";
 import { FaFacebook, FaUser } from "react-icons/fa";
 import { useRouter } from "next/router";
@@ -38,7 +38,7 @@ export const useContainerDimensions = (myRef: any) => {
 };
 
 const Game = () => {
-    const { unityProvider } = useUnityContext({
+    const { unityProvider, requestFullscreen, isLoaded } = useUnityContext({
         codeUrl: `/unitybuild/game.wasm`,
         dataUrl: `/unitybuild/game.data`,
         frameworkUrl: `/unitybuild/game.framework.js`,
@@ -57,11 +57,13 @@ const Game = () => {
     }, [session])
 
     const componentRef = useRef()
+    const ref = useRef(null);
+
     const { width, height } = useContainerDimensions(componentRef)
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     let Height = (width * 9) / 16
-    let mobile:boolean
+    let mobile: boolean
 
     const TableData = [
         { id: 1, fullName: "Patsachol Tangsong...", score: '10,000' },
@@ -73,7 +75,6 @@ const Game = () => {
         { id: 4, fullName: "Sunil Kumar", score: '5,600' },
         { id: 5, fullName: "Kajol Kumari", score: '5,000' }
     ]
-
 
     const column = Object.keys(TableData[0]);
 
@@ -105,12 +106,15 @@ const Game = () => {
 
     const [isPlaygame, setIsPlaygame] = useState(false);
     const handleClickGame = () => {
-        if (width > 400){
-            setIsPlaygame(true);
-        }else {
-            setShowModulSetScreen(true)
-        }
-        
+        setIsPlaygame(true);
+        setTimeout(() => {
+            delayEvent(ref.current, "click");
+        }, 350);
+    };
+
+    const delayEvent = (el: any, eventName: any) => {
+        const event = new Event(eventName, { bubbles: true });
+        el.dispatchEvent(event);
     };
 
     const [email, setEmail] = useState("")
@@ -130,6 +134,10 @@ const Game = () => {
         setIsPlaygame(true)
     }
 
+    const handleClickEnterFullscreen = () => {
+        requestFullscreen(true);
+    }
+
     const setUserFacebook = () => {
         let userAuth = {
             'userAuth': {
@@ -146,16 +154,15 @@ const Game = () => {
     const handleCloseSetScreen = () => setShowModulSetScreen(false);
     // console.log(session)
     // console.log(isPlaygame)
-
+    let showResults = true
     return (
         <div>
-             <script type="text/javascript" src="/game.js"></script>
-            <Container fluid>
+            <Container fluid  style={{ paddingTop: (width > 992) ? '50px': '0px' }}>
                 {!isPlaygame ? (
-                    <Row className={styles.background_white}>
+                    <Row className={styles.background_white} ref={componentRef}>
                         {session ? (
-                            <Col sm={9} className={styles.containerLogin} ref={componentRef} >
-                                <Row className={styles.animatedBackground} style={{ width: '100%' }}>
+                            <Col sm={12} lg={9} className={(width > 992) ? styles.containerLogin : styles.animatedBackgroundMobile} >
+                                <Row fluid className={(width > 992) ? styles.animatedBackground : styles.background_hide} style={{ width: '100%', height: '100%' }}>
                                     <Col sm={4}></Col>
                                     <Col sm={4} style={{ display: 'flex', justifyContent: 'space-around', flexDirection: 'column', height: '100%' }}>
                                         <p className={styles.textLogIn}>
@@ -168,7 +175,6 @@ const Game = () => {
                                         </div>
 
                                         <div>
-
                                             <p className={styles.textFaceBook}>
                                                 {session.user.name}
                                             </p>
@@ -182,8 +188,7 @@ const Game = () => {
                                 </Row>
                             </Col>
                         ) :
-                            <Col sm={9} className={isActive ? styles.containerLogin : styles.backgroundBanner} ref={componentRef}>
-
+                            <Col sm={12} lg={9} className={isActive ? ((width > 992) ? styles.containerLogin : styles.animatedBackgroundMobile) : (width > 400) ? styles.backgroundBanner : styles.backgroundBannerMobile} >
                                 <div className="endcontainer" style={{ display: isActive ? 'none' : '' }}>
                                     <button className="game-button" onClick={handleClick}>
                                         Let’s Play  →
@@ -219,7 +224,7 @@ const Game = () => {
                                         </form>
 
                                         <div className={styles.line}> </div>
-                                        <button className={styles.btnFacebook} onClick={() => { setUserFacebook() ,signIn('facebook') }}>
+                                        <button className={styles.btnFacebook} onClick={() => { setUserFacebook(), signIn('facebook') }}>
                                             Login with Facebook
                                         </button>
                                     </Col>
@@ -228,21 +233,22 @@ const Game = () => {
                             </Col>
                         }
                         {/* score */}
-                        <Col className={styles.content} style={{ overflow: "auto", height: Height }}>
-                            <p className={styles.textScore}> Leader Board </p>
-                            <table className="table">
-                                <thead>
-                                </thead>
-                                <tbody className={styles.tableScore}>
-                                    {tdData()}
-                                </tbody>
-                            </table>
-                        </Col>
+                        {(width > 992) ?
+                            <Col className={styles.content} style={{ overflow: "auto", height: Height }}>
+                                <p className={styles.textScore}> Leader Board </p>
+                                <table className="table">
+                                    <thead>
+                                    </thead>
+                                    <tbody className={styles.tableScore}>
+                                        {tdData()}
+                                    </tbody>
+                                </table>
+                            </Col> : null}
                     </Row>
 
                 ) :
-                    <Row className={styles.background_white}>
-                        <Col className={styles.containerGame}>
+                    <Row className={styles.background_white} ref={componentRef} >
+                        <Col className={styles.containerGame} >
                             <Unity
                                 unityProvider={unityProvider}
                                 style={{ border: "1px solid red", width: width, height: Height }}
@@ -251,22 +257,24 @@ const Game = () => {
 
 
                         {/* score */}
-                        <Col className={styles.content} style={{ overflow: "auto", height: Height }}>
-                            <p className={styles.textScore}> Leader Board </p>
-                            <table className="table">
-                                <thead>
-                                </thead>
-                                <tbody className={styles.tableScore}>
-                                    {tdData()}
-                                </tbody>
-                            </table>
-                        </Col>
+                        {(width > 992) ?
+                            <Col className={styles.content} style={{ overflow: "auto", height: Height }} >
+                                <p className={styles.textScore}> Leader Board </p>
+                                <table className="table">
+                                    <thead>
+                                    </thead>
+                                    <tbody className={styles.tableScore}>
+                                        {tdData()}
+                                    </tbody>
+                                </table>
+                            </Col> :
+                            <button ref={ref} onClick={handleClickEnterFullscreen} style={{ visibility: 'hidden' }}>TEST</button>
+                        }
                     </Row>
-
                 }
             </Container>
 
-            
+
             <Modal
                 show={isShowModulSetScreen}
                 onHide={handleCloseSetScreen}
@@ -277,12 +285,12 @@ const Game = () => {
                         <div> ข้อมูลส่วนตัว </div>
                         <div onClick={handleCloseSetScreen} className='btnClose'></div>
                     </div>
-              
+
                 </Modal.Body>
             </Modal>
         </div >
 
-        
+
     )
 }
 
