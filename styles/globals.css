@@ -187,15 +187,15 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
-    -webkit-transition-delay: 9999s;
+  -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+  -webkit-transition-delay: 9999s;
 
-    font-family: 'Prompt';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 28px;
-    color: #FFFFFF !important;
+  font-family: 'Prompt';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+  color: #FFFFFF !important;
 }
 
 .navbar-toggler-icon {
@@ -203,10 +203,20 @@ input:-webkit-autofill:active {
 }
 
 .modal-content {
-  border-radius: 0px !important; 
+  border-radius: 0px !important;
   padding: 0px 0px;
   border: 0px;
   background: #000 !important;
+}
+
+@media (min-width: 576px) {
+  .modal-policy {
+    --bs-modal-width: 556px !important;
+  }
+
+  .modal-carrer1 {
+    --bs-modal-width: 913px !important;
+  }
 }
 
 .modal-header {
@@ -231,18 +241,21 @@ input:-webkit-autofill:active {
   cursor: pointer;
 }
 
-.css-5xe99f-MuiLinearProgress-bar1{
+.css-5xe99f-MuiLinearProgress-bar1 {
   background-color: #FF5100 !important;
 }
 
 input[type="checkbox"] {
   /* ...existing styles */
-  -ms-transform:scale(1.25); /* IE */
-  -moz-transform: scale(1.25); /* FF */
-  -webkit-transform: scale(1.25); /* Safari and Chrome */
-  -o-transform: scale(1.25);/* Opera */
+  -ms-transform: scale(1.25);
+  /* IE */
+  -moz-transform: scale(1.25);
+  /* FF */
+  -webkit-transform: scale(1.25);
+  /* Safari and Chrome */
+  -o-transform: scale(1.25);
+  /* Opera */
   transform: scale(1.25);
 
-  /* Windows High Contrast Mode */
   accent-color: #FF5100 !important;
 }

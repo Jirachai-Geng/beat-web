@@ -78,18 +78,18 @@ const Career = () => {
             step: 5.5,
             description:
                 <div className={styles.career1}>
-                    <input className={styles.fill} placeholder="Full Name*"
+                    {/* <input className={styles.btnFill} placeholder="Full Name*"
                         type="text" id="UserName" name="UserName" />
 
-                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
-                        <input placeholder="Email*"
-                            type="text" id="Email" name="Email" required />
+                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', columnGap: "8px" }}>
+                        <input className={styles.btnFill} placeholder="Birth Date*"
+                            type="text" id="BirthDate" name="BirthDate" required />
 
-                        <input placeholder="Email*"
-                            type="text" id="Email" name="Email" required />
+                        <input className={styles.btnFill} placeholder="Month*"
+                            type="text" id="Month" name="Month" required />
 
-                        <input placeholder="Email*"
-                            type="text" id="Email" name="Email" required />
+                        <input className={styles.btnFill} placeholder="Year*"
+                            type="text" id="Year" name="Year" required />
                     </div>
 
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
@@ -104,170 +104,119 @@ const Career = () => {
                         type="text" id="UserName" name="UserName" />
 
                     <input placeholder="Full Name*"
-                        type="text" id="UserName" name="UserName" />
+                        type="text" id="UserName" name="UserName" /> */}
 
 
                 </div>
         },
         {
-            label: 'Create an ad group',
+            label: '',
             page: "2/18",
             step: 11,
             description:
-                'An ad group contains one or more ads which target a shared set of keywords.',
+                '',
         },
         {
-            label: 'Create an ad',
+            label: '',
             page: "3/18",
             step: 16.5,
-            description: `Try out different ad text to see what brings in the most customers,
-                    and learn how to enhance your ads using features like ad extensions.
-                    If you run into any problems with your ads, find out how to tell if
-                    they're running and how to resolve approval issues.`,
+            description: ``,
         },
         {
-            label: 'Create an ad',
+            label: '',
             page: "4/18",
             step: 22,
-            description: `Try out different ad text to see what brings in the most customers,
-                    and learn how to enhance your ads using features like ad extensions.
-                    If you run into any problems with your ads, find out how to tell if
-                    they're running and how to resolve approval issues.`,
+            description: ``,
         },
         {
-            label: 'Create an ad',
-            page: "3/18",
+            label: '',
+            page: "5/18",
             step: 27.5,
-            description: `Try out different ad text to see what brings in the most customers,
-                    and learn how to enhance your ads using features like ad extensions.
-                    If you run into any problems with your ads, find out how to tell if
-                    they're running and how to resolve approval issues.`,
+            description: ``,
         },
         {
-            label: 'Create an ad',
-            page: "3/18",
+            label: '',
+            page: "6/18",
             step: 33,
-            description: `Try out different ad text to see what brings in the most customers,
-                    and learn how to enhance your ads using features like ad extensions.
-                    If you run into any problems with your ads, find out how to tell if
-                    they're running and how to resolve approval issues.`,
+            description: ``,
         },
         {
-            label: 'Create an ad',
-            page: "3/18",
+            label: '',
+            page: "7/18",
             step: 38.5,
-            description: `Try out different ad text to see what brings in the most customers,
-                    and learn how to enhance your ads using features like ad extensions.
-                    If you run into any problems with your ads, find out how to tell if
-                    they're running and how to resolve approval issues.`,
+            description: ``,
         },
         {
-            label: 'Create an ad',
-            page: "3/18",
+            label: '',
+            page: "8/18",
             step: 44,
-            description: `Try out different ad text to see what brings in the most customers,
-                    and learn how to enhance your ads using features like ad extensions.
-                    If you run into any problems with your ads, find out how to tell if
-                    they're running and how to resolve approval issues.`,
+            description: ``,
         },
         {
-            label: 'Create an ad',
-            page: "3/18",
+            label: '',
+            page: "9/18",
             step: 49.5,
-            description: `Try out different ad text to see what brings in the most customers,
-                    and learn how to enhance your ads using features like ad extensions.
-                    If you run into any problems with your ads, find out how to tell if
-                    they're running and how to resolve approval issues.`,
+            description: ``,
         },
         {
-            label: 'Create an ad',
-            page: "3/18",
+            label: '',
+            page: "10/18",
             step: 55,
-            description: `Try out different ad text to see what brings in the most customers,
-                    and learn how to enhance your ads using features like ad extensions.
-                    If you run into any problems with your ads, find out how to tell if
-                    they're running and how to resolve approval issues.`,
+            description: ``,
         },
         {
-            label: 'Create an ad',
-            page: "3/18",
+            label: '',
+            page: "11/18",
             step: 60.5,
-            description: `Try out different ad text to see what brings in the most customers,
-                    and learn how to enhance your ads using features like ad extensions.
-                    If you run into any problems with your ads, find out how to tell if
-                    they're running and how to resolve approval issues.`,
+            description: ``,
         },
         {
-            label: 'Create an ad',
-            page: "3/18",
+            label: '',
+            page: "12/18",
             step: 66,
-            description: `Try out different ad text to see what brings in the most customers,
-                    and learn how to enhance your ads using features like ad extensions.
-                    If you run into any problems with your ads, find out how to tell if
-                    they're running and how to resolve approval issues.`,
+            description: ``,
         },
         {
-            label: 'Create an ad',
-            page: "3/18",
+            label: '',
+            page: "13/18",
             step: 71.5,
-            description: `Try out different ad text to see what brings in the most customers,
-                    and learn how to enhance your ads using features like ad extensions.
-                    If you run into any problems with your ads, find out how to tell if
-                    they're running and how to resolve approval issues.`,
+            description: ``,
         },
         {
-            label: 'Create an ad',
-            page: "3/18",
+            label: '',
+            page: "14/18",
             step: 77,
-            description: `Try out different ad text to see what brings in the most customers,
-                    and learn how to enhance your ads using features like ad extensions.
-                    If you run into any problems with your ads, find out how to tell if
-                    they're running and how to resolve approval issues.`,
+            description: ``,
         },
         {
-            label: 'Create an ad',
-            page: "3/18",
+            label: '',
+            page: "15/18",
             step: 82.5,
-            description: `Try out different ad text to see what brings in the most customers,
-                    and learn how to enhance your ads using features like ad extensions.
-                    If you run into any problems with your ads, find out how to tell if
-                    they're running and how to resolve approval issues.`,
+            description: ``,
         },
         {
-            label: 'Create an ad',
-            page: "3/18",
+            label: '',
+            page: "16/18",
             step: 88,
-            description: `Try out different ad text to see what brings in the most customers,
-                    and learn how to enhance your ads using features like ad extensions.
-                    If you run into any problems with your ads, find out how to tell if
-                    they're running and how to resolve approval issues.`,
+            description: ``,
         },
         {
-            label: 'Create an ad',
-            page: "3/18",
+            label: '',
+            page: "17/18",
             step: 93.5,
-            description: `Try out different ad text to see what brings in the most customers,
-                    and learn how to enhance your ads using features like ad extensions.
-                    If you run into any problems with your ads, find out how to tell if
-                    they're running and how to resolve approval issues.`,
+            description: ``,
         },
         {
-            label: 'Create an ad',
+            label: '',
             page: "18/18",
             step: 99,
-            description: `Try out different ad text to see what brings in the most customers,
-                    and learn how to enhance your ads using features like ad extensions.
-                    If you run into any problems with your ads, find out how to tell if
-                    they're running and how to resolve approval issues.`,
+            description: ``,
         },
         {
-            label: 'Create an ad',
+            label: '',
             page: "",
             step: 99,
-            description: `Try out different ad text to see what brings in the most customers,
-                    and learn how to enhance your ads using features like ad extensions.
-                    If you run into any problems with your ads, find out how to tell if
-                    they're running and how to resolve approval issues.`,
+            description: ``,
         },
     ];
 
@@ -314,26 +263,26 @@ const Career = () => {
             <Modal
                 show={isShowModul}
                 onHide={handleClose}
-                dialogClassName="modal-dialog-centered">
-                <Modal.Header style={{ borderBottom: 'none' }}>
+                dialogClassName="modal-dialog-centered modal-policy">
+                <Modal.Header style={{ borderBottom: 'none', padding: "36px" }}>
                     <Modal.Title>Privacy Policy </Modal.Title>
                     <div onClick={handleClose} className="btnClose"> <ClearIcon /> </div>
                 </Modal.Header>
-                <Modal.Body style={{ display: 'flex', height: '100%', width: "100%" }}>
-                    <form onSubmit={onSubmit} method="post" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
-                        <p style={{ padding: '0px 20px' }}>
+                <Modal.Body style={{ display: 'flex', height: '100%', width: "100%", borderBottom: 'none', padding: "24px" }}>
+                    <form onSubmit={onSubmit} method="post" className={styles.careerPolicy}>
+                        <p style={{ padding: '12px 20px' }}>
                             This website uses cookies to improve user experience. By visiting our
                             website you consent to all cookies in accordance with our privacy policy.
                         </p>
 
-                        <div>
+                        <div style={{ padding: '12px 20px' }}>
                             <input type="checkbox" id="privacy" name="privacy" onChange={e => setChecked((e.target.checked))} required />
                             <label className={styles.textLabel}>
                                 Accept the terms and conditions also privacy policy.
                             </label>
                         </div>
 
-                        <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', padding: '36px 0px' }}>
                             <button className={styles.btnPolicy} type="submit" >
                                 Continue
                             </button>
@@ -346,7 +295,7 @@ const Career = () => {
             <Modal
                 show={isShowModulCareer}
                 onHide={handleCloseCareer}
-                dialogClassName="modal-dialog-centered modal-lg">
+                dialogClassName="modal-dialog-centered modal-carrer1">
                 <LinearProgress variant="determinate" style={{ backgroundColor: '#FFEAE0' }} value={steps[activeStep].step} />
 
                 <Modal.Header style={{ borderBottom: 'none' }}>
@@ -359,13 +308,13 @@ const Career = () => {
                 <Modal.Body>
                     {steps[activeStep].description}
 
-                    <div >
-                        <button onClick={handleBack} disabled={activeStep === 0}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 8px' }}>
+                        <button className={styles.btnPrevious} onClick={handleBack} disabled={activeStep === 0}>
                             <WestIcon style={{ fontSize: "15px" }} />
                             <span> Previous </span>
                         </button>
 
-                        <button onClick={handleNext} disabled={activeStep === maxSteps - 1} >
+                        <button className={styles.btnOrange} onClick={handleNext} disabled={activeStep === maxSteps - 1} >
                             <span> Next </span>
                             <EastIcon style={{ fontSize: "15px" }} />
                         </button>

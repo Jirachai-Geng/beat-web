@@ -9,6 +9,9 @@ import { Unity, useUnityContext } from "react-unity-webgl";
 import { Form, InputGroup, Modal } from "react-bootstrap";
 import { FaFacebook, FaUser } from "react-icons/fa";
 import { useRouter } from "next/router";
+import useSWR, { unstable_serialize } from 'swr'
+import ReactTable from 'react-table'
+
 
 export const useContainerDimensions = (myRef: any) => {
     const getDimensions = () => ({
@@ -64,6 +67,36 @@ export const useContainerDimensionsGame = (myRef: any) => {
     return dimensionsGame;
 };
 
+const API_URL = 'http://103.13.231.185:8080/api/v1/score';
+
+async function fetcher(url: any) {
+    const res = await fetch(url);
+    const json = await res.json();
+    return json;
+}
+
+// get table row data
+const tdData = (TableData: any, column: any) => {
+    return TableData.map((data: any, index: any) => {
+        return (
+            <tr key={index} style={{ justifyContent: "space-between", padding: "20px !important" }}>
+                {
+                    column.map((v: any) => {
+                        if (v === "score") {
+                            return <td className={styles.textOrange}>{data[v]} P</td>
+                        } else if (v === "id") {
+                            return <td> <div className={styles.numberCircle}> {data[v]}</div>  </td>
+                        } else {
+                            return <td> {data[v]} </td>
+                        }
+                    })
+                }
+            </tr>
+        )
+    })
+}
+
+
 const Game = () => {
     const { unityProvider, requestFullscreen, isLoaded } = useUnityContext({
         codeUrl: `/unitybuild/game.wasm`,
@@ -96,39 +129,26 @@ const Game = () => {
     let HeightGame = (widthGame * 9) / 16
     let mobile: boolean
 
-    const TableData = [
-        { id: 1, fullName: "Patsachol Tangsong...", score: '10,000' },
-        { id: 2, fullName: "Klay Thomas", score: '8,800' },
-        { id: 3, fullName: "Ja Morant", score: '8,000' },
-        { id: 4, fullName: "Sunil Kumar", score: '5,600' },
-        { id: 5, fullName: "Kajol Kumari", score: '5,000' },
-        { id: 3, fullName: "Ja Morant", score: '8,000' },
-        { id: 4, fullName: "Sunil Kumar", score: '5,600' },
-        { id: 5, fullName: "Kajol Kumari", score: '5,000' }
+    let TableData = [
+        { id: 1, fullName: "", score: 0 },
     ]
+    let column = Object.keys(TableData[0]);
 
-    const column = Object.keys(TableData[0]);
 
-    // get table row data
-    const tdData = () => {
-        return TableData.map((data: any, index) => {
-            return (
-                <tr key={index} style={{ justifyContent: "space-between", padding: "20px !important" }}>
-                    {
-                        column.map((v) => {
-                            if (v === "score") {
-                                return <td className={styles.textOrange}>{data[v]} P</td>
-                            } else if (v === "id") {
-                                return <td> <div className={styles.numberCircle}> {data[v]}</div>  </td>
-                            } else {
-                                return <td> {data[v]} </td>
-                            }
-                        })
-                    }
-                </tr>
-            )
-        })
-    }
+    // const { data, error } = useSWR(API_URL, fetcher);
+
+    const [TableData2, setTableData2] = useState([])
+    const [showScore, setScore] = useState(false)
+    useEffect(() => {
+        fetch('http://103.13.231.185:8080/api/v1/score')
+            .then((res) => res.json())
+            .then((data) => {
+                setTableData2(data.meta.response_data)
+                console.log("TableData2:",TableData2)
+                setScore(true)
+                console.log(column)
+            })
+    }, [])
 
     const [isActive, setIsActive] = useState(false);
     const handleClick = () => {
@@ -141,23 +161,24 @@ const Game = () => {
             setShowModulSetScreen(true)
         } else {
             setIsPlaygame(true);
-            if (width > 400) {
-                setTimeout(() => {
-                    delayEvent(ref.current, "click");
-                }, 350);
+            if (width < 922) {
+                if (width > 400) {
+                    setTimeout(() => {
+                        delayEvent(ref.current, "click");
+                    }, 350);
+                }
             }
+
         }
         let getUserInfo: any = localStorage.getItem("userAuth");
         let userInfo: any = JSON.parse(getUserInfo)
-        if (userInfo){
-            if (userInfo.userAuth.type === "facebook") {
+        if (userInfo) {
+            if (userInfo.type === "facebook") {
                 let userAuth = {
-                    'userAuth': {
-                        type: 'facebook',
-                        name: session?.user.name,
-                        social_url: session?.user.email,
-                        picture_url: session?.user.image,
-                    }
+                    type: 'facebook',
+                    name: session?.user.name,
+                    social_url: session?.user.email,
+                    picture_url: session?.user.image,
                 }
                 localStorage.setItem('userAuth', JSON.stringify(userAuth))
             }
@@ -177,12 +198,10 @@ const Game = () => {
         e.preventDefault()
         if (Privacy === "true") {
             let userAuth = {
-                'userAuth': {
                     type: 'email',
                     name: UserName,
                     social_url: email,
                     picture_url: null,
-                }
             }
             localStorage.setItem('userAuth', JSON.stringify(userAuth))
             setIsPlaygame(true);
@@ -294,9 +313,14 @@ const Game = () => {
                                 <table className="table">
                                     <thead>
                                     </thead>
-                                    <tbody className={styles.tableScore}>
-                                        {tdData()}
-                                    </tbody>
+                                    {(showScore) ?
+                                        <tbody className={styles.tableScore}>
+                                            {tdData(TableData2, column)}
+                                        </tbody>
+                                        : <tbody className={styles.tableScore}>
+                                            {tdData(TableData, column)}
+                                        </tbody>
+                                    }
                                 </table>
                             </Col> : null}
                     </Row>
@@ -319,9 +343,14 @@ const Game = () => {
                                 <table className="table">
                                     <thead>
                                     </thead>
-                                    <tbody className={styles.tableScore}>
-                                        {tdData()}
-                                    </tbody>
+                                    {(showScore) ?
+                                        <tbody className={styles.tableScore}>
+                                            {tdData(TableData2, column)}
+                                        </tbody>
+                                        : <tbody className={styles.tableScore}>
+                                            {tdData(TableData, column)}
+                                        </tbody>
+                                    }
                                 </table>
                             </Col> :
                             <button ref={ref} onClick={handleClickEnterFullscreen} style={{ visibility: 'hidden' }}>TEST</button>
@@ -334,13 +363,13 @@ const Game = () => {
                 <Modal
                     show={isShowModulSetScreen}
                     onHide={handleCloseSetScreen}
-                    dialogClassName="modal-dialog-centered">
+                    dialogClassName="modal-dialog-centered ">
                     <Modal.Body style={{ display: 'flex', height: '100%' }}>
                         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
-                            <div style={{ textAlign: "center" }}> <img src={"/assets/icons/screen_rotate.png"} alt="rotant" /> </div>
-                            <div className={styles.textHeader} style={{ textAlign: "center" }}> Rotate the screen </div>
+                            <div style={{ textAlign: "center", padding: "21px" }}> <img src={"/assets/icons/screen_rotate.png"} alt="rotant" /> </div>
+                            <div className={styles.textHeader} style={{ textAlign: "center",padding: "10px" }}> Rotate the screen </div>
                             <div> The rotation of the screen will not be applied on the viewing screen </div>
-                            <div style={{ textAlign: "center", cursor: "pointer" }} onClick={handleCloseSetScreen}> <img src={"/assets/icons/exit.png"} alt="rotant" /> Exit </div>
+                            <div style={{ textAlign: "center", cursor: "pointer", padding: "21px" }} onClick={handleCloseSetScreen}> <img src={"/assets/icons/exit.png"} alt="rotant" /> Exit </div>
                         </div>
                     </Modal.Body>
                 </Modal> : null
@@ -355,3 +384,4 @@ const Game = () => {
 
 
 export default Game;
+
