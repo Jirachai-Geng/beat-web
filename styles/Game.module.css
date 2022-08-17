@@ -3,9 +3,14 @@
     height: 599px;
 }
 
+.background_mobile {
+    background: #fff !important;
+    min-height: 599px;
+}
+
 .background_hide {
     flex: none;
-    margin-left:0px !important;
+    margin-left: 0px !important;
 }
 
 .textScore {
@@ -211,7 +216,7 @@
 
 .animatedBackground {
     align-items: center;
-    background: url(/assets/orangeWave.png), #000;
+    background: url(/assets/HeartBeat.gif), #000;
     height: 599px !important;
     padding: 0px !important;
     margin: 0px !important;
@@ -219,17 +224,17 @@
     background-position: 0 0;
     background-size: auto 100%;
     /*adjust s value for speed*/
-    animation: animatedBackground 50s linear infinite;
+    /* animation: animatedBackground 50s linear infinite; */
 }
 
 .animatedBackgroundMobile {
     align-items: center;
-    background: url(/assets/orangeWave.png), #000;
-    min-height: 563px !important;
+    background: url(/assets/HeartBeat.gif), #000;
+    /* min-height: 563px !important; */
     background-repeat: repeat;
     background-position: 0 0;
     background-size: auto 100%;
-    animation: animatedBackground 50s linear infinite;
+    /* animation: animatedBackground 50s linear infinite; */
 }
 
 
@@ -277,10 +282,47 @@
     height: 100%;
 }
 
-.textHeader{
-  font-family: 'PromptMedium';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 28px;
+.textHeader {
+    font-family: 'PromptMedium';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+
+.slider {
+    margin-top: 68px;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background: #FFFFFF;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.slider.close {
+    top: 95%;
+    height: 0;
+}
+
+/* .Fixed
+{
+    position: fixed;
+    bottom: 20px;
+} */
+
+.video_container video {
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 1; 
+}
+
+.caption {
+    z-index: 1;
+    position: relative;
+    text-align: center;
 }

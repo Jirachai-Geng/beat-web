@@ -39,6 +39,7 @@ a {
     padding: 20px 43px 35px 35px;
   }
 
+
 }
 
 @media screen and (min-width: 992px) {
@@ -51,6 +52,7 @@ a {
     gap: 20px !important;
     padding: 20px 43px 35px 35px;
   }
+
 }
 
 
@@ -213,10 +215,20 @@ input:-webkit-autofill:active {
   .modal-policy {
     --bs-modal-width: 556px !important;
   }
+}
 
-  .modal-carrer1 {
-    --bs-modal-width: 913px !important;
-  }
+.modal-carrer {
+  --bs-modal-width: 913px !important;
+}
+
+.modal-carrer-mobile {
+  --bs-modal-width: 100% !important;
+  margin: 32px 0px !important;
+  padding-left: 0px !important;
+}
+
+.modal {
+  padding-left: 0px !important;
 }
 
 .modal-header {
@@ -226,6 +238,7 @@ input:-webkit-autofill:active {
   font-size: 24px;
   line-height: 36px;
   color: #FFFFFF;
+  margin-top: 20px;
 }
 
 .modal-body {
@@ -235,10 +248,15 @@ input:-webkit-autofill:active {
   font-size: 14px;
   line-height: 20px;
   color: #FFFFFF;
+  padding: 0px !important;
 }
 
 .btnClose {
   cursor: pointer;
+}
+
+.fade .modal .show{
+  padding-left: 0px !important;
 }
 
 .css-5xe99f-MuiLinearProgress-bar1 {
@@ -258,4 +276,32 @@ input[type="checkbox"] {
   transform: scale(1.25);
 
   accent-color: #FF5100 !important;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  margin-left: 30px;
+  -webkit-appearance: none;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  right: 17px; 
+  position:relative;
+  background:
+  linear-gradient(45deg, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 43%,#fff 45%,#fff 55%,rgba(0,0,0,0) 57%,rgba(0,0,0,0) 100%),
+  linear-gradient(135deg, transparent 0%,transparent 43%,#fff 45%,#fff 55%,transparent 57%,transparent 100%);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.react-datepicker__header {
+  background-color: #4D4D4D !important;
+}
+
+.react-datepicker__current-month, .react-datepicker-time__header, .react-datepicker-year-header {
+  margin-top: 0;
+  color: #fff !important;
+  font-family: 'Prompt';
+  font-style: normal;
 }

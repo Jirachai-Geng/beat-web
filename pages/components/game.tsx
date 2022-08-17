@@ -11,7 +11,8 @@ import { FaFacebook, FaUser } from "react-icons/fa";
 import { useRouter } from "next/router";
 import useSWR, { unstable_serialize } from 'swr'
 import ReactTable from 'react-table'
-
+import Button from 'react-bootstrap/Button';
+import Collapse from 'react-bootstrap/Collapse';
 
 export const useContainerDimensions = (myRef: any) => {
     const getDimensions = () => ({
@@ -66,14 +67,6 @@ export const useContainerDimensionsGame = (myRef: any) => {
 
     return dimensionsGame;
 };
-
-const API_URL = 'http://103.13.231.185:8080/api/v1/score';
-
-async function fetcher(url: any) {
-    const res = await fetch(url);
-    const json = await res.json();
-    return json;
-}
 
 // get table row data
 const tdData = (TableData: any, column: any) => {
@@ -135,8 +128,6 @@ const Game = () => {
     let column = Object.keys(TableData[0]);
 
 
-    // const { data, error } = useSWR(API_URL, fetcher);
-
     const [TableData2, setTableData2] = useState([])
     const [showScore, setScore] = useState(false)
     useEffect(() => {
@@ -144,7 +135,7 @@ const Game = () => {
             .then((res) => res.json())
             .then((data) => {
                 setTableData2(data.meta.response_data)
-                console.log("TableData2:",TableData2)
+                console.log("TableData2:", TableData2)
                 setScore(true)
                 console.log(column)
             })
@@ -185,6 +176,8 @@ const Game = () => {
         }
     };
 
+    const [openCollapse, setOpenCollapse] = useState(false);
+
     const delayEvent = (el: any, eventName: any) => {
         const event = new Event(eventName, { bubbles: true });
         el.dispatchEvent(event);
@@ -198,13 +191,25 @@ const Game = () => {
         e.preventDefault()
         if (Privacy === "true") {
             let userAuth = {
-                    type: 'email',
-                    name: UserName,
-                    social_url: email,
-                    picture_url: null,
+                type: 'email',
+                name: UserName,
+                social_url: email,
+                picture_url: null,
             }
             localStorage.setItem('userAuth', JSON.stringify(userAuth))
-            setIsPlaygame(true);
+            if (width < 400) {
+                setShowModulSetScreen(true)
+            } else {
+                setIsPlaygame(true);
+                if (width < 922) {
+                    if (width > 400) {
+                        setTimeout(() => {
+                            delayEvent(ref.current, "click");
+                        }, 350);
+                    }
+                }
+
+            }
         }
     }
 
@@ -215,9 +220,7 @@ const Game = () => {
     const setUserFacebook = () => {
         console.log("setUserFacebook")
         let userAuth = {
-            'userAuth': {
-                type: 'facebook',
-            }
+            type: 'facebook',
         }
         localStorage.setItem('userAuth', JSON.stringify(userAuth))
     }
@@ -231,7 +234,7 @@ const Game = () => {
         <div>
             <Container fluid style={{ paddingTop: (width > 992) ? '50px' : '0px' }}>
                 {!isPlaygame ? (
-                    <Row className={styles.background_white} ref={componentRef}>
+                    <Row className={(width > 992) ? styles.background_white : styles.background_mobile} ref={componentRef}>
                         {session ? (
                             <Col sm={12} lg={9} className={(width > 992) ? styles.containerLogin : styles.animatedBackgroundMobile} ref={componentGameRef}>
                                 <Row fluid setUserFacebook className={(width > 992) ? styles.animatedBackground : styles.background_hide} style={{ width: '100%', height: '100%' }}>
@@ -265,8 +268,9 @@ const Game = () => {
                                 (width > 400) ? styles.backgroundBanner : styles.backgroundBannerMobile} ref={componentGameRef}>
                                 <div className="endcontainer" style={{ display: isActive ? 'none' : '' }}>
                                     <button className="game-button" onClick={handleClick}>
-                                        Let’s Play  →
+                                        Let’s Play →
                                     </button>
+
                                 </div>
 
                                 {/* Login */}
@@ -281,11 +285,11 @@ const Game = () => {
                                         <form onSubmit={onSubmit} method="post">
                                             <input className={styles.iconUser} placeholder="User Name"
                                                 value={UserName} onChange={e => setUserName(e.target.value)}
-                                                type="text" id="UserName" name="UserName" />
+                                                type="text" id="UserName" name="UserName" required />
 
                                             <input className={styles.iconMail} placeholder="Email*"
                                                 value={email} onChange={e => setEmail(e.target.value)}
-                                                type="text" id="Email" name="Email" required />
+                                                type="email" id="Email" name="Email" required />
 
                                             <input type="checkbox" id="privacy" name="privacy" onChange={e => setPrivacy((e.target.checked).toString())} required />
                                             <label className={styles.textLabel}>
@@ -322,7 +326,61 @@ const Game = () => {
                                         </tbody>
                                     }
                                 </table>
-                            </Col> : null}
+                            </Col> :
+
+                            <Col style={{ height: "100%" }} >
+                                {/* <Collapse in={openCollapse} >
+                                    <div className={styles.overlay} >
+                                        <div className={styles.content}>
+                                            <p className={styles.textScore}> Leader Board </p>
+                                            <table className="table">
+                                                <thead>
+                                                </thead>
+                                                {(showScore) ?
+                                                    <tbody className={styles.tableScore}>
+                                                        {tdData(TableData2, column)}
+                                                    </tbody>
+                                                    : <tbody className={styles.tableScore}>
+                                                        {tdData(TableData, column)}
+                                                    </tbody>
+                                                }
+                                            </table>
+                                        </div>
+                                    </div>
+                                </Collapse>
+                                <Button
+                                    onClick={() => setOpenCollapse(!openCollapse)}
+                                    aria-controls="example-collapse-text"
+                                    aria-expanded={openCollapse}
+                                >
+                                    click
+                                </Button> */}
+
+                                <div className={(openCollapse) ? styles.slider : `${styles.slider} ${styles.close}`}>
+                                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingRight: "30px" }}>
+                                        <span className={styles.textScore}> Leader Board </span>
+                                        <img onClick={() => setOpenCollapse(false)} style={{ width: "12px" }} src={"/assets/icons/arrowDrop.png"} alt="Collapse" />
+                                    </div>
+                                    <table className="table">
+                                        <thead>
+                                        </thead>
+                                        {(showScore) ?
+                                            <tbody className={styles.tableScore}>
+                                                {tdData(TableData2, column)}
+                                            </tbody>
+                                            : <tbody className={styles.tableScore}>
+                                                {tdData(TableData, column)}
+                                            </tbody>
+                                        }
+                                    </table>
+                                </div>
+
+                                <div style={{ height: "78px", display: "flex", alignItems: "center", justifyContent: "space-between", paddingRight: "30px" }}>
+                                    <span className={styles.textScore}> Leader Board </span>
+                                    <img onClick={() => setOpenCollapse(true)} style={{ width: "12px" }} src={"/assets/icons/arrowTop.png"} alt="Collapse" />
+                                </div>
+                            </Col>
+                        }
                     </Row>
 
                 ) :
@@ -367,7 +425,7 @@ const Game = () => {
                     <Modal.Body style={{ display: 'flex', height: '100%' }}>
                         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
                             <div style={{ textAlign: "center", padding: "21px" }}> <img src={"/assets/icons/screen_rotate.png"} alt="rotant" /> </div>
-                            <div className={styles.textHeader} style={{ textAlign: "center",padding: "10px" }}> Rotate the screen </div>
+                            <div className={styles.textHeader} style={{ textAlign: "center", padding: "10px" }}> Rotate the screen </div>
                             <div> The rotation of the screen will not be applied on the viewing screen </div>
                             <div style={{ textAlign: "center", cursor: "pointer", padding: "21px" }} onClick={handleCloseSetScreen}> <img src={"/assets/icons/exit.png"} alt="rotant" /> Exit </div>
                         </div>
