@@ -14,10 +14,8 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   res.setHeader('Content-Type', 'application/json');
-
   res.status(200).json({'name':'test'})
 }
-
 
 // check the MongoDB URI
 if (!MONGODB_URI) {

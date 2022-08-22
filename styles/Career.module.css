@@ -120,6 +120,25 @@
     overflow: hidden;
 }
 
+.custom_file_upload {
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: #FFFFFF !important;
+    background: #4D4D4D;    
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    height: 48px;
+    border-width: 0px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+
 
 .btnOrange {
     background: #FF5100;
