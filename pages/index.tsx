@@ -20,6 +20,7 @@ import { FaGithub, FaTwitter, FaGoogle, FaFacebook } from "react-icons/fa";
 import { getProviders, signIn, getCsrfToken, useSession } from "next-auth/react"
 import { useRouter } from "next/router";
 import { Stepper,Step } from 'react-form-stepper';
+import Link from 'next/link';
 
 const scrollToFoter = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 const scrollToHome = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)

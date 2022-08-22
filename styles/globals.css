@@ -39,6 +39,23 @@ a {
     padding: 20px 43px 35px 35px;
   }
 
+  .scrollModal::-webkit-scrollbar {
+    width: 2px;
+  }
+  
+  .scrollModal::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  .scrollModal::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  .scrollModal::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 
 }
 
@@ -215,6 +232,11 @@ input:-webkit-autofill:active {
   .modal-policy {
     --bs-modal-width: 556px !important;
   }
+
+  .modal-dialog {
+    position: fixed;
+    bottom: 0;
+  }
 }
 
 .modal-carrer {
@@ -241,6 +263,9 @@ input:-webkit-autofill:active {
   margin-top: 20px;
 }
 
+.modal-title{
+  width: 100% !important;
+}
 .modal-body {
   font-family: 'Prompt';
   font-style: normal;
@@ -255,7 +280,7 @@ input:-webkit-autofill:active {
   cursor: pointer;
 }
 
-.fade .modal .show{
+.fade .modal .show {
   padding-left: 0px !important;
 }
 
@@ -284,11 +309,11 @@ input[type="search"]::-webkit-search-cancel-button {
   display: inline-block;
   width: 12px;
   height: 12px;
-  right: 17px; 
-  position:relative;
+  right: 17px;
+  position: relative;
   background:
-  linear-gradient(45deg, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 43%,#fff 45%,#fff 55%,rgba(0,0,0,0) 57%,rgba(0,0,0,0) 100%),
-  linear-gradient(135deg, transparent 0%,transparent 43%,#fff 45%,#fff 55%,transparent 57%,transparent 100%);
+    linear-gradient(45deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 43%, #fff 45%, #fff 55%, rgba(0, 0, 0, 0) 57%, rgba(0, 0, 0, 0) 100%),
+    linear-gradient(135deg, transparent 0%, transparent 43%, #fff 45%, #fff 55%, transparent 57%, transparent 100%);
 }
 
 input[type="file"] {
@@ -299,9 +324,31 @@ input[type="file"] {
   background-color: #4D4D4D !important;
 }
 
-.react-datepicker__current-month, .react-datepicker-time__header, .react-datepicker-year-header {
+.react-datepicker__current-month,
+.react-datepicker-time__header,
+.react-datepicker-year-header {
   margin-top: 0;
   color: #fff !important;
   font-family: 'Prompt';
   font-style: normal;
+}
+
+
+
+.scrollModal {
+  overflow-y: auto;
+  height: 100%;
+}
+
+
+.fixedBtnsDesktop {
+  width: 100%;
+  z-index: 2;
+}
+
+.fixedBtns {
+  width: 100%;
+  position: fixed;
+  bottom: 30px;
+  z-index: 2;
 }

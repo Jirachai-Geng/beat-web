@@ -165,6 +165,7 @@
 .line {
     border-top: 0.5px solid #DEE2E4;
     padding-bottom: 5px;
+    width: 100%;
 }
 
 .career2 {
@@ -184,7 +185,6 @@
     font-family: 'Prompt';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
     line-height: 30px;
     color: #FFFFFF;
 }
@@ -214,14 +214,15 @@
     justify-content: center;
 }
 
-.career3_active{
+.career3_active {
     position: absolute;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(255, 81, 0, 0.6);;
+    background-color: rgba(255, 81, 0, 0.6);
+    ;
     z-index: 1;
 }
 
@@ -243,3 +244,101 @@
     background: rgba(26, 26, 26, 0.6);
     backdrop-filter: blur(10px);
 }
+
+.career5BtnChoice {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 158px;
+    height: 84px;
+    background: #1A1A1A;
+    padding: 10px !important;
+}
+
+.gapBtn {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.question {
+    font-family: 'PromptBold';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    word-wrap:break-word;
+    padding-bottom: 28px;
+}
+
+.career5_active {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 81, 0, 0.6);
+    z-index: 1;
+}
+
+.career6BtnChoice {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 241.5px;
+    height: 84px;
+    padding: 10px !important;
+    font-family: 'PromptBold';
+}
+
+.career6BtnChoiceMobile {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 74px;
+    padding: 10px !important;
+    margin-bottom: 8px;
+    font-family: 'PromptBold';
+}
+
+.career18BtnChoice {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 74px;
+    padding: 10px !important;
+    margin-bottom: 8px;
+    font-family: 'PromptBold';
+}
+
+.career18BtnChoiceMobile {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    font-weight: 600;
+    height: 74px;
+    padding: 10px !important;
+    margin-bottom: 8px;
+    font-family: 'PromptBold';
+}
+

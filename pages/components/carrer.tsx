@@ -20,6 +20,7 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { fontSize } from '@mui/system';
 
 
 export interface FormProps {
@@ -107,22 +108,42 @@ const Career = () => {
     };
 
     // career 3
-    let arrCareer3 = [0, 0, 0, 0, 0, 0, 0, 0]
-    let [arrCareer_3, setArrCareer3] = useState([0, 0, 0, 0, 0, 0, 0, 0])
+    let arrCareer3 = [false, false, false, false, false, false, false, false]
+    let [arrCareer_3, setArrCareer3] = useState([false, false, false, false, false, false, false, false])
     const setArrCareer_3 = (index: any) => {
-        arrCareer3[index] = 1
+        arrCareer3[index] = !arrCareer_3[index]
         setArrCareer3(arrCareer3)
         console.log(arrCareer_3)
     }
 
     // career 4
-    let arrCareer4 = [0, 0, 0, 0, 0, 0, 0, 0]
-    let [arrCareer_4, setArrCareer4] = useState([0, 0, 0, 0, 0, 0, 0, 0])
+    // let [temp, setTemp4] = useState( [false, false, false, false, false, false, false, false])
+    let arrCareer4 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+    let [arrCareer_4, setArrCareer4] = useState(arrCareer4)
+
     const setArrCareer_4 = (index: any) => {
-        arrCareer4[index] = 1
-        setArrCareer3(arrCareer4)
-        console.log(arrCareer_4)
+        let temp_state = [...arrCareer_4];
+        temp_state[index] = !temp_state[index];
+        let count = temp_state.filter(Boolean).length;
+        if (count <= 5) {
+            setArrCareer4(temp_state)
+        }
     }
+
+    // career 5
+    let career5 = 0;
+    let [career_5, setCareer5] = useState(career5);
+
+    // career 6
+    let career6A = 0;
+    let [career_6A, setCareer6A] = useState(career6A);
+    let career6B = 0;
+    let [career_6B, setCareer6B] = useState(career6B);
+
+    // career 18
+    let career18 = 0;
+    let [career_18, setCareer18] = useState(career18);
+
 
     const steps = [
         {
@@ -131,7 +152,7 @@ const Career = () => {
             page: <span className={styles.headerTitle}>1/18</span>,
             step: 5.5,
             description:
-                <div className={styles.career1}  style={{padding: (width > 992) ? "0px 200px": "16px"}}>
+                <div className={styles.career1} style={{ padding: (width > 992) ? "0px 200px" : "16px" }}>
                     <input className={styles.btnFill} placeholder="Full Name*"
                         type="text" id="UserName" name="UserName" />
 
@@ -146,46 +167,45 @@ const Career = () => {
                             type="text" id="Year" name="Year" required />
                     </div>
 
-                    <select name="cars" id="cars">
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
-                    </select>
-
-                    <DatePicker
-                        selected={startDate}
-                        onChange={(date: Date) => setStartDate(date)}
-                        peekNextMonth
-                        showMonthDropdown
-                        showYearDropdown
-                        dropdownMode="select"
-                    />
+                    <button onClick={() => {
+                        fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=media', {
+                            body: "@/C:/Users/Jirachai/Videos/testMP42.mp4",
+                            headers: {
+                                'Access-Control-Allow-Origin': '*',
+                                'Content-Type': 'video/mp4',
+                                'Authorization': 'Bearer ya29.A0AVA9y1sAqr6fydpuzqHlQQpyGEQx-V3OnPom2_faozmxXN5XqpgL-Z12Zsh_f1PjKPyYZgM0CAhr8yhQqMiiey8SrvHSHu9Qq3KJ-qNrxPMcPwxKXJr1YKTC9K7TwMcABbplj6K-QL1m3_RGudjh7-e7ri5TaCgYKATASATASFQE65dr8MtbxqixZtis-TG4YIgEGsw0163'
+                            },
+                            method: 'POST'
+                        }).then((res) => res.json()).then((data) => {
+                            console.log("googleapis data:", data)
+                        })
+                    }} >
+                        test
+                    </button>
 
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', columnGap: "8px" }}>
-                        <input className={styles.btnFill} placeholder="Email*"
-                            type="text" id="Email" name="Email" required />
+                        <Col sm={3}>
+                            <input className={styles.btnFill} placeholder="+66"
+                                type="text" id="Email" name="Phone Number" required />
+                        </Col>
+                        <Col sm={9}>
+                            <input className={styles.btnFill} placeholder="Phone Number"
+                                type="text" id="Email" name="Phone Number" required />
+                        </Col>
 
-                        <input className={styles.btnFill} placeholder="Email*"
-                            type="text" id="Email" name="Email" required />
                     </div>
 
-                    <TextField
-                        id="date"
-                        label="Birthday"
-                        type="date"
-                        defaultValue="2017-05-24"
-                        sx={{ width: 220 }}
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                    />
+                    <input className={styles.btnFill} placeholder="Line ID*"
+                        type="text" id="Line ID" name="Line ID" />
 
-                    <input className={styles.btnFill} placeholder="Full Name*"
-                        type="text" id="UserName" name="UserName" />
+                    <label>
+                        <input className={styles.btnFill} placeholder="Upload your resume"
+                            type="text" id="Line ID" name="resume" />
 
-                    <input className={styles.btnFill} placeholder="Full Name*"
-                        type="text" id="UserName" name="UserName" />
+                        <input className={styles.btnFill} placeholder="Upload your resume"
+                            name="resume" type="file" accept=".pdf" id="Upload your resume*" />
+                    </label>
+
                 </div>
         },
         {
@@ -193,7 +213,7 @@ const Career = () => {
             page: <span className={styles.headerTitle}>2/18</span>,
             step: 11,
             description:
-                <div className={styles.career2} style={{padding: (width > 992) ? "0px 270px": "16px"}}>
+                <div className={styles.career2} style={{ padding: (width > 992) ? "0px 270px" : "16px" }}>
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: "center" }}>
                         {breakUpload ?
                             <label className={styles.fileUpload} >
@@ -253,7 +273,7 @@ const Career = () => {
                                 <div className={styles.career3_blur}>
                                     <span> Sport 1 </span>
                                 </div>
-                                {(arrCareer_3[0] == 1) ?
+                                {(arrCareer_3[0]) ?
                                     <div className={styles.career3_active}>
                                         <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sport1" />
                                     </div> : null}
@@ -264,7 +284,7 @@ const Career = () => {
                                 <div className={styles.career3_blur}>
                                     <span> Sport 2 </span>
                                 </div>
-                                {(arrCareer_3[1] == 1) ?
+                                {(arrCareer_3[1]) ?
                                     <div className={styles.career3_active}>
                                         <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sportSelect2" />
                                     </div> : null}
@@ -275,7 +295,7 @@ const Career = () => {
                                 <div className={styles.career3_blur}>
                                     <span> Sport 3 </span>
                                 </div>
-                                {(arrCareer_3[2] == 1) ?
+                                {(arrCareer_3[2]) ?
                                     <div className={styles.career3_active}>
                                         <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sportSelect3" />
                                     </div> : null}
@@ -286,7 +306,7 @@ const Career = () => {
                                 <div className={styles.career3_blur}>
                                     <span> Sport 4 </span>
                                 </div>
-                                {(arrCareer_3[3] == 1) ?
+                                {(arrCareer_3[3]) ?
                                     <div className={styles.career3_active}>
                                         <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sportSelect4" />
                                     </div> : null}
@@ -299,7 +319,7 @@ const Career = () => {
                                 <div className={styles.career3_blur}>
                                     <span> Sport 5 </span>
                                 </div>
-                                {(arrCareer_3[4] == 1) ?
+                                {(arrCareer_3[4]) ?
                                     <div className={styles.career3_active}>
                                         <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sport5" />
                                     </div> : null}
@@ -310,7 +330,7 @@ const Career = () => {
                                 <div className={styles.career3_blur}>
                                     <span> Sport 6 </span>
                                 </div>
-                                {(arrCareer_3[5] == 1) ?
+                                {(arrCareer_3[5]) ?
                                     <div className={styles.career3_active}>
                                         <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sportSelect6" />
                                     </div> : null}
@@ -321,7 +341,7 @@ const Career = () => {
                                 <div className={styles.career3_blur}>
                                     <span> Sport 7 </span>
                                 </div>
-                                {(arrCareer_3[6] == 1) ?
+                                {(arrCareer_3[6]) ?
                                     <div className={styles.career3_active}>
                                         <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sportSelect7" />
                                     </div> : null}
@@ -332,7 +352,7 @@ const Career = () => {
                                 <div className={styles.career3_blur}>
                                     <span> Sport 8 </span>
                                 </div>
-                                {(arrCareer_3[7] == 1) ?
+                                {(arrCareer_3[7]) ?
                                     <div className={styles.career3_active}>
                                         <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sportSelect8" />
                                     </div> : null}
@@ -341,52 +361,52 @@ const Career = () => {
                 </Container>,
         },
         {
-            label: <span className={styles.headerTitle}>โปรดเลือกเพียง 1 ภาพ ที่สามารถนิยามความเป็นตัวคุณได้มากที่สุด</span>,
-            page: <span className={styles.headerTitle}>3/18</span>,
+            label: <span className={styles.headerTitle}>โปรดเลือก 1-5 ภาพ สำหรับกิจกรรมยามว่างที่คุณสนใจ</span>,
+            page: <span className={styles.headerTitle}>4/18</span>,
             step: 22,
             description:
                 <Container fluid >
                     <Row>
                         <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }}>
-                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_3(0)}>
-                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career3/sport1.png" alt="sport1" />
+                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(0)}>
+                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac1.png" alt="ac1" />
                                 <div className={styles.career3_blur}>
                                     <span> Sport 1 </span>
                                 </div>
-                                {(arrCareer_3[0] == 1) ?
+                                {(arrCareer_4[0]) ?
                                     <div className={styles.career3_active}>
-                                        <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sport1" />
+                                        <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sport10" />
                                     </div> : null}
                             </label></Col>
                         <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }}>
-                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_3(1)}>
-                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career3/sport2.png" alt="sport2" />
+                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(1)}>
+                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac2.png" alt="ac2" />
                                 <div className={styles.career3_blur}>
                                     <span> Sport 2 </span>
                                 </div>
-                                {(arrCareer_3[1] == 1) ?
+                                {(arrCareer_4[1]) ?
                                     <div className={styles.career3_active}>
                                         <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sportSelect2" />
                                     </div> : null}
                             </label></Col>
                         <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }}>
-                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_3(2)}>
-                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career3/sport3.png" alt="sport3" />
+                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(2)}>
+                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac3.png" alt="ac3" />
                                 <div className={styles.career3_blur}>
                                     <span> Sport 3 </span>
                                 </div>
-                                {(arrCareer_3[2] == 1) ?
+                                {(arrCareer_4[2]) ?
                                     <div className={styles.career3_active}>
                                         <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sportSelect3" />
                                     </div> : null}
                             </label></Col>
                         <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }}>
-                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_3(3)}>
-                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career3/sport4.png" alt="sport4" />
+                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(3)}>
+                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac4.png" alt="ac4" />
                                 <div className={styles.career3_blur}>
                                     <span> Sport 4 </span>
                                 </div>
-                                {(arrCareer_3[3] == 1) ?
+                                {(arrCareer_4[3]) ?
                                     <div className={styles.career3_active}>
                                         <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sportSelect4" />
                                     </div> : null}
@@ -394,45 +414,137 @@ const Career = () => {
                     </Row>
                     <Row>
                         <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }} >
-                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_3(4)}>
-                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career3/sport5.png" alt="sport5" />
+                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(4)}>
+                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac5.png" alt="ac5" />
                                 <div className={styles.career3_blur}>
                                     <span> Sport 5 </span>
                                 </div>
-                                {(arrCareer_3[4] == 1) ?
+                                {(arrCareer_4[4]) ?
                                     <div className={styles.career3_active}>
                                         <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sport5" />
                                     </div> : null}
                             </label></Col>
                         <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }}>
-                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_3(5)}>
-                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career3/sport6.png" alt="sport6" />
+                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(5)}>
+                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac6.png" alt="ac6" />
                                 <div className={styles.career3_blur}>
                                     <span> Sport 6 </span>
                                 </div>
-                                {(arrCareer_3[5] == 1) ?
+                                {(arrCareer_4[5]) ?
                                     <div className={styles.career3_active}>
                                         <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sportSelect6" />
                                     </div> : null}
                             </label></Col>
                         <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }}>
-                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_3(6)}>
-                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career3/sport7.png" alt="sport7" />
+                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(6)}>
+                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac7.png" alt="ac7" />
                                 <div className={styles.career3_blur}>
                                     <span> Sport 7 </span>
                                 </div>
-                                {(arrCareer_3[6] == 1) ?
+                                {(arrCareer_4[6]) ?
                                     <div className={styles.career3_active}>
                                         <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sportSelect7" />
                                     </div> : null}
                             </label></Col>
                         <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }}>
-                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_3(7)}>
-                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career3/sport8.png" alt="sport8" />
+                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(7)}>
+                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac8.png" alt="ac8" />
                                 <div className={styles.career3_blur}>
                                     <span> Sport 8 </span>
                                 </div>
-                                {(arrCareer_3[7] == 1) ?
+                                {(arrCareer_4[7]) ?
+                                    <div className={styles.career3_active}>
+                                        <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sportSelect8" />
+                                    </div> : null}
+                            </label></Col>
+                    </Row>
+                    <Row>
+                        <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }} >
+                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(8)}>
+                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac9.png" alt="ac9" />
+                                <div className={styles.career3_blur}>
+                                    <span> Sport 5 </span>
+                                </div>
+                                {(arrCareer_4[8]) ?
+                                    <div className={styles.career3_active}>
+                                        <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sport5" />
+                                    </div> : null}
+                            </label></Col>
+                        <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }}>
+                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(9)}>
+                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac10.png" alt="ac10" />
+                                <div className={styles.career3_blur}>
+                                    <span> Sport 6 </span>
+                                </div>
+                                {(arrCareer_4[9]) ?
+                                    <div className={styles.career3_active}>
+                                        <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sportSelect6" />
+                                    </div> : null}
+                            </label></Col>
+                        <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }}>
+                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(10)}>
+                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac11.png" alt="ac11" />
+                                <div className={styles.career3_blur}>
+                                    <span> Sport 7 </span>
+                                </div>
+                                {(arrCareer_4[10]) ?
+                                    <div className={styles.career3_active}>
+                                        <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sportSelect7" />
+                                    </div> : null}
+                            </label></Col>
+                        <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }}>
+                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(11)}>
+                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac12.png" alt="ac12" />
+                                <div className={styles.career3_blur}>
+                                    <span> Sport 8 </span>
+                                </div>
+                                {(arrCareer_4[11]) ?
+                                    <div className={styles.career3_active}>
+                                        <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sportSelect8" />
+                                    </div> : null}
+                            </label></Col>
+                    </Row>
+                    <Row>
+                        <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }} >
+                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(12)}>
+                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac13.png" alt="ac13" />
+                                <div className={styles.career3_blur}>
+                                    <span> Sport 5 </span>
+                                </div>
+                                {(arrCareer_4[12]) ?
+                                    <div className={styles.career3_active}>
+                                        <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sport5" />
+                                    </div> : null}
+                            </label></Col>
+                        <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }}>
+                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(13)}>
+                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac14.png" alt="ac14" />
+                                <div className={styles.career3_blur}>
+                                    <span> Sport 6 </span>
+                                </div>
+                                {(arrCareer_4[13]) ?
+                                    <div className={styles.career3_active}>
+                                        <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sportSelect6" />
+                                    </div> : null}
+                            </label></Col>
+                        <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }}>
+                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(14)}>
+                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac15.png" alt="ac15" />
+                                <div className={styles.career3_blur}>
+                                    <span> Sport 7 </span>
+                                </div>
+                                {(arrCareer_4[14]) ?
+                                    <div className={styles.career3_active}>
+                                        <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sportSelect7" />
+                                    </div> : null}
+                            </label></Col>
+                        <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }}>
+                            <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(15)}>
+                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac6.png" alt="ac6" />
+                                <div className={styles.career3_blur}>
+                                    <span> Sport 8 </span>
+                                </div>
+                                {(arrCareer_4[15]) ?
                                     <div className={styles.career3_active}>
                                         <img style={{ height: (width > 992) ? "43.74px" : "37.11px" }} src="/assets/icons/careerSelect.png" alt="sportSelect8" />
                                     </div> : null}
@@ -441,16 +553,160 @@ const Career = () => {
                 </Container>,
         },
         {
-            label: '',
+            label: <span className={styles.headerTitle}>เลือกให้คะแนนในคำถามแต่ละข้อ ตามความรู้สึก</span>,
             page: "5/18",
             step: 27.5,
-            description: ``,
+            description:
+                <Container fluid>
+                    <div style={{ padding: (width > 992) ? "140px 120px" : "16px" }}>
+                        <Row>
+                            <div>
+                                <p className={styles.question}
+                                    style={{ fontSize: (width > 992) ? "24px" : "18px" }}>
+                                    คุณสนุกสนานกับการเคลื่อนไหว ออกกำลังกาย เช่น การวิ่ง การกระโดด การปีนป่าย ฯลฯ มากกว่ากิจกรรมที่สร้างสมาธิ
+                                </p>
+                            </div>
+                        </Row>
+                        <Row className={styles.gapBtn}>
+                            <Col xs={6} md={3} >
+                                <div className={styles.career5BtnChoice} style={{
+                                    backgroundColor: (career_5 === 1) ? "#FF5100" : "#1A1A1A"
+                                    , marginBottom: (width > 992) ? "0px" : "8px"
+                                }}
+                                    onClick={() => { handleNext(1); setCareer5(1) }}>
+                                    <p style={{ marginBottom: "5px", fontSize: "20px" }}>1</p>
+                                    <p style={{ marginBottom: "0px" }}>ใช่ที่สุด</p>
+                                </div>
+                            </Col>
+                            <Col xs={6} md={3}>
+                                <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_5 === 2) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { handleNext(1); setCareer5(2) }}>
+                                    <p style={{ marginBottom: "5px", fontSize: "20px" }}>2</p>
+                                    <p style={{ marginBottom: "0px" }}>ใช่</p>
+                                </div>
+                            </Col>
+                            <Col xs={6} md={3}>
+                                <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_5 === 3) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { handleNext(1); setCareer5(3) }}>
+                                    <p style={{ marginBottom: "5px", fontSize: "20px" }}>3</p>
+                                    <p style={{ marginBottom: "0px" }}>เฉยๆ</p>
+                                </div>
+                            </Col>
+                            <Col xs={6} md={3}>
+                                <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_5 === 4) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { handleNext(1); setCareer5(4) }}>
+                                    <p style={{ marginBottom: "5px", fontSize: "20px" }}>4</p>
+                                    <p style={{ marginBottom: "0px" }}>ไม่ใช่เลย</p>
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
+
+                </Container>,
         },
         {
-            label: '',
+            label: <span className={styles.headerTitle}>สไตล์การทำงานแบบไหนที่บ่งบอกความเป็นตัวคุณ</span>,
             page: "6/18",
             step: 33,
-            description: ``,
+            description:
+                <Container fluid>
+                    <div style={{ padding: (width > 992) ? "140px 180px" : "16px" }}>
+                        <Row className={styles.gapBtn} style={{ paddingBottom: "20px" }}>
+                            <Col xs={12} md={1} >
+                                <div style={{ height: (width > 992) ? "84px" : "30px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                    <p style={{ marginBottom: "5px", fontSize: "20px" }}> A. </p>
+                                </div>
+                            </Col>
+
+                            <Col xs={12} md={11}>
+                                <Row>
+                                    <Col xs={12} md={6} >
+                                        <div className={(width > 992) ? styles.career6BtnChoice : styles.career6BtnChoiceMobile} style={{
+                                            backgroundColor: (career_6A === 1) ? "#FF5100" : "#1A1A1A"
+                                        }}
+                                            onClick={() => {
+                                                if (career_6B !== 0) {
+                                                    handleNext(12)
+                                                };
+                                                setCareer6A(1)
+                                            }}>
+                                            <p style={{
+                                                marginBottom: "5px"
+                                                , fontSize: (width > 992) ? "20px" : "16px"
+                                            }}>ชอบพูดคุยประสานงาน</p>
+                                        </div>
+                                    </Col>
+                                    <Col xs={12} md={6}>
+                                        <div className={(width > 992) ? styles.career6BtnChoice : styles.career6BtnChoiceMobile} style={{
+                                            backgroundColor: (career_6A === 2) ? "#FF5100" : "#1A1A1A"
+                                        }}
+                                            onClick={() => {
+                                                if (career_6B !== 0) {
+                                                    handleNext(12)
+                                                };
+                                                setCareer6A(2)
+                                            }}>
+                                            <p style={{
+                                                marginBottom: "5px"
+                                                , fontSize: (width > 992) ? "20px" : "16px"
+                                            }}>ชอบวางแผนงาน</p>
+                                        </div>
+                                    </Col>
+                                </Row>
+
+                            </Col>
+
+                        </Row>
+
+                        <Row className={styles.gapBtn}>
+                            <Col xs={12} md={1} >
+                                <div style={{ height: (width > 992) ? "84px" : "30px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                    <p style={{ marginBottom: "5px", fontSize: "20px" }}> B. </p>
+                                </div>
+                            </Col>
+
+                            <Col xs={12} md={11}>
+                                <Row>
+                                    <Col xs={12} md={6}>
+                                        <div className={(width > 992) ? styles.career6BtnChoice : styles.career6BtnChoiceMobile} style={{
+                                            backgroundColor: (career_6B === 1) ? "#FF5100" : "#1A1A1A"
+                                        }}
+                                            onClick={() => {
+                                                if (career_6A !== 0) {
+                                                    handleNext(12)
+                                                };
+                                                setCareer6B(1)
+                                            }}>
+                                            <p style={{
+                                                marginBottom: "5px"
+                                                , fontSize: (width > 992) ? "20px" : "16px"
+                                            }}>ทำงานคนเดียว</p>
+                                        </div>
+                                    </Col>
+                                    <Col xs={12} md={6}>
+                                        <div className={(width > 992) ? styles.career6BtnChoice : styles.career6BtnChoiceMobile} style={{
+                                            backgroundColor: (career_6B === 2) ? "#FF5100" : "#1A1A1A"
+                                        }}
+                                            onClick={() => {
+                                                if (career_6A !== 0) {
+                                                    handleNext(12)
+                                                };
+                                                setCareer6B(2)
+                                            }}>
+                                            <p style={{
+                                                marginBottom: "5px"
+                                                , fontSize: (width > 992) ? "20px" : "16px"
+                                            }}>ทำงานเป็นทีม</p>
+                                        </div>
+                                    </Col>
+                                </Row>
+
+                            </Col>
+
+                        </Row>
+                    </div >
+
+                </Container >,
         },
         {
             label: '',
@@ -519,16 +775,106 @@ const Career = () => {
             description: ``,
         },
         {
-            label: '',
+            label: <span className={styles.headerTitle}>สไตล์การทำงานแบบไหนที่บ่งบอกความเป็นตัวคุณ</span>,
             page: "18/18",
             step: 99,
-            description: ``,
+            description:
+                <Container fluid>
+                    <div style={{ padding: (width > 992) ? "70px 180px" : "16px" }}>
+                        <Row className={styles.gapBtn}>
+                            <Col xs={12} md={1} >
+                                <div style={{ height: (width > 992) ? "84px" : "30px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                    <p style={{ marginBottom: "5px", fontSize: "20px" }}> A. </p>
+                                </div>
+                            </Col>
+
+                            <Col xs={12} md={11}>
+                                <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
+                                    style={{ backgroundColor: (career_18 === 1) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { setCareer18(1) }}>
+                                    <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}>เชื่อฟัง เคารพกฏ</p>
+                                </div>
+                            </Col>
+
+                        </Row>
+                        <Row className={styles.gapBtn}>
+                            <Col xs={12} md={1} >
+                                <div style={{ height: (width > 992) ? "84px" : "30px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                    <p style={{ marginBottom: "5px", fontSize: "20px" }}> B. </p>
+                                </div>
+                            </Col>
+
+                            <Col xs={12} md={11}>
+                                <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
+                                    style={{ backgroundColor: (career_18 === 2) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { setCareer18(2) }}>
+                                    <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}>ปรับตัวเก่ง</p>
+                                </div>
+                            </Col>
+
+                        </Row>
+                        <Row className={styles.gapBtn}>
+                            <Col xs={12} md={1} >
+                                <div style={{ height: (width > 992) ? "84px" : "30px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                    <p style={{ marginBottom: "5px", fontSize: "20px" }}> C. </p>
+                                </div>
+                            </Col>
+
+                            <Col xs={12} md={11}>
+                                <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
+                                    style={{ backgroundColor: (career_18 === 3) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { setCareer18(3) }}>
+                                    <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}>พึ่งคนอื่น ไว้ใจคน</p>
+                                </div>
+                            </Col>
+
+                        </Row>
+                        <Row className={styles.gapBtn}>
+                            <Col xs={12} md={1} >
+                                <div style={{ height: (width > 992) ? "84px" : "30px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                    <p style={{ marginBottom: "5px", fontSize: "20px" }}> D. </p>
+                                </div>
+                            </Col>
+
+                            <Col xs={12} md={11}>
+                                <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
+                                    style={{ backgroundColor: (career_18 === 4) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { setCareer18(4) }}>
+                                    <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}>ชอบริเริ่ม ต้องการความเปลี่ยนแปลง</p>
+                                </div>
+                            </Col>
+
+                        </Row>
+                    </div>
+                </Container>,
         },
         {
             label: '',
             page: "",
-            step: 99,
-            description: ``,
+            step: 100,
+            description:
+                <Container fluid>
+                    <div style={{
+                        padding: (width > 992) ? "25px 200px" : "16px", display: "flex",
+                        flexDirection: "column", alignItems: "center", justifyContent: "center"
+                    }}>
+                        <img style={{ height: (width > 992) ? "144px" : "120px" }} src="/assets/icons/complete.png" alt="complete" />
+                        <p style={{
+                            fontSize: (width > 992) ? "36px" : "24px", fontFamily: "PromptBold", paddingTop: "36px"
+                        }}> Thank you for submitting </p>
+
+                        <div style={{
+                            fontSize: (width > 992) ? "18px" : "16px", fontFamily: "Prompt", paddingTop: "36px", textAlign: "center", paddingBottom: "36px"
+                        }}>
+                            <p>Your submission has been sent. We’ll contact you when a decision is made</p>
+                        </div>
+
+                        <div className={styles.line} style={{ paddingBottom: "36px" }}> </div>
+
+                        <button className={styles.btnPrevious} style={{ width: "100%" }}
+                            onClick={() => { handleCloseCareer() }}> Back to home </button>
+                    </div>
+                </Container>,
         },
     ];
 
@@ -536,8 +882,8 @@ const Career = () => {
     const [activeStep, setActiveStep] = useState(0);
     const maxSteps = steps.length;
 
-    const handleNext = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    const handleNext = (page: number) => {
+        setActiveStep((prevActiveStep) => prevActiveStep + page);
     };
 
     const handleBack = () => {
@@ -613,27 +959,49 @@ const Career = () => {
                 <LinearProgress variant="determinate" style={{ backgroundColor: '#FFEAE0' }} value={steps[activeStep].step} />
 
                 <Modal.Header style={{ borderBottom: 'none' }}>
-                    <Modal.Title> {steps[activeStep].label} </Modal.Title>
-                    <div style={{ display: "flex", alignItems: "top" }}>
-                        <div style={{ paddingRight: "32px" }}> {steps[activeStep].page} </div>
-                        <div onClick={handleCloseCareer} className="btnClose"> <ClearIcon /> </div>
-                    </div>
+                    <Modal.Title>
+                        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
+                            <div style={{
+                                paddingRight: (width > 992) ? "32px" : "32px"
+                                , fontSize: (width > 992) ? "24px" : "16px"
+                            }}> {steps[activeStep].label} </div>
+                            <div style={{ display: "flex", alignItems: "center" }}>
+                                <div style={{
+                                    paddingRight: (width > 992) ? "32px" : "5px"
+                                    , fontFamily: (width > 992) ? "PromptBold" : "Prompt"
+                                    , fontSize: (width > 992) ? "24px" : "16px"
+                                }}> {steps[activeStep].page} </div>
+                                {
+                                    (activeStep !== 18) ?
+                                        <div onClick={handleCloseCareer} className="btnClose"> <ClearIcon /> </div>
+                                        : null}
+                            </div>
+                        </div>
+                    </Modal.Title>
+
                 </Modal.Header>
                 <Modal.Body>
-                    {steps[activeStep].description}
+                    <div className={`${(width < 992) ? "scrollModal" : null} `}>
+                        <div className={`${(width < 992) ? null : "scrollModal"} `} style={{ maxHeight: `${(width < 992) ? null : "480px"} ` }}>
+                            {steps[activeStep].description}
+                        </div>
 
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 8px' }}>
-                        <button className={styles.btnPrevious} onClick={handleBack} disabled={activeStep === 0}>
-                            <WestIcon style={{ fontSize: "15px" }} />
-                            <span> Previous </span>
-                        </button>
+                        {
+                            (activeStep !== 18) ?
+                                <div className={`${(width < 992) ? "fixedBtns" : "fixedBtnsDesktop"} `} >
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 8px' }}>
+                                        <button className={styles.btnPrevious} onClick={handleBack} disabled={activeStep === 0}>
+                                            <WestIcon style={{ fontSize: "15px" }} />
+                                            <span> Previous </span>
+                                        </button>
 
-                        <button className={styles.btnOrange} onClick={handleNext} disabled={activeStep === maxSteps - 1} >
-                            <span> Next </span>
-                            <EastIcon style={{ fontSize: "15px" }} />
-                        </button>
+                                        <button className={styles.btnOrange} onClick={() => { handleNext(1) }} disabled={activeStep === maxSteps - 1} >
+                                            <span> Next </span>
+                                            <EastIcon style={{ fontSize: "15px" }} />
+                                        </button>
+                                    </div>
+                                </div> : null}
                     </div>
-
                 </Modal.Body>
             </Modal>
 
