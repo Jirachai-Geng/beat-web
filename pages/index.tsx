@@ -3,24 +3,11 @@ import { Fragment, MutableRefObject, useEffect, useRef, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import Container from 'react-bootstrap/Container';
-import { Stack } from 'react-bootstrap';
 import Game from './components/game'
 import Carrer from './components/carrer';
-import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
-import Sport from './components/sport';
-import Beyond from './components/beyond';
-import { Tooltip } from '@nextui-org/react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import ReactPlayer from 'react-player'
 import Footer from './components/footer';
-import { CtxOrReq } from 'next-auth/client/_utils';
-import { FaGithub, FaTwitter, FaGoogle, FaFacebook } from "react-icons/fa";
-import { getProviders, signIn, getCsrfToken, useSession } from "next-auth/react"
-import { useRouter } from "next/router";
-import { Stepper,Step } from 'react-form-stepper';
-import Link from 'next/link';
 
 const scrollToFoter = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 const scrollToHome = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
