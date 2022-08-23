@@ -201,6 +201,7 @@ const Career = () => {
     let career18 = 0;
     let [career_18, setCareer18] = useState(career18);
 
+    let [testToken, setTestToken] = useState('');
 
     const steps = [
         {
@@ -245,9 +246,9 @@ const Career = () => {
                     <button onClick={async () => {
                         let objBody = JSON.stringify({
                             'client_id': '330352992676-68hts0djql79gp1qar6u01vbo8p10od9.apps.googleusercontent.com',
-                            "client_secret": "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",
-                            "refresh_token": "1//04Nl9MpGvK6vsCgYIARAAGAQSNwF-L9IrFK1dte-yY_RgqIy8VuH6XE8AzjB3qomeXSX0tor8SdAzl8KjyvugZ4H_Dgl7JcGDYYw",
-                            "token_uri": "https://oauth2.googleapis.com/token"
+                            'client_secret': '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',
+                            'refresh_token': '1//04Nl9MpGvK6vsCgYIARAAGAQSNwF-L9IrFK1dte-yY_RgqIy8VuH6XE8AzjB3qomeXSX0tor8SdAzl8KjyvugZ4H_Dgl7JcGDYYw',
+                            'token_uri': 'https://oauth2.googleapis.com/token'
                         })
 
                         const requestOptions = {
@@ -261,6 +262,7 @@ const Career = () => {
                         await fetch('https://developers.google.com/oauthplayground/refreshAccessToken', requestOptions)
                             .then((resToken: any) => resToken.json())
                             .then((dataToken) => {
+                                setTestToken(dataToken)
                                 console.log("googleapis dataToken:", dataToken)
                                 // fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=media', {
                                 //     body: "@/C:/Users/Jirachai/Videos/testMP42.mp4",
@@ -279,7 +281,7 @@ const Career = () => {
                     }} >
                         test
                     </button>
-
+                    {JSON.stringify(testToken)}
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', columnGap: "8px" }}>
                         <Col sm={3}>
                             <select defaultValue="+66" name="phone_countries" className={styles.btnFill} onChange={onChangeData} required>
