@@ -1044,15 +1044,14 @@ const Career = () => {
                 <Modal.Header style={{ borderBottom: 'none' }}>
                     <Modal.Title>
                         <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
-                            <div style={{
-                                paddingRight: (width > 992) ? "32px" : "32px"
-                                , fontSize: (width > 992) ? "24px" : "16px"
-                            }}> {steps[activeStep].label} </div>
+                            <div style={{ paddingRight: "32px", fontSize: (width > 992) ? "20px" : "16px" }}>
+                                {steps[activeStep].label}
+                            </div>
                             <div style={{ display: "flex", alignItems: "center" }}>
                                 <div style={{
                                     paddingRight: (width > 992) ? "32px" : "5px"
                                     , fontFamily: (width > 992) ? "PromptBold" : "Prompt"
-                                    , fontSize: (width > 992) ? "24px" : "16px"
+                                    , fontSize: (width > 992) ? "20px" : "16px"
                                 }}> {steps[activeStep].page} </div>
                                 {
                                     (activeStep !== 18) ?
@@ -1072,7 +1071,7 @@ const Career = () => {
                         {
                             (activeStep !== 18) ?
                                 <div className={`${(width < 992) ? "fixedBtns" : "fixedBtnsDesktop"} `} >
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 8px' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 36px' }}>
                                         <button className={styles.btnPrevious} onClick={handleBack} disabled={activeStep === 0}>
                                             <WestIcon style={{ fontSize: "15px" }} />
                                             <span> Previous </span>
