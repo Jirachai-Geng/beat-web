@@ -18,8 +18,6 @@ import WestIcon from '@mui/icons-material/West';
 import LinearProgress from '@mui/material/LinearProgress';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import { fontSize } from '@mui/system';
 
 export interface FormProps {

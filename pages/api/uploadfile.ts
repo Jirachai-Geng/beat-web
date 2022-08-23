@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { createPool, Pool } from 'mysql';
+import mysql from 'mysql';
 import { google } from 'googleapis'
 import  fs  from 'fs'
 import path from 'path';

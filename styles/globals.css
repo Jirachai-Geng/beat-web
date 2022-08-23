@@ -316,22 +316,6 @@ input[type="search"]::-webkit-search-cancel-button {
     linear-gradient(135deg, transparent 0%, transparent 43%, #fff 45%, #fff 55%, transparent 57%, transparent 100%);
 }
 
-
-.react-datepicker__header {
-  background-color: #4D4D4D !important;
-}
-
-.react-datepicker__current-month,
-.react-datepicker-time__header,
-.react-datepicker-year-header {
-  margin-top: 0;
-  color: #fff !important;
-  font-family: 'Prompt';
-  font-style: normal;
-}
-
-
-
 .scrollModal {
   overflow-y: auto;
   height: 100%;
