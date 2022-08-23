@@ -242,21 +242,43 @@ const Career = () => {
                         </select>
                     </div>
 
-                    {/* <button onClick={() => {
-                        fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=media', {
-                            body: "@/C:/Users/Jirachai/Videos/testMP42.mp4",
-                            headers: {
-                                'Access-Control-Allow-Origin': '*',
-                                'Content-Type': 'video/mp4',
-                                'Authorization': 'Bearer ya29.A0AVA9y1sAqr6fydpuzqHlQQpyGEQx-V3OnPom2_faozmxXN5XqpgL-Z12Zsh_f1PjKPyYZgM0CAhr8yhQqMiiey8SrvHSHu9Qq3KJ-qNrxPMcPwxKXJr1YKTC9K7TwMcABbplj6K-QL1m3_RGudjh7-e7ri5TaCgYKATASATASFQE65dr8MtbxqixZtis-TG4YIgEGsw0163'
-                            },
-                            method: 'POST'
-                        }).then((res) => res.json()).then((data) => {
-                            console.log("googleapis data:", data)
+                    <button onClick={async () => {
+                        let objBody = JSON.stringify({
+                            'client_id': '330352992676-68hts0djql79gp1qar6u01vbo8p10od9.apps.googleusercontent.com',
+                            "client_secret": "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",
+                            "refresh_token": "1//04Nl9MpGvK6vsCgYIARAAGAQSNwF-L9IrFK1dte-yY_RgqIy8VuH6XE8AzjB3qomeXSX0tor8SdAzl8KjyvugZ4H_Dgl7JcGDYYw",
+                            "token_uri": "https://oauth2.googleapis.com/token"
                         })
+
+                        const requestOptions = {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json', 
+                                'Access-Control-Allow-Origin': '*',
+                            },
+                            body: objBody
+                        };
+                        await fetch('https://developers.google.com/oauthplayground/refreshAccessToken', requestOptions)
+                            .then((resToken: any) => resToken.json())
+                            .then((dataToken) => {
+                                console.log("googleapis dataToken:", dataToken)
+                                // fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=media', {
+                                //     body: "@/C:/Users/Jirachai/Videos/testMP42.mp4",
+                                //     headers: {
+                                //         'Access-Control-Allow-Origin': '*',
+                                //         'Content-Type': 'video/mp4',
+                                //         'Authorization': `Bearer ${dataToken.access_token}`
+                                //     },
+                                //     method: 'POST'
+                                // }).then((res) => res.json()).then((data) => {
+                                //     console.log("googleapis data:", data)
+                                // })
+                            })
+
+
                     }} >
                         test
-                    </button> */}
+                    </button>
 
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', columnGap: "8px" }}>
                         <Col sm={3}>
