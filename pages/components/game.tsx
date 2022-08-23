@@ -4,15 +4,10 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import { useSession, signIn, signOut } from "next-auth/react"
 import styles from '../../styles/Game.module.css'
-import Facebook from "next-auth/providers/facebook";
 import { Unity, useUnityContext } from "react-unity-webgl";
-import { Form, InputGroup, Modal } from "react-bootstrap";
-import { FaFacebook, FaUser } from "react-icons/fa";
+import { Modal } from "react-bootstrap";
 import { useRouter } from "next/router";
-import useSWR, { unstable_serialize } from 'swr'
-import ReactTable from 'react-table'
-import Button from 'react-bootstrap/Button';
-import Collapse from 'react-bootstrap/Collapse';
+
 
 export const useContainerDimensions = (myRef: any) => {
     const getDimensions = () => ({

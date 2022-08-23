@@ -2,23 +2,15 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import { FormEvent, useEffect, useRef, useState } from 'react';
-import router from 'next/router';
 import { setCookie } from 'cookies-next';
 import styles from '../../styles/Career.module.css'
-import Head from "next/head";
-import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
-import MobileStepper from '@mui/material/MobileStepper';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
 import { Modal } from 'react-bootstrap';
 import ClearIcon from '@mui/icons-material/Clear';
 import EastIcon from '@mui/icons-material/East';
 import WestIcon from '@mui/icons-material/West';
 import LinearProgress from '@mui/material/LinearProgress';
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
-import { fontSize } from '@mui/system';
+
 
 export interface FormProps {
     isChecked: boolean;
