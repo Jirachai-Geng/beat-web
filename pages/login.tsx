@@ -1,31 +1,59 @@
-import styles from '../styles/Home.module.css'
+import { FormEvent, useState } from 'react'
+import { Container, Nav, Navbar } from 'react-bootstrap'
+import styles from '../styles/Auth.module.css'
+import '../node_modules/bootstrap/dist/css/bootstrap.css'
+import Router from 'next/router'
 
+const Login = () =>  {
+  const [password, setpassword] = useState("")
+  const [UserName, setUserName] = useState("")
 
+  const onSubmit = async (e: FormEvent) => {
+    e.preventDefault()
+    let userAuth = {
+      type: 'email',
+      name: UserName,
+      social_url: password,
+      picture_url: null,
+    }
+    const {pathname} = Router
+    if(password === 'beatactive_1234' && UserName === 'admin'){
+      Router.push('/backOffice')
+    }
+  }
 
-export default function login() {
   return <>
+    <Navbar expand="lg">
+      <Container fluid>
+        <Navbar.Brand><img src='/assets/logo.svg' className="App-logo" alt="logo" /></Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav" className="ContainRight">
+          <Nav className="size-menu text-center">
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
     <div className={styles.backgroundDark}>
-      <section className={styles.signup}>
-        <h1>SignIn to Continue</h1>
+      <section className={styles.form_wrapper}>
+        <h4 style={{ paddingBottom: "20px" }}> Sign In to back office </h4>
+        <form onSubmit={onSubmit}>
+          <input className={styles.input_backgound} placeholder="User Name*"
+            value={UserName} onChange={e => setUserName(e.target.value)}
+            type="text" id="UserName" name="UserName" required />
 
-        <div className={styles.formDiv}>
+          <input className={styles.input_backgound} placeholder="password*"
+            value={password} onChange={e => setpassword(e.target.value)}
+            type="password" id="password" name="password" required />
 
-          <form method="post" action="/api/auth/signin/email">
-            <div>
-              <label>Username:</label>
-              <input type="text" id="username" name="username" />
-            </div>
+          <button type="submit" className={styles.btnLogin}>
+            Sign In  →
+          </button>
+        </form>
 
-            <div>
-              <label>Password (8 characters minimum):</label>
-              <input type="password" id="pass" name="password" required />
-            </div>
-
-            <p></p>
-            <button className={styles.btn} type="submit">Sign in</button>
-          </form>
-
-        </div>
       </section>
+
     </div> </>
 }
+
+
+export default Login

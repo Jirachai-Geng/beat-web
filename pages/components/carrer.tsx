@@ -10,6 +10,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import EastIcon from '@mui/icons-material/East';
 import WestIcon from '@mui/icons-material/West';
 import LinearProgress from '@mui/material/LinearProgress';
+import axios from 'axios';
 
 
 export interface FormProps {
@@ -44,9 +45,8 @@ export const useContainerDimensions = (myRef: any) => {
 };
 
 const Career = () => {
+    const [btnDisable, setBtnDisable] = useState(true);
 
-
-    const [startDate, setStartDate] = useState(new Date());
 
     const [isShowModul, setShowModul] = useState(false);
     const handleShow = () => setShowModul(true);
@@ -94,7 +94,7 @@ const Career = () => {
         currentYear--;
     }
 
-    // career data
+    // career 1
     const [selectDate, setDate] = useState([1])
     const [dataCareer, setDataCareer] = useState({
         name: '',
@@ -102,6 +102,7 @@ const Career = () => {
         birth_date: '',
         birth_month: '',
         birth_year: '',
+        line_id: '',
         phone_countries: '+66',
     });
     const onChangeData = (e: any) => {
@@ -128,18 +129,22 @@ const Career = () => {
         }
         setDataCareer(newValue);
     }
-
-    // career 1
+    
     const [dataResume, setResume] = useState('Upload your resume*')
+    const [filePDF, setFilePDF]: any = useState();
+    const [fileNamePDF, setFileNamePDF] = useState("");
     const onChangeResume = (e: any) => {
-        console.log(e.target.value)
-        console.log(e.target.name)
         setResume(e.target.value)
+        setFilePDF(e.target.files[0]);
+        setFileNamePDF(e.target.files[0].name);
     }
+
 
     // career 2
     let [careerFile, setCareerFile] = useState("")
     let [breakUpload, setbreakUpload] = useState(false)
+    const [fileVideo, setFileVDO]: any = useState();
+    const [fileNameVideo, setFileNameVDO] = useState("");
     const handleFileChange = (event: any) => {
         if (event.target.value) {
             setCareerFile(event.target.value)
@@ -147,6 +152,8 @@ const Career = () => {
                 setbreakUpload(true);
             } else {
                 if (event.target.files.length > 0) {
+                    setFileVDO(event.target.files[0]);
+                    setFileNameVDO(event.target.files[0].name);
                     setbreakUpload(false);
                 }
             }
@@ -191,7 +198,25 @@ const Career = () => {
     let career18 = 0;
     let [career_18, setCareer18] = useState(career18);
 
-    let [testToken, setTestToken] = useState('');
+    const onUploadFile = async (e: boolean) => {
+        const formData = new FormData();
+        formData.append("NameofFile", dataCareer.name);
+        formData.append("filePDF", filePDF);
+        formData.append("fileNamePDF", fileNamePDF);
+        formData.append("video", (fileNameVideo !== '') ? 'true' : 'false');
+        formData.append("fileVideo", fileVideo);
+        formData.append("fileNameVideo", fileNameVideo);
+        try {
+            const res = await axios.post(
+                "http://103.13.231.185:8082/upload",
+                formData
+            );
+
+        } catch (ex) {
+            console.log(ex);
+        }
+
+    }
 
     const steps = [
         {
@@ -203,6 +228,10 @@ const Career = () => {
                 <div className={styles.career1} style={{ padding: (width > 992) ? "0px 200px" : "16px" }}>
                     <input className={styles.btnFill} placeholder="Full Name*"
                         type="text" id="UserName" name="name" value={dataCareer.name} onChange={onChangeData} />
+
+                    {/* <div className="App">
+                        <button onClick={uploadFile}>Upload</button>
+                    </div> */}
 
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', columnGap: "8px" }}>
                         <select defaultValue={""} name="birth_month" value={dataCareer.birth_month} className={styles.btnFill} onChange={onChangeData} required>
@@ -232,46 +261,6 @@ const Career = () => {
                             ))}
                         </select>
                     </div>
-
-                    <button onClick={async () => {
-                        let objBody = JSON.stringify({
-                            'client_id': '330352992676-68hts0djql79gp1qar6u01vbo8p10od9.apps.googleusercontent.com',
-                            'client_secret': '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',
-                            'refresh_token': '1//04Nl9MpGvK6vsCgYIARAAGAQSNwF-L9IrFK1dte-yY_RgqIy8VuH6XE8AzjB3qomeXSX0tor8SdAzl8KjyvugZ4H_Dgl7JcGDYYw',
-                            'token_uri': 'https://oauth2.googleapis.com/token'
-                        })
-
-                        const requestOptions = {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json', 
-                                'Access-Control-Allow-Origin': '*',
-                            },
-                            body: objBody
-                        };
-                        await fetch('https://developers.google.com/oauthplayground/refreshAccessToken', requestOptions)
-                            .then((resToken: any) => resToken.json())
-                            .then((dataToken) => {
-                                setTestToken(dataToken)
-                                console.log("googleapis dataToken:", dataToken)
-                                // fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=media', {
-                                //     body: "@/C:/Users/Jirachai/Videos/testMP42.mp4",
-                                //     headers: {
-                                //         'Access-Control-Allow-Origin': '*',
-                                //         'Content-Type': 'video/mp4',
-                                //         'Authorization': `Bearer ${dataToken.access_token}`
-                                //     },
-                                //     method: 'POST'
-                                // }).then((res) => res.json()).then((data) => {
-                                //     console.log("googleapis data:", data)
-                                // })
-                            })
-
-
-                    }} >
-                        test
-                    </button>
-                    {JSON.stringify(testToken)}
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', columnGap: "8px" }}>
                         <Col sm={3}>
                             <select defaultValue="+66" name="phone_countries" className={styles.btnFill} onChange={onChangeData} required>
@@ -285,20 +274,18 @@ const Career = () => {
                         </Col>
                         <Col sm={9}>
                             <input className={styles.btnFill} onChange={onChangeData} placeholder="Phone Number"
-                                type="text" id="Phone_number" name="Phone Number" required />
+                                type="text" id="Phone_number" name="Phone_number" required />
                         </Col>
 
                     </div>
 
-
-
-                    <input className={styles.btnFill} placeholder="Line ID*"
-                        type="text" id="Line ID" name="Line ID" />
+                    <input className={styles.btnFill} onChange={onChangeData} placeholder="Line ID*"
+                        type="text" id="line_id" name="line_id" />
 
                     <label htmlFor="resume" className={styles.custom_file_upload} >
                         <i className="fa fa-cloud-upload"></i> {dataResume}
                     </label>
-                    <input placeholder={dataResume} onChange={onChangeResume}
+                    <input placeholder={dataResume} onChange={e => { onChangeResume(e) }}
                         style={{ display: "none" }} id="resume" name="resume" type="file" accept=".pdf" />
 
 
@@ -888,7 +875,7 @@ const Career = () => {
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
                                     style={{ backgroundColor: (career_18 === 1) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(1) }}>
+                                    onClick={() => { setCareer18(1), onUploadFile(true) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}>เชื่อฟัง เคารพกฏ</p>
                                 </div>
                             </Col>
@@ -904,7 +891,7 @@ const Career = () => {
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
                                     style={{ backgroundColor: (career_18 === 2) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(2) }}>
+                                    onClick={() => { setCareer18(2), onUploadFile(true) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}>ปรับตัวเก่ง</p>
                                 </div>
                             </Col>
@@ -920,7 +907,7 @@ const Career = () => {
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
                                     style={{ backgroundColor: (career_18 === 3) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(3) }}>
+                                    onClick={() => { setCareer18(3), onUploadFile(true) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}>พึ่งคนอื่น ไว้ใจคน</p>
                                 </div>
                             </Col>
@@ -936,7 +923,7 @@ const Career = () => {
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
                                     style={{ backgroundColor: (career_18 === 4) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(4) }}>
+                                    onClick={() => { setCareer18(4), onUploadFile(true) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}>ชอบริเริ่ม ต้องการความเปลี่ยนแปลง</p>
                                 </div>
                             </Col>
@@ -1091,7 +1078,8 @@ const Career = () => {
                                             <span> Previous </span>
                                         </button>
 
-                                        <button className={styles.btnOrange} onClick={() => { handleNext(1) }} disabled={activeStep === maxSteps - 1} >
+                                        <button className={`${(btnDisable) ? styles.btnOrange : styles.btnDisable}`} 
+                                            onClick={() => { handleNext(1) }} disabled={activeStep === maxSteps - 1} >
                                             <span> Next </span>
                                             <EastIcon style={{ fontSize: "15px" }} />
                                         </button>

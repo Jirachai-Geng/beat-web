@@ -1,5 +1,118 @@
 .backgroundDark {
-    background-color: #000;
-    height: 100vh;
-  }
-  
+  background-color: #000;
+  height: 100vh;
+}
+
+
+.input_backgound {
+  width: 100%;
+  height: 48px;
+  padding-left: 52px;
+  background: #4D4D4D;
+  background-size: 20px;
+  border: hidden;
+  margin-bottom: 24px;
+
+  font-family: 'Prompt';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+  color: #FFFFFF !important;
+}
+
+.btnLogin {
+  background: #FF5100;
+  color: #FFFFFF;
+  font-family: 'Prompt';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  border: none;
+  width: 100%;
+  height: 48px;
+  margin-top: 24px !important;
+}
+
+
+.form_wrapper {     
+  width: 320px;           /* Set this to your convenience */
+  height: 300px !important;          /* Set this to your convenience */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;     /* Half of height */
+  margin-left: -150px;     /* Half of width */
+  font-family: 'Prompt';
+  font-style: normal;
+  text-align: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #FFFFFF;
+  padding-left: 15px;
+  display: initial;
+}
+
+.textScore {
+  font-family: 'SpaceAge';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  color: #1A1A1A;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  padding: 26px;
+}
+
+.form_score{  
+  background-color: #FFFFFF;
+}
+
+.textOrange {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FF5100 !important;
+}
+
+.tableScore {
+  font-family: 'Prompt';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  vertical-align: middle !important;
+}
+
+.text_link {
+  font-family: 'Prompt';
+  font-style: normal;
+  color: #1A1A1A !important;
+  font-weight: 500 !important;
+  font-size: 16px !important;
+  line-height: 24px;
+}
+
+.btnPolicy {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px;
+  background: #FF5100;
+  color: #FFFFFF;
+  text-decoration:none !important
+}
+
+.numberCircle {
+  border-radius: 50%;
+  padding-top: 6px;
+  width: 36px;
+  height: 36px;
+  background: #1A1A1A !important;
+  color: #fff;
+  text-align: center;
+}
