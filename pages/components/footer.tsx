@@ -45,7 +45,7 @@ const Footer = () => {
     };
     return (
         <div style={{ width: '100%', padding: "0px !impotant" }}>
-            <Container fluid style={{padding: "0px 64px"}}>
+            <Container fluid style={{ padding: "0px 64px" }}>
                 <Row className={styles.contantLine} ref={componentRef}>
                     <Col sm={3}>
                         <div className={(width > 992) ? styles.textParner : styles.textParnerMobile}>
@@ -76,12 +76,14 @@ const Footer = () => {
                 </Row>
             </Container> */}
 
-            <Container fluid style={{padding: "0 64px"}}>
+            <Container fluid style={{ padding: (width > 992) ? "0 64px" : "0 16px" }}>
                 <Row className={styles.line}>
 
                 </Row>
                 <Row>
-                    <Col xxl={5}>
+                    <Col style={{
+                        marginBottom: (width > 992) ? "52px" : "0px"
+                    }} xxl={5} >
                         <div className={styles.text_title}>
                             Contact Information
                         </div>
@@ -92,10 +94,20 @@ const Footer = () => {
                         </div>
                     </Col>
                     <Col xxl={{ span: 4, offset: 1 }}>
-
+                        <div className={styles.text_title} style={{paddingTop: (width > 992) ? "0px" : "36px" }}> Help</div>
+                        <div className={styles.text}>
+                            <p>Privacy Policy </p>
+                            <p>Cookie Policy</p>
+                        </div>
                     </Col>
-                    <Col className={styles.boxRelative} xxl={2}>
-                        <button onClick={goToTop} className={styles.btnGoTop}> ↑ </button>
+                    <Col className={(width < 992) ? "" : styles.boxRelative}
+                        style={{
+                            paddingRight: (width < 992) ? "16px" : "64px", paddingBottom: (width < 992) ? "45px" : "64px"
+                            , marginBottom: (width > 992) ? "64px" : "0px"
+                        }} xxl={2}>
+                        <div className={(width < 992) ? styles.boxRelative : ""} >
+                            <button onClick={goToTop} className={styles.btnGoTop}> ↑ </button>
+                        </div>
                     </Col>
                 </Row>
             </Container>

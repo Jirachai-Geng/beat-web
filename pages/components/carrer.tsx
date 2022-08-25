@@ -71,6 +71,7 @@ const Career = () => {
 
     // Validate URL
     const [isValidURL, setValidURL] = useState(false);
+    const [videoURL, setVideoURL] = useState('');
     const checkValidURL = (string: string) => {
         var res = string.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
         if (res !== null) {
@@ -78,7 +79,6 @@ const Career = () => {
         } else {
             setValidURL(false)
         }
-        console.log(res)
         return (res !== null)
     };
 
@@ -98,12 +98,12 @@ const Career = () => {
     const [selectDate, setDate] = useState([1])
     const [dataCareer, setDataCareer] = useState({
         name: '',
-        videoURL: '',
         birth_date: '',
         birth_month: '',
         birth_year: '',
         line_id: '',
         phone_countries: '+66',
+        phone_number: ''
     });
     const onChangeData = (e: any) => {
         console.log(e.target.name)
@@ -129,7 +129,7 @@ const Career = () => {
         }
         setDataCareer(newValue);
     }
-    
+
     const [dataResume, setResume] = useState('Upload your resume*')
     const [filePDF, setFilePDF]: any = useState();
     const [fileNamePDF, setFileNamePDF] = useState("");
@@ -167,7 +167,6 @@ const Career = () => {
     const setArrCareer_3 = (index: any) => {
         arrCareer3[index] = !arrCareer_3[index]
         setArrCareer3(arrCareer3)
-        console.log(arrCareer_3)
     }
 
     // career 4
@@ -198,7 +197,7 @@ const Career = () => {
     let career18 = 0;
     let [career_18, setCareer18] = useState(career18);
 
-    const onUploadFile = async (e: boolean) => {
+    const onUploadFile = async () => {
         const formData = new FormData();
         formData.append("NameofFile", dataCareer.name);
         formData.append("filePDF", filePDF);
@@ -207,16 +206,96 @@ const Career = () => {
         formData.append("fileVideo", fileVideo);
         formData.append("fileNameVideo", fileNameVideo);
         try {
-            const res = await axios.post(
-                "http://103.13.231.185:8082/upload",
+            await axios.post(
+                "http://localhost:8082/upload",
                 formData
             );
 
         } catch (ex) {
             console.log(ex);
         }
-
     }
+
+    const onUploadCareer = async (item: any) => {
+        const formData = new FormData();
+        console.log(item)
+        for (var key in item) {
+            formData.append(key, item[key]);
+        }
+        try {
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(item)
+            };
+            fetch('http://localhost:8082/career', requestOptions)
+                .then(response => response.json())
+        } catch (ex) {
+            console.log(ex);
+        }
+    }
+
+    // bottom step
+    useEffect(() => {
+        if (activeStep === 1 && (isValidURL || (!breakUpload && careerFile))) {
+            setBtnDisable(false)
+            console.log('career 2 ', activeStep)
+
+        } else if (activeStep === 0 && dataCareer.name !== '' && dataCareer.line_id !== '' && dataCareer.phone_number !== '' &&
+            dataCareer.birth_month !== '' && dataCareer.birth_date !== '' && dataCareer.birth_year !== '' && fileNamePDF !== '') {
+            setBtnDisable(false)
+            console.log('career 1 ', activeStep)
+
+        } else if (activeStep === 2 && arrCareer_3.includes(true)) {
+            setBtnDisable(false)
+            console.log('arrCareer 3 ', activeStep)
+
+        } else if (activeStep === 3 && arrCareer_4.includes(true)) {
+            setBtnDisable(false)
+            console.log('arrCareer 4 ', activeStep)
+        }
+        else {
+            setBtnDisable(true)
+        }
+
+        if (activeStep === 18) {
+            // onUploadFile()
+
+            if (isValidURL) {
+                setVideoURL('file mp4')
+            }
+            let arr_aws3 = arrCareer_3.flatMap((bool, index) => bool ? index + 1 : [])
+            let arr_aws4 = arrCareer_4.flatMap((bool, index) => bool ? index + 1 : [])
+            let aws3: string = ''
+            sport.map(item => {
+                if (item.code === arr_aws3[0]) {
+                    aws3 = item.name
+                }
+            })
+            let aws4: string[] = []
+            arr_aws4.forEach(function (value) {
+                activity.map(item => {
+                    if (item.code === value) {
+                        aws4.push(item.name)
+                    }
+                })
+            });
+            let sendData = {
+                'dataCareer': dataCareer,
+                'videoURL': videoURL,
+                'aws3': aws3,
+                'aws4': aws4,
+                'career_5': career_5,
+                'career_6': {
+                    'career6A': career_6A,
+                    'career6B': career_6B
+                },
+                'career18': career_18
+            }
+            // onUploadCareer(sendData)
+            onUploadFile()
+        }
+    });
 
     const steps = [
         {
@@ -242,7 +321,6 @@ const Career = () => {
                                 </option>
                             ))}
                         </select>
-
                         <select defaultValue={""} name="birth_date" value={dataCareer.birth_date} className={styles.btnFill} onChange={onChangeData} required>
                             <option value="" disabled selected>Date</option>
                             {selectDate.map(item => (
@@ -274,22 +352,23 @@ const Career = () => {
                         </Col>
                         <Col sm={9}>
                             <input className={styles.btnFill} onChange={onChangeData} placeholder="Phone Number"
-                                type="text" id="Phone_number" name="Phone_number" required />
+                                type="text" id="phone_number" name="phone_number" value={dataCareer.phone_number} required />
                         </Col>
-
                     </div>
 
                     <input className={styles.btnFill} onChange={onChangeData} placeholder="Line ID*"
-                        type="text" id="line_id" name="line_id" />
+                        type="text" value={dataCareer.line_id} id="line_id" name="line_id" />
 
-                    <label htmlFor="resume" className={styles.custom_file_upload} >
-                        <i className="fa fa-cloud-upload"></i> {dataResume}
-                    </label>
-                    <input placeholder={dataResume} onChange={e => { onChangeResume(e) }}
+                    <div className={`${styles.buttonIn} `}>
+                        <label htmlFor="resume" className={styles.custom_file_upload} >
+                            <i className="fa fa-cloud-upload"></i> {dataResume}
+                        </label>
+                        <img className={`${styles.buttonClare} `} src={"/assets/icons/attract_file.png"} alt="attract_file" />
+                        <div className={`${styles.textDetail} `}>Allowed file extexsions : pdf/doc. Max file size : 20MB. </div>
+                    </div>
+
+                    <input className={styles.btnFill} placeholder={dataResume} onChange={e => { onChangeResume(e) }}
                         style={{ display: "none" }} id="resume" name="resume" type="file" accept=".pdf" />
-
-
-
                 </div>
         },
         {
@@ -334,14 +413,10 @@ const Career = () => {
 
                     <div className={`${styles.buttonIn} `}>
                         <input className={`${styles.btnFill}`} placeholder="Paste your video url*"
-                            type={`${isValidURL ? 'text' : 'search'}`} onChange={e => { checkValidURL(e.target.value), onChangeData }}
-                            id="videoURL" name="videoURL" value={dataCareer.videoURL} />
+                            type={`${isValidURL ? 'text' : 'search'}`} onChange={e => { checkValidURL(e.target.value), setVideoURL(e.target.value) }}
+                            id="videoURL" name="videoURL" value={videoURL} />
                         {/* <button className={`${styles.buttonClare} `} >clear</button> */}
                     </div>
-
-
-
-
                 </div >,
         },
         {
@@ -455,7 +530,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(0)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac1.png" alt="ac1" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 1 </span>
+                                    <span> Excercise </span>
                                 </div>
                                 {(arrCareer_4[0]) ?
                                     <div className={styles.career3_active}>
@@ -466,7 +541,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(1)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac2.png" alt="ac2" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 2 </span>
+                                    <span> Music </span>
                                 </div>
                                 {(arrCareer_4[1]) ?
                                     <div className={styles.career3_active}>
@@ -477,7 +552,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(2)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac3.png" alt="ac3" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 3 </span>
+                                    <span> Book </span>
                                 </div>
                                 {(arrCareer_4[2]) ?
                                     <div className={styles.career3_active}>
@@ -488,7 +563,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(3)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac4.png" alt="ac4" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 4 </span>
+                                    <span> Yoga </span>
                                 </div>
                                 {(arrCareer_4[3]) ?
                                     <div className={styles.career3_active}>
@@ -501,7 +576,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(4)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac5.png" alt="ac5" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 5 </span>
+                                    <span> Game </span>
                                 </div>
                                 {(arrCareer_4[4]) ?
                                     <div className={styles.career3_active}>
@@ -512,7 +587,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(5)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac6.png" alt="ac6" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 6 </span>
+                                    <span> Movie </span>
                                 </div>
                                 {(arrCareer_4[5]) ?
                                     <div className={styles.career3_active}>
@@ -523,7 +598,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(6)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac7.png" alt="ac7" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 7 </span>
+                                    <span> Travel </span>
                                 </div>
                                 {(arrCareer_4[6]) ?
                                     <div className={styles.career3_active}>
@@ -534,7 +609,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(7)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac8.png" alt="ac8" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 8 </span>
+                                    <span> Camping </span>
                                 </div>
                                 {(arrCareer_4[7]) ?
                                     <div className={styles.career3_active}>
@@ -547,7 +622,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(8)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac9.png" alt="ac9" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 5 </span>
+                                    <span> Planting </span>
                                 </div>
                                 {(arrCareer_4[8]) ?
                                     <div className={styles.career3_active}>
@@ -558,7 +633,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(9)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac10.png" alt="ac10" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 6 </span>
+                                    <span> Trading </span>
                                 </div>
                                 {(arrCareer_4[9]) ?
                                     <div className={styles.career3_active}>
@@ -569,7 +644,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(10)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac11.png" alt="ac11" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 7 </span>
+                                    <span> Cooking </span>
                                 </div>
                                 {(arrCareer_4[10]) ?
                                     <div className={styles.career3_active}>
@@ -580,7 +655,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(11)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac12.png" alt="ac12" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 8 </span>
+                                    <span> Pet </span>
                                 </div>
                                 {(arrCareer_4[11]) ?
                                     <div className={styles.career3_active}>
@@ -593,7 +668,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(12)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac13.png" alt="ac13" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 5 </span>
+                                    <span> Photograph </span>
                                 </div>
                                 {(arrCareer_4[12]) ?
                                     <div className={styles.career3_active}>
@@ -604,7 +679,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(13)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac14.png" alt="ac14" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 6 </span>
+                                    <span> Extreme Sport </span>
                                 </div>
                                 {(arrCareer_4[13]) ?
                                     <div className={styles.career3_active}>
@@ -615,7 +690,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(14)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac15.png" alt="ac15" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 7 </span>
+                                    <span> Sudoku </span>
                                 </div>
                                 {(arrCareer_4[14]) ?
                                     <div className={styles.career3_active}>
@@ -626,7 +701,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(15)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac6.png" alt="ac6" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 8 </span>
+                                    <span> Art & Craft </span>
                                 </div>
                                 {(arrCareer_4[15]) ?
                                     <div className={styles.career3_active}>
@@ -875,7 +950,7 @@ const Career = () => {
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
                                     style={{ backgroundColor: (career_18 === 1) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(1), onUploadFile(true) }}>
+                                    onClick={() => { setCareer18(1), handleNext(1) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}>เชื่อฟัง เคารพกฏ</p>
                                 </div>
                             </Col>
@@ -891,7 +966,7 @@ const Career = () => {
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
                                     style={{ backgroundColor: (career_18 === 2) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(2), onUploadFile(true) }}>
+                                    onClick={() => { setCareer18(2), handleNext(1) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}>ปรับตัวเก่ง</p>
                                 </div>
                             </Col>
@@ -907,7 +982,7 @@ const Career = () => {
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
                                     style={{ backgroundColor: (career_18 === 3) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(3), onUploadFile(true) }}>
+                                    onClick={() => { setCareer18(3), onUploadFile() }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}>พึ่งคนอื่น ไว้ใจคน</p>
                                 </div>
                             </Col>
@@ -923,7 +998,7 @@ const Career = () => {
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
                                     style={{ backgroundColor: (career_18 === 4) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(4), onUploadFile(true) }}>
+                                    onClick={() => { setCareer18(4), handleNext(1) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}>ชอบริเริ่ม ต้องการความเปลี่ยนแปลง</p>
                                 </div>
                             </Col>
@@ -1069,22 +1144,38 @@ const Career = () => {
                             {steps[activeStep].description}
                         </div>
 
-                        {
-                            (activeStep !== 18) ?
-                                <div className={`${(width < 992) ? "fixedBtns" : "fixedBtnsDesktop"} `} >
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 36px' }}>
-                                        <button className={styles.btnPrevious} onClick={handleBack} disabled={activeStep === 0}>
-                                            <WestIcon style={{ fontSize: "15px" }} />
-                                            <span> Previous </span>
-                                        </button>
+                        <button className={styles.btnPrevious} onClick={handleBack}
+                                   >
+                                    <WestIcon style={{ fontSize: "15px" }} />
+                                    <span> Previous </span>
+                                </button>
 
-                                        <button className={`${(btnDisable) ? styles.btnOrange : styles.btnDisable}`} 
-                                            onClick={() => { handleNext(1) }} disabled={activeStep === maxSteps - 1} >
-                                            <span> Next </span>
-                                            <EastIcon style={{ fontSize: "15px" }} />
-                                        </button>
-                                    </div>
-                                </div> : null}
+                        <button className={`${(btnDisable) ? styles.btnDisable : styles.btnOrange}`}
+                            onClick={() => { handleNext(1), setBtnDisable(true) }}
+                            disabled={btnDisable}>
+                            <span> Next </span>
+                            <EastIcon style={{ fontSize: "15px" }} />
+                        </button>
+                        <div className={`${(width < 992) ? "fixedBtns" : "fixedBtnsDesktop"} `} >
+                            <div style={{
+                                display: (activeStep === 0) ? '' : 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 36px',
+                                textAlign: (activeStep === 0) ? 'end' : 'start'
+                            }}>
+                                <button className={styles.btnPrevious} onClick={handleBack}
+                                    style={{ display: (activeStep === 0 || activeStep === 18) ? 'none' : '' }}>
+                                    <WestIcon style={{ fontSize: "15px" }} />
+                                    <span> Previous </span>
+                                </button>
+
+                                <button className={`${(btnDisable) ? styles.btnDisable : styles.btnOrange}`}
+                                    onClick={() => { handleNext(1), setBtnDisable(true) }}
+                                    disabled={btnDisable}
+                                    style={{ display: (activeStep === 4 || activeStep === 5 || activeStep === 6 || activeStep === 17 || activeStep === 18) ? 'none' : '' }}>
+                                    <span> Next </span>
+                                    <EastIcon style={{ fontSize: "15px" }} />
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </Modal.Body>
             </Modal>
@@ -2043,4 +2134,106 @@ const countries = [
         "code": "+263",
         "name": "Zimbabwe"
     }
+]
+
+const sport = [
+    {
+        "code": 1,
+        "name": "sport1"
+    },
+    {
+        "code": 2,
+        "name": "sport2"
+    },
+    {
+        "code": 3,
+        "name": "sport3"
+    },
+    {
+        "code": 4,
+        "name": "sport4"
+    },
+    {
+        "code": 5,
+        "name": "sport5"
+    },
+    {
+        "code": 6,
+        "name": "sport6"
+    },
+    {
+        "code": 7,
+        "name": "sport7"
+    },
+    {
+        "code": 8,
+        "name": "sport8"
+    },
+]
+
+const activity = [
+    {
+        "code": 1,
+        "name": "Excercise"
+    },
+    {
+        "code": 2,
+        "name": "Music"
+    },
+    {
+        "code": 3,
+        "name": "Book"
+    },
+    {
+        "code": 4,
+        "name": "Yoga"
+    },
+    {
+        "code": 5,
+        "name": "Game"
+    },
+    {
+        "code": 6,
+        "name": "Movie"
+    },
+    {
+        "code": 7,
+        "name": "Travel"
+    },
+    {
+        "code": 8,
+        "name": "Camping"
+    },
+    {
+        "code": 9,
+        "name": "Planting"
+    },
+    {
+        "code": 10,
+        "name": "Trading"
+    },
+    {
+        "code": 11,
+        "name": "Cooking"
+    },
+    {
+        "code": 12,
+        "name": "Pet"
+    },
+    {
+        "code": 13,
+        "name": "Photograph"
+    },
+    {
+        "code": 14,
+        "name": "Extreme Sport"
+    },
+    {
+        "code": 15,
+        "name": "Sudoku"
+    },
+    {
+        "code": 16,
+        "name": "Art & Craft"
+    },
 ]

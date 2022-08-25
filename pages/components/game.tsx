@@ -307,7 +307,7 @@ const Game = () => {
                         }
                         {/* score */}
                         {(width > 992) ?
-                            <Col className={styles.content} style={{ overflow: "auto", height: HeightGame }}>
+                            <Col className={styles.content} style={{ overflow: "auto", height: "auto" }}>
                                 <p className={styles.textScore}> Leader Board </p>
                                 <table className="table">
                                     <thead>
@@ -391,7 +391,7 @@ const Game = () => {
 
                         {/* score */}
                         {(width > 992) ?
-                            <Col className={styles.content} style={{ overflow: "auto", height: HeightGame }} >
+                            <Col className={styles.content} style={{ overflow: "auto", height: "auto" }} >
                                 <p className={styles.textScore}> Leader Board </p>
                                 <table className="table">
                                     <thead>

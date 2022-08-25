@@ -217,6 +217,7 @@ input:-webkit-autofill:active {
   color: #FFFFFF !important;
 }
 
+
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb( 26, 26, 26)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
 }
@@ -332,4 +333,13 @@ input[type="search"]::-webkit-search-cancel-button {
   position: fixed;
   bottom: 30px;
   z-index: 2;
+}
+
+input::placeholder {
+  color: #FFFFFF;
+}
+
+input-webkit-autofill  {
+  color: #FFFFFF !important;
+  background: #4D4D4D !important;
 }
