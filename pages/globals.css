@@ -36,7 +36,7 @@ a {
 
   .size-menu {
     gap: 28px !important;
-    padding: 20px 43px 35px 35px;
+    padding: 20px 20px 20px 20px!important;
   }
 
   .scrollModal::-webkit-scrollbar {
@@ -288,6 +288,7 @@ input:-webkit-autofill:active {
 .css-5xe99f-MuiLinearProgress-bar1 {
   background-color: #FF5100 !important;
 }
+
 
 input[type="checkbox"] {
   /* ...existing styles */

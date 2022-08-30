@@ -45,69 +45,38 @@ const Footer = () => {
     };
     return (
         <div style={{ width: '100%', padding: "0px !impotant" }}>
-            <Container fluid style={{ padding: "0px 64px" }}>
-                <Row className={styles.contantLine} ref={componentRef}>
-                    <Col sm={3}>
-                        <div className={(width > 992) ? styles.textParner : styles.textParnerMobile}>
-                            <p>Our </p>
-                            <p>Partner </p>
-                        </div>
-                    </Col>
-                    <Col className={styles.OurPartner} sm={3}>
-                        <img style={{ height: (width > 992) ? "300px" : "200px" }} src="/assets/partner/Plantoys.svg" alt="" /></Col>
-                    <Col className={styles.OurPartner} sm={3}>
-                        <img style={{ height: (width > 992) ? "300px" : "200px" }} src="/assets/partner/Berg.svg" alt="" /></Col>
-                    <Col className={styles.OurPartner} sm={3}>
-                        <img style={{ height: (width > 992) ? "300px" : "200px" }} src="/assets/partner/Thaifight.svg" alt="" /></Col>
-                </Row>
-            </Container>
-
-            {/* map */}
-            {/* <Container >
-                <Row className={styles.line}>
-                    <Col className="d-flex align-items-start">
-                        <p className={styles.textMap}>
-                            MAP
-                        </p>
-                    </Col>
-                </Row>
-                <Row>
-                    <img src='/assets/map.png' className={styles.showmap} alt="logo" />
-                </Row>
-            </Container> */}
-
-            <Container fluid style={{ padding: (width > 992) ? "0 64px" : "0 16px" }}>
+            <Container fluid style={{ padding: (width > 1290) ? "0 64px" : "0 16px" }}>
                 <Row className={styles.line}>
 
                 </Row>
-                <Row>
+                <Row  ref={componentRef}>
                     <Col style={{
-                        marginBottom: (width > 992) ? "52px" : "0px"
+                        marginBottom: (width > 1290) ? "52px" : "0px"
                     }} xxl={5} >
                         <div className={styles.text_title}>
                             Contact Information
                         </div>
                         <div className={styles.text}>
                             <p>Beat Active </p>
-                            <p>Tel : 02-888-8222</p>
+                            <p style={{ display: "inline-block"}}>Tel : 02-888-8222</p>
                             <p>199/001 Soi Sukhumvit, Example for veryyy long information, and adresss, Bangkok 10110</p>
                         </div>
                     </Col>
                     <Col xxl={{ span: 4, offset: 1 }}>
-                        <div className={styles.text_title} style={{paddingTop: (width > 992) ? "0px" : "36px" }}> Help</div>
+                        <div className={styles.text_title} style={{ paddingTop: (width > 1290) ? "0px" : "36px" }}> Help</div>
                         <div className={styles.text}>
                             <p>Privacy Policy </p>
                             <p>Cookie Policy</p>
                         </div>
                     </Col>
-                    <Col className={(width < 992) ? "" : styles.boxRelative}
+                    <Col className={(width < 1290) ? "" : styles.boxRelative}
                         style={{
-                            paddingRight: (width < 992) ? "16px" : "64px", paddingBottom: (width < 992) ? "45px" : "64px"
-                            , marginBottom: (width > 992) ? "64px" : "0px"
+                            paddingRight: (width < 1290) ? "16px" : "64px", paddingBottom: (width < 1290) ? "45px" : "64px"
+                            , marginBottom: "0px", display: "flex", alignItems: "end", justifyContent: "flex-end"
                         }} xxl={2}>
-                        <div className={(width < 992) ? styles.boxRelative : ""} >
+                        <Row className={(width < 1290) ? styles.boxRelative : ""} style={{ position: "absolute" }}>
                             <button onClick={goToTop} className={styles.btnGoTop}> ↑ </button>
-                        </div>
+                        </Row>
                     </Col>
                 </Row>
             </Container>

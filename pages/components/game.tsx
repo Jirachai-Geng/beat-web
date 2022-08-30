@@ -7,6 +7,7 @@ import styles from '../../styles/Game.module.css'
 import { Unity, useUnityContext } from "react-unity-webgl";
 import { Modal } from "react-bootstrap";
 import { useRouter } from "next/router";
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 
 export const useContainerDimensions = (myRef: any) => {
@@ -86,6 +87,8 @@ const tdData = (TableData: any, column: any) => {
 
 
 const Game = () => {
+    const handle = useFullScreenHandle();
+
     const { unityProvider, requestFullscreen, isLoaded } = useUnityContext({
         codeUrl: `/unitybuild/game.wasm`,
         dataUrl: `/unitybuild/game.data`,
@@ -154,7 +157,6 @@ const Game = () => {
                     }, 350);
                 }
             }
-
         }
         let getUserInfo: any = localStorage.getItem("userAuth");
         let userInfo: any = JSON.parse(getUserInfo)
@@ -203,7 +205,6 @@ const Game = () => {
                         }, 350);
                     }
                 }
-
             }
         }
     }
@@ -227,12 +228,12 @@ const Game = () => {
     let showResults = true
     return (
         <div>
-            <Container fluid style={{ paddingTop: (width > 992) ? '50px' : '0px' }}>
+            <Container fluid style={{ paddingTop: (width > 1290) ? '50px' : '0px' }}>
                 {!isPlaygame ? (
-                    <Row className={(width > 992) ? styles.background_white : styles.background_mobile} ref={componentRef}>
+                    <Row className={(width > 1290) ? styles.background_white : styles.background_mobile} ref={componentRef}>
                         {session ? (
-                            <Col sm={12} lg={9} className={(width > 992) ? styles.containerLogin : styles.animatedBackgroundMobile} ref={componentGameRef}>
-                                <Row fluid setUserFacebook className={(width > 992) ? styles.animatedBackground : styles.background_hide} style={{ width: '100%', height: '100%' }}>
+                            <Col sm={12} lg={9} className={(width > 1290) ? styles.containerLogin : styles.animatedBackgroundMobile} ref={componentGameRef}>
+                                <Row fluid setUserFacebook className={(width > 1290) ? styles.animatedBackground : styles.background_hide} style={{ width: '100%', height: '100%' }}>
                                     <Col sm={4}></Col>
                                     <Col sm={4} style={{ display: 'flex', justifyContent: 'space-around', flexDirection: 'column', height: '100%' }}>
                                         <p className={styles.textLogIn}>
@@ -259,8 +260,8 @@ const Game = () => {
                             </Col>
                         ) :
                             <Col sm={12} lg={9} className={isActive ?
-                                ((width > 992) ? styles.containerLogin : styles.animatedBackgroundMobile) :
-                                (width > 400) ? styles.backgroundBanner : styles.backgroundBannerMobile} ref={componentGameRef}>
+                                ((width > 1290) ? styles.containerLogin : styles.animatedBackgroundMobile) :
+                                (width > 1290) ? styles.backgroundBanner : styles.backgroundBannerMobile} ref={componentGameRef}>
                                 <div className="endcontainer" style={{ display: isActive ? 'none' : '' }}>
                                     <button className="game-button" onClick={handleClick}>
                                         Let’s Play →
@@ -270,8 +271,8 @@ const Game = () => {
 
                                 {/* Login */}
                                 <Row className={styles.animatedBackground} style={{ width: '100%', display: !isActive ? 'none' : '' }}>
-                                    <Col sm={4}></Col>
-                                    <Col sm={4} style={{}}>
+                                    <Col sm={(width > 1290) ? 4 : 3}></Col>
+                                    <Col sm={(width > 1290) ? 4 : 5}>
                                         <p className={styles.textLogIn}>
                                             Proven your speed and accuracy with
                                             Beat Active game.
@@ -301,13 +302,13 @@ const Game = () => {
                                             Login with Facebook
                                         </button>
                                     </Col>
-                                    <Col sm={4}></Col>
+                                    <Col sm={(width > 1290) ? 4 : 3}></Col>
                                 </Row>
                             </Col>
                         }
                         {/* score */}
-                        {(width > 992) ?
-                            <Col className={styles.content} style={{ overflow: "auto", height: "auto" }}>
+                        {(width > 1290) ?
+                            <Col className={styles.content} style={{ overflow: "auto", height: (width > 1290) ? heightGame : "auto" }}>
                                 <p className={styles.textScore}> Leader Board </p>
                                 <table className="table">
                                     <thead>
@@ -382,15 +383,16 @@ const Game = () => {
                     <Row className={styles.background_white} >
                         {/* game play */}
                         <Col className={styles.containerGame} ref={componentRef}>
-                            <Unity
-                                unityProvider={unityProvider}
-                                style={{ width: widthGame, height: heightGame }}
-                                ref={canvasRef} />
+                            <FullScreen handle={handle}>
+                                <Unity
+                                    unityProvider={unityProvider}
+                                    style={{ width: widthGame, height: (width > 1290) ? heightGame : "auto" }}
+                                    ref={canvasRef} />
+                            </FullScreen>
                         </Col>
 
-
                         {/* score */}
-                        {(width > 992) ?
+                        {(width > 1290) ?
                             <Col className={styles.content} style={{ overflow: "auto", height: "auto" }} >
                                 <p className={styles.textScore}> Leader Board </p>
                                 <table className="table">
@@ -406,13 +408,14 @@ const Game = () => {
                                     }
                                 </table>
                             </Col> :
-                            <button ref={ref} onClick={handleClickEnterFullscreen} style={{ visibility: 'hidden' }}>TEST</button>
+                            // <button ref={ref} onClick={handleClickEnterFullscreen} style={{ visibility: 'hidden' }}>TEST</button>
+                            <button ref={ref} onClick={handle.enter} style={{ visibility: 'hidden' }}>Enter fullscreen </button>
                         }
                     </Row>
                 }
             </Container>
 
-            {(width < 992) ?
+            {(width < 1290) ?
                 <Modal
                     show={isShowModulSetScreen}
                     onHide={handleCloseSetScreen}

@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next",
+    "build": "next build && next export",
     "production": "next build && next start"
   },
   "dependencies": {
@@ -35,8 +36,10 @@
     "react-cookie-consent": "^8.0.1",
     "react-csv": "^2.2.2",
     "react-datepicker": "^4.8.0",
+    "react-device-detect": "^2.2.2",
     "react-dom": "^18.2.0",
     "react-form-stepper": "^2.0.3",
+    "react-full-screen": "^1.1.1",
     "react-horizontal-scrolling-menu": "^3.1.1",
     "react-icons": "^4.4.0",
     "react-player": "^2.10.1",

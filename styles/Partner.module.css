@@ -40,6 +40,21 @@
     color: #FFF;
 }
 
+.boxRelative {
+    position: relative;
+    padding-right: 16px;
+}
+
+.btnGoTop {
+
+    width: 100px;
+    height: 64px;
+    font-size: 34px;
+    overflow: hidden;
+    color: #FF5100;
+    background: #FFFFFF;
+}
+
 
 .textMap {
     font-family: 'SpaceAge';
@@ -52,33 +67,16 @@
 
 }
 
-
 .showmap {
     min-height: 519px;
 }
 
-.boxRelative {
-    position:relative;
-    padding-right: 16px;
-}
-
-.btnGoTop {
-    position:absolute;
-    bottom:0;
-    right:0;
-    width: 100px;
-    height: 64px;
-    font-size: 34px;
-    overflow: hidden;
-    color: #FF5100;
-    background: #FFFFFF;
-}
 
 .textParner {
     font-family: 'SpaceAge';
     font-style: normal;
     font-weight: 400;
-    font-size: 56px;
+    font-size: 48px;
     line-height: 64px;
     padding-left: 0px !important;
     padding-top: 86px !important;
@@ -110,4 +108,3 @@
         width: 100%;
     }
 }
-

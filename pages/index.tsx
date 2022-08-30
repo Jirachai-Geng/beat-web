@@ -8,6 +8,7 @@ import Carrer from './components/carrer';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Footer from './components/footer';
+import Partner from './components/partner';
 
 const scrollToFoter = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 const scrollToHome = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
@@ -26,7 +27,7 @@ const scrollToCareer = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.cu
 
 // const Home = ({ swapis }: InferGetStaticPropsType<typeof getStaticProps>) =>  {
 
-const Home = () =>  {
+const Home = () => {
 
   const HomeRef = useRef(null)
   const FooterRef = useRef(null)
@@ -71,6 +72,10 @@ const Home = () =>  {
         {/* <div>
           <Sport />
         </div> */}
+
+        <div>
+          <Partner />
+        </div>
 
         <footer ref={FooterRef} className={styles.footer}>
           <Footer />

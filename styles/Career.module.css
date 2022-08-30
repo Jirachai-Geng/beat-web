@@ -10,6 +10,11 @@
     display: initial;
 }
 
+/* .css-5xe99f-MuiLinearProgress-bar1 {
+    background-color: #FF5100 !important;
+} */
+
+
 .btnPolicy {
     flex-direction: row;
     justify-content: center;
