@@ -25,14 +25,15 @@ const Footer = () => {
                 </Row>
 
                 <Row>
-                    <Col xxl={5}>
+                    <Col xxl={6}>
                         <div className={styles.text_title}>
                             Contact Information
                         </div>
                         <div className={styles.text}>
                             <p>Beat Active </p>
                             <p>Tel : 02-888-8222</p>
-                            <p>199/001 Soi Sukhumvit, Example for veryyy long information, and adresss, Bangkok 10110</p>
+                            <p>Facebook :  <a style={{display: "inline"}} href=" https://www.facebook.com/BEATActiveThailand"  target="_blank">BEATActiveThailand</a></p> 
+                            {/* <p>199/001 Soi Sukhumvit, Example for veryyy long information, and adresss, Bangkok 10110</p> */}
                         </div>
                     </Col>
                     <Col xxl={{ span: 4, offset: 1 }}>
