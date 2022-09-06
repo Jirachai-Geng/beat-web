@@ -289,6 +289,9 @@ input:-webkit-autofill:active {
   background-color: #FF5100 !important;
 }
 
+.css-t752vm{
+  background-color: #FF5100 !important;
+}
 
 input[type="checkbox"] {
   /* ...existing styles */

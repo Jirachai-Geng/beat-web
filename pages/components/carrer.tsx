@@ -45,6 +45,13 @@ export const useContainerDimensions = (myRef: any) => {
 };
 
 const Career = () => {
+    const [ip, setIP] = useState('');
+    const getData = async () => {
+        const res = await axios.get('https://geolocation-db.com/json/')
+        console.log(res.data);
+        setIP(res.data.IPv4)
+      }
+
     const [btnDisable, setBtnDisable] = useState(true);
 
 
@@ -63,6 +70,7 @@ const Career = () => {
             setCookie('Privacy_Policy', true);
             setShowModul(false)
             setShowModulCareer(true)
+            getData()
         }
     }
 
@@ -209,7 +217,7 @@ const Career = () => {
 
         try {
             await axios.post(
-                "http://103.13.231.185:8082/upload",
+                "https://beatactivethailand.com:8082/upload",
                 formData
             );
 

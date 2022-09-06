@@ -37,13 +37,6 @@ const Partner = () => {
     const componentRef = useRef()
     const { width, height } = useContainerDimensions(componentRef)
     let test = '';
-    let [test_data, setTest_data] = useState(test);
-    fetch('http://beatactivethailand.com:8082/test')
-        .then((res) => res.json())
-        .then((data) => {
-            setTest_data(data.message)
-            console.log(JSON.stringify(data))
-        })
 
     return (
         <div style={{ width: '100%', padding: "0px !impotant" }}>
@@ -53,7 +46,6 @@ const Partner = () => {
                         <div className={(width > 922) ? styles.textParner : styles.textParnerMobile}>
                             <p>Our </p>
                             <p>Partner </p>
-                            <p>{test_data} </p>
                         </div>
                     </Col>
                     <Col className={styles.OurPartner} sm={3}>

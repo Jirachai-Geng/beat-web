@@ -1,41 +1,32 @@
 import { FormEvent, useEffect, useState } from 'react'
-import { Col, Container, Nav, Navbar } from 'react-bootstrap'
+import { Col, Container, Nav, Navbar, Row } from 'react-bootstrap'
 import styles from '../styles/Auth.module.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import Router from 'next/router'
 import { CSVLink } from "react-csv";
 
 const BackOffice = () => {
-  const [password, setpassword] = useState("")
-  const [UserName, setUserName] = useState("")
+  const [selectMenu, setSelectMenu] = useState("pdpa")
+  const [TablePDPAGame, setTablePDPAGame] = useState([])
+  const [TablePDPACareer, setTablePDPACareer] = useState([])
 
-  const tdData = (TableData: any, column: any) => {
-    return TableData.map((data: any, index: any) => {
-      return (
-        <tr key={index} style={{ justifyContent: "space-around", padding: "20px !important" }}>
-          {
-            column.map((v: any) => {
-              if (v === "score") {
-                return <td className={styles.textOrange}>{data[v]} P</td>
-              } else if (v === "id") {
-                return <td> <div className={styles.numberCircle}> {data[v]}</div>  </td>
-              } else {
-                return <td> {data[v]} </td>
-              }
-            })
-          }
-        </tr>
-      )
-    })
-  }
-  let TableData = [
-    { id: 1, fullName: "", score: 0 },
+
+
+  let PDPA = [
+    { ip: " 172.21.208.1", time: "2022/09/05" },
   ]
-  let column = Object.keys(TableData[0]);
+
+  let TablePlayerList = [
+    { id: 1, name: "" },
+  ]
+
+
   const [TableData2, setTableData2] = useState([])
   const [showScore, setScore] = useState(false)
   useEffect(() => {
-    fetch('http://103.13.231.185:8080/api/v1/score')
+    setTablePDPACareer(PDPA)
+
+    fetch('http://localhost:8080/api/v1/score')
       .then((res) => res.json())
       .then((data) => {
         setTableData2(data.meta.response_data)
@@ -54,28 +45,72 @@ const BackOffice = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-    <div className={styles.backgroundDark}>
-      <div className={styles.form_score} style={{ overflow: "auto" }} >
+    <div>
+      <div className={styles.form_score} >
+        <Row >
+          <Col sm={2} className={styles.border_right}>
+            <Row> <div className={styles.textScore} style={{ fontWeight: (selectMenu === "pdpa") ? 700 : 400 , cursor: 'pointer'}}
+              onClick={() => setSelectMenu("pdpa")}> PDPA Record </div> </Row>
+            <Row> <div className={styles.textScore} style={{ fontWeight: (selectMenu === "game") ? 700 : 400 , cursor: 'pointer'}}
+              onClick={() => setSelectMenu("game")}> Game Data </div> </Row>
+          </Col>
 
-        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
-          <div className={styles.textScore}> Leader Board </div>
-          <div style={{ paddingRight: "30px" }}>
-            <CSVLink className={styles.btnPolicy} data={TableData2}>Export CSV</CSVLink>
+          {
+            selectMenu === 'pdpa' ?
+              <Col>
+                <Row>
+                  <div style={{ display: "flex", alignItems: "flex-start" }}>
+                    <Col sm={3}> <div className={styles.textScore}> PDPA Data for Career </div></Col>
+                    <Col sm={3}>
+                      <div style={{ padding: "26px", textAlign: "center" }}>
+                        <CSVLink className={styles.btnPolicy} data={TablePDPACareer}>Download</CSVLink>
+                      </div>
+                    </Col>
+                  </div>
+                </Row>
+                <Row>
+                  <div style={{ display: "flex", alignItems: "flex-start" }}>
+                    <Col sm={3}> <div className={styles.textScore}> PDPA Data for Game </div></Col>
+                    <Col sm={3}>
+                      <div style={{ padding: "26px", textAlign: "center" }}>
+                        <CSVLink className={styles.btnPolicy} data={TableData2}>Download</CSVLink>
+                      </div>
+                    </Col>
 
-          </div>
-        </div>
+                  </div>
+                </Row>
+              </Col>
+              :
+              <Col>
+                <Row>
+                  <div style={{ display: "flex", alignItems: "flex-start" }}>
+                    <Col sm={3}> <div className={styles.textScore}> Game leader board </div></Col>
+                    <Col sm={3}>
+                      <div style={{ padding: "26px", textAlign: "center" }}>
+                        <CSVLink className={styles.btnPolicy} data={TableData2}>Download</CSVLink>
+                      </div>
+                    </Col>
+
+                  </div>
+                </Row>
+                <Row>
+                  <div style={{ display: "flex", alignItems: "flex-start" }}>
+                    <Col sm={3}> <div className={styles.textScore}> Game player list </div></Col>
+                    <Col sm={3}>
+                      <div style={{ padding: "26px", textAlign: "center" }}>
+                        <CSVLink className={styles.btnPolicy} data={TableData2}>Download</CSVLink>
+                      </div>
+                    </Col>
+
+                  </div>
+                </Row>
+              </Col>
+          }
 
 
-        <table className="table">
-          <thead>
-          </thead>
 
-          <tbody className={styles.tableScore}>
-            {tdData(TableData2, column)}
-          </tbody>
+        </Row>
 
-
-        </table>
       </div>
     </div> </>
 }
