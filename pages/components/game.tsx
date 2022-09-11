@@ -8,6 +8,8 @@ import { Unity, useUnityContext } from "react-unity-webgl";
 import { Modal } from "react-bootstrap";
 import { useRouter } from "next/router";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import moment from "moment";
+import axios from 'axios';
 
 
 export const useContainerDimensions = (myRef: any) => {
@@ -72,9 +74,17 @@ const tdData = (TableData: any, column: any) => {
                 {
                     column.map((v: any) => {
                         if (v === "score") {
-                            return <td className={styles.textOrange}>{data[v]} P</td>
+                            if (data[v] === null) {
+                                return <td>  </td>
+                            } else {
+                                return <td> <div className={styles.textOrange}>{data[v]} P</div></td>
+                            }
                         } else if (v === "id") {
-                            return <td> <div className={styles.numberCircle}> {data[v]}</div>  </td>
+                            if (data[v] === null) {
+                                return <td>  </td>
+                            } else {
+                                return <td> <div className={styles.numberCircle}> {data[v]}</div>  </td>
+                            }
                         } else {
                             return <td> {data[v]} </td>
                         }
@@ -127,22 +137,71 @@ const Game = () => {
 
 
     const [TableData2, setTableData2] = useState([])
-    const [showScore, setScore] = useState(false)
+    const [score, setScore] = useState([])
+
+    const [showScore, setShowScore] = useState(false)
+    const [seemore, setSeemore] = useState(false)
+
+    const seemoreClick = () => {
+        localStorage.setItem('test', 'test')
+
+        getData().then((data) => {
+            let dataScore = data.meta.response_data
+            setTableData2(dataScore)
+            setSeemore(true)
+        })
+    };
+
+    function getData() {
+        return fetch('http://103.13.231.185:8080/api/v1/score')
+            .then((res) => res.json());
+    }
+
     useEffect(() => {
-        fetch('http://103.13.231.185:8080/api/v1/score')
-            .then((res) => res.json())
-            .then((data) => {
-                setTableData2(data.meta.response_data)
-                console.log("TableData2:", TableData2)
-                setScore(true)
-                console.log(column)
-            })
-    }, [])
+        getData().then((data) => {
+            let dataScore = data.meta.response_data
+            if (width > 992) {
+                const dataScore7 = dataScore.slice(0, 7);
+                setTableData2(dataScore7)
+            } else {
+                dataScore.push({ id: null, fullName: null, score: null })
+                setTableData2(dataScore)
+            }
+            setShowScore(true)
+        })
+    }, [width])
+
 
     const [isActive, setIsActive] = useState(false);
     const handleClick = () => {
         setIsActive(current => !current);
     };
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            console.log('This will run every second!');
+        }, 1000);
+        return () => clearInterval(interval);
+    }, []);
+
+    const getDataPDPA = async (info: any) => {
+        const res = await axios.get('https://geolocation-db.com/json/')
+        const formData = new FormData();
+        formData.append("ip", res.data.IPv4);
+        formData.append("time", moment().format("YYYY-MM-DD HH:mm:ss"));
+        formData.append("type", info.type);
+        formData.append("username", info.name);
+        formData.append("url", info.social_url);
+        try {
+            await axios.post(
+                "https://beatactivethailand.com:8082/pdpa_game",
+                formData
+            );
+            console.log('send data pdpa career');
+        } catch (ex) {
+            console.log(ex);
+        }
+    }
 
     const [isPlaygame, setIsPlaygame] = useState(false);
     const handleClickGame = () => {
@@ -150,27 +209,29 @@ const Game = () => {
             setShowModulSetScreen(true)
         } else {
             setIsPlaygame(true);
-            if (width < 922) {
+            if (width < 992) {
                 if (width > 400) {
                     setTimeout(() => {
                         delayEvent(ref.current, "click");
                     }, 350);
                 }
             }
-        }
-        let getUserInfo: any = localStorage.getItem("userAuth");
-        let userInfo: any = JSON.parse(getUserInfo)
-        if (userInfo) {
-            if (userInfo.type === "facebook") {
-                let userAuth = {
-                    type: 'facebook',
-                    name: session?.user.name,
-                    social_url: session?.user.email,
-                    picture_url: session?.user.image,
+            let getUserInfo: any = localStorage.getItem("userAuth");
+            let userInfo: any = JSON.parse(getUserInfo)
+            if (userInfo) {
+                if (userInfo.type === "facebook") {
+                    let userAuth = {
+                        type: 'facebook',
+                        name: session?.user.name,
+                        social_url: session?.user.email,
+                        picture_url: session?.user.image,
+                    }
+                    localStorage.setItem('userAuth', JSON.stringify(userAuth))
+                    getDataPDPA(userAuth)
                 }
-                localStorage.setItem('userAuth', JSON.stringify(userAuth))
             }
         }
+
     };
 
     const [openCollapse, setOpenCollapse] = useState(false);
@@ -198,13 +259,14 @@ const Game = () => {
                 setShowModulSetScreen(true)
             } else {
                 setIsPlaygame(true);
-                if (width < 922) {
+                if (width < 992) {
                     if (width > 400) {
                         setTimeout(() => {
                             delayEvent(ref.current, "click");
                         }, 350);
                     }
                 }
+                getDataPDPA(userAuth)
             }
         }
     }
@@ -214,11 +276,14 @@ const Game = () => {
     }
 
     const setUserFacebook = () => {
-        console.log("setUserFacebook")
-        let userAuth = {
-            type: 'facebook',
+        if (Privacy === "true") {
+            let userAuth = {
+                type: 'facebook',
+            }
+            localStorage.setItem('userAuth', JSON.stringify(userAuth))
+        } else {
+            alert("Please Accept privacy policy.");
         }
-        localStorage.setItem('userAuth', JSON.stringify(userAuth))
     }
 
     const [isShowModulSetScreen, setShowModulSetScreen] = useState(false);
@@ -228,12 +293,12 @@ const Game = () => {
     let showResults = true
     return (
         <div>
-            <Container fluid style={{ paddingTop: (width > 1290) ? '50px' : '0px' }}>
+            <Container fluid style={{ paddingTop: (width > 992) ? '50px' : '0px' }}>
                 {!isPlaygame ? (
-                    <Row className={(width > 1290) ? styles.background_white : styles.background_mobile} ref={componentRef}>
+                    <Row className={(width > 992) ? styles.background_white : styles.background_mobile} ref={componentRef}>
                         {session ? (
-                            <Col sm={12} lg={9} className={(width > 1290) ? styles.containerLogin : styles.animatedBackgroundMobile} ref={componentGameRef}>
-                                <Row fluid setUserFacebook className={(width > 1290) ? styles.animatedBackground : styles.background_hide} style={{ width: '100%', height: '100%' }}>
+                            <Col sm={12} lg={9} className={(width > 992) ? styles.containerLogin : styles.animatedBackgroundMobile} ref={componentGameRef}>
+                                <Row fluid setUserFacebook className={(width > 992) ? styles.animatedBackground : styles.background_hide} style={{ width: '100%', height: '100%' }}>
                                     <Col sm={4}></Col>
                                     <Col sm={4} style={{ display: 'flex', justifyContent: 'space-around', flexDirection: 'column', height: '100%' }}>
                                         <p className={styles.textLogIn}>
@@ -260,8 +325,8 @@ const Game = () => {
                             </Col>
                         ) :
                             <Col sm={12} lg={9} className={isActive ?
-                                ((width > 1290) ? styles.containerLogin : styles.animatedBackgroundMobile) :
-                                (width > 1290) ? styles.backgroundBanner : styles.backgroundBannerMobile} ref={componentGameRef}>
+                                ((width > 992) ? styles.containerLogin : styles.animatedBackgroundMobile) :
+                                (width > 992) ? styles.backgroundBanner : styles.backgroundBannerMobile} ref={componentGameRef}>
                                 <div className="endcontainer" style={{ display: isActive ? 'none' : '' }}>
                                     <button className="game-button" onClick={handleClick}>
                                         Let’s Play →
@@ -271,8 +336,8 @@ const Game = () => {
 
                                 {/* Login */}
                                 <Row className={styles.animatedBackground} style={{ width: '100%', display: !isActive ? 'none' : '' }}>
-                                    <Col sm={(width > 1290) ? 4 : 3}></Col>
-                                    <Col sm={(width > 1290) ? 4 : 5}>
+                                    <Col sm={(width > 992) ? 4 : 3}></Col>
+                                    <Col sm={(width > 992) ? 4 : 5}>
                                         <p className={styles.textLogIn}>
                                             Proven your speed and accuracy with
                                             Beat Active game.
@@ -289,7 +354,8 @@ const Game = () => {
 
                                             <input type="checkbox" id="privacy" name="privacy" onChange={e => setPrivacy((e.target.checked).toString())} required />
                                             <label className={styles.textLabel}>
-                                                Accept the terms and conditions also privacy policy.
+                                                Accept the <a href='https://www.bhirajburi.co.th/th/privacy-policy' target="_blank" 
+                                                rel="noreferrer noopener" className="textpolicy"> terms and conditions also privacy policy.</a>
                                             </label>
 
                                             <button type="submit" className={styles.btnEmail}>
@@ -298,17 +364,17 @@ const Game = () => {
                                         </form>
 
                                         <div className={styles.line}> </div>
-                                        <button className={styles.btnFacebook} onClick={() => { setUserFacebook(), signIn('facebook') }}>
+                                        <button className={styles.btnFacebook} onClick={() => { setUserFacebook(), Privacy ? signIn('facebook') : null }}>
                                             Login with Facebook
                                         </button>
                                     </Col>
-                                    <Col sm={(width > 1290) ? 4 : 3}></Col>
+                                    <Col sm={(width > 992) ? 4 : 3}></Col>
                                 </Row>
                             </Col>
                         }
                         {/* score */}
-                        {(width > 1290) ?
-                            <Col className={styles.content} style={{ overflow: "auto", height: (width > 1290) ? heightGame : "auto" }}>
+                        {(width > 992) ?
+                            <Col className={styles.content} style={{ overflow: "auto", height: (width > 992) ? heightGame : "599px" }}>
                                 <p className={styles.textScore}> Leader Board </p>
                                 <table className="table">
                                     <thead>
@@ -322,36 +388,12 @@ const Game = () => {
                                         </tbody>
                                     }
                                 </table>
+                                {
+                                    (!seemore) ? <p className={styles.textSeemore} onClick={seemoreClick}> See More </p> : null
+                                }
                             </Col> :
 
                             <Col style={{ height: "100%" }} >
-                                {/* <Collapse in={openCollapse} >
-                                    <div className={styles.overlay} >
-                                        <div className={styles.content}>
-                                            <p className={styles.textScore}> Leader Board </p>
-                                            <table className="table">
-                                                <thead>
-                                                </thead>
-                                                {(showScore) ?
-                                                    <tbody className={styles.tableScore}>
-                                                        {tdData(TableData2, column)}
-                                                    </tbody>
-                                                    : <tbody className={styles.tableScore}>
-                                                        {tdData(TableData, column)}
-                                                    </tbody>
-                                                }
-                                            </table>
-                                        </div>
-                                    </div>
-                                </Collapse>
-                                <Button
-                                    onClick={() => setOpenCollapse(!openCollapse)}
-                                    aria-controls="example-collapse-text"
-                                    aria-expanded={openCollapse}
-                                >
-                                    click
-                                </Button> */}
-
                                 <div className={(openCollapse) ? styles.slider : `${styles.slider} ${styles.close}`}>
                                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingRight: "30px" }}>
                                         <span className={styles.textScore}> Leader Board </span>
@@ -380,20 +422,21 @@ const Game = () => {
                     </Row>
 
                 ) :
-                    <Row className={styles.background_white} >
+                    <Row className={styles.background_mobile} >
                         {/* game play */}
                         <Col className={styles.containerGame} ref={componentRef}>
                             <FullScreen handle={handle}>
                                 <Unity
                                     unityProvider={unityProvider}
-                                    style={{ width: widthGame, height: (width > 1290) ? heightGame : "auto" }}
+                                    tabIndex={1}
+                                    style={{ width: widthGame, height: (width > 992) ? heightGame : "auto" }}
                                     ref={canvasRef} />
                             </FullScreen>
                         </Col>
 
                         {/* score */}
-                        {(width > 1290) ?
-                            <Col className={styles.content} style={{ overflow: "auto", height: "auto" }} >
+                        {(width > 992) ?
+                            <Col className={styles.content} style={{ overflow: "auto", height: "599px" }} >
                                 <p className={styles.textScore}> Leader Board </p>
                                 <table className="table">
                                     <thead>
@@ -415,7 +458,7 @@ const Game = () => {
                 }
             </Container>
 
-            {(width < 1290) ?
+            {(width < 992) ?
                 <Modal
                     show={isShowModulSetScreen}
                     onHide={handleCloseSetScreen}

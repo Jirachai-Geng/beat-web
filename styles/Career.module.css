@@ -37,6 +37,8 @@
 .background2 {
     background: url(/assets/Career.png) no-repeat;
     background-size: 100% 100%;
+    /* background-size:contain;
+    background-position:center; */
 }
 
 .textJoinUs {
@@ -106,6 +108,29 @@
     height: 100%;
 }
 
+.selectFill {
+    width: 100%;
+    border-width: 0px;
+    border: none;
+    height: 48px;
+    padding-left: 16px;
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("/assets/icons/dropdrow.svg") !important;
+    background-repeat: no-repeat;
+    background-position-x: 85%;
+    background-position-y: 50%;
+    color: #FFFFFF !important;
+    background-color: #4D4D4D;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
 
 .btnFill {
     width: 100%;
@@ -153,9 +178,8 @@
     font-weight: 500;
     font-size: 16px;
     border: 0.5px solid #808080;
-    width: 101px;
-    height: 48px;
     padding: 12px 16px;
+    display: inline;
 }
 
 
@@ -167,8 +191,6 @@
     font-weight: 500;
     font-size: 16px;
     border: 0.5px solid #FF5100;
-
-    width: 101px;
     height: 48px;
     padding: 12px 16px;
 }
@@ -245,7 +267,7 @@
 
 .buttonClare {
     position: absolute;
-    top: 25.33%;
+    top: 20.33%;
     bottom: 8.33%;
     right: 4.33%;
     z-index: 2;

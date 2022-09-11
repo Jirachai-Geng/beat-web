@@ -44,14 +44,14 @@ const Footer = () => {
         });
     };
     return (
-        <div style={{ width: '100%', padding: "0px !impotant" }}>
-            <Container fluid style={{ padding: (width > 1290) ? "0 64px" : "0 16px" }}>
+        <div style={{ width: '100%', padding: "0px !important;"  }}>
+            <Container fluid style={{ padding: (width > 992) ? "0px 64px" : "0 16px"}}>
                 <Row className={styles.line}>
 
                 </Row>
-                <Row  ref={componentRef}>
+                <Row  style={{ padding: (width > 992) ? "64px 0px 0px 0px" : "16px"}} ref={componentRef}>
                     <Col style={{
-                        marginBottom: (width > 1290) ? "52px" : "0px"
+                        marginBottom: (width > 992) ? "52px" : "0px"
                     }} xxl={5} >
                         <div className={styles.text_title}>
                             Contact Information
@@ -63,18 +63,18 @@ const Footer = () => {
                         </div>
                     </Col>
                     <Col xxl={{ span: 4, offset: 1 }}>
-                        <div className={styles.text_title} style={{ paddingTop: (width > 1290) ? "0px" : "36px" }}> Help</div>
+                        <div className={styles.text_title} style={{ paddingTop: (width > 992) ? "0px" : "36px" }}> Help</div>
                         <div className={styles.text}>
                             <p>Privacy Policy </p>
                             <p>Cookie Policy</p>
                         </div>
                     </Col>
-                    <Col className={(width < 1290) ? "" : styles.boxRelative}
+                    <Col className={(width < 992) ? "" : styles.boxRelative}
                         style={{
-                            paddingRight: (width < 1290) ? "16px" : "64px", paddingBottom: (width < 1290) ? "45px" : "64px"
+                            paddingRight: (width < 992) ? "16px" : "64px", paddingBottom: (width < 992) ? "45px" : "64px"
                             , marginBottom: "0px", display: "flex", alignItems: "end", justifyContent: "flex-end"
                         }} xxl={2}>
-                        <Row className={(width < 1290) ? styles.boxRelative : ""} style={{ position: "absolute" }}>
+                        <Row className={(width < 992) ? styles.boxRelative : ""} style={{ position: "absolute" }}>
                             <button onClick={goToTop} className={styles.btnGoTop}> ↑ </button>
                         </Row>
                     </Col>

@@ -19,6 +19,9 @@ const Login = () =>  {
     const {pathname} = Router
     if(password === 'beatactive_1234' && UserName === 'admin'){
       Router.push('/backOffice')
+      localStorage.setItem("login","true")
+    } else {
+      alert("Invalid UserName or password.");
     }
   }
 

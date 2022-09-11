@@ -9,6 +9,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Footer from './components/footer';
 import Partner from './components/partner';
+import { Tooltip } from 'react-bootstrap';
 
 const scrollToFoter = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 const scrollToHome = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
@@ -36,6 +37,8 @@ const Home = () => {
   const ScrollCareer = () => scrollToCareer(CareerRef)
   const ScrollFooter = () => scrollToFoter(FooterRef)
 
+  let [showLang, setShowLang] = useState(false);
+
   return (
     <div>
       <Navbar expand="lg">
@@ -46,12 +49,44 @@ const Home = () => {
                   <img src="/assets/pic_i18/America.svg" alt="" />
                 </div>
               </Tooltip> */}
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
+          <div style={{ display: "flex", flexDirection: "row-reverse" }}>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <div id='lingo-mobile'>
+              <img src="/assets/pic_i18/America.svg" alt="lingo" />
+              <select style={{ display: "flex" }} name="test" id="">
+                <option value="test1"> test2 </option>
+              </select>
+            </div>
+          </div>
+
           <Navbar.Collapse id="responsive-navbar-nav" className="ContainRight">
             <Nav className="size-menu text-center">
               <Nav.Link className={styles.text_link} onClick={ScrollHome}> Home </Nav.Link>
               <Nav.Link className={styles.text_link} onClick={ScrollCareer}> Career </Nav.Link>
               <Nav.Link className={styles.text_link} onClick={ScrollFooter}> Contact Us</Nav.Link>
+              <div className={styles.dropdown}>
+                <div onClick={() => setShowLang(!showLang)} className={styles.dropbtn} id='lingo-desktop'>
+                  <img src="/assets/pic_i18/America.svg" alt="" />
+                </div>
+                {(showLang) ?
+                  <div className={styles.dropdown_content} style={{ display: "block" }}>
+                    <a onClick={() => setShowLang(!showLang)} href="#">
+                      <img src=
+                        "https://media.geeksforgeeks.org/wp-content/uploads/20200630132503/iflag.jpg"
+                        width="20" height="15" /> India</a>
+
+                    <a onClick={() => setShowLang(!showLang)} href="#">
+                      <img src=
+                        "https://media.geeksforgeeks.org/wp-content/uploads/20200630132504/uflag.jpg"
+                        width="20" height="15" /> USA</a>
+                    <a onClick={() => setShowLang(!showLang)} href="#">
+                      <img src=
+                        "https://media.geeksforgeeks.org/wp-content/uploads/20200630132502/eflag.jpg"
+                        width="20" height="15" /> England</a>
+                  </div>
+                  : null}
+              </div>
             </Nav>
           </Navbar.Collapse>
         </Container>

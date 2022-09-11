@@ -7,17 +7,10 @@
 }
 
 .line {
-    margin-top: 28px;
     border-top: 0.5px solid #DEE2E4;
-    margin-left: 12px;
-    margin-right: 12px;
-    margin-bottom: 28px;
+    margin: 0px 0px;
 }
 
-.contantLine {
-    margin-top: 28px;
-    margin: 12px;
-}
 
 .text_title {
     font-family: 'Prompt';
@@ -27,11 +20,9 @@
     font-size: 20px;
     line-height: 30px;
     color: #B3B3B3;
-    margin: 12px;
 }
 
 .text {
-    margin: 12px;
     font-family: 'Prompt';
     font-style: normal;
     font-weight: 500;
@@ -71,18 +62,9 @@
     min-height: 519px;
 }
 
-
-.textParner {
-    font-family: 'SpaceAge';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 48px;
-    line-height: 64px;
-    padding-left: 0px !important;
-    padding-top: 86px !important;
-    padding-bottom: 36px !important;
-    text-align: center;
-    color: #FFFFFF;
+.responsive {
+    width: 100%;
+    height: auto;
 }
 
 .textParnerMobile {
@@ -94,6 +76,18 @@
     padding-left: 0px !important;
     padding-top: 28px !important;
     text-align: center;
+    color: #FFFFFF;
+}
+
+.textParner {
+    font-family: 'SpaceAge';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 64px;
+    padding-left: 0px !important;
+    padding: 158px 0px !important;
+    text-align: left;
     color: #FFFFFF;
 }
 
