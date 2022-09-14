@@ -202,7 +202,7 @@
   position: absolute;
   right:0;
   background-color: #f9f9f9;
-  min-width: 160px;
+  min-width: 216px;
   box-shadow: 0px 8px 16px 
       0px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -210,8 +210,114 @@
 
 .dropdown_content a {
   color: black;
-  padding: 12px 16px;
+  padding: 12px 25px;
   text-decoration: none;
+  text-align: start;
   display: block;
 }
 
+.text_language {
+  font-family: 'Prompt';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #808080;
+  padding-left: 19px;
+}
+
+.text_languageSelect {
+  font-family: 'Prompt';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3D4245;
+  padding-left: 16px;
+}
+
+.img_languageSelectShow {
+  border: 3px solid #FFF;
+  border-radius: 18px;
+  box-shadow: 0 0 0 1px #1A1A1A;
+  height: 28px;
+  width: 28px;
+}
+
+.img_languageSelect {
+  border: 3px solid #FFF;
+  border-radius: 18px;
+  box-shadow: 0 0 0 1px #1A1A1A;
+  height: 36px;
+  width: 36px;
+}
+
+.img_language {
+  height: 30px;
+  width: 30px;
+  filter: grayscale(100%);
+}
+
+/* language mobile */
+
+.dropdown_contentMobile {
+  display: none;
+  position: absolute;
+  right:0;
+  top: 40px;
+  background-color: #f9f9f9;
+  min-width: 216px;
+  box-shadow: 0px 8px 16px 
+      0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown_contentMobile a {
+  color: black;
+  padding: 12px 25px;
+  text-decoration: none;
+  text-align: start;
+  display: block;
+}
+
+.text_languageMobile {
+  font-family: 'Prompt';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #808080;
+  padding-left: 19px;
+}
+
+.text_languageSelectMobile {
+  font-family: 'Prompt';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3D4245;
+  padding-left: 16px;
+}
+
+.img_languageSelectShow {
+  border: 3px solid #FFF;
+  border-radius: 18px;
+  box-shadow: 0 0 0 1px #1A1A1A;
+  height: 28px;
+  width: 28px;
+}
+
+.img_languageSelect {
+  border: 3px solid #FFF;
+  border-radius: 18px;
+  box-shadow: 0 0 0 1px #1A1A1A;
+  height: 36px;
+  width: 36px;
+}
+
+.img_language {
+  height: 30px;
+  width: 30px;
+  filter: grayscale(100%);
+}

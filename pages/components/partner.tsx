@@ -44,8 +44,8 @@ const Partner = () => {
                 <Row ref={componentRef} style={{ padding: (width > 992) ? "0px 64px" : "0 16px" }}>
                     <Col lg={3}>
                         <div className={(width > 922) ? styles.textParner : styles.textParnerMobile}>
-                            <p style={{ textAlign: (width > 1280) ?"start": "center", fontSize: (width > 1280) ? "48px" : "24px" }}>Our </p>
-                            <p style={{ textAlign: (width > 1280) ?"start": "center", fontSize: (width > 1280) ? "48px" : "24px" }}>Partner </p>
+                            <p style={{ textAlign: (width > 1281 ) ?"start": "center", fontSize: (width > 1350 ) ? "48px" : (width > 1281 ) ? "36px": "24px" }}>Our </p>
+                            <p style={{ textAlign: (width > 1281 ) ?"start": "center", fontSize: (width > 1350 ) ? "48px" : (width > 1281 ) ? "36px": "24px" }}>Partner </p>
                         </div>
                     </Col>
                     <Col className={styles.OurPartner} lg={3}>

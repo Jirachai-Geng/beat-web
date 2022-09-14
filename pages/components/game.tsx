@@ -67,7 +67,13 @@ export const useContainerDimensionsGame = (myRef: any) => {
 };
 
 // get table row data
-const tdData = (TableData: any, column: any) => {
+const tdData = (TableData: any, column: any, update = "") => {
+    let mapUpdate = ""
+    TableData.filter((obj: any) => {
+        if (obj.name === update) {
+            mapUpdate = obj.id
+        }
+    })
     return TableData.map((data: any, index: any) => {
         return (
             <tr key={index} style={{ justifyContent: "space-between", padding: "20px !important" }}>
@@ -77,11 +83,14 @@ const tdData = (TableData: any, column: any) => {
                             if (data[v] === null) {
                                 return <td>  </td>
                             } else {
-                                return <td> <div className={styles.textOrange}>{data[v]} P</div></td>
+                                var nf = new Intl.NumberFormat();
+                                return <td> <div className={styles.textOrange}> {nf.format(data[v])} P </div></td>
                             }
                         } else if (v === "id") {
                             if (data[v] === null) {
                                 return <td>  </td>
+                            } else if (data[v] === mapUpdate) {
+                                return <td> <div className={styles.numberCircleOrange}> {data[v]}</div> </td>
                             } else {
                                 return <td> <div className={styles.numberCircle}> {data[v]}</div>  </td>
                             }
@@ -131,7 +140,7 @@ const Game = () => {
     let mobile: boolean
 
     let TableData = [
-        { id: 1, fullName: "", score: 0 },
+        { id: 1, name: "", score: 0 },
     ]
     let column = Object.keys(TableData[0]);
 
@@ -143,32 +152,34 @@ const Game = () => {
     const [seemore, setSeemore] = useState(false)
 
     const seemoreClick = () => {
-        localStorage.setItem('test', 'test')
-
         getData().then((data) => {
-            let dataScore = data.meta.response_data
+            let dataScore = data.message
             setTableData2(dataScore)
             setSeemore(true)
         })
     };
 
     function getData() {
-        return fetch('http://103.13.231.185:8080/api/v1/score')
+        return fetch('http://localhost:8082/score')
             .then((res) => res.json());
     }
 
     useEffect(() => {
-        getData().then((data) => {
-            let dataScore = data.meta.response_data
-            if (width > 992) {
-                const dataScore7 = dataScore.slice(0, 7);
-                setTableData2(dataScore7)
-            } else {
-                dataScore.push({ id: null, fullName: null, score: null })
-                setTableData2(dataScore)
-            }
-            setShowScore(true)
-        })
+        if (width > 0) {
+            getData().then((data) => {
+                let dataScore = data.message
+                if (width > 992) {
+                    const dataScore7 = dataScore.slice(0, 7);
+                    setTableData2(dataScore7)
+                    if (dataScore.length < 7) {
+                        setSeemore(true)
+                    }
+                } else {
+                    setTableData2(dataScore)
+                }
+                setShowScore(true)
+            })
+        }
     }, [width])
 
 
@@ -177,11 +188,33 @@ const Game = () => {
         setIsActive(current => !current);
     };
 
+    const [userName, setUsername] = useState('');
+
     useEffect(() => {
         const interval = setInterval(() => {
-            console.log('This will run every second!');
-        }, 1000);
+            let getFetchData = localStorage.getItem('fetchData')
+            if (getFetchData === "true") {
+                console.log('getFetchData: ', getFetchData)
+                getData().then((data) => {
+                    console.log('data: ', data)
+                    let dataScore = data.message
+                    if (width > 992) {
+                        setTableData2(dataScore)
+                    } else {
+                        dataScore.push({ id: null, name: null, score: null })
+                        setTableData2(dataScore)
+                    }
+                    setShowScore(true)
+                    let userAuth = localStorage.getItem('userAuth')
+                    if (userAuth) {
+                        setUsername(JSON.parse(userAuth).name)
+                    }
+                })
+                localStorage.setItem('fetchData', 'false')
+            }
+        }, 1500);
         return () => clearInterval(interval);
+
     }, []);
 
     const getDataPDPA = async (info: any) => {
@@ -197,7 +230,6 @@ const Game = () => {
                 "https://beatactivethailand.com:8082/pdpa_game",
                 formData
             );
-            console.log('send data pdpa career');
         } catch (ex) {
             console.log(ex);
         }
@@ -288,8 +320,6 @@ const Game = () => {
 
     const [isShowModulSetScreen, setShowModulSetScreen] = useState(false);
     const handleCloseSetScreen = () => setShowModulSetScreen(false);
-    // console.log(session)
-    // console.log(isPlaygame)
     let showResults = true
     return (
         <div>
@@ -297,7 +327,8 @@ const Game = () => {
                 {!isPlaygame ? (
                     <Row className={(width > 992) ? styles.background_white : styles.background_mobile} ref={componentRef}>
                         {session ? (
-                            <Col sm={12} lg={9} className={(width > 992) ? styles.containerLogin : styles.animatedBackgroundMobile} ref={componentGameRef}>
+                            <Col sm={12} lg={9} className={(width > 992) ? styles.containerLogin : styles.animatedBackgroundMobile}
+                                style={{ height: (width > 992) ? 'auto' : '563px' }} ref={componentGameRef}>
                                 <Row fluid setUserFacebook className={(width > 992) ? styles.animatedBackground : styles.background_hide} style={{ width: '100%', height: '100%' }}>
                                     <Col sm={4}></Col>
                                     <Col sm={4} style={{ display: 'flex', justifyContent: 'space-around', flexDirection: 'column', height: '100%' }}>
@@ -354,8 +385,8 @@ const Game = () => {
 
                                             <input type="checkbox" id="privacy" name="privacy" onChange={e => setPrivacy((e.target.checked).toString())} required />
                                             <label className={styles.textLabel}>
-                                                Accept the <a href='https://www.bhirajburi.co.th/th/privacy-policy' target="_blank" 
-                                                rel="noreferrer noopener" className="textpolicy"> terms and conditions also privacy policy.</a>
+                                                Accept the <a href='https://www.bhirajburi.co.th/th/privacy-policy' target="_blank"
+                                                    rel="noreferrer noopener" className="textpolicy"> terms and conditions also privacy policy.</a>
                                             </label>
 
                                             <button type="submit" className={styles.btnEmail}>
@@ -363,10 +394,10 @@ const Game = () => {
                                             </button>
                                         </form>
 
-                                        <div className={styles.line}> </div>
+                                        {/* <div className={styles.line}> </div>
                                         <button className={styles.btnFacebook} onClick={() => { setUserFacebook(), Privacy ? signIn('facebook') : null }}>
                                             Login with Facebook
-                                        </button>
+                                        </button> */}
                                     </Col>
                                     <Col sm={(width > 992) ? 4 : 3}></Col>
                                 </Row>
@@ -381,10 +412,10 @@ const Game = () => {
                                     </thead>
                                     {(showScore) ?
                                         <tbody className={styles.tableScore}>
-                                            {tdData(TableData2, column)}
+                                            {tdData(TableData2, column, userName)}
                                         </tbody>
                                         : <tbody className={styles.tableScore}>
-                                            {tdData(TableData, column)}
+                                            {tdData(TableData, column, userName)}
                                         </tbody>
                                     }
                                 </table>
@@ -404,10 +435,10 @@ const Game = () => {
                                         </thead>
                                         {(showScore) ?
                                             <tbody className={styles.tableScore}>
-                                                {tdData(TableData2, column)}
+                                                {tdData(TableData2, column, userName)}
                                             </tbody>
                                             : <tbody className={styles.tableScore}>
-                                                {tdData(TableData, column)}
+                                                {tdData(TableData, column, userName)}
                                             </tbody>
                                         }
                                     </table>
@@ -443,10 +474,10 @@ const Game = () => {
                                     </thead>
                                     {(showScore) ?
                                         <tbody className={styles.tableScore}>
-                                            {tdData(TableData2, column)}
+                                            {tdData(TableData2, column, userName)}
                                         </tbody>
                                         : <tbody className={styles.tableScore}>
-                                            {tdData(TableData, column)}
+                                            {tdData(TableData, column, userName)}
                                         </tbody>
                                     }
                                 </table>
@@ -462,7 +493,7 @@ const Game = () => {
                 <Modal
                     show={isShowModulSetScreen}
                     onHide={handleCloseSetScreen}
-                    dialogClassName="modal-dialog-centered ">
+                    dialogClassName="modal-dialog-centered modal-gameMobile">
                     <Modal.Body style={{ display: 'flex', height: '100%' }}>
                         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
                             <div style={{ textAlign: "center", padding: "21px" }}> <img src={"/assets/icons/screen_rotate.png"} alt="rotant" /> </div>

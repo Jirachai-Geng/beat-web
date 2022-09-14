@@ -48,7 +48,10 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
             //     }
             // },
             session({ session, token, user }) {
-                return session // The return type will match the one returned in `useSession()`
+                if (token) {
+                    session.id = token.id;
+                }
+                return session; // The return type will match the one returned in `useSession()`
             }
         },
         // events:{

@@ -11,27 +11,19 @@ const BackOffice = () => {
   const [TablePDPAGame, setTablePDPAGame] = useState([])
   const [TablePDPACareer, setTablePDPACareer] = useState([])
 
-  let PDPA = [
-    { ip: " 172.21.208.1", time: "2022/09/05" },
-  ]
-
-  let TablePlayerList = [
-    { id: 1, name: "" },
-  ]
-
-
-  const [TableData2, setTableData2] = useState([])
+  const [TableScore, setTableScore] = useState([])
+  const [TablePlay, setTablePLay] = useState([])
 
   const [showScore, setScore] = useState(false)
   useEffect(() => {
-    if(localStorage.getItem("login") !== "true"){
+    if (localStorage.getItem("login") !== "true") {
       Router.push('/login')
     }
     fetch('https://beatactivethailand.com:8082/pdpa_game')
-    .then((res) => res.json())
-    .then((dataCarrer) => {
-      setTablePDPAGame(dataCarrer.message)
-    })
+      .then((res) => res.json())
+      .then((dataCarrer) => {
+        setTablePDPAGame(dataCarrer.message)
+      })
 
     fetch('https://beatactivethailand.com:8082/pdpa_career')
       .then((res) => res.json())
@@ -39,19 +31,19 @@ const BackOffice = () => {
         setTablePDPACareer(dataCarrer.message)
       })
 
-    fetch('http://localhost:8080/api/v1/score')
+    fetch('https://beatactivethailand.com:8082/score')
       .then((res) => res.json())
       .then((data) => {
-        setTableData2(data.meta.response_data)
+        setTableScore(data.message)
         setScore(true)
       })
 
-      // fetch('http://localhost:8080/api/v1/player')
-      // .then((res) => res.json())
-      // .then((data) => {
-      //   setTableData2(data.meta.response_data)
-      //   setScore(true)
-      // })
+    fetch('https://beatactivethailand.com:8082/player')
+      .then((res) => res.json())
+      .then((data) => {
+        setTablePLay(data.message)
+        setScore(true)
+      })
   }, [])
 
   return <>
@@ -69,9 +61,9 @@ const BackOffice = () => {
       <div className={styles.form_score} >
         <Row >
           <Col sm={2} className={styles.border_right}>
-            <Row> <div className={styles.textScore} style={{ fontWeight: (selectMenu === "pdpa") ? 700 : 400 , cursor: 'pointer'}}
+            <Row> <div className={styles.textScore} style={{ fontWeight: (selectMenu === "pdpa") ? 700 : 400, cursor: 'pointer' }}
               onClick={() => setSelectMenu("pdpa")}> PDPA Record </div> </Row>
-            <Row> <div className={styles.textScore} style={{ fontWeight: (selectMenu === "game") ? 700 : 400 , cursor: 'pointer'}}
+            <Row> <div className={styles.textScore} style={{ fontWeight: (selectMenu === "game") ? 700 : 400, cursor: 'pointer' }}
               onClick={() => setSelectMenu("game")}> Game Data </div> </Row>
           </Col>
 
@@ -107,7 +99,7 @@ const BackOffice = () => {
                     <Col sm={3}> <div className={styles.textScore}> Game leader board </div></Col>
                     <Col sm={3}>
                       <div style={{ padding: "26px", textAlign: "center" }}>
-                        <CSVLink className={styles.btnPolicy} filename={`Leader_Board_${moment().format("YYYY.MM.DD_HH.mm.ss")}.csv`} data={TableData2}>Download</CSVLink>
+                        <CSVLink className={styles.btnPolicy} filename={`Leader_Board_${moment().format("YYYY.MM.DD_HH.mm.ss")}.csv`} data={TableScore}>Download</CSVLink>
                       </div>
                     </Col>
 
@@ -118,7 +110,7 @@ const BackOffice = () => {
                     <Col sm={3}> <div className={styles.textScore}> Game player list </div></Col>
                     <Col sm={3}>
                       <div style={{ padding: "26px", textAlign: "center" }}>
-                        <CSVLink className={styles.btnPolicy} filename={`Game_Player_${moment().format("YYYY.MM.DD_HH.mm.ss")}.csv`} data={TableData2}>Download</CSVLink>
+                        <CSVLink className={styles.btnPolicy} filename={`Game_Player_${moment().format("YYYY.MM.DD_HH.mm.ss")}.csv`} data={TablePlay}>Download</CSVLink>
                       </div>
                     </Col>
 

@@ -231,9 +231,20 @@ const Career = () => {
     let career13B = 0;
     let [career_13B, setCareer13B] = useState(career13B);
 
+    // career 14
+    let [career_14, setCareer14] = useState(0);
+
+    // career 15
+    let [career_15, setCareer15] = useState(0);
+
+    // career 16
+    let [career_16, setCareer16] = useState(0);
+
+    // career 17
+    let [career_17, setCareer17] = useState(0);
+
     // career 18
-    let career18 = 0;
-    let [career_18, setCareer18] = useState(career18);
+    let [career_18, setCareer18] = useState(0);
 
     const onUploadFile = async (item: any) => {
         const formData = new FormData();
@@ -248,6 +259,7 @@ const Career = () => {
         try {
             await axios.post(
                 "https://beatactivethailand.com:8082/upload",
+                // "http://localhost:8082/upload",
                 formData
             );
 
@@ -256,7 +268,7 @@ const Career = () => {
         }
     }
 
-    let [canSendAPI, setCanSendAPI] = useState(false)
+    let [canSendAPI, setCanSendAPI] = useState(true)
     useEffect(() => {
         // if (activeStep === 1 && (isValidURL || (!breakUpload && careerFile))) {
         if (activeStep === 1) {
@@ -273,7 +285,6 @@ const Career = () => {
                 setBtnDisable(false)
             } else if (activeStep === 4 && career_5 !== 0) {
                 setBtnDisable(false)
-                console.log("career 5: ",(activeStep === 4 && career_5 !== 0)  )
             } else if (activeStep === 5 && career_6 !== 0) {
                 setBtnDisable(false)
             } else if (activeStep === 6 && career_7 !== 0) {
@@ -287,6 +298,16 @@ const Career = () => {
             } else if (activeStep === 10 && career_11 !== 0) {
                 setBtnDisable(false)
             } else if (activeStep === 11 && career_12 !== 0) {
+                setBtnDisable(false)
+            } else if (activeStep === 12 && career_13A !== 0 && career_13B !== 0) {
+                setBtnDisable(false)
+            } else if (activeStep === 13 && career_14 !== 0) {
+                setBtnDisable(false)
+            } else if (activeStep === 14 && career_15 !== 0) {
+                setBtnDisable(false)
+            } else if (activeStep === 15 && career_16 !== 0) {
+                setBtnDisable(false)
+            } else if (activeStep === 16 && career_17 !== 0) {
                 setBtnDisable(false)
             } else if (activeStep === 17 && career_18 !== 0) {
                 setBtnDisable(false)
@@ -321,19 +342,43 @@ const Career = () => {
             let aws13A: string = ''
             question13A.map(item => {
                 if (item.code === career_13A) {
-                    aws13A = item.name
+                    aws13A = `A ${item.code}. ${item.name}`
                 }
             })
             let aws13B: string = ''
             question13B.map(item => {
                 if (item.code === career_13B) {
-                    aws13B = item.name
+                    aws13B = `B ${item.code}. ${item.name}`
+                }
+            })
+            let aws14: string = ''
+            question14.map(item => {
+                if (item.code === career_14) {
+                    aws14 = `${item.code}. ${item.name}`
+                }
+            })
+            let aws15: string = ''
+            question15.map(item => {
+                if (item.code === career_15) {
+                    aws15 = `${item.code}. ${item.name}`
+                }
+            })
+            let aws16: string = ''
+            question16.map(item => {
+                if (item.code === career_16) {
+                    aws16 = `${item.code}. ${item.name}`
+                }
+            })
+            let aws17: string = ''
+            question17.map(item => {
+                if (item.code === career_17) {
+                    aws17 = `${item.code}. ${item.name}`
                 }
             })
             let aws18: string = ''
             question18.map(item => {
                 if (item.code === career_18) {
-                    aws18 = item.name
+                    aws18 = `${item.code}. ${item.name}`
                 }
             })
             let sendData = {
@@ -342,15 +387,27 @@ const Career = () => {
                 'aws3': aws3,
                 'aws4': aws4,
                 'career_5': career_5,
+                'career_6': career_6,
+                'career_7': career_7,
+                'career_8': career_8,
+                'career_9': career_9,
+                'career_10': career_10,
+                'career_11': career_11,
+                'career_12': career_12,
                 'career_13': {
                     'career13A': aws13A,
                     'career13B': aws13B
                 },
+                'career_14': aws14,
+                'career_15': aws15,
+                'career_16': aws16,
+                'career_17': aws17,
                 'career18': aws18
             }
 
-            if (dataCareer.name != '') {
-                const interval = setInterval(() => onUploadFile(sendData)
+            if (dataCareer.name != '' && canSendAPI) {
+                setCanSendAPI(false)
+                onUploadFile(sendData)
                     .then(() => {
                         setDataCareer({
                             name: '',
@@ -360,13 +417,41 @@ const Career = () => {
                             line_id: '',
                             phone_countries: '+66',
                             phone_number: ''
-                        })
-                        setCanSendAPI(false)
-                    }), 3500)
-                return () => clearInterval(interval);
+                        });
+                        setResume('Upload your resume*');
+                        setFilePDF();
+                        setFileNamePDF("");
+                        setVideoURL('');
+                        setFileVDO();
+                        setCareerFile('');
+                        setFileNameVDO('');
+                        setArrCareer3([false, false, false, false, false, false, false, false]);
+                        setArrCareer4([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
+                        setCareer5(0);
+                        setCareer6(0);
+                        setCareer7(0);
+                        setCareer8(0);
+                        setCareer9(0);
+                        setCareer10(0);
+                        setCareer11(0);
+                        setCareer12(0);
+                        setCareer13A(0);
+                        setCareer13B(0);
+                        setCareer14(0);
+                        setCareer15(0);
+                        setCareer16(0);
+                        setCareer17(0);
+                        setCareer18(0);
+                    })
             }
         }
     });
+
+    const handleResetCareer = () => {
+        setShowModul(true);
+        setCanSendAPI(true);
+        setActiveStep(0);
+    };
 
     const steps = [
         {
@@ -495,8 +580,8 @@ const Career = () => {
             page: <span className={styles.headerTitle}>3/18</span>,
             step: 16.5,
             description:
-                <Container fluid >
-                    <Row>
+                <Container fluid style={{ marginBottom: "150px" }}>
+                    <Row >
                         <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }}>
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_3(0)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career3/sport1.png" alt="sport1" />
@@ -595,7 +680,7 @@ const Career = () => {
             page: <span className={styles.headerTitle}>4/18</span>,
             step: 22,
             description:
-                <Container fluid >
+                <Container fluid style={{ marginBottom: "150px" }}>
                     <Row>
                         <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }}>
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(0)}>
@@ -803,28 +888,28 @@ const Career = () => {
                                     backgroundColor: (career_5 === 1) ? "#FF5100" : "#1A1A1A"
                                     , marginBottom: (width > 992) ? "0px" : "8px"
                                 }}
-                                    onClick={() => {setCareer5(1), handleNext(1)  }}>
+                                    onClick={() => { setCareer5(1) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>1</p>
                                     <p style={{ marginBottom: "0px" }}>ใช่ที่สุด</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_5 === 2) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1), setCareer5(2) }}>
+                                    onClick={() => { setCareer5(2) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>2</p>
                                     <p style={{ marginBottom: "0px" }}>ใช่</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_5 === 3) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1), setCareer5(3) }}>
+                                    onClick={() => { setCareer5(3) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>3</p>
                                     <p style={{ marginBottom: "0px" }}>เฉยๆ</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_5 === 4) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1), setCareer5(4) }}>
+                                    onClick={() => { setCareer5(4) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>4</p>
                                     <p style={{ marginBottom: "0px" }}>ไม่ใช่เลย</p>
                                 </div>
@@ -845,7 +930,7 @@ const Career = () => {
                             <div>
                                 <p className={styles.question}
                                     style={{ fontSize: (width > 992) ? "24px" : "18px" }}>
-                                    คุณกระตือรือร้นที่จะเข้าร่วมกิจกรรม Out Door กับเพื่อนฝูง มากกว่าชอบใช้เวลาว่างในการเล่นเกมคนเดียว
+                                    คุณกระตือรือร้นที่จะเข้าร่วมกิจกรรม Outdoor กับเพื่อนฝูง มากกว่าชอบใช้เวลาว่างในการเล่นเกมคนเดียว
                                 </p>
                             </div>
                         </Row>
@@ -855,28 +940,28 @@ const Career = () => {
                                     backgroundColor: (career_6 === 1) ? "#FF5100" : "#1A1A1A"
                                     , marginBottom: (width > 992) ? "0px" : "8px"
                                 }}
-                                    onClick={() => { handleNext(1); setCareer6(1) }}>
+                                    onClick={() => { setCareer6(1) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>1</p>
                                     <p style={{ marginBottom: "0px" }}>ใช่ที่สุด</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_6 === 2) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer6(2) }}>
+                                    onClick={() => { setCareer6(2) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>2</p>
                                     <p style={{ marginBottom: "0px" }}>ใช่</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_6 === 3) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer6(3) }}>
+                                    onClick={() => { setCareer6(3) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>3</p>
                                     <p style={{ marginBottom: "0px" }}>เฉยๆ</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_6 === 4) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer6(4) }}>
+                                    onClick={() => { setCareer6(4) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>4</p>
                                     <p style={{ marginBottom: "0px" }}>ไม่ใช่เลย</p>
                                 </div>
@@ -897,7 +982,7 @@ const Career = () => {
                             <div>
                                 <p className={styles.question}
                                     style={{ fontSize: (width > 992) ? "24px" : "18px" }}>
-                                    คุณแสดงความสนใจที่ที่ใช้ทักษะด้านร่างกาย มากกว่าความคิดสร้างสรรค์ในการทำงานหากมีโอกาศ
+                                    คุณแสดงความสนใจที่ใช้ทักษะด้านร่างกาย มากกว่าความคิดสร้างสรรค์ในการทำงานหากมีโอกาส
                                 </p>
                             </div>
                         </Row>
@@ -907,28 +992,28 @@ const Career = () => {
                                     backgroundColor: (career_7 === 1) ? "#FF5100" : "#1A1A1A"
                                     , marginBottom: (width > 992) ? "0px" : "8px"
                                 }}
-                                    onClick={() => { handleNext(1); setCareer7(1) }}>
+                                    onClick={() => { setCareer7(1) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>1</p>
                                     <p style={{ marginBottom: "0px" }}>ใช่ที่สุด</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_7 === 2) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer7(2) }}>
+                                    onClick={() => { setCareer7(2) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>2</p>
                                     <p style={{ marginBottom: "0px" }}>ใช่</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_7 === 3) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer7(3) }}>
+                                    onClick={() => { setCareer7(3) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>3</p>
                                     <p style={{ marginBottom: "0px" }}>เฉยๆ</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_7 === 4) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer7(4) }}>
+                                    onClick={() => { setCareer7(4) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>4</p>
                                     <p style={{ marginBottom: "0px" }}>ไม่ใช่เลย</p>
                                 </div>
@@ -959,28 +1044,28 @@ const Career = () => {
                                     backgroundColor: (career_8 === 1) ? "#FF5100" : "#1A1A1A"
                                     , marginBottom: (width > 992) ? "0px" : "8px"
                                 }}
-                                    onClick={() => { handleNext(1); setCareer8(1) }}>
+                                    onClick={() => { setCareer8(1) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>1</p>
                                     <p style={{ marginBottom: "0px" }}>ใช่ที่สุด</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_8 === 2) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer8(2) }}>
+                                    onClick={() => { setCareer8(2) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>2</p>
                                     <p style={{ marginBottom: "0px" }}>ใช่</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_8 === 3) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer8(3) }}>
+                                    onClick={() => { setCareer8(3) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>3</p>
                                     <p style={{ marginBottom: "0px" }}>เฉยๆ</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_8 === 4) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer8(4) }}>
+                                    onClick={() => { setCareer8(4) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>4</p>
                                     <p style={{ marginBottom: "0px" }}>ไม่ใช่เลย</p>
                                 </div>
@@ -1011,28 +1096,28 @@ const Career = () => {
                                     backgroundColor: (career_9 === 1) ? "#FF5100" : "#1A1A1A"
                                     , marginBottom: (width > 992) ? "0px" : "8px"
                                 }}
-                                    onClick={() => { handleNext(1); setCareer9(1) }}>
+                                    onClick={() => { setCareer9(1) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>1</p>
                                     <p style={{ marginBottom: "0px" }}>ใช่ที่สุด</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_9 === 2) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer9(2) }}>
+                                    onClick={() => { setCareer9(2) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>2</p>
                                     <p style={{ marginBottom: "0px" }}>ใช่</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_9 === 3) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer9(3) }}>
+                                    onClick={() => { setCareer9(3) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>3</p>
                                     <p style={{ marginBottom: "0px" }}>เฉยๆ</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_9 === 4) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer9(4) }}>
+                                    onClick={() => { setCareer9(4) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>4</p>
                                     <p style={{ marginBottom: "0px" }}>ไม่ใช่เลย</p>
                                 </div>
@@ -1053,7 +1138,7 @@ const Career = () => {
                             <div>
                                 <p className={styles.question}
                                     style={{ fontSize: (width > 992) ? "24px" : "18px" }}>
-                                    คุณมีลักษณะพิเศษทา่งร่างกายที่เป็นศักยภาพพื้นฐานทางกีฬาได้อย่างดี (เช่น มีกล้ามเนื้อที่แข็งแรง ช่วงขาที่ยาวเหมาะที่จะเป็นนักวิ่ง หรือมีร่างกายยืดหยุ่นเหมาะที่จะเป็น นักยิมนาสติก เป็นต้น)
+                                    คุณมีลักษณะพิเศษทางร่างกายที่เป็นศักยภาพพื้นฐานทางกีฬาได้อย่างดี (เช่น มีกล้ามเนื้อที่แข็งแรง ช่วงขาที่ยาวเหมาะที่จะเป็นนักวิ่ง หรือมีร่างกายยืดหยุ่นเหมาะที่จะเป็น นักยิมนาสติก เป็นต้น)
                                 </p>
                             </div>
                         </Row>
@@ -1063,28 +1148,28 @@ const Career = () => {
                                     backgroundColor: (career_10 === 1) ? "#FF5100" : "#1A1A1A"
                                     , marginBottom: (width > 992) ? "0px" : "8px"
                                 }}
-                                    onClick={() => { handleNext(1); setCareer10(1) }}>
+                                    onClick={() => { setCareer10(1) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>1</p>
                                     <p style={{ marginBottom: "0px" }}>ใช่ที่สุด</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_10 === 2) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer10(2) }}>
+                                    onClick={() => { setCareer10(2) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>2</p>
                                     <p style={{ marginBottom: "0px" }}>ใช่</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_10 === 3) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer10(3) }}>
+                                    onClick={() => { setCareer10(3) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>3</p>
                                     <p style={{ marginBottom: "0px" }}>เฉยๆ</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_10 === 4) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer10(4) }}>
+                                    onClick={() => { setCareer10(4) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>4</p>
                                     <p style={{ marginBottom: "0px" }}>ไม่ใช่เลย</p>
                                 </div>
@@ -1105,7 +1190,7 @@ const Career = () => {
                             <div>
                                 <p className={styles.question}
                                     style={{ fontSize: (width > 992) ? "24px" : "18px" }}>
-                                    คุณมีบุคคลที่ชื่นชอบ หรือบุคคลต้นแบบที่เป็นนนักีฬา มากกว่าศิลลปิน นักร้อง นักแสดง
+                                    คุณมีบุคคลที่ชื่นชอบ หรือบุคคลต้นแบบที่เป็นนักกีฬา มากกว่าศิลปิน นักร้อง นักแสดง
                                 </p>
                             </div>
                         </Row>
@@ -1115,28 +1200,28 @@ const Career = () => {
                                     backgroundColor: (career_11 === 1) ? "#FF5100" : "#1A1A1A"
                                     , marginBottom: (width > 992) ? "0px" : "8px"
                                 }}
-                                    onClick={() => { handleNext(1); setCareer11(1) }}>
+                                    onClick={() => { setCareer11(1) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>1</p>
                                     <p style={{ marginBottom: "0px" }}>ใช่ที่สุด</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_11 === 2) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer11(2) }}>
+                                    onClick={() => { setCareer11(2) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>2</p>
                                     <p style={{ marginBottom: "0px" }}>ใช่</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_11 === 3) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer11(3) }}>
+                                    onClick={() => { setCareer11(3) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>3</p>
                                     <p style={{ marginBottom: "0px" }}>เฉยๆ</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_11 === 4) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer11(4) }}>
+                                    onClick={() => { setCareer11(4) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>4</p>
                                     <p style={{ marginBottom: "0px" }}>ไม่ใช่เลย</p>
                                 </div>
@@ -1157,7 +1242,7 @@ const Career = () => {
                             <div>
                                 <p className={styles.question}
                                     style={{ fontSize: (width > 992) ? "24px" : "18px" }}>
-                                    คุณชื่นชอบการพบปะผู้คน และทำความรู้จักกับเพื่อนใหม่ มากกว่าการเรียนร้เพื่อพัฒนาทักษะด้านอื่นๆที่ยังไม่เคยลองทำ
+                                    คุณชื่นชอบการพบปะผู้คน และทำความรู้จักกับเพื่อนใหม่ มากกว่าการเรียนรู้เพื่อพัฒนาทักษะด้านอื่นๆที่ยังไม่เคยลองทำ
                                 </p>
                             </div>
                         </Row>
@@ -1167,28 +1252,28 @@ const Career = () => {
                                     backgroundColor: (career_12 === 1) ? "#FF5100" : "#1A1A1A"
                                     , marginBottom: (width > 992) ? "0px" : "8px"
                                 }}
-                                    onClick={() => { handleNext(1); setCareer12(1) }}>
+                                    onClick={() => { setCareer12(1) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>1</p>
                                     <p style={{ marginBottom: "0px" }}>ใช่ที่สุด</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_12 === 2) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer12(2) }}>
+                                    onClick={() => { setCareer12(2) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>2</p>
                                     <p style={{ marginBottom: "0px" }}>ใช่</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_12 === 3) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer12(3) }}>
+                                    onClick={() => { setCareer12(3) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>3</p>
                                     <p style={{ marginBottom: "0px" }}>เฉยๆ</p>
                                 </div>
                             </Col>
                             <Col xs={6} md={3}>
                                 <div className={styles.career5BtnChoice} style={{ backgroundColor: (career_12 === 4) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer12(4) }}>
+                                    onClick={() => { setCareer12(4) }}>
                                     <p style={{ marginBottom: "5px", fontSize: "20px" }}>4</p>
                                     <p style={{ marginBottom: "0px" }}>ไม่ใช่เลย</p>
                                 </div>
@@ -1218,12 +1303,7 @@ const Career = () => {
                                         <div className={(width > 992) ? styles.career6BtnChoice : styles.career6BtnChoiceMobile} style={{
                                             backgroundColor: (career_13A === 1) ? "#FF5100" : "#1A1A1A"
                                         }}
-                                            onClick={() => {
-                                                if (career_13B !== 0) {
-                                                    handleNext(1)
-                                                };
-                                                setCareer13A(1)
-                                            }}>
+                                            onClick={() => { setCareer13A(1) }}>
                                             <p style={{
                                                 marginBottom: "5px"
                                                 , fontSize: (width > 992) ? "20px" : "16px"
@@ -1234,12 +1314,7 @@ const Career = () => {
                                         <div className={(width > 992) ? styles.career6BtnChoice : styles.career6BtnChoiceMobile} style={{
                                             backgroundColor: (career_13A === 2) ? "#FF5100" : "#1A1A1A"
                                         }}
-                                            onClick={() => {
-                                                if (career_13B !== 0) {
-                                                    handleNext(1)
-                                                };
-                                                setCareer13A(2)
-                                            }}>
+                                            onClick={() => { setCareer13A(2) }}>
                                             <p style={{
                                                 marginBottom: "5px"
                                                 , fontSize: (width > 992) ? "20px" : "16px"
@@ -1265,12 +1340,7 @@ const Career = () => {
                                         <div className={(width > 992) ? styles.career6BtnChoice : styles.career6BtnChoiceMobile} style={{
                                             backgroundColor: (career_13B === 1) ? "#FF5100" : "#1A1A1A"
                                         }}
-                                            onClick={() => {
-                                                if (career_13A !== 0) {
-                                                    handleNext(1)
-                                                };
-                                                setCareer13B(1)
-                                            }}>
+                                            onClick={() => { setCareer13B(1) }}>
                                             <p style={{
                                                 marginBottom: "5px"
                                                 , fontSize: (width > 992) ? "20px" : "16px"
@@ -1281,12 +1351,7 @@ const Career = () => {
                                         <div className={(width > 992) ? styles.career6BtnChoice : styles.career6BtnChoiceMobile} style={{
                                             backgroundColor: (career_13B === 2) ? "#FF5100" : "#1A1A1A"
                                         }}
-                                            onClick={() => {
-                                                if (career_13A !== 0) {
-                                                    handleNext(1)
-                                                };
-                                                setCareer13B(2)
-                                            }}>
+                                            onClick={() => { setCareer13B(2) }}>
                                             <p style={{
                                                 marginBottom: "5px"
                                                 , fontSize: (width > 992) ? "20px" : "16px"
@@ -1303,7 +1368,7 @@ const Career = () => {
                 </Container >,
         },
         {
-            label: <span className={styles.headerTitle}>สไตล์การทำงานแบบไหนที่บ่งบอกความเป็นตัวคุณ</span>,
+            label: <span className={styles.headerTitle}>จงเลือกข้อที่คิดว่าตรงกับตัวเองมากที่สุด</span>,
             page: <span className={styles.headerTitle}>14/18</span>,
             step: 77,
             description:
@@ -1318,8 +1383,8 @@ const Career = () => {
 
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
-                                    style={{ backgroundColor: (career_18 === 1) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(1) }}>
+                                    style={{ backgroundColor: (career_14 === 1) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { setCareer14(1) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}> {question14[0].name}  </p>
                                 </div>
                             </Col>
@@ -1334,8 +1399,8 @@ const Career = () => {
 
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
-                                    style={{ backgroundColor: (career_18 === 2) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(2) }}>
+                                    style={{ backgroundColor: (career_14 === 2) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { setCareer14(2) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}> {question14[1].name}  </p>
                                 </div>
                             </Col>
@@ -1350,8 +1415,8 @@ const Career = () => {
 
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
-                                    style={{ backgroundColor: (career_18 === 3) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(3) }}>
+                                    style={{ backgroundColor: (career_14 === 3) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { setCareer14(3) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}> {question14[2].name}  </p>
                                 </div>
                             </Col>
@@ -1366,8 +1431,8 @@ const Career = () => {
 
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
-                                    style={{ backgroundColor: (career_18 === 4) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(4) }}>
+                                    style={{ backgroundColor: (career_14 === 4) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { setCareer14(4) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}> {question14[3].name} </p>
                                 </div>
                             </Col>
@@ -1377,7 +1442,7 @@ const Career = () => {
                 </Container>,
         },
         {
-            label: <span className={styles.headerTitle}>สไตล์การทำงานแบบไหนที่บ่งบอกความเป็นตัวคุณ</span>,
+            label: <span className={styles.headerTitle}>จงเลือกข้อที่คิดว่าตรงกับตัวเองมากที่สุด</span>,
             page: <span className={styles.headerTitle}>15/18</span>,
             step: 82.5,
             description:
@@ -1392,8 +1457,8 @@ const Career = () => {
 
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
-                                    style={{ backgroundColor: (career_18 === 1) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(1) }}>
+                                    style={{ backgroundColor: (career_15 === 1) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { setCareer15(1) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}> {question15[0].name} </p>
                                 </div>
                             </Col>
@@ -1408,8 +1473,8 @@ const Career = () => {
 
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
-                                    style={{ backgroundColor: (career_18 === 2) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(2) }}>
+                                    style={{ backgroundColor: (career_15 === 2) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { setCareer15(2) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}> {question15[1].name} </p>
                                 </div>
                             </Col>
@@ -1424,8 +1489,8 @@ const Career = () => {
 
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
-                                    style={{ backgroundColor: (career_18 === 3) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(3) }}>
+                                    style={{ backgroundColor: (career_15 === 3) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { setCareer15(3) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}> {question15[2].name} </p>
                                 </div>
                             </Col>
@@ -1440,8 +1505,8 @@ const Career = () => {
 
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
-                                    style={{ backgroundColor: (career_18 === 4) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(4) }}>
+                                    style={{ backgroundColor: (career_15 === 4) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { setCareer15(4) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}> {question15[3].name} </p>
                                 </div>
                             </Col>
@@ -1451,7 +1516,7 @@ const Career = () => {
                 </Container>,
         },
         {
-            label: <span className={styles.headerTitle}>สไตล์การทำงานแบบไหนที่บ่งบอกความเป็นตัวคุณ</span>,
+            label: <span className={styles.headerTitle}>จงเลือกข้อที่คิดว่าตรงกับตัวเองมากที่สุด</span>,
             page: <span className={styles.headerTitle}>16/18</span>,
             step: 88,
             description:
@@ -1466,8 +1531,8 @@ const Career = () => {
 
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
-                                    style={{ backgroundColor: (career_18 === 1) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(1) }}>
+                                    style={{ backgroundColor: (career_16 === 1) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { setCareer16(1) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}> {question16[0].name} </p>
                                 </div>
                             </Col>
@@ -1482,8 +1547,8 @@ const Career = () => {
 
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
-                                    style={{ backgroundColor: (career_18 === 2) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(2) }}>
+                                    style={{ backgroundColor: (career_16 === 2) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { setCareer16(2) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}> {question16[1].name} </p>
                                 </div>
                             </Col>
@@ -1498,8 +1563,8 @@ const Career = () => {
 
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
-                                    style={{ backgroundColor: (career_18 === 3) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(3) }}>
+                                    style={{ backgroundColor: (career_16 === 3) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { setCareer16(3) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}> {question16[2].name} </p>
                                 </div>
                             </Col>
@@ -1514,8 +1579,8 @@ const Career = () => {
 
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
-                                    style={{ backgroundColor: (career_18 === 4) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(4) }}>
+                                    style={{ backgroundColor: (career_16 === 4) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { setCareer16(4) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}> {question16[3].name} </p>
                                 </div>
                             </Col>
@@ -1525,7 +1590,7 @@ const Career = () => {
                 </Container>,
         },
         {
-            label: <span className={styles.headerTitle}>สไตล์การทำงานแบบไหนที่บ่งบอกความเป็นตัวคุณ</span>,
+            label: <span className={styles.headerTitle}>จงเลือกข้อที่คิดว่าตรงกับตัวเองมากที่สุด</span>,
             page: <span className={styles.headerTitle}>17/18</span>,
             step: 93.5,
             description:
@@ -1540,8 +1605,8 @@ const Career = () => {
 
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
-                                    style={{ backgroundColor: (career_18 === 1) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(1) }}>
+                                    style={{ backgroundColor: (career_17 === 1) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { setCareer17(1) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}> {question17[0].name} </p>
                                 </div>
                             </Col>
@@ -1556,8 +1621,8 @@ const Career = () => {
 
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
-                                    style={{ backgroundColor: (career_18 === 2) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(2) }}>
+                                    style={{ backgroundColor: (career_17 === 2) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { setCareer17(2) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}> {question17[1].name} </p>
                                 </div>
                             </Col>
@@ -1572,8 +1637,8 @@ const Career = () => {
 
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
-                                    style={{ backgroundColor: (career_18 === 3) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { setCareer18(3) }}>
+                                    style={{ backgroundColor: (career_17 === 3) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { setCareer17(3) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}> {question17[2].name} </p>
                                 </div>
                             </Col>
@@ -1588,8 +1653,8 @@ const Career = () => {
 
                             <Col xs={12} md={11}>
                                 <div className={(width > 992) ? styles.career18BtnChoice : styles.career18BtnChoiceMobile}
-                                    style={{ backgroundColor: (career_18 === 4) ? "#FF5100" : "#1A1A1A" }}
-                                    onClick={() => { handleNext(1); setCareer18(4) }}>
+                                    style={{ backgroundColor: (career_17 === 4) ? "#FF5100" : "#1A1A1A" }}
+                                    onClick={() => { setCareer17(4) }}>
                                     <p style={{ marginBottom: "5px", fontSize: (width > 992) ? "20px" : "16px" }}> {question17[3].name} </p>
                                 </div>
                             </Col>
@@ -1599,7 +1664,7 @@ const Career = () => {
                 </Container>,
         },
         {
-            label: <span className={styles.headerTitle}>สไตล์การทำงานแบบไหนที่บ่งบอกความเป็นตัวคุณ</span>,
+            label: <span className={styles.headerTitle}>จงเลือกข้อที่คิดว่าตรงกับตัวเองมากที่สุด</span>,
             page: <span className={styles.headerTitle}>18/18</span>,
             step: 99,
             description:
@@ -1693,10 +1758,13 @@ const Career = () => {
                             <p>Your submission has been sent. We’ll contact you when a decision is made</p>
                         </div>
 
-                        <div className={styles.line} style={{ paddingBottom: "36px" }}> </div>
+                        <button className={styles.btnOrange} style={{ width: "100%" }}
+                            onClick={() => { handleResetCareer(), handleCloseCareer() }}> Submit again </button>
+                        <div style={{ width: "100%", paddingTop: "24px" }}>
+                            <button className={styles.btnPrevious} style={{ width: "100%" }}
+                                onClick={() => { handleCloseCareer() }}> Back to home </button>
+                        </div>
 
-                        <button className={styles.btnPrevious} style={{ width: "100%" }}
-                            onClick={() => { handleCloseCareer() }}> Back to home </button>
                     </div>
                 </Container>,
         },
@@ -1751,7 +1819,7 @@ const Career = () => {
             <Modal
                 show={isShowModul}
                 onHide={handleClose}
-                dialogClassName="modal-dialog-centered modal-policy">
+                dialogClassName="modal-policy modal-dialog-centered ">
                 <Modal.Header style={{ borderBottom: 'none', padding: "36px" }}>
                     <Modal.Title>Privacy Policy </Modal.Title>
                     <div onClick={handleClose} className="btnClose"> <ClearIcon /> </div>
@@ -1787,11 +1855,11 @@ const Career = () => {
                 dialogClassName={`${(width > 992) ? "modal-dialog-centered  modal-carrer" : "modal-carrer-mobile"} `}>
                 <LinearProgress variant="determinate" style={{ backgroundColor: '#FFEAE0' }} value={steps[activeStep].step} />
 
-                <Modal.Header style={{ borderBottom: 'none' }}>
+                <Modal.Header style={{ borderBottom: 'none', display: (activeStep === 18) ? 'none' : '' }}>
                     <Modal.Title>
                         <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
                             <div style={{ paddingRight: "32px", fontSize: (width > 992) ? "20px" : "16px" }}>
-                                {steps[activeStep].label} activeStep: {activeStep}
+                                {steps[activeStep].label}
                             </div>
                             <div style={{ display: "flex", alignItems: "center" }}>
                                 <div style={{
@@ -1809,8 +1877,8 @@ const Career = () => {
 
                 </Modal.Header>
                 <Modal.Body>
-                    <div className={`${(width < 992) ? "scrollModal" : null} `}>
-                        <div className={`${(width < 992) ? null : "scrollModal"} `} style={{ maxHeight: `${(width < 992) ? null : "480px"} ` }}>
+                    <div className={`${(width < 992) ? "scrollModal" : null} `} >
+                        <div className={`${(width < 992) ? null : "scrollModal"} `} style={{ maxHeight: `${(width < 992) ? null : (activeStep === 18) ? "600px" : "480px"} ` }}>
                             {steps[activeStep].description}
                         </div>
 
@@ -1825,16 +1893,10 @@ const Career = () => {
                                     <span> Previous </span>
                                 </button>
 
-                                <button
-                                    onClick={() => { handleNext(1), setBtnDisable(true) }}>
-                                    <span style={{ width: (activeStep === 17) ? "130px" : "101px" }}> {(activeStep === 17) ? "Submit" : "NextDemo"}  </span>
-                                    <EastIcon style={{ fontSize: "15px" }} />
-                                </button>
-
                                 <button className={`${(btnDisable) ? styles.btnDisable : styles.btnOrange}`}
                                     onClick={() => { handleNext(1), setBtnDisable(true) }}
                                     disabled={btnDisable}
-                                    style={{ display: btnDisable && (activeStep === 4|| activeStep === 5 || activeStep === 6 || activeStep === 18) ? 'none' : '' }}>
+                                    style={{ display: btnDisable && (activeStep === 18) ? 'none' : '' }}>
                                     <span style={{ width: (activeStep === 17) ? "130px" : "101px" }}> {(activeStep === 17) ? "Submit" : "Next"}</span>
                                     <EastIcon style={{ fontSize: "15px" }} />
                                 </button>
@@ -2970,7 +3032,7 @@ const question16 = [
     },
     {
         "code": 3,
-        "name": "ร่าเริง อารมดี"
+        "name": "ร่าเริง อารมณ์ดี"
     },
     {
         "code": 4,

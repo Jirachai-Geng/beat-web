@@ -52,17 +52,16 @@ const Footer = () => {
                 <Row  style={{ padding: (width > 992) ? "64px 0px 0px 0px" : "16px"}} ref={componentRef}>
                     <Col style={{
                         marginBottom: (width > 992) ? "52px" : "0px"
-                    }} xxl={5} >
+                    }} sm={5} >
                         <div className={styles.text_title}>
                             Contact Information
                         </div>
                         <div className={styles.text}>
                             <p>Beat Active </p>
                             <p style={{ display: "inline-block"}}>Tel : 02-888-8222</p>
-                            <p>199/001 Soi Sukhumvit, Example for veryyy long information, and adresss, Bangkok 10110</p>
-                        </div>
+                            <p>Facebook :  <a style={{display: "inline"}} href=" https://www.facebook.com/BEATActiveThailand"  target="_blank">BEATActiveThailand</a></p>                         </div>
                     </Col>
-                    <Col xxl={{ span: 4, offset: 1 }}>
+                    <Col sm={{ span: 4, offset: 1 }}>
                         <div className={styles.text_title} style={{ paddingTop: (width > 992) ? "0px" : "36px" }}> Help</div>
                         <div className={styles.text}>
                             <p>Privacy Policy </p>
@@ -73,7 +72,7 @@ const Footer = () => {
                         style={{
                             paddingRight: (width < 992) ? "16px" : "64px", paddingBottom: (width < 992) ? "45px" : "64px"
                             , marginBottom: "0px", display: "flex", alignItems: "end", justifyContent: "flex-end"
-                        }} xxl={2}>
+                        }} sm={2}>
                         <Row className={(width < 992) ? styles.boxRelative : ""} style={{ position: "absolute" }}>
                             <button onClick={goToTop} className={styles.btnGoTop}> ↑ </button>
                         </Row>
