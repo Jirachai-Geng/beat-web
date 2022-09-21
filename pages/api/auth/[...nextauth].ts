@@ -33,7 +33,7 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
         pages: {
             signIn: '/auth/signin'
         },
-
+        secret: process.env.SECRET,
         debug: process.env.NODE_ENV === 'development',
         callbacks: {
             // async signIn({ user, account, profile, email, credentials }) {

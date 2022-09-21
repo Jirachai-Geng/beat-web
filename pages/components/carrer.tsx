@@ -259,7 +259,7 @@ const Career = () => {
         try {
             await axios.post(
                 "https://beatactivethailand.com:8082/upload",
-                // "http://localhost:8082/upload",
+                // "http://https://beatactivethailand.com:8082/upload",
                 formData
             );
 
@@ -271,7 +271,7 @@ const Career = () => {
     let [canSendAPI, setCanSendAPI] = useState(true)
     useEffect(() => {
         // if (activeStep === 1 && (isValidURL || (!breakUpload && careerFile))) {
-        if (activeStep === 1) {
+        if (activeStep === 1 && !breakUpload) {
             setBtnDisable(false)
             console.log('career 2 ', activeStep)
 
@@ -586,7 +586,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_3(0)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career3/sport1.png" alt="sport1" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 1 </span>
+                                    <span> ศิลปะป้องกันตัว </span>
                                 </div>
                                 {(arrCareer_3[0]) ?
                                     <div className={styles.career3_active}>
@@ -597,7 +597,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_3(1)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career3/sport2.png" alt="sport2" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 2 </span>
+                                    <span> ปลูกต้นไม้ ทำสวน </span>
                                 </div>
                                 {(arrCareer_3[1]) ?
                                     <div className={styles.career3_active}>
@@ -608,7 +608,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_3(2)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career3/sport3.png" alt="sport3" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 3 </span>
+                                    <span> งานบริการ </span>
                                 </div>
                                 {(arrCareer_3[2]) ?
                                     <div className={styles.career3_active}>
@@ -619,7 +619,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_3(3)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career3/sport4.png" alt="sport4" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 4 </span>
+                                    <span> แบกเป้เที่ยว </span>
                                 </div>
                                 {(arrCareer_3[3]) ?
                                     <div className={styles.career3_active}>
@@ -632,7 +632,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_3(4)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career3/sport5.png" alt="sport5" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 5 </span>
+                                    <span> รักเด็ก </span>
                                 </div>
                                 {(arrCareer_3[4]) ?
                                     <div className={styles.career3_active}>
@@ -643,7 +643,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_3(5)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career3/sport6.png" alt="sport6" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 6 </span>
+                                    <span> งานขาย </span>
                                 </div>
                                 {(arrCareer_3[5]) ?
                                     <div className={styles.career3_active}>
@@ -654,7 +654,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_3(6)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career3/sport7.png" alt="sport7" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 7 </span>
+                                    <span> กีฬา Extreme  </span>
                                 </div>
                                 {(arrCareer_3[6]) ?
                                     <div className={styles.career3_active}>
@@ -665,7 +665,7 @@ const Career = () => {
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_3(7)}>
                                 <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career3/sport8.png" alt="sport8" />
                                 <div className={styles.career3_blur}>
-                                    <span> Sport 8 </span>
+                                    <span> กีฬาเป็นทีม </span>
                                 </div>
                                 {(arrCareer_3[7]) ?
                                     <div className={styles.career3_active}>
@@ -809,7 +809,7 @@ const Career = () => {
                             </label></Col>
                         <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }}>
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(11)}>
-                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac12.png" alt="ac12" />
+                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac16.png" alt="ac12" />
                                 <div className={styles.career3_blur}>
                                     <span> Pet </span>
                                 </div>
@@ -822,7 +822,7 @@ const Career = () => {
                     <Row>
                         <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }} >
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(12)}>
-                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac13.png" alt="ac13" />
+                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac12.png" alt="ac13" />
                                 <div className={styles.career3_blur}>
                                     <span> Photograph </span>
                                 </div>
@@ -833,7 +833,7 @@ const Career = () => {
                             </label></Col>
                         <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }}>
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(13)}>
-                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac14.png" alt="ac14" />
+                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac13.png" alt="ac14" />
                                 <div className={styles.career3_blur}>
                                     <span> Extreme Sport </span>
                                 </div>
@@ -844,7 +844,7 @@ const Career = () => {
                             </label></Col>
                         <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }}>
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(14)}>
-                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac15.png" alt="ac15" />
+                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac14.png" alt="ac15" />
                                 <div className={styles.career3_blur}>
                                     <span> Sudoku </span>
                                 </div>
@@ -855,7 +855,7 @@ const Career = () => {
                             </label></Col>
                         <Col xs={6} md={3} style={{ paddingBottom: (width > 992) ? "16px" : "8px" }}>
                             <label style={{ width: (width > 992) ? "198px" : "168px" }} className={styles.career3} onClick={() => setArrCareer_4(15)}>
-                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac6.png" alt="ac6" />
+                                <img style={{ height: (width > 992) ? "198px" : "168px" }} src="/assets/career4/ac15.png" alt="ac6" />
                                 <div className={styles.career3_blur}>
                                     <span> Art & Craft </span>
                                 </div>

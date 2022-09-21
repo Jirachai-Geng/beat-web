@@ -44,12 +44,12 @@ const Footer = () => {
         });
     };
     return (
-        <div style={{ width: '100%', padding: "0px !important;"  }}>
-            <Container fluid style={{ padding: (width > 992) ? "0px 64px" : "0 16px"}}>
+        <div style={{ width: '100%', padding: "0px !important;" }}>
+            <Container fluid style={{ padding: (width > 992) ? "0px 64px" : "0 16px" }}>
                 <Row className={styles.line}>
 
                 </Row>
-                <Row  style={{ padding: (width > 992) ? "64px 0px 0px 0px" : "16px"}} ref={componentRef}>
+                <Row style={{ padding: (width > 992) ? "64px 0px 0px 0px" : "16px" }} ref={componentRef}>
                     <Col style={{
                         marginBottom: (width > 992) ? "52px" : "0px"
                     }} sm={5} >
@@ -58,14 +58,18 @@ const Footer = () => {
                         </div>
                         <div className={styles.text}>
                             <p>Beat Active </p>
-                            <p style={{ display: "inline-block"}}>Tel : 02-888-8222</p>
-                            <p>Facebook :  <a style={{display: "inline"}} href=" https://www.facebook.com/BEATActiveThailand"  target="_blank">BEATActiveThailand</a></p>                         </div>
+                            <p style={{ display: "inline-block" }}>Tel : 02-888-8222</p>
+                            <p>Facebook :  <a style={{ display: "inline" }} href=" https://www.facebook.com/BEATActiveThailand" target="_blank">BEATActiveThailand</a></p>                         </div>
                     </Col>
                     <Col sm={{ span: 4, offset: 1 }}>
                         <div className={styles.text_title} style={{ paddingTop: (width > 992) ? "0px" : "36px" }}> Help</div>
-                        <div className={styles.text}>
-                            <p>Privacy Policy </p>
-                            <p>Cookie Policy</p>
+                        <div className={styles.text}  >
+                            <a href='https://www.bhirajburi.co.th/th/privacy-policy' target="_blank"
+                                rel="noreferrer noopener" className="textpolicy" style={{ justifyContent: "start" }}>
+                                <p className={styles.text}>Privacy Policy</p> </a>
+                            <a href='https://www.bhirajburi.co.th/th/privacy-policy' target="_blank"
+                                rel="noreferrer noopener" className="textpolicy" style={{ justifyContent: "start" }}>
+                                <p className={styles.text}>Cookie Policy</p> </a>
                         </div>
                     </Col>
                     <Col className={(width < 992) ? "" : styles.boxRelative}

@@ -150,17 +150,21 @@ const Game = () => {
 
     const [showScore, setShowScore] = useState(false)
     const [seemore, setSeemore] = useState(false)
+    const [numScore, setNumScore] = useState(7)
 
     const seemoreClick = () => {
         getData().then((data) => {
             let dataScore = data.message
-            setTableData2(dataScore)
-            setSeemore(true)
+            if (dataScore.length <= numScore) {
+                setSeemore(true)
+            }
+            setNumScore(numScore + 10)
+            setTableData2(dataScore.slice(0, numScore))
         })
     };
 
     function getData() {
-        return fetch('http://localhost:8082/score')
+        return fetch('https://beatactivethailand.com:8082/score')
             .then((res) => res.json());
     }
 
@@ -169,7 +173,7 @@ const Game = () => {
             getData().then((data) => {
                 let dataScore = data.message
                 if (width > 992) {
-                    const dataScore7 = dataScore.slice(0, 7);
+                    const dataScore7 = dataScore.slice(0, numScore);
                     setTableData2(dataScore7)
                     if (dataScore.length < 7) {
                         setSeemore(true)
@@ -194,9 +198,7 @@ const Game = () => {
         const interval = setInterval(() => {
             let getFetchData = localStorage.getItem('fetchData')
             if (getFetchData === "true") {
-                console.log('getFetchData: ', getFetchData)
                 getData().then((data) => {
-                    console.log('data: ', data)
                     let dataScore = data.message
                     if (width > 992) {
                         setTableData2(dataScore)
