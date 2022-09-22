@@ -115,9 +115,6 @@ const Home = () => {
       </Navbar>
       <div className={styles.AppContent}>
 
-        <video autoPlay={true} muted loop controls style={{ width: '100%', opacity: '100%' }}>
-          <source src="/assets/web-vdo.mp4" />
-        </video>
         <div>
           <Game />
         </div>
@@ -128,7 +125,10 @@ const Home = () => {
         {/* <div>
           <Sport />
         </div> */}
-
+        <video autoPlay={true} muted loop controls style={{ width: '100%', opacity: '100%' }}>
+          <source src="/assets/web-vdo.mp4" />
+        </video>
+        
         <div>
           <Partner />
         </div>

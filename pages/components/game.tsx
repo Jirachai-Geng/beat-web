@@ -108,10 +108,10 @@ const tdData = (TableData: any, column: any, update = "") => {
 const Game = () => {
     const handle = useFullScreenHandle();
 
-    const { unityProvider, requestFullscreen, isLoaded } = useUnityContext({
-        codeUrl: `/unitybuild/game.wasm`,
-        dataUrl: `/unitybuild/game.data`,
-        frameworkUrl: `/unitybuild/game.framework.js`,
+    const { unityProvider, requestFullscreen, loadingProgression, isLoaded } = useUnityContext({
+        codeUrl: `/unitybuild/game.wasm.gz`,
+        dataUrl: `/unitybuild/game.data.gz`,
+        frameworkUrl: `/unitybuild/game.framework.js.gz`,
         loaderUrl: `/unitybuild/game.loader.js`,
         webglContextAttributes: {
             preserveDrawingBuffer: true,
@@ -320,12 +320,19 @@ const Game = () => {
         }
     }
 
+    const [hideProgression, setHideProgression] = useState(false);
+    useEffect(() => {
+        if (loadingProgression == 1) {
+            setHideProgression(true)
+        }
+    }, [loadingProgression])
+
     const [isShowModulSetScreen, setShowModulSetScreen] = useState(false);
     const handleCloseSetScreen = () => setShowModulSetScreen(false);
     let showResults = true
     return (
         <div>
-            <Container fluid style={{ paddingTop: (width > 992) ? '50px' : '0px' }}>
+            <Container fluid style={{ paddingTop: '0px' }}>
                 {!isPlaygame ? (
                     <Row className={(width > 992) ? styles.background_white : styles.background_mobile} ref={componentRef}>
                         {session ? (
@@ -457,8 +464,12 @@ const Game = () => {
                 ) :
                     <Row className={styles.background_mobile} >
                         {/* game play */}
+
                         <Col className={styles.containerGame} ref={componentRef}>
-                            <FullScreen handle={handle}>
+                            <FullScreen handle={handle}  className={styles.containerRelative}>
+                                {!hideProgression ?
+                                    <p className={styles.middle}>Loading Game... {Math.round(loadingProgression * 100)}%</p>
+                                    : null}
                                 <Unity
                                     unityProvider={unityProvider}
                                     tabIndex={1}
