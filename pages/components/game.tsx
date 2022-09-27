@@ -2,14 +2,15 @@ import { FormEvent, Fragment, useContext, useEffect, useRef, useState } from "re
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-import { useSession, signIn, signOut } from "next-auth/react"
+// import { useSession, signIn, signOut } from "next-auth/react"
 import styles from '../../styles/Game.module.css'
 import { Unity, useUnityContext } from "react-unity-webgl";
 import { Modal } from "react-bootstrap";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import moment from "moment";
 import axios from 'axios';
+import FacebookLogin from 'react-facebook-login';
 
 
 export const useContainerDimensions = (myRef: any) => {
@@ -107,24 +108,30 @@ const tdData = (TableData: any, column: any, update = "") => {
 
 const Game = () => {
     const handle = useFullScreenHandle();
+    const facebookDefine = { name: '', email: '', picture: {data: { url: '' }}  }
+    const [FacebookInfo, setFacebookInfo] = useState(facebookDefine)
+    const responseFacebook = (response: any) => {
+        setFacebookInfo(response)
+        console.log(response)
+    }
 
     const { unityProvider, requestFullscreen, loadingProgression, isLoaded } = useUnityContext({
-        codeUrl: `/unitybuild/game.wasm.gz`,
-        dataUrl: `/unitybuild/game.data.gz`,
-        frameworkUrl: `/unitybuild/game.framework.js.gz`,
-        loaderUrl: `/unitybuild/game.loader.js`,
+        codeUrl: `/unitybuild/game.wasm.unityweb`,
+        dataUrl: `/unitybuild/game.unityweb`,
+        frameworkUrl: `/unitybuild/game.framework.js.unityweb`,        
+        loaderUrl: `/unitybuild/game.loader.js`,        
         webglContextAttributes: {
             preserveDrawingBuffer: true,
         },
     });
-    const { data: session } = useSession()
-    const router = useRouter()
+    // const { data: session } = useSession()
+    // const router = useRouter()
 
-    useEffect(() => {
-        if (session) {
-            router.push('/')
-        }
-    }, [session])
+    // useEffect(() => {
+    //     if (session) {
+    //         router.push('/')
+    //     }
+    // }, [session])
 
     const componentRef = useRef()
     const componentGameRef = useRef()
@@ -256,9 +263,9 @@ const Game = () => {
                 if (userInfo.type === "facebook") {
                     let userAuth = {
                         type: 'facebook',
-                        name: session?.user.name,
-                        social_url: session?.user.email,
-                        picture_url: session?.user.image,
+                        name: FacebookInfo.name,
+                        social_url: FacebookInfo.email,
+                        picture_url: FacebookInfo.picture.data.url,
                     }
                     localStorage.setItem('userAuth', JSON.stringify(userAuth))
                     getDataPDPA(userAuth)
@@ -310,14 +317,14 @@ const Game = () => {
     }
 
     const setUserFacebook = () => {
-        if (Privacy === "true") {
+        // if (Privacy === "true") {
             let userAuth = {
                 type: 'facebook',
             }
             localStorage.setItem('userAuth', JSON.stringify(userAuth))
-        } else {
-            alert("Please Accept privacy policy.");
-        }
+        // } else {
+        //     alert("Please Accept privacy policy.");
+        // }
     }
 
     const [hideProgression, setHideProgression] = useState(false);
@@ -335,7 +342,7 @@ const Game = () => {
             <Container fluid style={{ paddingTop: '0px' }}>
                 {!isPlaygame ? (
                     <Row className={(width > 992) ? styles.background_white : styles.background_mobile} ref={componentRef}>
-                        {session ? (
+                        {(FacebookInfo.name != '') ? (
                             <Col sm={12} lg={9} className={(width > 992) ? styles.containerLogin : styles.animatedBackgroundMobile}
                                 style={{ height: (width > 992) ? 'auto' : '563px' }} ref={componentGameRef}>
                                 <Row fluid setUserFacebook className={(width > 992) ? styles.animatedBackground : styles.background_hide} style={{ width: '100%', height: '100%' }}>
@@ -346,13 +353,13 @@ const Game = () => {
                                             Beat Active game.
                                         </p>
                                         <div className={styles.center}>
-                                            <img className={styles.ImgFaceBook} src={`${session.user.image}`} alt="UserImage" />
+                                            <img className={styles.ImgFaceBook} src={`${FacebookInfo.picture.data.url}`} alt="UserImage" />
                                             {/* <img src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=5442137125846980&height=250&width=250&ext=1662759925&hash=AeQaN7g3qvjntjfApmc"/> */}
                                         </div>
 
                                         <div>
                                             <p className={styles.textFaceBook}>
-                                                {session.user.name}
+                                                {FacebookInfo.name}
                                             </p>
                                             <button className={styles.btnEmail} onClick={handleClickGame}>
                                                 Let’s Play  →
@@ -403,8 +410,19 @@ const Game = () => {
                                             </button>
                                         </form>
 
-                                        {/* <div className={styles.line}> </div>
-                                        <button className={styles.btnFacebook} onClick={() => { setUserFacebook(), Privacy ? signIn('facebook') : null }}>
+                                        <div className={styles.line}> </div>
+                                        <FacebookLogin
+                                            appId="642477307226692"
+                                            autoLoad={false}
+                                            fields="name,email,picture,link"
+                                            scope="public_profile, user_link, email"
+                                            callback={responseFacebook}
+                                            icon="fa-facebook"
+                                            textButton="Login with Facebook"
+                                            disableMobileRedirect={true}
+                                            onClick={() => { setUserFacebook()}}
+                                        />
+                                        {/* <button className={styles.btnFacebook} onClick={() => { setUserFacebook(), Privacy ? signIn('facebook') : null }}>
                                             Login with Facebook
                                         </button> */}
                                     </Col>
@@ -466,7 +484,7 @@ const Game = () => {
                         {/* game play */}
 
                         <Col className={styles.containerGame} ref={componentRef}>
-                            <FullScreen handle={handle}  className={styles.containerRelative}>
+                            <FullScreen handle={handle} className={styles.containerRelative}>
                                 {!hideProgression ?
                                     <p className={styles.middle}>Loading Game... {Math.round(loadingProgression * 100)}%</p>
                                     : null}

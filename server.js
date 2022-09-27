@@ -3,7 +3,7 @@ const { parse } = require('url')
 const next = require('next')
 
 const dev = process.env.NODE_ENV !== 'production'
-const hostname = 'localhost'
+const hostname = 'beatactivethailand.com'
 const port = 3000
 // when using middleware `hostname` and `port` must be provided below
 const app = next({ dev, hostname, port })
@@ -11,9 +11,9 @@ const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
     let httpsOptions = {
-        cert: fs.readFileSync('/home/beatactive/nodejsapp/ssl/certificate.crt'),
-        ca: fs.readFileSync('/home/beatactive/nodejsapp/ssl/ca_bundle.crt'),
-        key: fs.readFileSync('/home/beatactive/nodejsapp/ssl/private.key')
+        cert: fs.readFileSync('/home/beatactive/nodejs/ssl/certificate.crt'),
+        ca: fs.readFileSync('/home/beatactive/nodejs/ssl/ca_bundle.crt'),
+        key: fs.readFileSync('/home/beatactive/nodejs/ssl/private.key')
     };
     https.createServer(httpsOptions, async (req, res) => {
         try {
