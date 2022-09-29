@@ -2861,35 +2861,35 @@ const countries = [
 const sport = [
     {
         "code": 1,
-        "name": "sport1"
+        "name": "ศิลปะป้องกันตัว"
     },
     {
         "code": 2,
-        "name": "sport2"
+        "name": "ปลูกต้นไม้ ทำสวน"
     },
     {
         "code": 3,
-        "name": "sport3"
+        "name": "งานบริการ"
     },
     {
         "code": 4,
-        "name": "sport4"
+        "name": "แบกเป้เที่ยว"
     },
     {
         "code": 5,
-        "name": "sport5"
+        "name": "รักเด็ก"
     },
     {
         "code": 6,
-        "name": "sport6"
+        "name": "งานขาย"
     },
     {
         "code": 7,
-        "name": "sport7"
+        "name": "กีฬา Extreme"
     },
     {
         "code": 8,
-        "name": "sport8"
+        "name": "กีฬาเป็นทีม"
     },
 ]
 
