@@ -282,10 +282,21 @@ td {
 }
 
 
-.containerbeyond {
+.containerbeyond_us {
   height: 837px;
-  background: url(/assets/Frame-3.png) no-repeat;
+  background: url(/assets/beyond/beyond_us.svg) no-repeat;
 }
+
+.containerbeyond_th {
+  height: 837px;
+  background: url(/assets/beyond/beyond_th.svg) no-repeat;
+}
+
+.containerbeyond_cn {
+  height: 837px;
+  background: url(/assets/beyond/beyond_cn.svg) no-repeat;
+}
+
 
 .text_pointer {
   cursor: pointer;
@@ -450,4 +461,41 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
   /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+
+.wrapper {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.container2 {
+  display: flex;
+  justify-content: space-between;
+  /* position: sticky;
+  top: 0; */
+  width: 100%;
+}
+.container2 .left {
+  position: sticky;
+  z-index: 1;
+  background: white;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.container2 img {
+  width: 45vw;
+}
+.container2 > div {
+  height: 100%;
+  width: 45vw;
+}
+.container2 .in-in-middle {
+  height: 100vh;
 }

@@ -321,3 +321,15 @@
   width: 30px;
   filter: grayscale(100%);
 }
+
+/* Icon */
+.icon_newpage {
+  position: absolute;
+  left: 35%;
+  right: 35%;
+  top: 25%;
+  bottom: 25%;
+  
+  /* White / 0 */
+  background: #FFFFFF;
+}

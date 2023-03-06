@@ -1,0 +1,57 @@
+.text_title {
+    font-family: 'SpaceAge';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 56px;
+    white-space: nowrap;
+    color: #FFFFFF;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+
+.text {
+    width: 1090px;
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #CCCCCC;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.text_q  {
+    width: 1090px;
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+    padding-bottom: 0px !important;
+}
+
+
+.text_aws {
+    width: 1090px;
+    padding-bottom: 20px;
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #CCCCCC;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
