@@ -50,33 +50,59 @@ const Footer = () => {
 
                 </Row>
                 <Row style={{ padding: (width > 992) ? "64px 0px 0px 0px" : "16px" }} ref={componentRef}>
-                    <Col style={{
-                        marginBottom: (width > 992) ? "52px" : "0px"
-                    }} sm={5} >
-                        <div className={styles.text_title}>
-                            Contact Information
+                    <Col style={{ marginBottom: (width > 992) ? "52px" : "0px" }} sm={3} >
+                        <div className={styles.footer_title}>
+                            Location
                         </div>
-                        <div className={styles.text}>
-                            <p>Beat Active </p>
-                            <p style={{ display: "inline-block" }}>Tel : 02-888-8222</p>
-                            <p>Facebook :  <a style={{ display: "inline" }} href=" https://www.facebook.com/BEATActiveThailand" target="_blank">BEATActiveThailand</a></p>                         </div>
+                        <div >
+                            <p className={styles.footer_text}>BITEC Buri EH105 88 Debaratna Road Bangna Tai.Bangna, Bangkok 10260, Thailand
+                            </p>
+                            <p className={styles.footer_textB}> Monday to Sunday </p>
+                            <p className={styles.footer_textB}> 9:00 AM - 9:00 PM </p>
+                            {/* <p>Facebook :  <a style={{ display: "inline" }} href=" https://www.facebook.com/BEATActiveThailand" target="_blank">BEATActiveThailand</a></p> */}
+                        </div>
                     </Col>
-                    <Col sm={{ span: 4, offset: 1 }}>
-                        <div className={styles.text_title} style={{ paddingTop: (width > 992) ? "0px" : "36px" }}> Help</div>
-                        <div className={styles.text}  >
+                    <Col style={{ marginBottom: (width > 992) ? "52px" : "0px" }} sm={3} >
+                        <div className={styles.footer_title}>
+                            How to get here
+                        </div>
+                        <div>
+                            <p className={styles.footer_textB}> Private car can park at BITEC Bangna parking lot  </p>
+                            <p className={styles.footer_textB}> BTS Bangna Station Exit 1</p>
+                            {/* <p>Facebook :  <a style={{ display: "inline" }} href=" https://www.facebook.com/BEATActiveThailand" target="_blank">BEATActiveThailand</a></p> */}
+                        </div>
+                    </Col>
+                    <Col style={{ marginBottom: (width > 992) ? "52px" : "0px" }} sm={3} >
+                        <div className={styles.footer_title}>
+                            Contact Us
+                        </div>
+                        <div>
+                            <p className={styles.footer_textB}><img src="\assets\partner\footer\line.svg" alt="kids" /> @beatactive Page  </p>
+                            <p> <a style={{ display: "inline" }} href=" https://www.facebook.com/BEATActiveThailand" target="_blank">
+                                <img src="\assets\partner\footer\facebook.svg" alt="kids" /> BEAT Active </a></p>
+                            <p className={styles.footer_textB}> <img src="\assets\partner\footer\ig.svg" alt="kids" /> @BEATACTIVE_</p>
+                            <p className={styles.footer_textB}> <img src="\assets\partner\footer\twitter.svg" alt="kids" /> beatactive.thailand</p>
+
+                        </div>
+                    </Col>
+                    <Col sm={{ span: 2, offset: 0 }}>
+                        <div className={styles.footer_title} style={{ paddingTop: (width > 992) ? "0px" : "36px" }}> Help</div>
+                        <p className={styles.footer_textB}> Floor Plan </p>
+
+                        <div className={styles.footer_textB}  >
                             <a href='https://www.bhirajburi.co.th/th/privacy-policy' target="_blank"
                                 rel="noreferrer noopener" className="textpolicy" style={{ justifyContent: "start" }}>
-                                <p className={styles.text}>Privacy Policy</p> </a>
+                                <p className={styles.footer_textB}>Privacy Policy</p> </a>
                             <a href='https://www.bhirajburi.co.th/th/privacy-policy' target="_blank"
                                 rel="noreferrer noopener" className="textpolicy" style={{ justifyContent: "start" }}>
-                                <p className={styles.text}>Cookie Policy</p> </a>
+                                <p className={styles.footer_textB}>Cookie Policy</p> </a>
                         </div>
                     </Col>
                     <Col className={(width < 992) ? "" : styles.boxRelative}
                         style={{
                             paddingRight: (width < 992) ? "16px" : "64px", paddingBottom: (width < 992) ? "45px" : "64px"
                             , marginBottom: "0px", display: "flex", alignItems: "end", justifyContent: "flex-end"
-                        }} sm={2}>
+                        }} sm={1}>
                         <Row className={(width < 992) ? styles.boxRelative : ""} style={{ position: "absolute" }}>
                             <button onClick={goToTop} className={styles.btnGoTop}> ↑ </button>
                         </Row>

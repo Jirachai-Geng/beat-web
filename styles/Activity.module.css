@@ -1,0 +1,83 @@
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image_container {
+    position: relative;
+    width: calc(20% - 10px);
+    margin: 5px;
+    filter: grayscale(100%);
+    transition: filter 0.3s;
+}
+
+.image_text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s, transform 0.3s;
+    font-size: 16px;
+    height: 50%;
+}
+
+.image_container:hover .image_text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.image_container:hover {
+    filter: grayscale(0%);
+}
+
+.image_text.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.button_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.button {
+    width: 192px;
+    height: 64px;
+    background-color: #FF5100;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #ff5100b0;
+}
+
+
+.text_see {
+    width: 75px;
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FF5100;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    cursor: pointer;
+}
+
+.text_button {
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    color: #FFFFFF;
+}

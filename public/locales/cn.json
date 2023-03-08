@@ -1,0 +1,43 @@
+{
+    "event": {
+        "text_kid": "带您儿子离开手机 来参加我们娱乐活动并提高技能身体与冥想 提升他们的想象力。活动例如：BEAT Racing Active, Active Ball Pit, BEAT the Step, BEAT Space City, BEAT The Trap Challenge 等等",
+        "text_novice": "没有了无聊的一天， 带您朋友一起来遇见非常奇异的体验 。活动例如：BEAT EDU, BEAT the Hockey, BEAT Space Pinball, BEAT the Street, BEAT The Ball 等等",
+        "text_advance": "高手区会带你去体验稀奇活动模型，提供完整到这里！活动例如：BEAT the Ski, BEAT Active Jumpimp, BEAT VR Gaming, BEAT Active Climbing 等等",
+        "text_extreme": "这里不只是极限活动区但还是心理测验可带您遇见激动心的活动。活动例如：BEAT Flying Space, BEAT Boxing Bot, BEAT Military Active, BEAT Landing, BEAT Augmented Wall 等等",
+        "text_thaifight": "准备好！每周末这里有直播泰拳比赛节目！我们准备了大型舞台和完整的声光系统为充满您的体验。除了泰拳节目，这里还有拳击课由专门的专家教授的特殊特权。"
+    },
+    "activity": {
+        "text1": "BEAT Active 不只是室内运动乐园场。里面有各种零售店，不管是服装店、活动器材还是餐厅都供给您选择。",
+        "text2": "您可以选择购买适合您的票价为了适合您的活动 活动区分出四个活动区加一如下",
+        "text3": "不仅四加一地区，我们还有餐饮店给您休息为了给您完全服务。",
+        "title_KIDS": "儿童区",
+        "text_KIDS": "有各种安全活动给您宝贝参加，成人可以一起进入照看您的小孩",
+        "title_NOVICE": "新手运动区",
+        "text_NOVICE": "适合刚开始锻炼的人。成为大家健康的空间。",
+        "title_ADVANCE": " 高手运动区",
+        "text_ADVANCE": "有各种稀奇的活动。给您收到新的体验！",
+        "title_EXTREME": "极限运动区",
+        "text_EXTREME": "这里您会感到兴奋！ 宜于想挑战自己的人",
+        "title_THAIFIGHT": "泰拳区",
+        "text_THAIFIGHT": "这里取悦泰拳粉丝。每周末在BEAT Active会有泰拳比赛并有全球直播！"
+    },
+    "safety": {
+        "title": "Safety Standard",
+        "text": "为您尽情享受，我们所有的活动都在专家的监督下，他们随时准备提供建议并密切照顾您，以确保安全无忧。"
+     },
+    "faq": {
+        "title_whatBEAT": "BEAT Active 是什么？",
+        "text_whatBEAT": "BEAT Active相信健康与福祉方式。不管你是谁、你也会有健康与幸福的生活。我们希望能其中提升你们的生活之一、通过我们全部的娱乐活动。BEAT Active 希望在我们这里，大家有理念和目标、勇敢和挑战自己、不怕的提升自己和过无极限的生活。我们会支持与推动大家一起走到目标",
+        "text_q1": "谁能参加我们BEAT Active的活动？",
+        "text_aws1": "无论您是业余者、喜欢运动的人、喜欢寻找新活动的人还是运动员，您都可以加入我们的活动。 因为BEAT Active给您准备了 55 种活动",
+        "text_q2": "BEAT Active的票价是怎么样？",
+        "text_aws2": "因为我们BEAT Active分出四个活动区加一所以我们的票价分出四种票如下：儿童票（16种活动）、新手票（23种活动）、高手票（34种活动）和极限票（39种活动",
+        "text_q3": "如果想看泰拳比赛节目需要买哪种票呢？",
+        "text_aws3": "因为泰拳比赛节目包括泰拳课不计入活动票，必须特定购买门票",
+        "text_q4": "BEAT Active的营业时间？",
+        "text_aws4": "星期一到星期日、早上9点营业到晚上9点。",
+        "text_q5": "进入参加BEAT Active的活动需要自己准备设备吗？",
+        "text_aws5": "BEAT Active已准备好每种活动的设备，只要额外付防滑袜的用费。为了您的安全，我们需要保留仅使用我们袜子的权利。"
+    }
+
+}

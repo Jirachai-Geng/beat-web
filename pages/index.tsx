@@ -15,6 +15,13 @@ import { Tooltip } from 'react-bootstrap';
 import Head from 'next/head'
 import Beyond from './components/beyond';
 import i18n from 'i18next';
+import Safety from './components/safety';
+import Activity from './components/activity';
+import i18next from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import US_i18n from '../public/locales/us.json' 
+import TH_i18n from '../public/locales/th.json' 
+import CN_i18n from '../public/locales/cn.json' 
 
 const SelectedLanguage = (language: string) => {
   i18n.changeLanguage(language);
@@ -22,6 +29,26 @@ const SelectedLanguage = (language: string) => {
 const scrollToFoter = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 const scrollToHome = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 const scrollToCareer = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
+
+const resources = {
+  us: {
+    translation: US_i18n
+  },
+  th: {
+    translation: TH_i18n
+  },
+  cn: {
+    translation: CN_i18n
+  }
+};
+
+i18next
+  .use(initReactI18next)
+  .init({
+    resources,
+    lng: 'us', // default language
+  });
+
 
 const Home = () => {
 
@@ -31,6 +58,7 @@ const Home = () => {
 
   let [onHome, setOnHome] = useState(true);
   let [onFaq, setOnFaq] = useState(false);
+  let [onSafety, setOnSafety] = useState(false);
 
   const ScrollHome = () => {
     if (onHome) {
@@ -67,9 +95,16 @@ const Home = () => {
     if (name === 'faq') {
       setOnHome(false)
       setOnFaq(true)
+      setOnSafety(false)
+    } else if (name === 'safety') {
+      setOnHome(false)
+      setOnFaq(false)
+      setOnSafety(true)
     } else {
       setOnHome(true)
       setOnFaq(false)
+      setOnSafety(false)
+
     }
   }
 
@@ -189,9 +224,30 @@ const Home = () => {
 
         <div>
           {
+            onHome ? (<Activity />) : null
+          }
+        </div>
+
+        <div>
+          {
             onHome ? (<Partner />) : null
           }
         </div>
+
+        <div >
+          {
+            !onHome && onSafety ? (
+              <div  style={{ paddingTop: '106px'}}>
+                <span style={{ paddingLeft: '175px', color: '#9E9E9E'}}> Home </span> 
+                <span style={{ padding: '0px 23px', color: '#FFFFFF'}}> {'>'} </span> 
+                <span style={{ color: '#FFFFFF'}}> Safety Standard </span> 
+
+                <Safety />
+              </div>
+            ) : null
+          }
+        </div>
+
 
         <div >
           {

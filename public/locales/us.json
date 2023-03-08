@@ -1,0 +1,43 @@
+{
+    "event": {
+        "text_kid": "Take a break from your phone and engage in more enjoyable activities. You may help your children become more physically and mentally fit by engaging them in games like BEAT Racing Active, Active Ball Pit, BEAT the Step, BEAT Space City, and BEAT The Trap Challenge.",
+        "text_novice": "Invite your family and friends to try something new; stop having dull days. Because amazing experiences can always happen. The options available from BEAT Active include BEAT EDU, BEAT the Hockey, BEAT Space Pinball, BEAT the Street, BEAT The Ball, and more.",
+        "text_advance": "Find new sports just here; forget about exercising the old style outside. Your needs are fully met with BEAT the Ski, BEAT Active jumping, BEAT VR Gaming, and BEAT Active Climbing. In addition to this. There is still a ton of excitement for you!",
+        "text_extreme": "Not the highest, but never give up; if you jump higher or exert yourself more, you'll get stronger. This is not just a game; it's an extreme battle. You can try BEAT Flying Space, BEAT Boxing Bot, BEAT Military Active, BEAT Landing, BEAT Augmented Wall, and more!",
+        "text_thaifight": "Get ready for the biggest hits every week. For your best experience, BEAT Active and THAI FIGHT have properly organized the stage, light, color, and sound. Additionally, the only privileges available here are the close training of boxing with professional boxers."
+    },
+    "activity": {
+        "text1": "BEAT Active is a two-story building with several retail establishments on the ground floor, including those selling clothing and sporting goods.",
+        "text2": "You can pick and purchase a ticket that meets your requirements. the ticket has the following 4 types of activity zones and 1 unique zone:",
+        "text3": "If you've tried out some extreme sports and are seeking for a calm place to relax, don't worry; BEAT Active has placed a mezzanine area that accommodates as a restaurant for you.",
+        "title_KIDS": "Kid Zone",
+        "text_KIDS": "offers a variety of entertaining and safe activities, and parents can keep a close eye on their children.",
+        "title_NOVICE": "Novice Zone",
+        "text_NOVICE": "is an area for anyone who wants to exercise and live a healthy lifestyle.",
+        "title_ADVANCE": "Advance Zone",
+        "text_ADVANCE": "is a level of enjoyment that is different from traditional fitness and offers a variety of activities.",
+        "title_EXTREME": "Extreme Zone",
+        "text_EXTREME": "is the most thrilling area where you can push yourself to the max.",
+        "title_THAIFIGHT": "Thai Fight Zone",
+        "text_THAIFIGHT": "where every week the famous boxing match 'THAI FIGHT' is held for all Muay Thai fans."
+    },
+    "safety": {
+        "title": "Safety Standard",
+        "text": "All of our activities at BEAT Active are overseen by experts who are ready to offer guidance and closely monitor you for your best experience. So everyone can enjoy themselves without worry."
+     },
+    "faq": {
+        "title_whatBEAT": "BEAT Active is?",
+        "text_whatBEAT": "'Good Health & Well Being' is what BEAT Active is all about.You can live a healthy and fulfilling life no matter who you are.Through all of the activities we have designed for everyone, we desire to raise your quality of life.BEAT Active wishes that everyone share the same values and goals.Dare to take on a new challenge and better yourself. Limitless living at BEAT Active.We are ready to empower everyone work together to achieve the goal.",
+        "text_q1": "Who may participate in activities in BEAT Active?",
+        "text_aws1": "Activities in BEAT Active are open to everyone. We provide 55 different activities that are appropriate for all ages.",
+        "text_q2": "How many kinds of BEAT Active ticket?",
+        "text_aws2": "BEAT Active tickets are divided into 4 categories based on activity zones: Kids Zone (16 activities), Novice Zone (23 activities), Advance Zone (34 activities), Extreme Zone (39 activities).",
+        "text_q3": "How to join the THAI FIGHT League matches?",
+        "text_aws3": "The price of an activity ticket does not include admission to THAI FIGHT League matches. Tickets for the THAI FIGHT League and THAI FIGHT Passport must be purchased separately.",
+        "text_q4": "What is BEAT Active operating hours?",
+        "text_aws4": "BEAT Active is open every day including public holidays. The opening hours are 9:00 a.m. - 9:00 p.m.",
+        "text_q5": "Do I have to bring my own equipment for the activity?",
+        "text_aws5": "BEAT Active already prepared the equipment for all activities.  However, some activities require you to wear specialized, non-slip socks, which you can purchase additional at the venue."
+    }
+
+}
