@@ -1,0 +1,4 @@
+.centeredSlider .slick-list {
+    display: flex;
+    justify-content: center;
+  }

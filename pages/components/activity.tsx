@@ -2,6 +2,8 @@ import { Fragment, MutableRefObject, useEffect, useRef, useState } from 'react';
 import styles from '../../styles/Activity.module.css';
 import { useTranslation } from 'react-i18next';
 import { Container } from 'react-bootstrap';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export const useContainerDimensions = (myRef: any) => {
     const getDimensions = () => ({
@@ -40,7 +42,15 @@ const texts = ["Text for image 1", "Text for image 2", "Text for image 3", "Text
 
 
 const Activity = () => {
-    const { t } = useTranslation();
+    const router = useRouter();
+    const { t, i18n } = useTranslation();
+
+    useEffect(() => {
+        if (typeof router.query.lang === 'string') {
+            i18n.changeLanguage(router.query.lang);
+        }
+    }, [router.query.lang]);
+
     const [showAll, setShowAll] = useState(false);
     const [hideAll, setHideAll] = useState(false);
 
@@ -76,12 +86,12 @@ const Activity = () => {
                     {hideAll ? (
                         <div className={styles.text_see} onClick={handleShowLess}>
                             <img src='\assets\activity\icons\see_less.svg' alt='see_less' />
-                            <p> See less </p>
+                            <p>  See more </p>
                         </div>
                     ) : (
                         <div className={styles.text_see} onClick={handleHideAll}>
                             <img src='\assets\activity\icons\hide_all.svg' alt='hide_all' />
-                            <p> Hide all </p>
+                            <p>  See less </p>
                         </div>
                     )}
                 </div>
@@ -98,15 +108,11 @@ const Activity = () => {
                 </div>
 
                 <div className={styles.button_container}>
-                    {showAll ? (
-                        <button className={styles.button} onClick={handleShowLess}>
-                            <span className={styles.text_button}>See Less</span>
-                        </button>
-                    ) : (
-                        <button className={styles.button} onClick={handleShowAll}>
+                    <Link href="/viewall-activity">
+                        <button className={styles.button} >
                             <span className={styles.text_button}>View All</span>
                         </button>
-                    )}
+                    </Link>
                 </div>
             </Container >
 

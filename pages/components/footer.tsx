@@ -5,6 +5,8 @@ import Col from 'react-bootstrap/Col';
 import styles from '../../styles/Partner.module.css'
 import hello from "../api/hello";
 import type { AppProps } from 'next/app'
+import { padding } from "@mui/system";
+import Link from "next/link";
 
 export const useContainerDimensions = (myRef: any) => {
     const getDimensions = () => ({
@@ -47,6 +49,7 @@ const Footer = () => {
         <div style={{ width: '100%', padding: "0px !important;" }}>
             <Container fluid style={{ padding: (width > 992) ? "0px 64px" : "0 16px" }}>
                 <Row className={styles.line}>
+                    <img style={{ width: '103px', paddingTop: '48px' }} src="\assets\beat_footer.svg" alt="kids" />
 
                 </Row>
                 <Row style={{ padding: (width > 992) ? "64px 0px 0px 0px" : "16px" }} ref={componentRef}>
@@ -78,8 +81,9 @@ const Footer = () => {
                         </div>
                         <div>
                             <p className={styles.footer_textB}><img src="\assets\partner\footer\line.svg" alt="kids" /> @beatactive Page  </p>
-                            <p> <a style={{ display: "inline" }} href=" https://www.facebook.com/BEATActiveThailand" target="_blank">
-                                <img src="\assets\partner\footer\facebook.svg" alt="kids" /> BEAT Active </a></p>
+                            <p> <a className={styles.no_decoration} href=" https://www.facebook.com/BEATActiveThailand" target="_blank">
+                                <img src="\assets\partner\footer\facebook.svg" alt="kids" />
+                                <span style={{ paddingLeft: '10px' }}>  BEAT Active </span> </a></p>
                             <p className={styles.footer_textB}> <img src="\assets\partner\footer\ig.svg" alt="kids" /> @BEATACTIVE_</p>
                             <p className={styles.footer_textB}> <img src="\assets\partner\footer\twitter.svg" alt="kids" /> beatactive.thailand</p>
 
@@ -87,9 +91,12 @@ const Footer = () => {
                     </Col>
                     <Col sm={{ span: 2, offset: 0 }}>
                         <div className={styles.footer_title} style={{ paddingTop: (width > 992) ? "0px" : "36px" }}> Help</div>
-                        <p className={styles.footer_textB}> Floor Plan </p>
 
                         <div className={styles.footer_textB}  >
+                            {/* <Link href="/floor-plan"> */}
+                                <p className={styles.footer_textB}> Floor Plan </p>
+                            {/* </Link> */}
+
                             <a href='https://www.bhirajburi.co.th/th/privacy-policy' target="_blank"
                                 rel="noreferrer noopener" className="textpolicy" style={{ justifyContent: "start" }}>
                                 <p className={styles.footer_textB}>Privacy Policy</p> </a>
@@ -109,6 +116,8 @@ const Footer = () => {
                     </Col>
                 </Row>
             </Container>
+
+
         </div >
     );
 };

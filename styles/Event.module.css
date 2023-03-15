@@ -1,13 +1,3 @@
-.container_event {
-    width: calc(100vw - (100vw - 100%));
-    height: 100vh;
-    text-align: center;
-    scroll-snap-type: y mandatory;
-    scroll-padding: 10px;
-    overflow-y: scroll;
-}
-
-
 .textTitle {
     font-family: 'SpaceAge';
     font-style: normal;
@@ -48,6 +38,12 @@
     align-items: center;
     width: 48px;
     height: 48px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
 }
 
 .button_right {
@@ -56,10 +52,12 @@
     align-items: center;
     width: 48px;
     height: 48px;
-}
-
-.containerbackgroud_event {
-    background: url(/assets/events/backgroud_event.svg) no-repeat;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
 }
 
 .title_activity {
@@ -119,3 +117,22 @@
     order: 1;
     flex-grow: 0;
 }
+
+.scrollbar {
+    height: 800px;
+    overflow-y: scroll !important;
+    background: url(/assets/events/backgroud_event.svg) no-repeat;
+}
+
+.scrollbar::-webkit-scrollbar {
+    width: 4px;
+    padding-right: 63px !important;
+    background-color: #333333;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    width: 6px !important;
+    background-color: #4D4D4D;
+    border-radius: 10px;
+}
+

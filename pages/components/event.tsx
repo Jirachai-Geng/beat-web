@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import styles from '../../styles/Event.module.css'
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/router';
 
 export const useContainerDimensions = (myRef: any) => {
   const getDimensions = () => ({
@@ -32,9 +33,28 @@ export const useContainerDimensions = (myRef: any) => {
   return dimensions;
 };
 
-
 const Event = () => {
-  const { t } = useTranslation();
+  const router = useRouter();
+  const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    if (typeof router.query.lang === 'string') {
+      i18n.changeLanguage(router.query.lang);
+    }
+  }, [router.query.lang]);
+
+  const images = [
+    '/assets/events/kids.svg', '/assets/events/novice.svg', '/assets/events/advance.svg',
+    '/assets/events/extreme.svg', '/assets/events/thaifight.svg'
+  ];
+
+  const title = [
+    'KIDS', 'NOVICE', 'ADVANCE', 'EXTREME', 'THAIFIGHT'
+  ];
+
+  const text = [
+    t('event.text_kid'), t('event.text_novice'), t('event.text_advance'), t('event.text_extreme'), t('event.text_thaifight')
+  ];
 
   const componentRef = useRef()
   const { width, height } = useContainerDimensions(componentRef)
@@ -64,12 +84,14 @@ const Event = () => {
 
 
   return (
-    <div >
+    <div style={{ width: '100%', paddingBottom: '222px', paddingTop: '20px' }}>
       <Container fluid ref={containerRef} className={styles.containerbackgroud_event}>
         <Row fluid ref={componentRef} style={{ padding: (width > 992) ? "120px 120px" : "0 16px" }}>
           <Col lg={1} style={{ display: 'flex', alignItems: 'center', justifyContent: 'start' }}>
             <button className={styles.button_left} onClick={() => setEventPrevious()}
-              style={{ display: activeImage !== 0 ? '' : 'none' }}> </button>
+              style={{ display: activeImage !== 0 ? '' : 'none' }}>
+              <img src='/assets/icons/prev-icon.svg' alt='prev' />
+            </button>
 
           </Col>
 
@@ -127,7 +149,9 @@ const Event = () => {
 
           <Col lg={1} style={{ display: 'flex', alignItems: 'center', justifyContent: 'end' }}>
             <button className={styles.button_right} onClick={() => setEventNext()}
-              style={{ display: activeImage !== 4 ? '' : 'none' }}> </button>
+              style={{ display: activeImage !== 4 ? '' : 'none' }}>
+              <img src='/assets/icons/next-icon.svg' alt='next' />
+            </button>
           </Col>
 
         </Row>
@@ -176,15 +200,19 @@ const Event = () => {
               <p className={styles.pic_text}> {t('activity.text_THAIFIGHT')} </p>
             </Row>
 
-            <Row fluid>
+            <Row fluid style={{ display: 'flex', justifyContent: 'start' }}>
               <Col style={{ display: 'flex', alignItems: 'center' }}>
                 <button className={styles.button_left} onClick={() => setActivityPrevious()}
-                  style={{ display: activityImage !== 0 ? '' : 'none' }}> </button>
+                  style={{ display: activityImage !== 0 ? '' : 'none' }}>
+                  <img src='/assets/icons/prev-icon.svg' alt='prev' />
+                </button>
 
               </Col>
               <Col style={{ display: 'flex', alignItems: 'center' }}>
                 <button className={styles.button_left} onClick={() => setActivityNext()}
-                  style={{ display: activityImage !== 4 ? '' : 'none' }}> </button>
+                  style={{ display: activityImage !== 4 ? '' : 'none' }}>
+                  <img src='/assets/icons/next-icon.svg' alt='next' />
+                </button>
 
               </Col>
             </Row>

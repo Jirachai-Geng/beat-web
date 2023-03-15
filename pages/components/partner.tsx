@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import styles from '../../styles/Partner.module.css'
 import { useTranslation } from "react-i18next";
+import { useRouter } from "next/router";
 
 export const useContainerDimensions = (myRef: any) => {
     const getDimensions = () => ({
@@ -33,7 +34,14 @@ export const useContainerDimensions = (myRef: any) => {
 };
 
 const Partner = () => {
-    const { t } = useTranslation();
+    const router = useRouter();
+    const { t, i18n } = useTranslation();
+
+    useEffect(() => {
+        if (typeof router.query.lang === 'string') {
+          i18n.changeLanguage(router.query.lang);
+        }
+      }, [router.query.lang]);
 
     const componentRef = useRef()
     const { width, height } = useContainerDimensions(componentRef)

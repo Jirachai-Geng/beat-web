@@ -19,9 +19,11 @@ import Safety from './components/safety';
 import Activity from './components/activity';
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import US_i18n from '../public/locales/us.json' 
-import TH_i18n from '../public/locales/th.json' 
-import CN_i18n from '../public/locales/cn.json' 
+import US_i18n from '../public/locales/us.json'
+import TH_i18n from '../public/locales/th.json'
+import CN_i18n from '../public/locales/cn.json'
+import Service from './components/services';
+import Press from './components/press'
 
 const SelectedLanguage = (language: string) => {
   i18n.changeLanguage(language);
@@ -57,6 +59,8 @@ const Home = () => {
   const CareerRef = useRef(null)
 
   let [onHome, setOnHome] = useState(true);
+  let [onService, setOnService] = useState(false);
+  let [onPress, setOnPress] = useState(false);
   let [onFaq, setOnFaq] = useState(false);
   let [onSafety, setOnSafety] = useState(false);
 
@@ -94,14 +98,32 @@ const Home = () => {
   const checkOnPage = (name: String) => {
     if (name === 'faq') {
       setOnHome(false)
+      setOnService(false)
+      setOnPress(false)
       setOnFaq(true)
       setOnSafety(false)
     } else if (name === 'safety') {
       setOnHome(false)
+      setOnService(false)
+      setOnPress(false)
       setOnFaq(false)
       setOnSafety(true)
+    } else if (name === 'service') {
+      setOnHome(false)
+      setOnService(true)
+      setOnPress(false)
+      setOnFaq(false)
+      setOnSafety(false)
+    } else if (name === 'press') {
+      setOnHome(false)
+      setOnService(false)
+      setOnPress(true)
+      setOnFaq(false)
+      setOnSafety(false)
     } else {
       setOnHome(true)
+      setOnService(false)
+      setOnPress(false)
       setOnFaq(false)
       setOnSafety(false)
 
@@ -236,11 +258,39 @@ const Home = () => {
 
         <div >
           {
+            !onHome && onPress ? (
+              <div style={{ paddingTop: '106px' }}>
+                <span style={{ paddingLeft: '175px', color: '#9E9E9E' }}> Home </span>
+                <span style={{ padding: '0px 23px', color: '#FFFFFF' }}> {'>'} </span>
+                <span style={{ color: '#FFFFFF' }}> Press </span>
+
+                <Press />
+              </div>
+            ) : null
+          }
+        </div>
+
+        <div >
+          {
+            !onHome && onService ? (
+              <div style={{ paddingTop: '106px' }}>
+                <span style={{ paddingLeft: '175px', color: '#9E9E9E' }}> Home </span>
+                <span style={{ padding: '0px 23px', color: '#FFFFFF' }}> {'>'} </span>
+                <span style={{ color: '#FFFFFF' }}> Service </span>
+
+                <Service />
+              </div>
+            ) : null
+          }
+        </div>
+
+        <div >
+          {
             !onHome && onSafety ? (
-              <div  style={{ paddingTop: '106px'}}>
-                <span style={{ paddingLeft: '175px', color: '#9E9E9E'}}> Home </span> 
-                <span style={{ padding: '0px 23px', color: '#FFFFFF'}}> {'>'} </span> 
-                <span style={{ color: '#FFFFFF'}}> Safety Standard </span> 
+              <div style={{ paddingTop: '106px' }}>
+                <span style={{ paddingLeft: '175px', color: '#9E9E9E' }}> Home </span>
+                <span style={{ padding: '0px 23px', color: '#FFFFFF' }}> {'>'} </span>
+                <span style={{ color: '#FFFFFF' }}> Safety Standard </span>
 
                 <Safety />
               </div>
@@ -252,10 +302,10 @@ const Home = () => {
         <div >
           {
             !onHome && onFaq ? (
-              <div  style={{ paddingTop: '106px'}}>
-                <span style={{ paddingLeft: '175px', color: '#9E9E9E'}}> Home </span> 
-                <span style={{ padding: '0px 23px', color: '#FFFFFF'}}> {'>'} </span> 
-                <span style={{ color: '#FFFFFF'}}> FAQ </span> 
+              <div style={{ paddingTop: '106px' }}>
+                <span style={{ paddingLeft: '175px', color: '#9E9E9E' }}> Home </span>
+                <span style={{ padding: '0px 23px', color: '#FFFFFF' }}> {'>'} </span>
+                <span style={{ color: '#FFFFFF' }}> FAQ </span>
 
                 <Faq />
               </div>

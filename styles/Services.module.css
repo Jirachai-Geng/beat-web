@@ -1,0 +1,96 @@
+.scrollbar {
+    height: 800px;
+    overflow-y: scroll;
+}
+
+.scrollbarMoblie {
+    overflow-y: hidden;
+}
+
+
+.scrollbar::-webkit-scrollbar {
+    width: 4px;
+    padding-right: 63px !important;
+    background-color: #333333;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    width: 6px !important;
+    background-color: #4D4D4D;
+    border-radius: 10px;
+}
+
+.title {
+    font-family: 'SpaceAge';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 72px;
+    color: #FFFFFF;
+    padding-bottom: 206px;
+    text-shadow: 0px 16px 80px rgba(255, 255, 255, 0.24);
+}
+
+.title_food {
+    font-family: 'SpaceAge';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 72px;
+    color: #FFFFFF;
+    padding-bottom: 36px;
+    text-shadow: 0px 16px 80px rgba(255, 255, 255, 0.24);
+}
+
+
+.text {
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    max-width: 1070px !important;
+
+    color: #FFFFFF;
+}
+
+.titleMoblie {
+    font-family: 'SpaceAge';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 48px;
+    color: #FFFFFF;
+    padding-bottom: 24px;
+    text-shadow: 0px 16px 80px rgba(255, 255, 255, 0.24);
+}
+
+.textMoblie {
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #FFFFFF;
+}
+
+.image_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.image_item {
+    display: flex !important;
+    justify-content: center;
+}
+
+.image_size{
+    height: 200px;
+}
+
+.centeredSlider .slick-list {
+    display: flex;
+    justify-content: center;
+  }

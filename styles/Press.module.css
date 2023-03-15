@@ -1,0 +1,63 @@
+.scrollbar {
+    height: 800px;
+    overflow-y: scroll;
+}
+
+.scrollbar::-webkit-scrollbar {
+    width: 4px;
+    padding-right: 63px !important;
+    background-color: #333333;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    width: 6px !important;
+    background-color: #4D4D4D;
+    border-radius: 10px;
+}
+
+
+.title {
+    font-family: 'SpaceAge';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 72px;
+    color: #FFFFFF;
+    padding-bottom: 69px;
+    text-shadow: 0px 16px 80px rgba(255, 255, 255, 0.24);
+}
+
+.text {
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #FFFFFF;
+    overflow: hidden;
+    display: -webkit-box;
+    max-height: 210px;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+}
+
+.titleMoblie {
+    font-family: 'SpaceAge';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 34px;
+    white-space: nowrap;
+    line-height: 48px;
+    color: #FFFFFF;
+    padding-bottom: 24px;
+    text-shadow: 0px 16px 80px rgba(255, 255, 255, 0.24);
+}
+
+.textMoblie {
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #FFFFFF;
+}

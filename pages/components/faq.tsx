@@ -3,8 +3,8 @@ import { Fragment, MutableRefObject, useEffect, useRef, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import styles from '../../styles/Faq.module.css'
 import i18next from 'i18next';
-import { initReactI18next } from 'react-i18next';
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/router';
 
 
 export const useContainerDimensions = (myRef: any) => {
@@ -34,9 +34,16 @@ export const useContainerDimensions = (myRef: any) => {
   return dimensions;
 };
 
-
 const Faq = () => {
-  const { t } = useTranslation();
+  const router = useRouter();
+  const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+      if (typeof router.query.lang === 'string') {
+        i18n.changeLanguage(router.query.lang);
+      }
+    }, [router.query.lang]);
+  const test = t('faq.text_aws1')
 
   return(
     <div >
@@ -45,9 +52,8 @@ const Faq = () => {
         <p style={{paddingTop: '20px'}} className={styles.text}> {t('faq.text_whatBEAT')} </p>
 
         <p style={{paddingTop: '128px'}} className={styles.text_title}> FAQ </p>
-
         <p style={{color: '#FFFFFF', paddingTop: '20px', fontWeight: '600'}} className={styles.text}> {t('faq.text_q1')} </p>
-        <p className={styles.text_aws}> {t('faq.text_aws1')} </p>
+        <p className={styles.text_aws}> {test} </p>
 
         <p style={{color: '#FFFFFF', fontWeight: '600'}} className={styles.text}> {t('faq.text_q2')} </p>
         <p className={styles.text_aws}> {t('faq.text_aws2')} </p>

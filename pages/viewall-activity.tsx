@@ -1,8 +1,4 @@
-import { GetStaticProps, NextPage } from 'next';
 import { Fragment, MutableRefObject, useEffect, useRef, useState } from 'react';
-import Container from 'react-bootstrap/Container';
-import styles from '../../styles/Safety.module.css'
-import { Col, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/router';
 
@@ -34,7 +30,9 @@ export const useContainerDimensions = (myRef: any) => {
 };
 
 
-const Safety = () => {
+const ViewAll : React.FC = () => {
+    const componentRef = useRef()
+    const { width, height } = useContainerDimensions(componentRef)
     const router = useRouter();
     const { t, i18n } = useTranslation();
 
@@ -43,23 +41,14 @@ const Safety = () => {
           i18n.changeLanguage(router.query.lang);
         }
       }, [router.query.lang]);
-      
+
+
     return (
-        <div >
-            <Container fluid style={{ paddingLeft: '175px', paddingBottom: '88px' }}>
-                <Row>
-                    <Col lg={5}>
-                        <p className={styles.text_title}> {t('safety.title')}</p>
-                        <p className={styles.text}> {t('safety.text')}</p>
+        <div style={{ width: '100%', paddingBottom: '222px', paddingTop: '20px' }}>
 
-                    </Col>
-
-                    <Col lg={7} className={styles.background_safety}>
-                    </Col>
-                </Row>
-            </Container>
         </div >
     );
 };
 
-export default Safety;
+
+export default ViewAll;

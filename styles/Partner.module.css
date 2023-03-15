@@ -6,6 +6,14 @@
     justify-content: center;
 }
 
+.no_decoration{
+    display: "inline";
+    color: #FFFFFF;
+    text-decoration:none; 
+    justify-content: start !important;
+    padding-right: 5px;
+}
+
 .line {
     border-top: 0.5px solid #DEE2E4;
     margin: 0px 0px;
@@ -22,6 +30,7 @@
     font-size: 20px;
     line-height: 30px;    
     color: #FFFFFF;
+    padding-bottom: 42px;
 }
 
 .footer_textB {
