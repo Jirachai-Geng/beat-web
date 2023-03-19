@@ -1,3 +1,17 @@
+.AppContent {
+    background-color: #000;
+    overflow: auto;
+    height: auto;
+}
+
+.footer {
+    display: flex;
+    flex: 1;
+    background: #000;
+    justify-content: center;
+    align-items: center;
+}
+
 .scrollbar {
     height: 800px;
     overflow-y: scroll;
@@ -42,6 +56,17 @@
     text-shadow: 0px 16px 80px rgba(255, 255, 255, 0.24);
 }
 
+.title_modal {
+    width: 341px;    
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;    
+    
+    color: #FFFFFF;
+    
+}
 
 .text {
     font-family: 'Prompt';
@@ -86,11 +111,11 @@
     justify-content: center;
 }
 
-.image_size{
+.image_size {
     height: 200px;
 }
 
 .centeredSlider .slick-list {
     display: flex;
     justify-content: center;
-  }
+}

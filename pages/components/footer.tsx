@@ -81,11 +81,19 @@ const Footer = () => {
                         </div>
                         <div>
                             <p className={styles.footer_textB}><img src="\assets\partner\footer\line.svg" alt="kids" /> @beatactive Page  </p>
-                            <p> <a className={styles.no_decoration} href=" https://www.facebook.com/BEATActiveThailand" target="_blank">
-                                <img src="\assets\partner\footer\facebook.svg" alt="kids" />
+
+                                
+                            <p> <a className={styles.no_decoration} href=" https://www.facebook.com/BEATActiveThailand" target="_blank" rel="noreferrer noopener">
+                                <img src="\assets\partner\footer\facebook.svg" alt="facebook" />
                                 <span style={{ paddingLeft: '10px' }}>  BEAT Active </span> </a></p>
-                            <p className={styles.footer_textB}> <img src="\assets\partner\footer\ig.svg" alt="kids" /> @BEATACTIVE_</p>
-                            <p className={styles.footer_textB}> <img src="\assets\partner\footer\twitter.svg" alt="kids" /> beatactive.thailand</p>
+
+                            <p> <a className={styles.no_decoration} href="https://www.instagram.com/beatactive.thailand/" target="_blank" rel="noreferrer noopener">
+                                <img src="\assets\partner\footer\ig.svg" alt="ig" />
+                                <span style={{ paddingLeft: '10px' }}>  @BEATACTIVE_ </span> </a></p>
+
+                            <p> <a className={styles.no_decoration} href=" https://twitter.com/BEATACTIVE_" target="_blank" rel="noreferrer noopener">
+                                <img src="\assets\partner\footer\twitter.svg" alt="twitter" />
+                                <span style={{ paddingLeft: '10px' }}>  beatactive.thailand </span> </a></p>
 
                         </div>
                     </Col>
@@ -93,9 +101,11 @@ const Footer = () => {
                         <div className={styles.footer_title} style={{ paddingTop: (width > 992) ? "0px" : "36px" }}> Help</div>
 
                         <div className={styles.footer_textB}  >
-                            {/* <Link href="/floor-plan"> */}
-                                <p className={styles.footer_textB}> Floor Plan </p>
-                            {/* </Link> */}
+                            <a className="textpolicy" style={{ justifyContent: "start" }}>
+                                <Link href="/floor-plan">
+                                    <p className={styles.footer_textB}> Floor Plan </p>
+                                </Link>
+                            </a>
 
                             <a href='https://www.bhirajburi.co.th/th/privacy-policy' target="_blank"
                                 rel="noreferrer noopener" className="textpolicy" style={{ justifyContent: "start" }}>

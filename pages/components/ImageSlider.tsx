@@ -59,7 +59,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
     return (
         <div className={styles.centeredSlider}>
             <Slider {...settings}>
-                {images.map((image, index) => (
+                {images && images.map((image, index) => (
                     <div key={index} className={styles.image_item} onClick={() => handleClick(index)}>
                         <img className={styles.image_size} src={image} alt={`Slide ${index}`} />
                     </div>

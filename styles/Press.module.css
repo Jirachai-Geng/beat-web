@@ -1,3 +1,17 @@
+.AppContent {
+    background-color: #000;
+    overflow: auto;
+    height: auto;
+}
+
+.footer {
+    display: flex;
+    flex: 1;
+    background: #000;
+    justify-content: center;
+    align-items: center;
+}
+
 .scrollbar {
     height: 800px;
     overflow-y: scroll;
