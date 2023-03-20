@@ -49,7 +49,7 @@ const Footer = () => {
         <div style={{ width: '100%', padding: "0px !important;" }}>
             <Container fluid style={{ padding: (width > 992) ? "0px 64px" : "0 16px" }}>
                 <Row className={styles.line}>
-                    <img style={{ width: '103px', paddingTop: '48px' }} src="\assets\beat_footer.svg" alt="kids" />
+                    <img style={{ width: '103px', padding: '48px 0px 0px 0px' }} src="\assets\beat_footer.svg" alt="kids" />
 
                 </Row>
                 <Row style={{ padding: (width > 992) ? "64px 0px 0px 0px" : "16px" }} ref={componentRef}>
@@ -58,22 +58,31 @@ const Footer = () => {
                             Location
                         </div>
                         <div >
-                            <p className={styles.footer_text}>BITEC Buri EH105 88 Debaratna Road Bangna Tai.Bangna, Bangkok 10260, Thailand
+                            <p className={styles.footer_text}>
+                                BITEC Buri EH105 88 Debaratna Road Bangna Tai.Bangna, Bangkok 10260, Thailand
                             </p>
-                            <p className={styles.footer_textB}> Monday to Sunday </p>
-                            <p className={styles.footer_textB}> 9:00 AM - 9:00 PM </p>
-                            {/* <p>Facebook :  <a style={{ display: "inline" }} href=" https://www.facebook.com/BEATActiveThailand" target="_blank">BEATActiveThailand</a></p> */}
+                            <p className={styles.footer_textB}>
+                                <img src="\assets\partner\footer\calenda.svg" alt="calenda" style={{ paddingRight: '8px' }} />
+                                <span> Monday to Sunday </span>
+                            </p>
+                            <p className={styles.footer_textB}>
+                                <img src="\assets\partner\footer\clock.svg" alt="clock" style={{ paddingRight: '8px' }} />
+                                <span> 9:00 AM - 9:00 PM </span>
+                            </p>
                         </div>
                     </Col>
                     <Col style={{ marginBottom: (width > 992) ? "52px" : "0px" }} sm={3} >
                         <div className={styles.footer_title}>
                             How to get here
                         </div>
-                        <div>
-                            <p className={styles.footer_textB}> Private car can park at BITEC Bangna parking lot  </p>
-                            <p className={styles.footer_textB}> BTS Bangna Station Exit 1</p>
-                            {/* <p>Facebook :  <a style={{ display: "inline" }} href=" https://www.facebook.com/BEATActiveThailand" target="_blank">BEATActiveThailand</a></p> */}
-                        </div>
+                        <Row style={{ paddingBottom: '24px' }}>
+                            <Col sm='1' style={{ paddingRight: '20px' }}> <img src="\assets\partner\footer\p.svg" alt="p" /> </Col>
+                            <Col className={styles.footer_textB}> Private car can park at BITEC Bangna parking lot  </Col>
+                        </Row>
+                        <Row>
+                            <Col sm='1' style={{ paddingRight: '20px' }}> <img src="\assets\partner\footer\BTS.svg" alt="BTS" /> </Col>
+                            <Col className={styles.footer_textB}> BTS Bangna Station Exit 1  </Col>
+                        </Row>
                     </Col>
                     <Col style={{ marginBottom: (width > 992) ? "52px" : "0px" }} sm={3} >
                         <div className={styles.footer_title}>
@@ -82,7 +91,7 @@ const Footer = () => {
                         <div>
                             <p className={styles.footer_textB}><img src="\assets\partner\footer\line.svg" alt="kids" /> @beatactive Page  </p>
 
-                                
+
                             <p> <a className={styles.no_decoration} href=" https://www.facebook.com/BEATActiveThailand" target="_blank" rel="noreferrer noopener">
                                 <img src="\assets\partner\footer\facebook.svg" alt="facebook" />
                                 <span style={{ paddingLeft: '10px' }}>  BEAT Active </span> </a></p>

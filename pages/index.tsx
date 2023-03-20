@@ -175,7 +175,7 @@ const Home = () => {
         <Event />
 
         <Activity />
-        
+
         <Partner />
 
         <footer ref={FooterRef} className={styles.footer}>

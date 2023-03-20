@@ -39,9 +39,9 @@ const Partner = () => {
 
     useEffect(() => {
         if (typeof router.query.lang === 'string') {
-          i18n.changeLanguage(router.query.lang);
+            i18n.changeLanguage(router.query.lang);
         }
-      }, [router.query.lang]);
+    }, [router.query.lang]);
 
     const componentRef = useRef()
     const { width, height } = useContainerDimensions(componentRef)
@@ -51,7 +51,7 @@ const Partner = () => {
             <Container fluid style={{ paddingLeft: '175px', paddingBottom: '88px' }} className={styles.containerbackgroud_price}>
                 <Row>
                     <Col lg={7}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between' ,paddingBottom: '10px'}}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '10px' }}>
                             <p className={styles.price_title}> Price</p>
                             <p className={styles.price_text}> ( จ-ศ / ส-อา และวันหยุดนขัตฤกษ์)</p>
                         </div>
@@ -122,7 +122,7 @@ const Partner = () => {
                     </Col>
                 </Row>
                 <Row>
-                    <img src='/assets/map.png' className={styles.showmap} alt="logo" />
+                    <img src='/assets/map.jpg' className={styles.showmap} alt="logo" />
                 </Row>
             </Container>
             <Container>

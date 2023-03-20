@@ -297,6 +297,22 @@ td {
   background: url(/assets/beyond/beyond_cn.svg) no-repeat;
 }
 
+.containerbeyondMobile_us {
+  height: 837px;
+  background: url(/assets/beyond/beyondMobile_us.svg) no-repeat;
+}
+
+.containerbeyondMobile_th {
+  height: 837px;
+  background: url(/assets/beyond/beyondMobile_th.svg) no-repeat;
+}
+
+.containerbeyondMobile_cn {
+  height: 837px;
+  background: url(/assets/beyond/beyondMobile_cn.svg) no-repeat;
+}
+
+
 
 .text_pointer {
   cursor: pointer;

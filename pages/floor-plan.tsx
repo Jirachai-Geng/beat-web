@@ -82,22 +82,10 @@ const FloorPLan = () => {
           <span style={{ color: '#FFFFFF' }}> Floor Plan </span>
         </div>
 
-        <Container style={{ backgroundColor: 'dark', paddingLeft: '125px' }}>
+        <Container style={{ backgroundColor: 'dark', paddingLeft: '125px',paddingBottom: '104px' }}>
           <p className={styles.title_food}> Floor Plan </p>
           <p className={styles.text}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit egestas augue interdum bibendum. Duis eget ex a tortor rhoncus pharetra a varius nunc. Nunc vestibulum commodo libero, vel venenatis nulla laoreet vitae. Donec non sem velit. Pellentesque non varius ex. Quisque eu mi sapien. Aliquam interdum pellentesque mauris ut blandit.</p>
-          <img src='\assets\floorplan.svg' alt='floorplan' />
-
-          <p className={styles.title_food}> Zone A </p>
-          <p className={styles.text}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit egestas augue interdum bibendum. Duis eget ex a tortor rhoncus pharetra a varius nunc. Nunc vestibulum commodo libero, vel venenatis nulla laoreet vitae. Donec non sem velit. Pellentesque non varius ex. Quisque eu mi sapien. Aliquam interdum pellentesque mauris ut blandit.</p>
-
-          <p className={styles.title_food}> Zone B </p>
-          <p className={styles.text}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit egestas augue interdum bibendum. Duis eget ex a tortor rhoncus pharetra a varius nunc. Nunc vestibulum commodo libero, vel venenatis nulla laoreet vitae. Donec non sem velit. Pellentesque non varius ex. Quisque eu mi sapien. Aliquam interdum pellentesque mauris ut blandit.</p>
-
-          <p className={styles.title_food}> Zone C </p>
-          <p className={styles.text}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit egestas augue interdum bibendum. Duis eget ex a tortor rhoncus pharetra a varius nunc. Nunc vestibulum commodo libero, vel venenatis nulla laoreet vitae. Donec non sem velit. Pellentesque non varius ex. Quisque eu mi sapien. Aliquam interdum pellentesque mauris ut blandit.</p>
-
-          <p className={styles.title_food}> Zone D </p>
-          <p className={styles.text}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit egestas augue interdum bibendum. Duis eget ex a tortor rhoncus pharetra a varius nunc. Nunc vestibulum commodo libero, vel venenatis nulla laoreet vitae. Donec non sem velit. Pellentesque non varius ex. Quisque eu mi sapien. Aliquam interdum pellentesque mauris ut blandit.</p>
+          <img style={{maxWidth: '1097px', paddingTop: '20px'}} src='\assets\floorplan.jpg' alt='floorplan' />
 
         </Container>
 
