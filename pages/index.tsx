@@ -22,9 +22,7 @@ import TH_i18n from '../public/locales/th.json'
 import CN_i18n from '../public/locales/cn.json'
 import { useRouter } from 'next/router';
 
-const SelectedLanguage = (language: string) => {
-  i18n.changeLanguage(language);
-}
+
 const scrollToFoter = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 const scrollToHome = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
 const scrollToCareer = (ref: MutableRefObject<any>) => window.scrollTo(0, ref.current.offsetTop)
@@ -134,11 +132,12 @@ const Home = () => {
 
               <div className={styles.dropdown}>
                 <div onClick={() => setShowLang(!showLang)} className={styles.dropbtn} id='lingo-desktop'>
-                  <img className={styles.img_languageSelectShow} src="/assets/pic_i18/America.svg" alt="" />
+                  <img className={styles.img_languageSelectShow}
+                    src={(i18next.language === 'us') ? "/assets/pic_i18/America.svg" : (i18next.language === 'th') ? "/assets/pic_i18/Thai.svg" : '/assets/pic_i18/China.svg'} />
                 </div>
                 {(showLang) ?
                   <div className={styles.dropdown_content} style={{ display: "block" }}>
-                    <a onClick={() => { setShowLang(!showLang), SelectedLanguage('us') }} href="#">
+                    {/* <a onClick={() => { setShowLang(!showLang), SelectedLanguage('us') }} href="#">
                       <img className={styles.img_languageSelect} src="/assets/pic_i18/America.svg" alt="" />
                       <span className={styles.text_languageSelect}>English (US)</span>
                     </a>
@@ -151,10 +150,26 @@ const Home = () => {
                     <a onClick={() => { setShowLang(!showLang), SelectedLanguage('cn') }} href="#">
                       <img className={styles.img_language} src="/assets/pic_i18/China.svg" alt="" />
                       <span className={styles.text_language}>简体中文</span>
+                    </a> */}
+                    <a onClick={() => { setShowLang(!showLang), SelectedLanguage('us') }} href="#">
+                      <img className={`${styles.img_languageSelect} ${i18next.language === 'us' ? styles.selected : ''}`} src="/assets/pic_i18/America.svg" alt="" />
+                      <span className={styles.text_languageSelect}>English (US)</span>
+                    </a>
+
+                    <a onClick={() => { setShowLang(!showLang), SelectedLanguage('th') }} href="#">
+                      <img className={`${styles.img_languageSelect} ${i18next.language === 'th' ? styles.selected : ''}`} src="/assets/pic_i18/Thai.svg" alt="" />
+                      <span className={styles.text_language}>ภาษาไทย</span>
+                    </a>
+
+                    <a onClick={() => { setShowLang(!showLang), SelectedLanguage('cn') }} href="#">
+                      <img className={`${styles.img_languageSelect} ${i18next.language === 'cn' ? styles.selected : ''}`} src="/assets/pic_i18/China.svg" alt="" />
+                      <span className={styles.text_language}>简体中文</span>
                     </a>
                   </div>
                   : null}
               </div>
+
+
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import styles from '../styles/ViewAllActivity.module.css'
 import Footer from './components/footer';
 import Menu from './components/menu_outhome';
-import { Container } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 
 export const useContainerDimensions = (myRef: any) => {
     const getDimensions = () => ({
@@ -66,24 +66,30 @@ const ViewAll: React.FC = () => {
     return (
         <div>
             <Menu />
-            <div className={styles.AppContent} style={{ paddingTop: '106px' }}>
-                <div style={{ paddingBottom: '38px' }}>
-                    <span style={{ paddingLeft: '175px', color: '#9E9E9E' }}> Home </span>
+            <div className={styles.AppContent} style={{ padding:  (width > 992) ? '106px 0px' : '16px 0px' }}>
+                <div style={{ paddingTop: (width > 992) ? '106px' : '16px', paddingBottom: '38px' }}>
+                    <span style={{ paddingLeft: (width > 992) ? '175px' : '16px', color: '#9E9E9E' }}> Home </span>
                     <span style={{ padding: '0px 23px', color: '#FFFFFF' }}> {'>'} </span>
                     <span style={{ color: '#FFFFFF' }}> All Acticity </span>
                 </div>
 
-                <Container fluid style={{ paddingLeft: '64px', paddingBottom: '88px', paddingRight: '64px' }}>
+                <Container fluid style={{ padding: (width > 992) ? '0px 64px 88px 64px' : '0px 16px 72px 16px' }} >
                     <div className={styles.gallery}>
                         {images.map((imageName, index) => (
-                            <div key={imageName} className={styles.image_container} onMouseEnter={() => handleImageHover(index)} onMouseLeave={() => handleImageHover(null)}>
-                                <img src={imageName} alt={imageName} />
-                                <div className={`${styles.image_text} ${hoveredImageIndex === index ? styles.visible : styles.hidden}`}>
+                            <div key={imageName} className={(width > 992) ? styles.image_container : styles.image_containerMobile}
+                                onMouseEnter={() => handleImageHover(index)}
+                                onMouseLeave={() => handleImageHover(null)}
+                                >
+                                <img style={{ width: (width > 992) ? '256px' : '168px' }} src={imageName} alt={imageName} />
+                                <div style={{ width: (width > 992) ? '256px' : '168px' }}
+                                    className={`${(width > 992) ? styles.image_text : styles.image_textMobile} 
+                           ${hoveredImageIndex === index ? styles.visible : styles.hidden}`}>
                                     <p>{texts[index]}</p>
                                 </div>
                             </div>
                         ))}
                     </div>
+                    <Row ref={componentRef}></Row>
                 </Container >
             </div>
 

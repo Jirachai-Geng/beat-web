@@ -56,6 +56,17 @@
     text-shadow: 0px 16px 80px rgba(255, 255, 255, 0.24);
 }
 
+.title_foodMobile {    
+    font-family: 'SpaceAge';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 48px;    
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}
+
 .title_modal {
     width: 341px;    
     font-family: 'Prompt';
@@ -91,12 +102,15 @@
 }
 
 .textMoblie {
+    width: 253px;
+
     font-family: 'Prompt';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
-    line-height: 30px;
-    color: #FFFFFF;
+    font-size: 12px;
+    line-height: 18px;
+    padding-bottom: 152px;
+    color: #CCCCCC;
 }
 
 .image_container {

@@ -13,8 +13,6 @@
 
 .image_text {
     position: absolute;
-    left: 0;
-    right: 0;
     bottom: 0;
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.7);
@@ -23,7 +21,6 @@
     transform: translateY(20px);
     transition: opacity 0.3s, transform 0.3s;
     font-size: 16px;
-    height: 50%;
 }
 
 .image_container:hover .image_text {
@@ -80,4 +77,34 @@
     font-weight: 500;
     font-size: 24px;
     color: #FFFFFF;
+}
+
+/* mobile */
+.image_containerMobile {
+    position: relative;
+    width: calc(50% - 10px);
+    margin: 5px;
+    filter: grayscale(100%);
+    transition: filter 0.3s;
+}
+
+.image_textMobile {
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s, transform 0.3s;
+    font-size: 16px;
+}
+
+.image_containerMobile:hover .image_textMobile {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.image_containerMobile:hover {
+    filter: grayscale(0%);
 }

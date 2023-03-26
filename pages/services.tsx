@@ -99,9 +99,10 @@ const Services: React.FC = () => {
   return (
     <div>
       <Menu />
-      <div className={styles.AppContent} style={{ paddingTop: '106px' }}>
-        <div style={{ paddingBottom: '38px' }}>
-          <span style={{ paddingLeft: '175px', color: '#9E9E9E' }}> Home </span>
+      <div className={styles.AppContent} style={{ padding:  (width > 992) ? '106px 0px' : '16px 0px' }}>
+
+        <div style={{ paddingTop: (width > 992) ? '106px' : '16px', paddingBottom: '38px' }}>
+          <span style={{ paddingLeft: (width > 992) ? '175px' : '60px', color: '#9E9E9E' }}> Home </span>
           <span style={{ padding: '0px 23px', color: '#FFFFFF' }}> {'>'} </span>
           <span style={{ color: '#FFFFFF' }}> Service </span>
         </div>
@@ -109,29 +110,40 @@ const Services: React.FC = () => {
         <Container className={(width > 992) ? styles.scrollbar : styles.scrollbarMoblie}
           style={{ backgroundColor: 'dark', paddingLeft: (width > 992) ? '175px' : '60px' }}>
           {images.map((image, index) => (
-            <Row key={index} style={{ width: '100%', height: '800px' }} ref={componentRef}>
+            <Row key={index} style={{ width: '100%', height: (width > 992) ? '800px' : 'auto' }} ref={componentRef}>
               <Col lg={6}>
                 {(width < 992) ? <p className={styles.titleMoblie}> {title[index]}</p> : null}
-                <img style={{ height: (width > 992) ? 'auto' : '252px' }} src={image} alt={text[index]} />
+                <img style={{ maxWidth: (width > 992) ? '422px' : '252px', paddingBottom: (width > 992) ? '0px' : '24px' }} src={image} alt={text[index]} />
               </Col>
               <Col lg={6}>
                 {(width > 992) ? <p className={styles.title}> {title[index]}</p> : null}
-                <p className={styles.text}>{text[index]}</p>
+                {(width > 992) ? <p className={styles.text}> {text[index]}</p> : <p className={styles.textMoblie}> {text[index]}</p>}
               </Col>
             </Row>
           ))}
         </Container>
 
-        <Container style={{ width: '100%', paddingTop: '300px' , paddingBottom: '222px'}}>
+        <Container style={{ width: '100%', paddingTop: (width > 992) ? '300px' : '195px', paddingBottom: '222px' }}>
           <Row fluid>
             <div>
-              <div style={{ paddingLeft: '150px', paddingBottom: '88px' }}>
-                <p className={styles.title_food}> {t('service.Food')} </p>
-                <p className={styles.text}> {t('service.Food_text')}</p>
+              <div style={{ paddingLeft: (width > 992) ? '150px' : '60px', paddingBottom: '88px' }}>
+                {(width > 992) ? <p className={styles.title_food}> {t('service.Food')} </p> : <p className={styles.title_foodMobile}> {t('service.Food')} </p>}
+                {(width > 992) ? <p className={styles.text}> {t('service.Food_text')} </p> : <p className={styles.textMoblie}> {t('service.Food_text')} </p>}
+
               </div>
-              <div style={{ paddingLeft: '91px', paddingRight: '51px' }}>
-                <ImageSlider images={images2} />
-              </div>
+
+              {(width > 992) ?
+                <div style={{ paddingLeft: '91px', paddingRight: '51px' }}>
+                  <ImageSlider images={images2} />
+                </div>
+                : <div style={{ paddingLeft: '60px', display: 'flex', flexWrap: 'nowrap', overflowX: 'scroll' }}>
+                  {images2.map((image, index) => (
+                    <img key={index} src={image} alt={`Image ${index}`} style={{ maxHeight: '108px', marginRight: '16px' }} />
+                  ))}
+                </div>
+              }
+
+
             </div>
           </Row>
         </Container>

@@ -26,6 +26,19 @@
     flex-grow: 0;
 }
 
+.text_titleMobile {
+    width: 343px;
+    padding-top: 339px;
+    font-family: 'SpaceAge';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 36px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
 
 .text {
     width: 426px;
@@ -42,6 +55,19 @@
     order: 1;
     align-self: stretch;
     flex-grow: 0;
+}
+
+.textMobile {
+    width: 343px;
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #E6E6E6;
+
 }
 
 .text_q  {
@@ -77,3 +103,9 @@
 .background_safety{
     background: url(/assets/safety.svg) no-repeat;
 }
+
+.background_safetyMobile{
+    width: 343px;
+    background: url(/assets/safety.svg) no-repeat;
+}
+

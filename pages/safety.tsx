@@ -65,6 +65,9 @@ const Safety = () => {
     const { t, i18n } = useTranslation();
     const FooterRef = useRef(null)
 
+    const componentRef = useRef()
+    const { width, height } = useContainerDimensions(componentRef)
+
     useEffect(() => {
         if (typeof router.query.lang === 'string') {
             i18n.changeLanguage(router.query.lang);
@@ -76,23 +79,22 @@ const Safety = () => {
         <div >
             
             <Menu />
-            <div className={styles.AppContent} style={{ padding: '106px 0px' }}>
-                <div style={{ paddingTop: '106px' }}>
-                    <span style={{ paddingLeft: '175px', color: '#9E9E9E' }}> Home </span>
+            <div className={styles.AppContent} style={{ padding:  (width > 992) ? '106px 0px' : '16px 0px' }}>
+                <div style={{ paddingTop: (width > 992) ? '106px' : '16px' }}>
+                    <span style={{ paddingLeft: (width > 992) ? '175px' : '16px', color: '#9E9E9E' }}> Home </span>
                     <span style={{ padding: '0px 23px', color: '#FFFFFF' }}> {'>'} </span>
                     <span style={{ color: '#FFFFFF' }}> Safety Standard </span>
-
                 </div>
 
-                <Container fluid style={{ paddingLeft: '175px', paddingBottom: '88px' }}>
+                <Container fluid style={{ paddingLeft: (width > 992) ? '175px' : '16px', paddingBottom: '88px' }}>
                     <Row>
                         <Col lg={5}>
-                            <p className={styles.text_title}> {t('safety.title')}</p>
-                            <p className={styles.text}> {t('safety.text')}</p>
+                            <p className= {(width > 992) ? styles.text_title : styles.text_titleMobile}> {t('safety.title')}</p>
+                            <p className= {(width > 992) ? styles.text : styles.textMobile}> {t('safety.text')}</p>
 
                         </Col>
 
-                        <Col lg={7} className={styles.background_safety}>
+                        <Col lg={7} className={ (width > 992) ? styles.background_safety : styles.background_safetyMobile}>
                         </Col>
                     </Row>
                 </Container>
