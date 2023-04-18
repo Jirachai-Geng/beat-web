@@ -8,6 +8,7 @@ import styles from '../../styles/Services.module.css'
 type ImageModalProps = {
   images: string[];
   initialSlide: number;
+  title: any;
   show: boolean;
   onHide: () => void;
 };
@@ -19,7 +20,7 @@ type CustomArrowProps = {
   type: 'prev' | 'next';
 };
 
-const ImageModal: React.FC<ImageModalProps> = ({ images, initialSlide, show, onHide }) => {
+const ImageModal: React.FC<ImageModalProps> = ({ images, initialSlide, show, title, onHide }) => {
   const CustomArrow: React.FC<CustomArrowProps> = ({ className, style, onClick, type }) => {
     const iconPath = type === 'prev' ? '/assets/icons/prev-icon.svg' : '/assets/icons/next-icon.svg';
     return (
@@ -46,11 +47,14 @@ const ImageModal: React.FC<ImageModalProps> = ({ images, initialSlide, show, onH
   };
 
   return (
-    <Modal show={show} onHide={onHide} size="lg" centered style={{ maxHeight: '634px', overflow: 'hidden'}}>
-      <Modal.Header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', border: 'none', paddingBottom: '24px' }}>
-        <p className={styles.title_modal}> Food & Beverage </p>
-        <button type="button" onClick={onHide}>
-          Close
+    <Modal show={show} onHide={onHide} size="lg" centered style={{ maxHeight: '634px', overflow: 'hidden' }}>
+      <Modal.Header style={{
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center', border: 'none'
+        , paddingBottom: '24px'
+      }}>
+        <p className={styles.title_modal}> {title} </p>
+        <button onClick={onHide} style={{ backgroundColor: 'transparent', border: 'none', }}>
+          <img src="\assets\icons\close.svg" alt="Close button" />
         </button>
       </Modal.Header>
       <Modal.Body style={{ backgroundColor: '#666666', margin: '0 30px' }}>

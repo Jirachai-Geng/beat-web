@@ -98,12 +98,13 @@ const Home = () => {
           <div className={styles.dropdown} style={{ display: "flex", flexDirection: "row-reverse" }}>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <div onClick={() => setShowLangMobile(!showLangMobile)} className={styles.dropbtn} id='lingo-mobile'>
-              <img className={styles.img_languageSelectShow} src="/assets/pic_i18/America.svg" alt="" />
+              <img className={styles.img_languageSelectShow}
+                src={(i18next.language === 'us') ? "/assets/pic_i18/America.svg" : (i18next.language === 'th') ? "/assets/pic_i18/Thai.svg" : '/assets/pic_i18/China.svg'} />
             </div>
             {(showLangMobile) ?
               <div className={styles.dropdown_contentMobile} style={{ display: "block" }}>
                 <a onClick={() => { setShowLangMobile(!showLangMobile), SelectedLanguage('us') }} href="#">
-                  <img className={styles.img_languageSelect} src="/assets/pic_i18/America.svg" alt="" />
+                  <img className={styles.img_language} src="/assets/pic_i18/America.svg" alt="" />
                   <span className={styles.text_languageSelectMobile}>English (US)</span>
                 </a>
 
@@ -130,6 +131,10 @@ const Home = () => {
               <Nav.Link className={styles.text_link} onClick={ScrollCareer}> Career </Nav.Link>
               <Nav.Link className={styles.text_link} onClick={ScrollFooter}> Contact Us </Nav.Link>
 
+              <button className={styles.btnTicket} >
+                <span>Buy Ticket</span>
+              </button>
+
               <div className={styles.dropdown}>
                 <div onClick={() => setShowLang(!showLang)} className={styles.dropbtn} id='lingo-desktop'>
                   <img className={styles.img_languageSelectShow}
@@ -137,36 +142,25 @@ const Home = () => {
                 </div>
                 {(showLang) ?
                   <div className={styles.dropdown_content} style={{ display: "block" }}>
-                    {/* <a onClick={() => { setShowLang(!showLang), SelectedLanguage('us') }} href="#">
-                      <img className={styles.img_languageSelect} src="/assets/pic_i18/America.svg" alt="" />
-                      <span className={styles.text_languageSelect}>English (US)</span>
-                    </a>
 
-                    <a onClick={() => { setShowLang(!showLang), SelectedLanguage('th') }} href="#">
-                      <img className={styles.img_language} src="/assets/pic_i18/Thai.svg" alt="" />
-                      <span className={styles.text_language}>ภาษาไทย</span>
-                    </a>
-
-                    <a onClick={() => { setShowLang(!showLang), SelectedLanguage('cn') }} href="#">
-                      <img className={styles.img_language} src="/assets/pic_i18/China.svg" alt="" />
-                      <span className={styles.text_language}>简体中文</span>
-                    </a> */}
                     <a onClick={() => { setShowLang(!showLang), SelectedLanguage('us') }} href="#">
-                      <img className={`${styles.img_languageSelect} ${i18next.language === 'us' ? styles.selected : ''}`} src="/assets/pic_i18/America.svg" alt="" />
-                      <span className={styles.text_languageSelect}>English (US)</span>
+                      <img className={`${styles.img_language} ${i18next.language === 'us' ? styles.selected : ''}`} src="/assets/pic_i18/America.svg" alt="" />
+                      <span className={styles.text_language}>English (US)</span>
                     </a>
 
                     <a onClick={() => { setShowLang(!showLang), SelectedLanguage('th') }} href="#">
-                      <img className={`${styles.img_languageSelect} ${i18next.language === 'th' ? styles.selected : ''}`} src="/assets/pic_i18/Thai.svg" alt="" />
+                      <img className={`${styles.img_language} ${i18next.language === 'th' ? styles.selected : ''}`} src="/assets/pic_i18/Thai.svg" alt="" />
                       <span className={styles.text_language}>ภาษาไทย</span>
                     </a>
 
                     <a onClick={() => { setShowLang(!showLang), SelectedLanguage('cn') }} href="#">
-                      <img className={`${styles.img_languageSelect} ${i18next.language === 'cn' ? styles.selected : ''}`} src="/assets/pic_i18/China.svg" alt="" />
+                      <img className={`${styles.img_language} ${i18next.language === 'cn' ? styles.selected : ''}`} src="/assets/pic_i18/China.svg" alt="" />
                       <span className={styles.text_language}>简体中文</span>
                     </a>
                   </div>
                   : null}
+
+
               </div>
 
 

@@ -14,6 +14,21 @@
     padding-top: 151px;
 }
 
+.texttitleMobile {
+    width: 343px;
+    font-family: 'SpaceAge';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 36px;
+    color: #FF5100;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
 .text {
     font-family: 'Prompt';
     font-style: normal;
@@ -30,6 +45,20 @@
     padding-top: 151px;
     flex-direction: 'column';
     align-Items: 'flex-start';
+}
+
+.textMobile {
+    width: 323px;
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #FF5100;
+    padding-top: 15px;
+
 }
 
 .button_left {
@@ -104,6 +133,7 @@
     order: 0;
     flex-grow: 0;
 }
+
 .pic_text {
     width: 422px;    
     padding-top: 8px;

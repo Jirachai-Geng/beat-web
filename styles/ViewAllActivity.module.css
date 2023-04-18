@@ -31,8 +31,8 @@
     position: absolute;
     bottom: 0;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
+    background: rgba(26, 26, 26, 0.6);
+    backdrop-filter: blur(4px);
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.3s, transform 0.3s;
@@ -109,8 +109,8 @@
     position: absolute;
     bottom: 0;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
+    background: rgba(26, 26, 26, 0.6);
+    backdrop-filter: blur(4px);
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.3s, transform 0.3s;
@@ -125,4 +125,25 @@
 
 .image_containerMobile:hover {
     filter: grayscale(0%);
+}
+
+.text_title{
+    width: 173px;
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    text-shadow: 0px 0px 1.6px rgba(0, 0, 0, 0.35);
+}
+
+.text{
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: #FFFFFF;
+    text-shadow: 0px 0px 1.6px rgba(0, 0, 0, 0.35);
 }

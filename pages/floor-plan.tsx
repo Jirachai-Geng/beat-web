@@ -65,36 +65,49 @@ const FloorPLan = () => {
   const { t, i18n } = useTranslation();
   const FooterRef = useRef(null)
 
+  const componentRef = useRef()
+  const { width, height } = useContainerDimensions(componentRef)
+
   useEffect(() => {
     if (typeof router.query.lang === 'string') {
       i18n.changeLanguage(router.query.lang);
     }
   }, [router.query.lang]);
 
+  const onNewpage = (page: any) => {
+    router.push({
+      pathname: page,
+      query: { lang: i18next.language }
+    });
+  }
 
   return (
     <div>
       <Menu />
-      <div className={styles.AppContent} style={{ paddingTop: '106px' }}>
-        <div style={{ paddingBottom: '38px' }}>
-          <span style={{ paddingLeft: '175px', color: '#9E9E9E' }}> Home </span>
+      <div className={styles.AppContent}>
+        <div style={{ paddingTop: (width > 992) ? '106px' : '16px', paddingBottom: (width > 992) ? '38px' : '16px' }}>
+          <span style={{ paddingLeft: (width > 992) ? '175px' : '60px', color: '#9E9E9E', cursor: 'pointer' }}
+            onClick={() => { onNewpage('/') }}> Home </span>
           <span style={{ padding: '0px 23px', color: '#FFFFFF' }}> {'>'} </span>
           <span style={{ color: '#FFFFFF' }}> Floor Plan </span>
         </div>
 
-        <Container style={{ backgroundColor: 'dark', paddingLeft: '125px',paddingBottom: '104px' }}>
-          <p className={styles.title_food}> Floor Plan </p>
-          <p className={styles.text}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit egestas augue interdum bibendum. Duis eget ex a tortor rhoncus pharetra a varius nunc. Nunc vestibulum commodo libero, vel venenatis nulla laoreet vitae. Donec non sem velit. Pellentesque non varius ex. Quisque eu mi sapien. Aliquam interdum pellentesque mauris ut blandit.</p>
-          <img style={{maxWidth: '1097px', paddingTop: '20px'}} src='\assets\floorplan.jpg' alt='floorplan' />
-
+        <Container fluid style={{ backgroundColor: 'dark', paddingLeft: (width > 992) ? '175px' : '40px' }}>
+          <Row style={{ width: '100%' }} ref={componentRef}>
+            <div>
+              <p className={(width > 992) ? styles.title_food : styles.title_foodMobile}> Floor Plan </p>
+              <p className={(width > 992) ? styles.text : styles.textMobileFloorplan}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit egestas augue interdum bibendum. Duis eget ex a tortor rhoncus pharetra a varius nunc. Nunc vestibulum commodo libero, vel venenatis nulla laoreet vitae. Donec non sem velit. Pellentesque non varius ex. Quisque eu mi sapien. Aliquam interdum pellentesque mauris ut blandit.</p>
+              <img className={(width > 992) ? styles.imgFloorplan : styles.imgMobileFloorplan} src='\assets\floorplan.jpg' alt='floorplan' />
+            </div>
+          </Row>
         </Container>
 
       </div>
       <div className={styles.AppContent}>
-          <footer ref={FooterRef} className={styles.footer}>
-            <Footer />
-          </footer>
-        </div>
+        <footer ref={FooterRef} className={styles.footer}>
+          <Footer />
+        </footer>
+      </div>
 
     </div >
   );

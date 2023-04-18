@@ -74,27 +74,33 @@ const Safety = () => {
         }
     }, [router.query.lang]);
 
-
+    const onNewpage = (page: any) => {
+        router.push({
+            pathname: page,
+            query: { lang: i18next.language }
+        });
+    }
     return (
         <div >
-            
+
             <Menu />
-            <div className={styles.AppContent} style={{ padding:  (width > 992) ? '106px 0px' : '16px 0px' }}>
-                <div style={{ paddingTop: (width > 992) ? '106px' : '16px' }}>
-                    <span style={{ paddingLeft: (width > 992) ? '175px' : '16px', color: '#9E9E9E' }}> Home </span>
+            <div className={styles.AppContent} >
+                <div style={{ paddingTop: (width > 992) ? '106px' : '16px', paddingBottom: '38px' }}>
+                    <span style={{ paddingLeft: (width > 992) ? '175px' : '60px', color: '#9E9E9E', cursor: 'pointer' }}
+                        onClick={() => { onNewpage('/') }}> Home </span>
                     <span style={{ padding: '0px 23px', color: '#FFFFFF' }}> {'>'} </span>
-                    <span style={{ color: '#FFFFFF' }}> Safety Standard </span>
+                    <span style={{ color: '#FFFFFF' }}> Safety Standard  </span>
                 </div>
 
-                <Container fluid style={{ paddingLeft: (width > 992) ? '175px' : '16px', paddingBottom: '88px' }}>
-                    <Row>
+                <Container fluid style={{ backgroundColor: 'dark', paddingLeft: (width > 992) ? '175px' : '40px' }}>
+                    <Row ref={componentRef}>
                         <Col lg={5}>
-                            <p className= {(width > 992) ? styles.text_title : styles.text_titleMobile}> {t('safety.title')}</p>
-                            <p className= {(width > 992) ? styles.text : styles.textMobile}> {t('safety.text')}</p>
+                            <p className={(width > 992) ? styles.text_title : styles.text_titleMobile}> {t('safety.title')}</p>
+                            <p className={(width > 992) ? styles.text : styles.textMobile}> {t('safety.text')}</p>
 
                         </Col>
 
-                        <Col lg={7} className={ (width > 992) ? styles.background_safety : styles.background_safetyMobile}>
+                        <Col lg={7} className={(width > 992) ? styles.background_safety : styles.background_safetyMobile}>
                         </Col>
                     </Row>
                 </Container>

@@ -12,6 +12,7 @@ import { initReactI18next } from 'react-i18next';
 import Menu from './components/menu_outhome';
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import Footer from './components/footer';
+import Link from 'next/link';
 
 export const useContainerDimensions = (myRef: any) => {
     const getDimensions = () => ({
@@ -66,6 +67,7 @@ const images = [
     '/assets/services/service1.png',
 ];
 
+
 const Press = () => {
     const componentRef = useRef()
     const { width, height } = useContainerDimensions(componentRef)
@@ -82,13 +84,20 @@ const Press = () => {
     const title = [t('press.press1_title'), t('press.press2_title'), t('press.press3_title'), t('press.press4_title'), t('press.press5_title')];
     const text = [t('press.press1_text'), t('press.press2_text'), t('press.press3_text'), t('press.press4_text'), t('press.press5_text')];
 
+    const onNewpage = (page: any) => {
+        router.push({
+            pathname: page,
+            query: { lang: i18next.language }
+        });
+    }
     return (
         <div >
             <Menu />
 
-            <div className={styles.AppContent} style={{ padding: '106px 0px' }}>
-                <div style={{ paddingBottom: '38px' }}>
-                    <span style={{ paddingLeft: '175px', color: '#9E9E9E' }}> Home </span>
+            <div className={styles.AppContent}>
+                <div style={{ paddingTop: (width > 992) ? '106px' : '16px', paddingBottom: '38px' }}>
+                    <span style={{ paddingLeft: (width > 992) ? '175px' : '60px', color: '#9E9E9E', cursor: 'pointer' }}
+                        onClick={() => { onNewpage('/') }}> Home </span>                   
                     <span style={{ padding: '0px 23px', color: '#FFFFFF' }}> {'>'} </span>
                     <span style={{ color: '#FFFFFF' }}> Press </span>
                 </div>
@@ -106,7 +115,11 @@ const Press = () => {
                                 {(width > 992) ? <p className={styles.title}> {title[index]}</p> : null}
                                 <p className={styles.text}>{text[index]}</p>
 
-                                <p style={{ paddingTop: '50px' }} className={styles.text}> showmore... </p>
+                                <p style={{ paddingTop: '50px' }} className={styles.text}>
+                                    <Link href="/press_select" as={`/press_select?title=${title[index]}`}>
+                                        <a>showmore...</a>
+                                    </Link>
+                                </p>
 
                             </Col>
                         </Row>
@@ -114,7 +127,7 @@ const Press = () => {
 
                 </Container>
             </div>
-            
+
             <div className={styles.AppContent}>
                 <footer ref={FooterRef} className={styles.footer}>
                     <Footer />

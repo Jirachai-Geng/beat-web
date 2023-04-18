@@ -80,147 +80,180 @@ const Event = () => {
     setActivityImage((activityImage) => activityImage + 1);
   };
 
-  console.log(activityImage)
+  const events = [
+    {
+      src: "/assets/events/kids.svg",
+      alt: "kids",
+      title: "KID",
+      text: t("event.text_kid")
+    },
+    {
+      src: "/assets/events/novice.svg",
+      alt: "novice",
+      title: "NOVICE",
+      text: t("event.text_novice")
+    },
+    {
+      src: "/assets/events/advance.svg",
+      alt: "advance",
+      title: "ADVANCE",
+      text: t("event.text_advance")
+    },
+    {
+      src: "/assets/events/extreme.svg",
+      alt: "extreme",
+      title: "EXTREME",
+      text: t("event.text_extreme")
+    },
+    {
+      src: "/assets/events/thaifight.svg",
+      alt: "thaifight",
+      title: "THAI FIGHT",
+      text: t("event.text_thaifight")
+    }
+  ];
 
+  const activities = [
+    {
+      title: t("activity.title_KIDS"),
+      text: t("activity.text_KIDS")
+    },
+    {
+      title: t("activity.title_NOVICE"),
+      text: t("activity.text_NOVICE")
+    },
+    {
+      title: t("activity.title_ADVANCE"),
+      text: t("activity.text_ADVANCE")
+    },
+    {
+      title: t("activity.title_EXTREME"),
+      text: t("activity.text_EXTREME")
+    },
+    {
+      title: t("activity.title_THAIFIGHT"),
+      text: t("activity.text_THAIFIGHT")
+    },
+  ];
 
   return (
-    <div style={{ width: '100%', paddingBottom: '222px', paddingTop: '20px' }}>
-      <Container fluid ref={containerRef} className={styles.containerbackgroud_event}>
-        <Row fluid ref={componentRef} style={{ padding: (width > 992) ? "120px 120px" : "0 16px" }}>
-          <Col lg={1} style={{ display: 'flex', alignItems: 'center', justifyContent: 'start' }}>
-            <button className={styles.button_left} onClick={() => setEventPrevious()}
-              style={{ display: activeImage !== 0 ? '' : 'none' }}>
-              <img src='/assets/icons/prev-icon.svg' alt='prev' />
-            </button>
-
-          </Col>
+    <div style={{ width: '100%', paddingBottom: (width > 992) ? '0px' : '72px', paddingTop: '20px' }}>
+      <Container fluid ref={containerRef}>
+        <Row fluid ref={componentRef} style={{
+          padding: (width > 992) ? "120px 120px" : "0 16px",
+          minHeight: (width > 992) ? '800px' : '560px'
+        }}>
+          {
+            ((width > 992) ? <Col lg={1} style={{ display: 'flex', alignItems: 'center', justifyContent: 'start' }}>
+              <button className={styles.button_left} onClick={() => setEventPrevious()}
+                style={{ display: activeImage !== 0 ? '' : 'none' }}>
+                <img src='/assets/icons/prev-icon.svg' alt='prev' />
+              </button>
+            </Col> : null)
+          }
 
           <Col style={{ display: 'flex', alignItems: 'center', justifyContent: 'start' }}>
-            <Row fluid style={{ width: '100%', height: '100%', display: activeImage === 0 ? '' : 'none' }}>
-              <Col lg={6}>
-                <img src="/assets/events/kids.svg" alt="kids" />
-              </Col>
-              <Col lg={6}>
-                <span className={styles.textTitle}> KIDS </span>
-                <p className={styles.text}> {t('event.text_kid')}</p>
-              </Col>
-            </Row>
+            {
+              ((width > 992) ?
+                events.map((event, index) => (
+                  <Row fluid key={index} style={{ width: '100%', height: '100%', display: activeImage === index ? '' : 'none' }}>
+                    <Col lg={6}>
+                      <img style={{ height: 'auto', display: 'block', margin: '0 auto' }}
+                        src={event.src} alt={event.alt} />
+                    </Col>
+                    <Col lg={6}>
+                      <span className={styles.textTitle} >{event.title}</span>
+                      <p className={styles.text}>{event.text}</p>
+                    </Col>
+                  </Row>
+                ))
+                :
+                events.map((event, index) => (
+                  <Row fluid key={index} style={{ width: '100%', height: '100%', display: activeImage === index ? '' : 'none' }}>
+                    <Col>
+                      <Row fluid >
+                        <Col style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                          <span className={styles.texttitleMobile}>{event.title}</span>
+                        </Col>
+                      </Row>
 
-            <Row fluid style={{ width: '100%', height: '100%', display: activeImage === 1 ? '' : 'none' }}>
-              <Col lg={6}>
-                <img src="/assets/events/novice.svg" alt="novice" />
-              </Col>
-              <Col lg={6}>
-                <span className={styles.textTitle}> NOVICE </span>
-                <p className={styles.text}> {t('event.text_novice')} </p>
-              </Col>
-            </Row>
 
-            <Row fluid style={{ width: '100%', height: '100%', display: activeImage === 2 ? '' : 'none' }}>
-              <Col lg={6}>
-                <img src="/assets/events/advance.svg" alt="advance" />
-              </Col>
-              <Col lg={6}>
-                <span className={styles.textTitle}> ADVANCE </span>
-                <p className={styles.text}>  {t('event.text_advance')} </p>
-              </Col>
-            </Row>
+                      <Row fluid style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                        <Col style={{ width: '10%' }}> <button className={styles.button_left} onClick={() => setEventPrevious()}
+                          style={{ display: activeImage !== 0 ? '' : 'none' }}>
+                          <img src='/assets/icons/prev-icon.svg' alt='prev' />
+                        </button></Col>
+                        <Col style={{ width: '70%' }}> <img style={{ height: '252px', display: 'block', margin: '0 auto' }}
+                          src={event.src} alt={event.alt} /></Col>
+                        <Col style={{ width: '10%' }}> <button className={styles.button_right} onClick={() => setEventNext()}
+                          style={{ display: activeImage !== events.length - 1 ? '' : 'none' }}>
+                          <img style={{ height: 'auto', display: 'block', margin: '0 auto' }}
+                            src='/assets/icons/next-icon.svg' alt='next' />
+                        </button></Col>
+                      </Row>
 
-            <Row fluid style={{ width: '100%', height: '100%', display: activeImage === 3 ? '' : 'none' }}>
-              <Col lg={6}>
-                <img src="/assets/events/extreme.svg" alt="extreme" />
-              </Col>
-              <Col lg={6}>
-                <span className={styles.textTitle}> EXTREME </span>
-                <p className={styles.text}>  {t('event.text_extreme')} </p>
-              </Col>
-            </Row>
+                      <p className={styles.textMobile}>{event.text}</p>
+                    </Col>
 
-            <Row fluid style={{ width: '100%', height: '100%', display: activeImage === 4 ? '' : 'none' }}>
-              <Col lg={6}>
-                <img src="/assets/events/thaifight.svg" alt="thaifight" />
-              </Col>
-              <Col lg={6}>
-                <span className={styles.textTitle}> THAI FIGHT </span>
-                <p className={styles.text}>  {t('event.text_thaifight')} </p>
-              </Col>
-            </Row>
+                  </Row>
+                ))
+              )
+            }
           </Col>
 
-          <Col lg={1} style={{ display: 'flex', alignItems: 'center', justifyContent: 'end' }}>
-            <button className={styles.button_right} onClick={() => setEventNext()}
-              style={{ display: activeImage !== 4 ? '' : 'none' }}>
-              <img src='/assets/icons/next-icon.svg' alt='next' />
-            </button>
-          </Col>
+          {
+            ((width > 992) ? <Col lg={1} style={{ display: 'flex', alignItems: 'center', justifyContent: 'end' }}>
+              <button className={styles.button_right} onClick={() => setEventNext()}
+                style={{ display: activeImage !== events.length - 1 ? '' : 'none' }}>
+                <img style={{ height: 'auto', display: 'block', margin: '0 auto' }}
+                  src='/assets/icons/next-icon.svg' alt='next' />
+              </button>
+            </Col> : null)
+          }
 
         </Row>
+
 
       </Container>
 
       <Container fluid>
         <Row fluid ref={componentRef} style={{ padding: (width > 992) ? "120px 120px" : "0 16px" }}>
-
-          <Col >
-            <p className={styles.title_activity}> Active zone</p>
-            <p className={styles.text_activity}> {t('activity.text1')}</p>
-            <p className={styles.text_activity}> {t('activity.text2')}</p>
-            <p className={styles.text_activity}> {t('activity.text3')}</p>
-
+          <Col>
+            <p className={(width > 992) ? styles.title_activity : styles.texttitleMobile}> Active zone</p>
+            <p className={(width > 992) ? styles.text_activity : styles.textMobile} > {t('activity.text1')}</p>
+            <p className={(width > 992) ? styles.text_activity : styles.textMobile}> {t('activity.text2')}</p>
+            <p className={(width > 992) ? styles.text_activity : styles.textMobile}> {t('activity.text3')}</p>
           </Col>
-
-          <Col >
+          <Col>
             <Row fluid>
               <img src="/assets/events/activity/kid.svg" alt="kids" />
-
             </Row>
-
-            <Row fluid style={{ width: '100%', display: activityImage === 0 ? '' : 'none' }}>
-              <span className={styles.pic_title}> {t('activity.title_KIDS')} </span>
-              <p className={styles.pic_text}> {t('activity.text_KIDS')} </p>
-            </Row>
-
-            <Row fluid style={{ width: '100%', display: activityImage === 1 ? '' : 'none' }}>
-              <span className={styles.pic_title}> {t('activity.title_NOVICE')} </span>
-              <p className={styles.pic_text}> {t('activity.text_NOVICE')} </p>
-            </Row>
-
-            <Row fluid style={{ width: '100%', display: activityImage === 2 ? '' : 'none' }}>
-              <span className={styles.pic_title}> {t('activity.title_ADVANCE')} </span>
-              <p className={styles.pic_text}> {t('activity.text_ADVANCE')} </p>
-            </Row>
-
-            <Row fluid style={{ width: '100%', display: activityImage === 3 ? '' : 'none' }}>
-              <span className={styles.pic_title}> {t('activity.title_EXTREME')} </span>
-              <p className={styles.pic_text}> {t('activity.text_EXTREME')} </p>
-            </Row>
-
-            <Row fluid style={{ width: '100%', display: activityImage === 4 ? '' : 'none' }}>
-              <span className={styles.pic_title}> {t('activity.title_THAIFIGHT')} </span>
-              <p className={styles.pic_text}> {t('activity.text_THAIFIGHT')} </p>
-            </Row>
-
+            {
+              activities.map((activity, index) => (
+                <Row fluid key={index} style={{ width: '100%', display: activityImage === index ? '' : 'none' }}>
+                  <span className={styles.pic_title}>{activity.title}</span>
+                  <p className={styles.pic_text}>{activity.text}</p>
+                </Row>
+              ))
+            }
             <Row fluid style={{ display: 'flex', justifyContent: 'start' }}>
               <Col style={{ display: 'flex', alignItems: 'center' }}>
                 <button className={styles.button_left} onClick={() => setActivityPrevious()}
                   style={{ display: activityImage !== 0 ? '' : 'none' }}>
                   <img src='/assets/icons/prev-icon.svg' alt='prev' />
                 </button>
-
               </Col>
               <Col style={{ display: 'flex', alignItems: 'center' }}>
                 <button className={styles.button_left} onClick={() => setActivityNext()}
-                  style={{ display: activityImage !== 4 ? '' : 'none' }}>
+                  style={{ display: activityImage !== activities.length - 1 ? '' : 'none' }}>
                   <img src='/assets/icons/next-icon.svg' alt='next' />
                 </button>
-
               </Col>
             </Row>
-
           </Col>
         </Row>
-
       </Container>
+
 
     </div>
   );

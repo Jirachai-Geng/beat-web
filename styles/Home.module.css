@@ -238,16 +238,12 @@
 
 .img_languageSelectShow {
   border: 3px solid #FFF;
-  border-radius: 18px;
-  box-shadow: 0 0 0 1px #1A1A1A;
   height: 28px;
   width: 28px;
 }
 
 .img_languageSelect {
   border: 3px solid #FFF;
-  border-radius: 18px;
-  box-shadow: 0 0 0 1px #1A1A1A;
   height: 36px;
   width: 36px;
 }
@@ -255,7 +251,6 @@
 .img_language {
   height: 30px;
   width: 30px;
-  filter: grayscale(100%);
 }
 
 /* language mobile */
@@ -301,28 +296,22 @@
 }
 
 .img_languageSelectShow {
-  border: 3px solid #FFF;
+  border: 2px solid #FFF;
   border-radius: 18px;
-  box-shadow: 0 0 0 1px #1A1A1A;
+  box-shadow: 0 0 0 2px #1A1A1A;
   height: 28px;
   width: 28px;
 }
 
-.img_languageSelect {
+.img_language.selected {
+  box-shadow: 0 0 0 2px #1A1A1A;
+}
+
+.img_language {
   border: 3px solid #FFF;
   border-radius: 18px;
   height: 36px;
   width: 36px;
-}
-
-.img_languageSelect.selected {
-  border: 3px solid #1A1A1A;
-}
-
-.img_language {
-  height: 30px;
-  width: 30px;
-  filter: grayscale(100%);
 }
 
 /* Icon */
@@ -335,4 +324,19 @@
   
   /* White / 0 */
   background: #FFFFFF;
+}
+
+.btnTicket {
+  color: #FFF;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 24px;
+  gap: 6px;
+  white-space: nowrap;
+  border: none;
+  height: 36px;
+  background: #FF5100;
+  text-align: center;
 }

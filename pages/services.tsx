@@ -13,6 +13,11 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import Footer from './components/footer';
 import i18next from 'i18next';
 import ImageSlider from './components/ImageSlider';
+import { Modal } from 'react-responsive-modal';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import ImageModalMobile from './components/ImageModalMobile';
 
 export const useContainerDimensions = (myRef: any) => {
   const getDimensions = () => ({
@@ -90,19 +95,31 @@ const Services: React.FC = () => {
   const title = [t('service.Team_Building'), t('service.Schools_Group'), t('service.Birthday_Party'), t('service.Event'),];
   const text = [t('service.Team_Building_text'), t('service.Schools_Group_text'), t('service.Birthday_Party_text'), t('service.Event_text'),];
 
-  const food = [t('service.Food'), t('service.Schools_Group'), t('service.Birthday_Party'), t('service.Event'),];
+  const [showModal, setShowModal] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const handleClick = (index: number) => {
+    setSelectedImageIndex(index);
+    setShowModal(true);
+  };
 
-  const [show, setShow] = useState(false);
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
-  const [selectedImages, setSelectedImages] = useState(images.slice(0, 5));
-
+  const onNewpage = (page: any) => {
+    router.push({
+      pathname: page,
+      query: { lang: i18next.language }
+    });
+  }
   return (
     <div>
       <Menu />
-      <div className={styles.AppContent} style={{ padding:  (width > 992) ? '106px 0px' : '16px 0px' }}>
+      <div className={styles.AppContent}>
 
         <div style={{ paddingTop: (width > 992) ? '106px' : '16px', paddingBottom: '38px' }}>
-          <span style={{ paddingLeft: (width > 992) ? '175px' : '60px', color: '#9E9E9E' }}> Home </span>
+          <span style={{ paddingLeft: (width > 992) ? '175px' : '60px', color: '#9E9E9E', cursor: 'pointer' }}
+            onClick={() => { onNewpage('/') }}> Home </span>
           <span style={{ padding: '0px 23px', color: '#FFFFFF' }}> {'>'} </span>
           <span style={{ color: '#FFFFFF' }}> Service </span>
         </div>
@@ -123,10 +140,10 @@ const Services: React.FC = () => {
           ))}
         </Container>
 
-        <Container style={{ width: '100%', paddingTop: (width > 992) ? '300px' : '195px', paddingBottom: '222px' }}>
+        <Container style={{ width: '100%', paddingTop: (width > 992) ? '300px' : '110px', paddingBottom: '222px' }}>
           <Row fluid>
             <div>
-              <div style={{ paddingLeft: (width > 992) ? '150px' : '60px', paddingBottom: '88px' }}>
+              <div style={{ paddingLeft: (width > 992) ? '150px' : '60px', paddingBottom: '48px' }}>
                 {(width > 992) ? <p className={styles.title_food}> {t('service.Food')} </p> : <p className={styles.title_foodMobile}> {t('service.Food')} </p>}
                 {(width > 992) ? <p className={styles.text}> {t('service.Food_text')} </p> : <p className={styles.textMoblie}> {t('service.Food_text')} </p>}
 
@@ -136,10 +153,22 @@ const Services: React.FC = () => {
                 <div style={{ paddingLeft: '91px', paddingRight: '51px' }}>
                   <ImageSlider images={images2} />
                 </div>
-                : <div style={{ paddingLeft: '60px', display: 'flex', flexWrap: 'nowrap', overflowX: 'scroll' }}>
+                : <div style={{ paddingLeft: '60px', display: 'flex', flexWrap: 'nowrap', overflowX: 'scroll', paddingBottom: '15px' }}>
                   {images2.map((image, index) => (
-                    <img key={index} src={image} alt={`Image ${index}`} style={{ maxHeight: '108px', marginRight: '16px' }} />
+                    <div key={index} onClick={() => handleClick(index)}>
+                      <img src={image} alt={`Image ${index}`} style={{ maxHeight: '108px', marginRight: '16px' }} />
+                    </div>
+
                   ))}
+                  {showModal && (
+                    <ImageModalMobile
+                      title='Food & Beverage'
+                      images={images2}
+                      initialSlide={selectedImageIndex}
+                      show={showModal}
+                      onHide={handleCloseModal}
+                    />
+                  )}
                 </div>
               }
 

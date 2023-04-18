@@ -1,6 +1,7 @@
 .gallery {
     display: flex;
     flex-wrap: wrap;
+    padding-bottom: 60px;
 }
 
 .image_container {
@@ -15,8 +16,8 @@
     position: absolute;
     bottom: 0;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
+    background: rgba(26, 26, 26, 0.6);
+    backdrop-filter: blur(4px);
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.3s, transform 0.3s;
@@ -41,7 +42,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    padding-bottom: 84px;
 }
 
 .button {
@@ -82,7 +83,7 @@
 /* mobile */
 .image_containerMobile {
     position: relative;
-    width: calc(50% - 10px);
+    width: calc(47% - 10px);
     margin: 5px;
     filter: grayscale(100%);
     transition: filter 0.3s;
@@ -92,12 +93,13 @@
     position: absolute;
     bottom: 0;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
+    background: rgba(26, 26, 26, 0.6);
+    backdrop-filter: blur(4px);
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.3s, transform 0.3s;
     font-size: 16px;
+    height: 100%;
 }
 
 .image_containerMobile:hover .image_textMobile {
@@ -107,4 +109,25 @@
 
 .image_containerMobile:hover {
     filter: grayscale(0%);
+}
+
+.text_title{
+    width: 173px;
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    text-shadow: 0px 0px 1.6px rgba(0, 0, 0, 0.35);
+}
+
+.text{
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: #FFFFFF;
+    text-shadow: 0px 0px 1.6px rgba(0, 0, 0, 0.35);
 }

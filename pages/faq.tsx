@@ -12,6 +12,8 @@ import Menu from './components/menu_outhome';
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import Footer from './components/footer';
 import i18next from 'i18next';
+import { Col, Row } from 'react-bootstrap';
+import { colors } from '@mui/material';
 
 export const useContainerDimensions = (myRef: any) => {
   const getDimensions = () => ({
@@ -70,40 +72,88 @@ const Faq = () => {
     }
   }, [router.query.lang]);
 
+  const componentRef = useRef()
+  const { width, height } = useContainerDimensions(componentRef)
+
+  const onNewpage = (page: any) => {
+    router.push({
+      pathname: page,
+      query: { lang: i18next.language }
+    });
+  }
   return (
     <div >
       <Menu />
-      <div className={styles.AppContent} style={{ paddingTop: '106px' }}>
-        <div style={{ paddingBottom: '38px' }}>
-          <span style={{ paddingLeft: '175px', color: '#9E9E9E' }}> Home </span>
+      <div className={styles.AppContent} >
+        <div style={{ paddingTop: (width > 992) ? '106px' : '16px', paddingBottom: '38px' }}>
+          <span style={{ paddingLeft: (width > 992) ? '175px' : '60px', color: '#9E9E9E', cursor: 'pointer' }}
+            onClick={() => { onNewpage('/') }}> Home </span>
           <span style={{ padding: '0px 23px', color: '#FFFFFF' }}> {'>'} </span>
           <span style={{ color: '#FFFFFF' }}> FAQ </span>
         </div>
-        <Container fluid style={{ paddingLeft: '175px', paddingBottom: '88px' }}>
-          <p className={styles.text_title}> {t('faq.title_whatBEAT')} </p>
-          <p style={{ paddingTop: '20px' }} className={styles.text}> {t('faq.text_whatBEAT')} </p>
 
-          <p style={{ paddingTop: '128px' }} className={styles.text_title}> FAQ </p>
-          <p style={{ color: '#FFFFFF', paddingTop: '20px', fontWeight: '600' }} className={styles.text}> {t('faq.text_q1')} </p>
+        <Container style={{ width: '100%', paddingBottom: '222px' }}>
+          <Row fluid ref={componentRef}>
+            <div style={{ paddingLeft: (width > 992) ? '125px' : '24px', paddingBottom: '48px' }}>
+              <p className={(width > 992) ? styles.text_title : styles.text_titleMoblie}> {t('faq.title_whatBEAT')} </p>
 
-          <p style={{ color: '#FFFFFF', fontWeight: '600' }} className={styles.text}> {t('faq.text_q2')} </p>
-          <p className={styles.text_aws}> {t('faq.text_aws2')} </p>
+              <p style={{ paddingTop: '20px' }} className={(width > 992) ? styles.text : styles.textMoblie}> {t('faq.text_whatBEAT')} </p>
 
-          <p style={{ color: '#FFFFFF', fontWeight: '600' }} className={styles.text}> {t('faq.text_q3')} </p>
-          <p className={styles.text_aws}> {t('faq.text_aws3')} </p>
+              <p style={{ paddingTop: (width > 992) ? '128px' : '64px' }} className={(width > 992) ? styles.text_title : styles.text_titleMoblie}> FAQ </p>
 
-          <p style={{ color: '#FFFFFF', fontWeight: '600' }} className={styles.text}> {t('faq.text_q4')} </p>
-          <p className={styles.text_aws}> {t('faq.text_aws4')} </p>
+              <div style={{ display: "flex", alignItems: "start" }}>
+                <div className={styles.text_q}> Q: </div>
+                <div className={(width > 992) ? styles.text : styles.textMoblie}> {t('faq.text_q1')} </div>
+              </div>
+              <div style={{ display: "flex", alignItems: "start" }}>
+                <div className={styles.text_q} style={{ color: '#CCCCCC' }}> A: </div>
+                <div className={(width > 992) ? styles.text_aws : styles.text_awsMobile}> {t('faq.text_aws1')} </div>
+              </div>
 
-          <p style={{ color: '#FFFFFF', fontWeight: '600' }} className={styles.text}> {t('faq.text_q5')} </p>
-          <p className={styles.text_aws}> {t('faq.text_aws5')} </p>
+              <div style={{ display: "flex", alignItems: "start" }}>
+                <div className={styles.text_q}> Q: </div>
+                <div className={(width > 992) ? styles.text : styles.textMoblie}> {t('faq.text_q2')} </div>
+              </div>
+              <div style={{ display: "flex", alignItems: "start" }}>
+                <div className={styles.text_q} style={{ color: '#CCCCCC' }}> A: </div>
+                <div className={(width > 992) ? styles.text_aws : styles.text_awsMobile}> {t('faq.text_aws2')} </div>
+              </div>
+
+              <div style={{ display: "flex", alignItems: "start" }}>
+                <div className={styles.text_q}> Q: </div>
+                <div className={(width > 992) ? styles.text : styles.textMoblie}> {t('faq.text_q3')} </div>
+              </div>
+              <div style={{ display: "flex", alignItems: "start" }}>
+                <div className={styles.text_q} style={{ color: '#CCCCCC' }}> A: </div>
+                <div className={(width > 992) ? styles.text_aws : styles.text_awsMobile}> {t('faq.text_aws3')} </div>
+              </div>
+
+              <div style={{ display: "flex", alignItems: "start" }}>
+                <div className={styles.text_q}> Q: </div>
+                <div className={(width > 992) ? styles.text : styles.textMoblie}> {t('faq.text_q4')} </div>
+              </div>
+              <div style={{ display: "flex", alignItems: "start" }}>
+                <div className={styles.text_q} style={{ color: '#CCCCCC' }}> A: </div>
+                <div className={(width > 992) ? styles.text_aws : styles.text_awsMobile}> {t('faq.text_aws4')} </div>
+              </div>
+
+              <div style={{ display: "flex", alignItems: "start" }}>
+                <div className={styles.text_q}> Q: </div>
+                <div className={(width > 992) ? styles.text : styles.textMoblie}> {t('faq.text_q5')} </div>
+              </div>
+              <div style={{ display: "flex", alignItems: "start" }}>
+                <div className={styles.text_q} style={{ color: '#CCCCCC' }}> A: </div>
+                <div className={(width > 992) ? styles.text_aws : styles.text_awsMobile}> {t('faq.text_aws5')} </div>
+              </div>
+            </div>
+          </Row>
         </Container>
+      </div>
 
-        <div className={styles.AppContent}>
-          <footer ref={FooterRef} className={styles.footer}>
-            <Footer />
-          </footer>
-        </div>
+      <div className={styles.AppContent}>
+        <footer ref={FooterRef} className={styles.footer}>
+          <Footer />
+        </footer>
       </div>
     </div >
   );

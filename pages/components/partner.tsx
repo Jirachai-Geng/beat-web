@@ -43,60 +43,68 @@ const Partner = () => {
         }
     }, [router.query.lang]);
 
-    const componentRef = useRef()
-    const { width, height } = useContainerDimensions(componentRef)
+    const containerRef = useRef(null);
+    const { width, height } = useContainerDimensions(containerRef)
 
     return (
-        <div style={{ width: '100%', padding: "0px !important;" }}>
-            <Container fluid style={{ paddingLeft: '175px', paddingBottom: '88px' }} className={styles.containerbackgroud_price}>
+        <div >
+            <Container fluid style={{ width: '100%', padding: (width > 992) ? "120px 120px 175px 88px" : "0 16px 72px" }}
+                ref={containerRef} className={styles.containerbackgroud_price}>
                 <Row>
                     <Col lg={7}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '10px' }}>
-                            <p className={styles.price_title}> Price</p>
-                            <p className={styles.price_text}> ( จ-ศ / ส-อา และวันหยุดนขัตฤกษ์)</p>
+                        {
+                            ((width > 992) ? <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '10px' }}>
+                                <p className={styles.price_title} > Price</p>
+                                <p className={styles.price_text} > ( จ-ศ / ส-อา และวันหยุดนขัตฤกษ์)</p>
+                            </div>
+                                :
+                                <div>
+                                    <p className={styles.price_titleMobile} > Price</p>
+                                    <p className={styles.price_textMobile} > ( จ-ศ / ส-อา และวันหยุดนขัตฤกษ์)</p>
+                                </div>
+                            )}
+
+
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <p className={(width > 992) ? styles.price_textB : styles.price_textBMobile}>Kids</p>
+                            <p className={(width > 992) ? styles.price_text : styles.price_textMobile} >240 / 300</p>
                         </div>
 
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <p className={styles.price_textB}>Kids</p>
-                            <p className={styles.price_text}>240 / 300</p>
+                            <p className={(width > 992) ? styles.price_textB : styles.price_textBMobile}>Sport Novice</p>
+                            <p className={(width > 992) ? styles.price_text : styles.price_textMobile} >320 / 420</p>
                         </div>
 
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <p className={styles.price_textB}>Sport Novice</p>
-                            <p className={styles.price_text}>320 / 420</p>
+                            <p className={(width > 992) ? styles.price_textB : styles.price_textBMobile}>Sport Advance</p>
+                            <p className={(width > 992) ? styles.price_text : styles.price_textMobile} >480 / 680</p>
                         </div>
 
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <p className={styles.price_textB}>Sport Advance</p>
-                            <p className={styles.price_text}>480 / 680</p>
+                            <p className={(width > 992) ? styles.price_textB : styles.price_textBMobile}>Sport Extreme</p>
+                            <p className={(width > 992) ? styles.price_text : styles.price_textMobile} >550 / 750</p>
                         </div>
 
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <p className={styles.price_textB}>Sport Extreme</p>
-                            <p className={styles.price_text}>550 / 750</p>
+                            <p className={(width > 992) ? styles.price_textB : styles.price_textBMobile}>THAI FIGHT League (Weekend)</p>
+                            <p className={(width > 992) ? styles.price_text : styles.price_textMobile} >1,250 / 2,000</p>
                         </div>
 
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <p className={styles.price_textB}>THAI FIGHT League (Weekend)</p>
-                            <p className={styles.price_text}>1,250 / 2,000</p>
-                        </div>
-
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <p className={styles.price_textB}>THAI FIGHT psysport</p>
-                            <p className={styles.price_text}>1,250</p>
+                            <p className={(width > 992) ? styles.price_textB : styles.price_textBMobile}>THAI FIGHT psysport</p>
+                            <p className={(width > 992) ? styles.price_text : styles.price_textMobile} >1,250</p>
                         </div>
 
                     </Col>
 
                     <Col lg={5} >
                         <img className={`${styles.responsive} mx-auto`} style={{ height: (width > 922) ? "300px" : "200px" }} src="/assets/price.svg" alt="" />
-
                     </Col>
                 </Row>
             </Container>
 
             <Container>
-                <Row ref={componentRef} className={styles.line} style={{ padding: (width > 992) ? "0px 64px" : "0 16px" }}>
+                <Row className={styles.line} style={{ padding: (width > 992) ? "0px 64px" : "0 16px" }}>
                     <Col lg={3}>
                         <div className={(width > 922) ? styles.textParner : styles.textParnerMobile}>
                             <p style={{ textAlign: (width > 1281) ? "start" : "center", fontSize: (width > 1350) ? "48px" : (width > 1281) ? "36px" : "24px" }}>Our </p>

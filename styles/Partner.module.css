@@ -6,10 +6,10 @@
     justify-content: center;
 }
 
-.no_decoration{
+.no_decoration {
     display: "inline";
     color: #FFFFFF;
-    text-decoration:none; 
+    text-decoration: none;
     justify-content: start !important;
     padding-right: 5px;
 }
@@ -28,10 +28,22 @@
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
-    line-height: 30px;    
+    line-height: 30px;
     color: #FFFFFF;
     padding-bottom: 42px;
 }
+
+.footer_titleMobile {
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    padding-bottom: 8px;
+    padding-top: 20px;
+}
+
 
 .footer_textB {
     font-family: 'Prompt';
@@ -42,6 +54,16 @@
     color: #FFFFFF;
 }
 
+.footer_textBMobile {
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    max-width: 170.5px;
+}
+
 
 .footer_text {
     font-family: 'Prompt';
@@ -49,6 +71,15 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
+    color: #FFFFFF;
+}
+
+.footer_textMobile {
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
     color: #FFFFFF;
 }
 
@@ -137,6 +168,20 @@
     flex-grow: 0;
 }
 
+
+.price_titleMobile {
+    font-family: 'SpaceAge';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 56px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+
 .price_textB {
     width: 578px;
     font-family: 'Prompt';
@@ -144,22 +189,45 @@
     font-weight: 600;
     font-size: 20px;
     line-height: 30px;
-    color: #FFFFFF;    
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.price_textBMobile {
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 30px;
+    color: #FFFFFF;
     flex: none;
     order: 0;
     flex-grow: 1;
 }
 
 
-.price_text { 
+.price_text {
     font-family: 'Prompt';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
-    line-height: 30px; 
+    line-height: 30px;
     color: #CCCCCC;
     flex: none;
     order: 2;
     flex-grow: 0;
 }
 
+.price_textMobile {
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+    color: #CCCCCC;
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}

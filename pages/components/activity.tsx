@@ -4,6 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { Container, Row } from 'react-bootstrap';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import i18next from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import US_i18n from '../../public/locales/us.json'
+import TH_i18n from '../../public/locales/th.json'
+import CN_i18n from '../../public/locales/cn.json'
 
 export const useContainerDimensions = (myRef: any) => {
     const getDimensions = () => ({
@@ -36,11 +41,29 @@ export const useContainerDimensions = (myRef: any) => {
 const images = [
     '/assets/activity/activity1.png', '/assets/activity/activity2.png', '/assets/activity/activity3.png', '/assets/activity/activity4.png', '/assets/activity/activity5.png',
     '/assets/activity/activity6.png', '/assets/activity/activity7.png', '/assets/activity/activity8.png', '/assets/activity/activity9.png', '/assets/activity/activity10.png',
-    '/assets/activity/activity11.png', '/assets/activity/activity12.png', '/assets/activity/activity13.png', '/assets/activity/activity14.png', '/assets/activity/activity15.png'
+    '/assets/activity/activity11.png', '/assets/activity/activity12.png', '/assets/activity/activity13.png', '/assets/activity/activity14.png', '/assets/activity/activity15.png',
+    '/assets/activity/activity1.png', '/assets/activity/activity2.png', '/assets/activity/activity3.png', '/assets/activity/activity4.png', '/assets/activity/activity5.png',
+    '/assets/activity/activity1.png', '/assets/activity/activity2.png', '/assets/activity/activity3.png', '/assets/activity/activity4.png', '/assets/activity/activity5.png',
+    '/assets/activity/activity1.png', '/assets/activity/activity2.png', '/assets/activity/activity3.png', '/assets/activity/activity4.png', '/assets/activity/activity5.png',
+    '/assets/activity/activity1.png', '/assets/activity/activity2.png', '/assets/activity/activity3.png', '/assets/activity/activity4.png', '/assets/activity/activity5.png',
+    '/assets/activity/activity1.png', '/assets/activity/activity2.png', '/assets/activity/activity3.png', '/assets/activity/activity4.png', '/assets/activity/activity5.png',
+    '/assets/activity/activity1.png', '/assets/activity/activity2.png', '/assets/activity/activity3.png', '/assets/activity/activity4.png', '/assets/activity/activity5.png',
+    '/assets/activity/activity1.png', '/assets/activity/activity2.png', '/assets/activity/activity3.png', '/assets/activity/activity4.png', '/assets/activity/activity5.png',
+    '/assets/activity/activity1.png', '/assets/activity/activity2.png', '/assets/activity/activity3.png', '/assets/activity/activity4.png', '/assets/activity/activity5.png',
 ];
 
-const texts = ["Text for image 1", "Text for image 2", "Text for image 3", "Text for image 4", "Text for image 5", "Text for image 6", "Text for image 7", "Text for image 8", "Text for image 9", "Text for image 10", "Text for image 11", "Text for image 12", "Text for image 13", "Text for image 14", "Text for image 15",];
 
+const resources = {
+    us: {
+        translation: US_i18n
+    },
+    th: {
+        translation: TH_i18n
+    },
+    cn: {
+        translation: CN_i18n
+    }
+};
 
 const Activity = () => {
     const router = useRouter();
@@ -57,6 +80,23 @@ const Activity = () => {
 
     const [imagesToShow, setImagesToShow] = useState(images.slice(0, 10));
     const [hoveredImageIndex, setHoveredImageIndex] = useState(null);
+    const [title, setTitle] = useState<string[]>([]);
+    const [text, setText] = useState<string[]>([]);
+    useEffect(() => {
+        if (i18next.language == 'cn') {
+            setTitle(Object.keys(CN_i18n.all_activity).map((key) => key.replace(/_/g, ' ')))
+            setText(Object.values(CN_i18n.all_activity))
+        }
+        else if (i18next.language == 'th') {
+            setTitle(Object.keys(TH_i18n.all_activity).map((key) => key.replace(/_/g, ' ')))
+            setText(Object.values(TH_i18n.all_activity))
+        } else {
+            setTitle(Object.keys(US_i18n.all_activity).map((key) => key.replace(/_/g, ' ')))
+            setText(Object.values(US_i18n.all_activity))
+        }
+
+    }, [i18next.language]);
+
 
     const handleShowAll = () => {
         setShowAll(true);
@@ -85,7 +125,7 @@ const Activity = () => {
 
     return (
         <div>
-            {width} testset
+            <div style={{ borderTop: '0.5px solid #E29886', margin: (width > 992) ? '0px 175px' : '0px 60px' , paddingBottom: '48px' }}></div>
             <Container fluid style={{ padding: (width > 992) ? '0px 64px 88px 64px' : '0px 16px 72px 16px' }}>
 
                 <div className={styles.button_container}>
@@ -111,7 +151,8 @@ const Activity = () => {
                             <div style={{ width: (width > 992) ? '256px' : '168px' }}
                                 className={`${(width > 992) ? styles.image_text : styles.image_textMobile} 
                                 ${hoveredImageIndex === index ? styles.visible : styles.hidden}`}>
-                                <p>{texts[index]}</p>
+                                <p className={styles.text_title}>{title[index]}</p>
+                                <p className={styles.text}>{text[index]}</p>
                             </div>
                         </div>
                     ))}

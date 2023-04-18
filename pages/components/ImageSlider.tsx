@@ -67,6 +67,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
             </Slider>
             {showModal && (
                 <ImageModal
+                    title='Food & Beverage'
                     images={images}
                     initialSlide={selectedImageIndex}
                     show={showModal}

@@ -55,6 +55,16 @@
     -webkit-box-orient: vertical;
 }
 
+.textSelect {
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #CCCCCC;
+}
+
+
 .titleMoblie {
     font-family: 'SpaceAge';
     font-style: normal;
