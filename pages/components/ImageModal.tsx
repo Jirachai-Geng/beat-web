@@ -26,7 +26,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ images, initialSlide, show, tit
     return (
       <img
         className={`${className}`}
-        style={{ ...style, display: 'block', width: '40px', height: '40px', marginRight: '40px', marginLeft: '40px' }}
+        style={{ ...style, display: 'block', width: '40px', height: '40px', marginRight: '40px', marginLeft: '40px', zIndex: 1 }}
         onClick={onClick}
         src={iconPath}
         alt={`${type} arrow`}

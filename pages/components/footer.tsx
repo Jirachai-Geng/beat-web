@@ -49,7 +49,7 @@ const Footer = () => {
         <div style={{ width: '100%', padding: "0px !important;" }}>
             <Container fluid style={{ padding: (width > 992) ? "0px 64px" : "0 5px" }}>
                 <Row className={styles.line}>
-                    <img style={{ width: '103px', padding: (width > 992) ? '48px 0px 0px 0px' : "16px" }} src="\assets\beat_footer.svg" alt="kids" />
+                    <img style={{ width: '103px', padding: (width > 992) ? '48px 0px 0px 0px' : "16px" }} src="\assets\BEAT LOGO-01.png" alt="kids" />
 
                 </Row>
                 <Row style={{ padding: (width > 992) ? "64px 0px 0px 0px" : "16px" }} ref={componentRef}>
@@ -153,7 +153,9 @@ const Footer = () => {
                             , marginBottom: "0px", display: "flex", alignItems: "end", justifyContent: "flex-end"
                         }} sm={1}>
                         <Row className={(width < 992) ? styles.boxRelative : ""} style={{ position: "absolute" }}>
-                            <button onClick={goToTop} className={styles.btnGoTop}> ↑ </button>
+                            <div onClick={goToTop} style={{cursor: "pointer"}}>
+                                <img src='\assets\activity\icons\hide_all.svg' alt='btnGoTop' />
+                            </div>
                         </Row>
                     </Col>
                 </Row>

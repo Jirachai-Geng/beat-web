@@ -39,12 +39,19 @@ const Menu: React.FC = () => {
         }
     }, [router.query.lang]);
 
-    const onNewpage = (page: any) => {
+    const onNewpage = (page: any, scrollToFooter = false) => {
         router.push({
             pathname: page,
-            query: { lang: i18next.language }
+            query: { lang: i18next.language, scrollToFooter: scrollToFooter },
         });
-    }
+    };
+
+    const scrollToBottom = () => {
+        window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth'
+        });
+    };
 
     return (
         <div>
@@ -54,7 +61,7 @@ const Menu: React.FC = () => {
             </Head>
             <Navbar expand="lg">
                 <Container className="paddingContainer" fluid ref={HomeRef}>
-                    <Navbar.Brand><img src='/assets/logo.svg' onClick={ScrollHome} className="App-logo" alt="logo" /> </Navbar.Brand>
+                    <Navbar.Brand><img src='/assets/logo.png' onClick={ScrollHome} className="App-logo" alt="logo" /> </Navbar.Brand>
                     <div className={styles.dropdown} style={{ display: "flex", flexDirection: "row-reverse" }}>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <div onClick={() => setShowLangMobile(!showLangMobile)} className={styles.dropbtn} id='lingo-mobile'>
@@ -87,7 +94,11 @@ const Menu: React.FC = () => {
                             <Nav.Link className={styles.text_link} onClick={() => { onNewpage('/press') }}> Press </Nav.Link>
                             <Nav.Link className={styles.text_link} onClick={() => { onNewpage('/safety') }}> Safety Standard </Nav.Link>
                             <Nav.Link className={styles.text_link} onClick={() => { onNewpage('faq') }}> FAQ </Nav.Link>
-                            <Nav.Link className={styles.text_link}> Contact Us </Nav.Link>
+                            <Nav.Link className={styles.text_link} onClick={() => { scrollToBottom() }}> Contact Us </Nav.Link>
+
+                            <button className={styles.btnTicket} >
+                                <span>Buy Ticket</span>
+                            </button>
 
                             <div className={styles.dropdown}>
                                 <div onClick={() => setShowLang(!showLang)} className={styles.dropbtn} id='lingo-desktop'>

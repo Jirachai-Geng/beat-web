@@ -1,6 +1,8 @@
 .gallery {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     padding-bottom: 60px;
 }
 
@@ -10,6 +12,9 @@
     margin: 5px;
     filter: grayscale(100%);
     transition: filter 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .image_text {
@@ -87,6 +92,9 @@
     margin: 5px;
     filter: grayscale(100%);
     transition: filter 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .image_textMobile {

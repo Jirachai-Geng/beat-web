@@ -230,26 +230,30 @@ const Event = () => {
             </Row>
             {
               activities.map((activity, index) => (
-                <Row fluid key={index} style={{ width: '100%', display: activityImage === index ? '' : 'none' }}>
-                  <span className={styles.pic_title}>{activity.title}</span>
+                <div key={index} style={{ width: '100%', display: activityImage === index ? '' : 'none' }}>
+                  <p className={styles.pic_title}>{activity.title}</p>
                   <p className={styles.pic_text}>{activity.text}</p>
-                </Row>
+                </div>
               ))
             }
             <Row fluid style={{ display: 'flex', justifyContent: 'start' }}>
-              <Col style={{ display: 'flex', alignItems: 'center' }}>
+              <Col style={{
+                display: 'flex', alignItems: 'center', justifyContent: (width > 992) ? 'start' : 'end',
+                paddingRight: '18px'
+              }}>
                 <button className={styles.button_left} onClick={() => setActivityPrevious()}
                   style={{ display: activityImage !== 0 ? '' : 'none' }}>
                   <img src='/assets/icons/prev-icon.svg' alt='prev' />
                 </button>
               </Col>
-              <Col style={{ display: 'flex', alignItems: 'center' }}>
+              <Col style={{ display: 'flex', alignItems: 'center', paddingLeft: '18px' }}>
                 <button className={styles.button_left} onClick={() => setActivityNext()}
                   style={{ display: activityImage !== activities.length - 1 ? '' : 'none' }}>
                   <img src='/assets/icons/next-icon.svg' alt='next' />
                 </button>
               </Col>
             </Row>
+
           </Col>
         </Row>
       </Container>

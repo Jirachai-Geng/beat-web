@@ -93,7 +93,7 @@ const Home = () => {
       </Head>
       <Navbar expand="lg">
         <Container className="paddingContainer" fluid ref={HomeRef}>
-          <Navbar.Brand><img src='/assets/logo.svg' onClick={ScrollHome} className="App-logo" alt="logo" /> </Navbar.Brand>
+          <Navbar.Brand><img src='/assets/logo.png' onClick={ScrollHome} className="App-logo" alt="logo" /> </Navbar.Brand>
 
           <div className={styles.dropdown} style={{ display: "flex", flexDirection: "row-reverse" }}>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -128,7 +128,7 @@ const Home = () => {
               <Nav.Link className={styles.text_link} onClick={() => { onNewpage('/press') }}> Press </Nav.Link>
               <Nav.Link className={styles.text_link} onClick={() => { onNewpage('/safety') }}> Safety Standard </Nav.Link>
               <Nav.Link className={styles.text_link} onClick={() => { onNewpage('faq') }}> FAQ </Nav.Link>
-              <Nav.Link className={styles.text_link} onClick={ScrollCareer}> Career </Nav.Link>
+              {/* <Nav.Link className={styles.text_link} onClick={ScrollCareer}> Career </Nav.Link> */}
               <Nav.Link className={styles.text_link} onClick={ScrollFooter}> Contact Us </Nav.Link>
 
               <button className={styles.btnTicket} >
@@ -159,10 +159,7 @@ const Home = () => {
                     </a>
                   </div>
                   : null}
-
-
               </div>
-
 
             </Nav>
           </Navbar.Collapse>
@@ -170,11 +167,11 @@ const Home = () => {
       </Navbar>
       <div className={styles.AppContent}>
 
-        <Game />
+        {/* <Game />
 
         <div ref={CareerRef} >
           <Carrer />
-        </div>
+        </div> */}
 
         <Beyond />
 

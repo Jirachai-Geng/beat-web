@@ -97,7 +97,7 @@ const Press = () => {
             <div className={styles.AppContent}>
                 <div style={{ paddingTop: (width > 992) ? '106px' : '16px', paddingBottom: '38px' }}>
                     <span style={{ paddingLeft: (width > 992) ? '175px' : '60px', color: '#9E9E9E', cursor: 'pointer' }}
-                        onClick={() => { onNewpage('/') }}> Home </span>                   
+                        onClick={() => { onNewpage('/') }}> Home </span>
                     <span style={{ padding: '0px 23px', color: '#FFFFFF' }}> {'>'} </span>
                     <span style={{ color: '#FFFFFF' }}> Press </span>
                 </div>
@@ -117,7 +117,7 @@ const Press = () => {
 
                                 <p style={{ paddingTop: '50px' }} className={styles.text}>
                                     <Link href="/press_select" as={`/press_select?title=${title[index]}`}>
-                                        <a>showmore...</a>
+                                        <a style={{ textDecoration: 'none' }}>Read more ...</a>
                                     </Link>
                                 </p>
 

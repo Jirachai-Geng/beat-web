@@ -47,23 +47,36 @@ export const useContainerDimensions = (myRef: any) => {
 const images = [
     '/assets/press/press_select.svg', '/assets/events/kids.svg', '/assets/events/novice.svg', '/assets/events/advance.svg'];
 
-const PressSelect = () => {
-    const router = useRouter();
-    const title = router.query.title;
-    const [showTitle, setTitle] = useState(router.query.title);
+
+const useRouterTitle = (router: any) => {
+    const [title, setTitle] = useState(router.query.title);
 
     useEffect(() => {
-        if (Object.keys(router.query).length === 0) {
-            const fetchTitle = async () => {
-                await setTitle(router.query.title);
-            };
-            fetchTitle();
-        } else {
-            if (typeof router.query.title === 'string') {
-                setTitle(router.query.title);
+        const handleRouteChange = (url: string) => {
+            const newTitle = new URL(url, window.location.href).searchParams.get('title');
+            if (newTitle) {
+                setTitle(newTitle);
             }
+        };
+
+        if (!title && typeof window !== "undefined") {
+            setTitle(new URL(window.location.href).searchParams.get('title'));
         }
-    }, [router.query]);
+
+        router.events.on('routeChangeComplete', handleRouteChange);
+
+        return () => {
+            router.events.off('routeChangeComplete', handleRouteChange);
+        };
+    }, [router, title]);
+
+    return title;
+};
+
+
+const PressSelect = () => {
+    const router = useRouter();
+    const showTitle = useRouterTitle(router);
 
     const [showModal, setShowModal] = useState(false);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -75,7 +88,6 @@ const PressSelect = () => {
 
     const componentRef = useRef()
     const { width, height } = useContainerDimensions(componentRef)
-    const { t, i18n } = useTranslation();
     const FooterRef = useRef(null)
     const onNewpage = (page: any) => {
         router.push({
@@ -87,7 +99,6 @@ const PressSelect = () => {
         <div>
             <Menu />
             <div className={styles.AppContent}>
-
                 <div style={{ paddingTop: (width > 992) ? '106px' : '16px', paddingBottom: '38px' }}>
                     <span style={{ paddingLeft: (width > 992) ? '175px' : '60px', color: '#9E9E9E', cursor: 'pointer' }}
                         onClick={() => { onNewpage('/') }}> Home </span>
@@ -96,7 +107,6 @@ const PressSelect = () => {
                     <span style={{ padding: '0px 23px', color: '#FFFFFF' }}> {'>'} </span>
                     <span style={{ color: '#FFFFFF' }}> {showTitle} </span>
                 </div>
-
 
                 <Container className={(width > 992) ? styles.scrollbar : styles.scrollbarMoblie}
                     style={{ backgroundColor: 'dark', paddingLeft: (width > 992) ? '125px' : '60px' }}>
@@ -141,7 +151,7 @@ const PressSelect = () => {
 
 
                         <Col lg={6}>
-                            {(width > 992) ? <p className={styles.title}> {title}</p> : null}
+                            {(width > 992) ? <p className={styles.title}> {showTitle}</p> : null}
                             <p className={styles.textSelect}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit egestas augue interdum bibendum. Duis eget ex a tortor rhoncus pharetra a varius nunc. Nunc vestibulum commodo libero, vel venenatis nulla laoreet vitae. Donec non sem velit. Pellentesque non varius ex. Quisque eu mi sapien. Aliquam interdum pellentesque mauris ut blandit. Curabitur nec semper est, et posuere est. Etiam suscipit, dolor eget dapibus finibus, velit lacus dictum mi, ac sodales dolor lacus quis eros. Nullam eget mi sed dui aliquet mollis. Nunc id facilisis eros, vehicula elementum est. Phasellus et Cras et efficitur ipsum, et aliquet est. Sed ut porta odio. Nam feugiat augue nulla, quis efficitur elit viverra ac. Donec finibus, ante id euismod fermentummagna non sem ultrices hendrerit et eget nisl. Donec egestas dignissim lacus a ultrices. Sed posuere vel metus eu auctor. Nullam egestas facilisis augue luctus pellentesque. Aliquam vitae purus vitae quam maximus elementum. Cras id rhoncus ante. Aenean sollicitudin risus vel posuere auctor. Duis quis tortor nec lacus varius scelerisque ac nec velit. Pellentesque at luctus sapien. Praesent et dignissim nisl. Integer sagittis, eros dictum facilisis maximus, leo velit fermentum est, eu euismod dui velit eu dui. Nunc sodales id nulla sit amet ultrices. Proin elementum velit eget libero euismod, eu laoreet turpis lacinia. Fusce rhoncus viverra nulla, ac facilisis nisl ornare et. Donec interdum libero a sollicitudin vehicula. Nullam at lectus et enim pulvinar cursus eget at arcu. Suspendisse lobortis accumsan ligula eu tincidunt. Cras tincidunt eros sit amet magna rutrum vestibulum.</p>
                         </Col>
 

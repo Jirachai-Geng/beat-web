@@ -51,53 +51,53 @@ const Partner = () => {
             <Container fluid style={{ width: '100%', padding: (width > 992) ? "120px 120px 175px 88px" : "0 16px 72px" }}
                 ref={containerRef} className={styles.containerbackgroud_price}>
                 <Row>
-                    <Col lg={7}>
+                    <Col lg={8}>
                         {
                             ((width > 992) ? <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '10px' }}>
-                                <p className={styles.price_title} > Price</p>
-                                <p className={styles.price_text} > ( จ-ศ / ส-อา และวันหยุดนขัตฤกษ์)</p>
+                                <p className={styles.price_title} > Price </p>
+                                <p className={styles.price_text} > {t('price.Price_late')}  </p>
                             </div>
                                 :
                                 <div>
                                     <p className={styles.price_titleMobile} > Price</p>
-                                    <p className={styles.price_textMobile} > ( จ-ศ / ส-อา และวันหยุดนขัตฤกษ์)</p>
+                                    <p className={styles.price_textMobile} > {t('price.Price_late')}  </p>
                                 </div>
                             )}
 
 
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <p className={(width > 992) ? styles.price_textB : styles.price_textBMobile}>Kids</p>
-                            <p className={(width > 992) ? styles.price_text : styles.price_textMobile} >240 / 300</p>
+                            <p className={(width > 992) ? styles.price_textB : styles.price_textBMobile}> {t('price.Kid')} </p>
+                            <p className={(width > 992) ? styles.price_text : styles.price_textMobile} >{t('price.Price_kid')}</p>
                         </div>
 
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <p className={(width > 992) ? styles.price_textB : styles.price_textBMobile}>Sport Novice</p>
-                            <p className={(width > 992) ? styles.price_text : styles.price_textMobile} >320 / 420</p>
+                            <p className={(width > 992) ? styles.price_textB : styles.price_textBMobile}> {t('price.Sport_Novice')}</p>
+                            <p className={(width > 992) ? styles.price_text : styles.price_textMobile} >{t('price.Price_Sport_Novice')}</p>
                         </div>
 
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <p className={(width > 992) ? styles.price_textB : styles.price_textBMobile}>Sport Advance</p>
-                            <p className={(width > 992) ? styles.price_text : styles.price_textMobile} >480 / 680</p>
+                            <p className={(width > 992) ? styles.price_textB : styles.price_textBMobile}>{t('price.Sport_Advance')}</p>
+                            <p className={(width > 992) ? styles.price_text : styles.price_textMobile} >{t('price.Price_Sport_Advance')}</p>
                         </div>
 
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <p className={(width > 992) ? styles.price_textB : styles.price_textBMobile}>Sport Extreme</p>
-                            <p className={(width > 992) ? styles.price_text : styles.price_textMobile} >550 / 750</p>
+                            <p className={(width > 992) ? styles.price_textB : styles.price_textBMobile}>{t('price.Sport_Extreme')}</p>
+                            <p className={(width > 992) ? styles.price_text : styles.price_textMobile} >{t('price.Price_Sport_Extreme')}</p>
                         </div>
 
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <p className={(width > 992) ? styles.price_textB : styles.price_textBMobile}>THAI FIGHT League (Weekend)</p>
-                            <p className={(width > 992) ? styles.price_text : styles.price_textMobile} >1,250 / 2,000</p>
+                            <p className={(width > 992) ? styles.price_textB : styles.price_textBMobile}>{t('price.THAI_FIGHT_Weekend')}</p>
+                            <p className={(width > 992) ? styles.price_text : styles.price_textMobile} >{t('price.Price_THAI_FIGHT_Weekend')}</p>
                         </div>
 
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <p className={(width > 992) ? styles.price_textB : styles.price_textBMobile}>THAI FIGHT psysport</p>
-                            <p className={(width > 992) ? styles.price_text : styles.price_textMobile} >1,250</p>
+                            <p className={(width > 992) ? styles.price_textB : styles.price_textBMobile}>{t('price.THAI_FIGHT')}</p>
+                            <p className={(width > 992) ? styles.price_text : styles.price_textMobile} >{t('price.Price_THAI_FIGHT')}</p>
                         </div>
 
                     </Col>
 
-                    <Col lg={5} >
+                    <Col lg={4} >
                         <img className={`${styles.responsive} mx-auto`} style={{ height: (width > 922) ? "300px" : "200px" }} src="/assets/price.svg" alt="" />
                     </Col>
                 </Row>

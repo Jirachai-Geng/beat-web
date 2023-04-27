@@ -58,6 +58,7 @@ const images = [
 const ViewAll: React.FC = () => {
     const componentRef = useRef()
     const FooterRef = useRef(null)
+    const router = useRouter();
 
     const { width, height } = useContainerDimensions(componentRef)
     const [title, setTitle] = useState<string[]>([]);
@@ -83,14 +84,22 @@ const ViewAll: React.FC = () => {
         setHoveredImageIndex(index);
     };
 
+    const onNewpage = (page: any) => {
+        router.push({
+            pathname: page,
+            query: { lang: i18next.language }
+        });
+    }
+
     return (
         <div>
             <Menu />
             <div className={styles.AppContent}>
                 <div style={{ paddingTop: (width > 992) ? '106px' : '16px', paddingBottom: '38px' }}>
-                    <span style={{ paddingLeft: (width > 992) ? '175px' : '16px', color: '#9E9E9E' }}> Home </span>
+                    <span style={{ paddingLeft: (width > 992) ? '175px' : '60px', color: '#9E9E9E', cursor: 'pointer' }}
+                        onClick={() => { onNewpage('/') }}> Home </span>
                     <span style={{ padding: '0px 23px', color: '#FFFFFF' }}> {'>'} </span>
-                    <span style={{ color: '#FFFFFF' }}> All Acticity </span>
+                    <span style={{ color: '#FFFFFF' }}> All Activity  </span>
                 </div>
 
                 <Container fluid style={{ padding: (width > 992) ? '0px 64px 88px 64px' : '0px 16px 72px 16px' }} >
