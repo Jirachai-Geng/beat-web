@@ -2,33 +2,34 @@ import React, { useState, useRef, useEffect } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-import styles from '../../styles/Event.module.css'
+import styles from '../../styles/Event.module.css';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 export const useContainerDimensions = (myRef: any) => {
   const getDimensions = () => ({
     width: myRef.current.offsetWidth,
     height: myRef.current.offsetHeight
-  })
+  });
 
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
     const handleResize = () => {
-      setDimensions(getDimensions())
-    }
+      setDimensions(getDimensions());
+    };
 
     if (myRef.current) {
-      setDimensions(getDimensions())
+      setDimensions(getDimensions());
     }
 
-    window.addEventListener("resize", handleResize)
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize)
-    }
-  }, [myRef])
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [myRef]);
 
   return dimensions;
 };
@@ -44,20 +45,25 @@ const Event = () => {
   }, [router.query.lang]);
 
   const images = [
-    '/assets/events/kids.svg', '/assets/events/novice.svg', '/assets/events/advance.svg',
-    '/assets/events/extreme.svg', '/assets/events/thaifight.svg'
+    '/assets/events/kids.svg',
+    '/assets/events/novice.svg',
+    '/assets/events/advance.svg',
+    '/assets/events/extreme.svg',
+    '/assets/events/thaifight.svg'
   ];
 
-  const title = [
-    'KIDS', 'NOVICE', 'ADVANCE', 'EXTREME', 'THAIFIGHT'
-  ];
+  const title = ['KIDS', 'NOVICE', 'ADVANCE', 'EXTREME', 'THAIFIGHT'];
 
   const text = [
-    t('event.text_kid'), t('event.text_novice'), t('event.text_advance'), t('event.text_extreme'), t('event.text_thaifight')
+    t('event.text_kid'),
+    t('event.text_novice'),
+    t('event.text_advance'),
+    t('event.text_extreme'),
+    t('event.text_thaifight')
   ];
 
-  const componentRef = useRef()
-  const { width, height } = useContainerDimensions(componentRef)
+  const componentRef = useRef();
+  const { width, height } = useContainerDimensions(componentRef);
 
   const [activeImage, setActiveImage] = useState(0);
   const [activityImage, setActivityImage] = useState(0);
@@ -82,58 +88,67 @@ const Event = () => {
 
   const events = [
     {
-      src: "/assets/events/kids.svg",
-      alt: "kids",
-      title: "KID",
-      text: t("event.text_kid")
+      src: '/assets/events/kids.jpg',
+      alt: 'kids',
+      title: 'KID',
+      text: t('event.text_kid')
     },
     {
-      src: "/assets/events/novice.svg",
-      alt: "novice",
-      title: "NOVICE",
-      text: t("event.text_novice")
+      src: '/assets/events/novice.jpg',
+      alt: 'novice',
+      title: 'NOVICE',
+      text: t('event.text_novice')
     },
     {
-      src: "/assets/events/advance.svg",
-      alt: "advance",
-      title: "ADVANCE",
-      text: t("event.text_advance")
+      src: '/assets/events/advance.jpg',
+      alt: 'advance',
+      title: 'ADVANCE',
+      text: t('event.text_advance')
     },
     {
-      src: "/assets/events/extreme.svg",
-      alt: "extreme",
-      title: "EXTREME",
-      text: t("event.text_extreme")
+      src: '/assets/events/extreme.jpg',
+      alt: 'extreme',
+      title: 'EXTREME',
+      text: t('event.text_extreme')
     },
     {
-      src: "/assets/events/thaifight.svg",
-      alt: "thaifight",
-      title: "THAI FIGHT",
-      text: t("event.text_thaifight")
+      src: '/assets/events/thaifight.jpg',
+      alt: 'thaifight',
+      title:
+        'THAI FIGHT',
+      text: t('event.text_thaifight')
     }
   ];
 
   const activities = [
     {
-      title: t("activity.title_KIDS"),
-      text: t("activity.text_KIDS")
+      title: t('activity.title_KIDS'),
+      text: t('activity.text_KIDS')
     },
     {
-      title: t("activity.title_NOVICE"),
-      text: t("activity.text_NOVICE")
+      title: t('activity.title_NOVICE'),
+      text: t('activity.text_NOVICE')
     },
     {
-      title: t("activity.title_ADVANCE"),
-      text: t("activity.text_ADVANCE")
+      title: t('activity.title_ADVANCE'),
+      text: t('activity.text_ADVANCE')
     },
     {
-      title: t("activity.title_EXTREME"),
-      text: t("activity.text_EXTREME")
+      title: t('activity.title_EXTREME'),
+      text: t('activity.text_EXTREME')
     },
     {
-      title: t("activity.title_THAIFIGHT"),
-      text: t("activity.text_THAIFIGHT")
+      title: t('activity.title_THAIFIGHT'),
+      text: t('activity.text_THAIFIGHT')
     },
+  ];
+
+  const activitiesImage = [
+    '/assets/events/activity/kids.jpg',
+    '/assets/events/activity/novice.jpg',
+    '/assets/events/activity/advance.jpg',
+    '/assets/events/activity/extreme.jpg',
+    '/assets/events/activity/thaifight.jpg'
   ];
 
   return (
@@ -158,7 +173,7 @@ const Event = () => {
                 events.map((event, index) => (
                   <Row fluid key={index} style={{ width: '100%', height: '100%', display: activeImage === index ? '' : 'none' }}>
                     <Col lg={6}>
-                      <img style={{ height: 'auto', display: 'block', margin: '0 auto' }}
+                      <img style={{ height: 'auto', display: 'block', margin: '0 auto', maxWidth: '422px' }}
                         src={event.src} alt={event.alt} />
                     </Col>
                     <Col lg={6}>
@@ -183,7 +198,7 @@ const Event = () => {
                           style={{ display: activeImage !== 0 ? '' : 'none' }}>
                           <img src='/assets/icons/prev-icon.svg' alt='prev' />
                         </button></Col>
-                        <Col style={{ width: '70%' }}> <img style={{ height: '252px', display: 'block', margin: '0 auto' }}
+                        <Col style={{ width: '70%' }}> <img style={{ height: '252px', display: 'block', margin: '0 auto', maxWidth: '252px' }}
                           src={event.src} alt={event.alt} /></Col>
                         <Col style={{ width: '10%' }}> <button className={styles.button_right} onClick={() => setEventNext()}
                           style={{ display: activeImage !== events.length - 1 ? '' : 'none' }}>
@@ -202,13 +217,15 @@ const Event = () => {
           </Col>
 
           {
-            ((width > 992) ? <Col lg={1} style={{ display: 'flex', alignItems: 'center', justifyContent: 'end' }}>
-              <button className={styles.button_right} onClick={() => setEventNext()}
-                style={{ display: activeImage !== events.length - 1 ? '' : 'none' }}>
-                <img style={{ height: 'auto', display: 'block', margin: '0 auto' }}
-                  src='/assets/icons/next-icon.svg' alt='next' />
-              </button>
-            </Col> : null)
+            ((width > 992) ?
+              <Col lg={1} style={{ display: 'flex', alignItems: 'center', justifyContent: 'end' }}>
+                <button className={styles.button_right} onClick={() => setEventNext()}
+                  style={{ display: activeImage !== events.length - 1 ? '' : 'none' }}>
+                  <img style={{ height: 'auto', display: 'block', margin: '0 auto' }}
+                    src='/assets/icons/next-icon.svg' alt='next' />
+                </button>
+              </Col>
+              : null)
           }
 
         </Row>
@@ -225,17 +242,24 @@ const Event = () => {
             <p className={(width > 992) ? styles.text_activity : styles.textMobile}> {t('activity.text3')}</p>
           </Col>
           <Col>
-            <Row fluid>
-              <img src="/assets/events/activity/kid.svg" alt="kids" />
-            </Row>
             {
               activities.map((activity, index) => (
-                <div key={index} style={{ width: '100%', display: activityImage === index ? '' : 'none' }}>
-                  <p className={styles.pic_title}>{activity.title}</p>
-                  <p className={styles.pic_text}>{activity.text}</p>
+                <div key={index}>
+                  <Row fluid>
+                    <img src={activitiesImage[index]} alt="kids"
+                      style={{
+                        display: index === activityImage ? 'block' : 'none'
+                        , maxWidth: (width > 992) ? '422px' : '352px'
+                      }} />
+                  </Row>
+                  <div style={{ width: '100%', display: activityImage === index ? '' : 'none' }}>
+                    <p className={styles.pic_title}>{activity.title}</p>
+                    <p className={styles.pic_text}>{activity.text}</p>
+                  </div>
                 </div>
               ))
             }
+
             <Row fluid style={{ display: 'flex', justifyContent: 'start' }}>
               <Col style={{
                 display: 'flex', alignItems: 'center', justifyContent: (width > 992) ? 'start' : 'end',
@@ -264,3 +288,4 @@ const Event = () => {
 };
 
 export default Event;
+

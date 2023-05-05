@@ -53,10 +53,8 @@ const images = [
   '/assets/services/service1.png',
 ];
 const images2 = [
-  '/assets/events/kids.svg', '/assets/events/novice.svg', '/assets/events/advance.svg',
-  '/assets/events/extreme.svg', '/assets/events/thaifight.svg',
-  '/assets/events/kids.svg', '/assets/events/novice.svg', '/assets/events/advance.svg',
-  '/assets/events/extreme.svg', '/assets/events/thaifight.svg'
+  '/assets/services/foods/1.jpg', '/assets/services/foods/2.jpg', '/assets/services/foods/3.jpg',
+  '/assets/services/foods/4.jpg', '/assets/services/foods/5.jpg'
 ];
 
 const resources = {

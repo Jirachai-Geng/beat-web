@@ -34,8 +34,8 @@
     font-family: 'SpaceAge';
     font-style: normal;
     font-weight: 400;
-    font-size: 64px;
-    line-height: 72px;
+    font-size: 34px;
+    /* line-height: 72px; */
     color: #FFFFFF;
     padding-bottom: 69px;
     text-shadow: 0px 16px 80px rgba(255, 255, 255, 0.24);
@@ -70,7 +70,7 @@
     font-style: normal;
     font-weight: 400;
     font-size: 34px;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     line-height: 48px;
     color: #FFFFFF;
     padding-bottom: 24px;

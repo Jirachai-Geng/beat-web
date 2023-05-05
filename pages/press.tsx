@@ -61,10 +61,8 @@ i18next
 
 
 const images = [
-    '/assets/services/service1.png',
-    '/assets/services/service1.png',
-    '/assets/services/service1.png',
-    '/assets/services/service1.png',
+    '/assets/press/1_01.jpg',
+    '/assets/press/2_01.jpg',
 ];
 
 
@@ -81,8 +79,8 @@ const Press = () => {
         }
     }, [router.query.lang]);
 
-    const title = [t('press.press1_title'), t('press.press2_title'), t('press.press3_title'), t('press.press4_title'), t('press.press5_title')];
-    const text = [t('press.press1_text'), t('press.press2_text'), t('press.press3_text'), t('press.press4_text'), t('press.press5_text')];
+    const title = [t('press.press1_title'), t('press.press2_title')];
+    const text = [t('press.press1_text'), t('press.press2_text')];
 
     const onNewpage = (page: any) => {
         router.push({
@@ -109,14 +107,15 @@ const Press = () => {
                             <Col lg={6}>
                                 {(width < 992) ? <p className={styles.titleMoblie}> {title[index]}</p> : null}
 
-                                <img style={{ height: (width > 992) ? 'auto' : '252px' }} src={image} alt={text[index]} />
+                                <img style={{ maxWidth: (width > 992) ? '422px' : '352px' }} src={image} alt={text[index]} />
                             </Col>
                             <Col lg={6}>
                                 {(width > 992) ? <p className={styles.title}> {title[index]}</p> : null}
-                                <p className={styles.text}>{text[index]}</p>
+                                {/* <p className={styles.text}>{text[index]}</p> */}
+                                <p className={styles.text} dangerouslySetInnerHTML={{ __html: text[index] }}></p>
 
                                 <p style={{ paddingTop: '50px' }} className={styles.text}>
-                                    <Link href="/press_select" as={`/press_select?title=${title[index]}`}>
+                                <Link href={`/press_select?index=${index+1}`}>
                                         <a style={{ textDecoration: 'none' }}>Read more ...</a>
                                     </Link>
                                 </p>

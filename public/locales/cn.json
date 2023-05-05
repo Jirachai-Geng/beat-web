@@ -1,31 +1,25 @@
 {
     "press": {
-        "press1_title": "PRESS KIT 1",
-        "press1_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit egestas augue interdum bibendum. Duis eget ex a tortor rhoncus pharetra a varius nunc. Nunc vestibulum commodo libero, vel venenatis nulla laoreet vitae. Donec non sem velit. Pellentesque non varius ex. Quisque eu mi sapien. Aliquam interdum pellentesque mauris ut blandit. Curabitur nec semper est, et posuere est. Etiam suscipit, dolor eget dapibus finibus, velit lacus dictum mi, ac sodales dolor lacus quis eros. Nullam eget mi sed dui aliquet mollis. Nunc id facilisis eros, vehicula elementum est. Phasellus et  Cras et efficitur ipsum, et aliquet est. Sed ut porta odio. Nam feugiat augue nulla, quis efficitur elit viverra ac. Donec finibus, ante id euismod fermentummagna non sem ultrices hendrerit et eget nisl. Donec egestas dignissim lacus a ultrices. Sed posuere vel metus eu auctor. Nullam egestas facilisis augue luctus pellentesque. Aliquam vitae purus vitae quam maximus elementum. Cras id rhoncus ante. Aenean sollicitudin risus vel posuere auctor. Duis quis tortor nec lacus varius scelerisque ac nec velit. Pellentesque at luctus sapien. Praesent et dignissim nisl. Integer sagittis, eros dictum facilisis maximus, leo velit fermentum est, eu euismod dui velit eu dui. Nunc sodales id nulla sit amet ultrices. Proin elementum velit eget libero euismod, eu laoreet turpis lacinia. Fusce rhoncus viverra nulla, ac facilisis nisl ornare et. Donec interdum libero a sollicitudin vehicula. Nullam at lectus et enim pulvinar cursus eget at arcu. Suspendisse lobortis accumsan ligula eu tincidunt. Cras tincidunt eros sit amet magna rutrum vestibulum.",
-        "press2_title": "PRESS KIT 2",
-        "press2_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit egestas augue interdum bibendum. Duis eget ex a tortor rhoncus pharetra a varius nunc. Nunc vestibulum commodo libero, vel venenatis nulla laoreet vitae. Donec non sem velit. Pellentesque non varius ex. Quisque eu mi sapien. Aliquam interdum pellentesque mauris ut blandit. Curabitur nec semper est, et posuere est. Etiam suscipit, dolor eget dapibus finibus, velit lacus dictum mi, ac sodales dolor lacus quis eros. Nullam eget mi sed dui aliquet mollis. Nunc id facilisis eros, vehicula elementum est. Phasellus et  Cras et efficitur ipsum, et aliquet est. Sed ut porta odio. Nam feugiat augue nulla, quis efficitur elit viverra ac. Donec finibus, ante id euismod fermentummagna non sem ultrices hendrerit et eget nisl. Donec egestas dignissim lacus a ultrices. Sed posuere vel metus eu auctor. Nullam egestas facilisis augue luctus pellentesque. Aliquam vitae purus vitae quam maximus elementum. Cras id rhoncus ante. Aenean sollicitudin risus vel posuere auctor. Duis quis tortor nec lacus varius scelerisque ac nec velit. Pellentesque at luctus sapien. Praesent et dignissim nisl. Integer sagittis, eros dictum facilisis maximus, leo velit fermentum est, eu euismod dui velit eu dui. Nunc sodales id nulla sit amet ultrices. Proin elementum velit eget libero euismod, eu laoreet turpis lacinia. Fusce rhoncus viverra nulla, ac facilisis nisl ornare et. Donec interdum libero a sollicitudin vehicula. Nullam at lectus et enim pulvinar cursus eget at arcu. Suspendisse lobortis accumsan ligula eu tincidunt. Cras tincidunt eros sit amet magna rutrum vestibulum.",
-        "press3_title": "PRESS KIT 3",
-        "press3_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit egestas augue interdum bibendum. Duis eget ex a tortor rhoncus pharetra a varius nunc. Nunc vestibulum commodo libero, vel venenatis nulla laoreet vitae. Donec non sem velit. Pellentesque non varius ex. Quisque eu mi sapien. Aliquam interdum pellentesque mauris ut blandit. Curabitur nec semper est, et posuere est. Etiam suscipit, dolor eget dapibus finibus, velit lacus dictum mi, ac sodales dolor lacus quis eros. Nullam eget mi sed dui aliquet mollis. Nunc id facilisis eros, vehicula elementum est. Phasellus et  Cras et efficitur ipsum, et aliquet est. Sed ut porta odio. Nam feugiat augue nulla, quis efficitur elit viverra ac. Donec finibus, ante id euismod fermentummagna non sem ultrices hendrerit et eget nisl. Donec egestas dignissim lacus a ultrices. Sed posuere vel metus eu auctor. Nullam egestas facilisis augue luctus pellentesque. Aliquam vitae purus vitae quam maximus elementum. Cras id rhoncus ante. Aenean sollicitudin risus vel posuere auctor. Duis quis tortor nec lacus varius scelerisque ac nec velit. Pellentesque at luctus sapien. Praesent et dignissim nisl. Integer sagittis, eros dictum facilisis maximus, leo velit fermentum est, eu euismod dui velit eu dui. Nunc sodales id nulla sit amet ultrices. Proin elementum velit eget libero euismod, eu laoreet turpis lacinia. Fusce rhoncus viverra nulla, ac facilisis nisl ornare et. Donec interdum libero a sollicitudin vehicula. Nullam at lectus et enim pulvinar cursus eget at arcu. Suspendisse lobortis accumsan ligula eu tincidunt. Cras tincidunt eros sit amet magna rutrum vestibulum.",
-        "press4_title": "PRESS KIT 4",
-        "press4_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit egestas augue interdum bibendum. Duis eget ex a tortor rhoncus pharetra a varius nunc. Nunc vestibulum commodo libero, vel venenatis nulla laoreet vitae. Donec non sem velit. Pellentesque non varius ex. Quisque eu mi sapien. Aliquam interdum pellentesque mauris ut blandit. Curabitur nec semper est, et posuere est. Etiam suscipit, dolor eget dapibus finibus, velit lacus dictum mi, ac sodales dolor lacus quis eros. Nullam eget mi sed dui aliquet mollis. Nunc id facilisis eros, vehicula elementum est. Phasellus et  Cras et efficitur ipsum, et aliquet est. Sed ut porta odio. Nam feugiat augue nulla, quis efficitur elit viverra ac. Donec finibus, ante id euismod fermentummagna non sem ultrices hendrerit et eget nisl. Donec egestas dignissim lacus a ultrices. Sed posuere vel metus eu auctor. Nullam egestas facilisis augue luctus pellentesque. Aliquam vitae purus vitae quam maximus elementum. Cras id rhoncus ante. Aenean sollicitudin risus vel posuere auctor. Duis quis tortor nec lacus varius scelerisque ac nec velit. Pellentesque at luctus sapien. Praesent et dignissim nisl. Integer sagittis, eros dictum facilisis maximus, leo velit fermentum est, eu euismod dui velit eu dui. Nunc sodales id nulla sit amet ultrices. Proin elementum velit eget libero euismod, eu laoreet turpis lacinia. Fusce rhoncus viverra nulla, ac facilisis nisl ornare et. Donec interdum libero a sollicitudin vehicula. Nullam at lectus et enim pulvinar cursus eget at arcu. Suspendisse lobortis accumsan ligula eu tincidunt. Cras tincidunt eros sit amet magna rutrum vestibulum.",
-        "press5_title": "PRESS KIT 5",
-        "press5_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit egestas augue interdum bibendum. Duis eget ex a tortor rhoncus pharetra a varius nunc. Nunc vestibulum commodo libero, vel venenatis nulla laoreet vitae. Donec non sem velit. Pellentesque non varius ex. Quisque eu mi sapien. Aliquam interdum pellentesque mauris ut blandit. Curabitur nec semper est, et posuere est. Etiam suscipit, dolor eget dapibus finibus, velit lacus dictum mi, ac sodales dolor lacus quis eros. Nullam eget mi sed dui aliquet mollis. Nunc id facilisis eros, vehicula elementum est. Phasellus et  Cras et efficitur ipsum, et aliquet est. Sed ut porta odio. Nam feugiat augue nulla, quis efficitur elit viverra ac. Donec finibus, ante id euismod fermentummagna non sem ultrices hendrerit et eget nisl. Donec egestas dignissim lacus a ultrices. Sed posuere vel metus eu auctor. Nullam egestas facilisis augue luctus pellentesque. Aliquam vitae purus vitae quam maximus elementum. Cras id rhoncus ante. Aenean sollicitudin risus vel posuere auctor. Duis quis tortor nec lacus varius scelerisque ac nec velit. Pellentesque at luctus sapien. Praesent et dignissim nisl. Integer sagittis, eros dictum facilisis maximus, leo velit fermentum est, eu euismod dui velit eu dui. Nunc sodales id nulla sit amet ultrices. Proin elementum velit eget libero euismod, eu laoreet turpis lacinia. Fusce rhoncus viverra nulla, ac facilisis nisl ornare et. Donec interdum libero a sollicitudin vehicula. Nullam at lectus et enim pulvinar cursus eget at arcu. Suspendisse lobortis accumsan ligula eu tincidunt. Cras tincidunt eros sit amet magna rutrum vestibulum."
+        "press1_title": "BEAT Active Press Conference",
+        "press1_text": "BEAT Active 召开新闻发布会以“Find Your True Beat”的理念，为了启动新的体育娱乐活动项目， 地在附近 BTS Bang Na站。拥有 55 项适合每段年龄和各性别的活动，让游客可以体验和享受真正的 BEAT！在新闻发布会有许多贵宾来参加例如K.Suwat Liptapanlop (前副总理) 荣幸地讲开幕、K.Nopporn Watin (Thai Fight 的首席执行官)、我们合伙K.Sakul Charoensathit （Berg Thailand的首席执行官）等。除了娱乐活动，我们有LALALOVE（世界级品牌）以“可回收材质”为环保理念设计新形势的运动服装。包括K. Grace Kanklao和K. Saenchai Supachai之间的泰拳展示， K. Ann Manassanan和K. Nichol Tomas（泰国攀岩世界冠军）之间的10米攀岩比赛。这两项运动是我们BEAT Active的体育活动之一",
+        "press2_title": "The Future of wellness is now",
+        "press2_text": "The Future of wellness is now<br/><br/>The Beat Active project organized a discussion on The Future of wellness is now. And the strong body of the future world, starting today, on March 17, 2023, at the Thai Fight Arena at the Beat Active project (BITEC EH 105), with guests from various agencies.<br/><br/>by the atmosphere within the activity, which is full of knowledge and the exchange of different perspectives on the topic of promoting well-being and building a strong body for the future world. Start today by making the view of the word The Future of Wellness a real one. around us, which can participate It also helps drive the economy. And get attention in every aspect of every department. Including the Beat Active project, it is another project that encourages the new generation to care about health. and have different lifestyles, looking for activities in a new way that is different and challenging."
     },
     "price": {
         "Price": "票价",
         "Price_late": "(星期一到星期五、周末与假日)",
         "Kid": "儿童区",
         "Price_kid": "240泰铢 / 300泰铢",
-        "Sport_Novice" : "新手运动区",
+        "Sport_Novice": "新手运动区",
         "Price_Sport_Novice": "320泰铢 / 420泰铢",
-        "Sport_Advance" : "高手运动区",
+        "Sport_Advance": "高手运动区",
         "Price_Sport_Advance": "480泰铢 / 680泰铢",
         "Sport_Extreme": "极限运动区",
         "Price_Sport_Extreme": "550泰铢 / 750泰铢",
         "THAI_FIGHT_Weekend": "泰拳演区( Thai Fight League)",
         "Price_THAI_FIGHT_Weekend": "1250泰铢 / 2000泰铢",
         "THAI_FIGHT": "泰拳课(Thai Fight Psysport)",
-        "Price_THAI_FIGHT" : "1250泰铢/1次"
+        "Price_THAI_FIGHT": "1250泰铢/1次"
     },
     "service": {
         "Team_Building": "团队建设",
@@ -42,14 +36,14 @@
     "event": {
         "text_kid": "带您儿子离开手机 来参加我们娱乐活动并提高技能身体与冥想 提升他们的想象力。活动例如：BEAT Racing Active, Active Ball Pit, BEAT the Step, BEAT Space City, BEAT The Trap Challenge 等等",
         "text_novice": "没有了无聊的一天， 带您朋友一起来遇见非常奇异的体验 。活动例如：BEAT EDU, BEAT the Hockey, BEAT Space Pinball, BEAT the Street, BEAT The Ball 等等",
-        "text_advance": "高手区会带你去体验稀奇活动模型，提供完整到这里！活动例如：BEAT the Ski, BEAT Active Jumpimp, BEAT VR Gaming, BEAT Active Climbing 等等",
+        "text_advance": "Find new sports just here; forget about exercising the old style outside. Your needs are fully met with BEAT the Ski, BEAT Active jumping, BEAT VR Gaming, and BEAT Active Climbing. In addition to this. There is still a ton of excitement for you!",
         "text_extreme": "这里不只是极限活动区但还是心理测验可带您遇见激动心的活动。活动例如：BEAT Flying Space, BEAT Boxing Bot, BEAT Military Active, BEAT Landing, BEAT Augmented Wall 等等",
         "text_thaifight": "准备好！每周末这里有直播泰拳比赛节目！我们准备了大型舞台和完整的声光系统为充满您的体验。除了泰拳节目，这里还有拳击课由专门的专家教授的特殊特权。"
     },
     "activity": {
-        "text1": "BEAT Active 不只是室内运动乐园场。里面有各种零售店，不管是服装店、活动器材还是餐厅都供给您选择。",
-        "text2": "您可以选择购买适合您的票价为了适合您的活动 活动区分出四个活动区加一如下",
-        "text3": "不仅四加一地区，我们还有餐饮店给您休息为了给您完全服务。",
+        "text1": "BEAT Active is a two-story building with several retail establishments on the ground floor, including those selling clothing and sporting goods.",
+        "text2": "You can pick and purchase a ticket that meets your requirements. the ticket has the following 4 types of activity zones and 1 unique zone:",
+        "text3": "If you've tried out some extreme sports and are seeking for a calm place to relax, don't worry; BEAT Active has placed a mezzanine area that accommodates as a restaurant for you.",
         "title_KIDS": "儿童区",
         "text_KIDS": "有各种安全活动给您宝贝参加，成人可以一起进入照看您的小孩",
         "title_NOVICE": "新手运动区",
@@ -112,7 +106,7 @@
         "BEAT_Speed_Climbing": "谁想挑战？来这里！让您们来比赛谁能爬得最快",
         "BEAT_Active_Ninja_Warrior": "速度训练并增加身体的力量由忍者站",
         "BEAT_Flying_Space": "室内滑索，让你享受而无需长途跋涉",
-        "BEAT_the_Rope": "各种健身站由绳索建造，让您无限次地冒险。\n",
+        "BEAT_the_Rope": "各种健身站由绳索建造，让您无限次地冒险。<br/>",
         "BEAT_Military_Active": "极限活动站，谁能通过它，你最厉害！",
         "BEAT_Landing": "巨大的水滑梯并下面设配安全气囊",
         "BEAT_the_Goal": "室内足球场让您与朋友一起有趣",
@@ -135,5 +129,8 @@
         "BEAT_the_Step": "谁喜欢跳舞？必须来这里！可同时跳舞和玩游戏",
         "BEAT_the_Hoop": "而不是把球扔进篮筐，来看看谁在有限的时间内得分最多？",
         "BEAT_Racing_Active": "大型脚踏汽车赛道适合所有的年龄段。"
+    },
+    "floor_plan": {
+        "title": "BEAT Active is a two-story building with several retail establishments on the ground floor, including those selling clothing and sporting goods. You can pick and purchase a ticket that meets your requirements. The ticket has the following 4 types of activity zones and 1 unique zone: If you've tried out some extreme sports and are seeking a calm place to relax, don't worry; BEAT Active has placed a mezzanine area that accommodates as a restaurant for you."
     }
 }

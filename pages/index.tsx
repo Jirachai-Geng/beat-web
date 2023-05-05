@@ -3,8 +3,6 @@ import { Fragment, MutableRefObject, useEffect, useRef, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import Container from 'react-bootstrap/Container';
-import Game from './components/game'
-import Carrer from './components/carrer';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Footer from './components/footer';

@@ -59,8 +59,7 @@ const Footer = () => {
                         </div>
                         <div >
                             <p className={(width > 992) ? styles.footer_text : styles.footer_textMobile}>
-                                BITEC Buri EH105 88 Debaratna Road Bangna Tai.Bangna, Bangkok 10260, Thailand
-                            </p>
+                            BEAT Active, BITEC BURI, 88 Debaratna Road Bangna Tai.Bangna, Bangkok 10260, Thailand                            </p>
                             <Row style={{ display: 'flex', justifyContent: 'space-between' }}>
                                 <p className={(width > 992) ? styles.footer_textB : styles.footer_textBMobile} style={{ display: 'flex', alignItems: 'center' }}>
                                     <img src="\assets\partner\footer\calenda.svg" alt="calenda" style={{ paddingRight: '8px' }} />
@@ -82,7 +81,7 @@ const Footer = () => {
 
                             <p className={(width > 992) ? styles.footer_textB : styles.footer_textBMobile} style={{ display: 'flex', alignItems: 'start' }}>
                                 <img src="\assets\partner\footer\p.svg" alt="calenda" style={{ paddingRight: '8px' }} />
-                                <span> Private car can park at BITEC Bangna parking lot  </span>
+                                <span> Private car can park at BITEC BURI parking lot </span>
                             </p>
                             <p className={(width > 992) ? styles.footer_textB : styles.footer_textBMobile} style={{ display: 'flex', alignItems: 'start' }}>
                                 <img src="\assets\partner\footer\BTS.svg" alt="clock" style={{ paddingRight: '8px' }} />
@@ -96,8 +95,9 @@ const Footer = () => {
                             Contact Us
                         </div>
                         <div>
-                            <p className={styles.footer_textB}><img src="\assets\partner\footer\line.svg" alt="kids" /> @beatactive Page  </p>
-
+                            <p> <a className={styles.no_decoration} href="https://line.me/R/ti/p/@861iezgb" target="_blank" rel="noreferrer noopener">
+                                <img src="\assets\partner\footer\line.svg" alt="line" />
+                                <span className={(width > 992) ? styles.footer_textB : styles.footer_textBMobile} style={{ paddingLeft: '10px' }}>  @beatactive </span> </a></p>
 
                             <p> <a className={styles.no_decoration} href=" https://www.facebook.com/BEATActiveThailand" target="_blank" rel="noreferrer noopener">
                                 <img src="\assets\partner\footer\facebook.svg" alt="facebook" />
@@ -119,7 +119,7 @@ const Footer = () => {
                                 <img src="\assets\partner\footer\youtube.png" style={{ maxWidth: '25px' }} alt="Youtube" />
                                 <span className={(width > 992) ? styles.footer_textB : styles.footer_textBMobile} style={{ paddingLeft: '10px' }}>  BEAT Active </span> </a></p>
 
-                            <p> <a className={styles.no_decoration} href="info@beatactivethailand.com" target="_blank" rel="noreferrer noopener">
+                            <p> <a className={styles.no_decoration} href="mailto:info@beatactivethailand.com" target="_blank" rel="noreferrer noopener">
                                 <img src="\assets\partner\footer\email.png" style={{ maxWidth: '25px' }} alt="email" />
                                 <span className={(width > 992) ? styles.footer_textB : styles.footer_textBMobile} style={{ paddingLeft: '10px' }}>  beatactivethailand </span> </a></p>
 
@@ -143,7 +143,7 @@ const Footer = () => {
                                 <p className={(width > 992) ? styles.footer_textB : styles.footer_textBMobile} >Privacy Policy</p> </a>
                             <a href='https://www.bhirajburi.co.th/th/privacy-policy' target="_blank"
                                 rel="noreferrer noopener" className="textpolicy" style={{ justifyContent: "start" }}>
-                                <p className={(width > 992) ? styles.footer_textB : styles.footer_textBMobile} >Cookie Policy</p> </a>
+                                <p className={(width > 992) ? styles.footer_textB : styles.footer_textBMobile} >Cookies Policy</p> </a>
                         </div>
                     </Col>
 

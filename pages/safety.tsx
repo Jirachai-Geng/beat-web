@@ -100,7 +100,9 @@ const Safety = () => {
 
                         </Col>
 
-                        <Col lg={7} className={(width > 992) ? styles.background_safety : styles.background_safetyMobile}>
+                        <Col lg={7}>
+                            <img style={{ maxWidth: (width > 992) ? '668px' : '307px', paddingBottom: (width > 992) ? '' : '40px' }}
+                                src='/assets/Safety.jpg' alt='Safety' />
                         </Col>
                     </Row>
                 </Container>

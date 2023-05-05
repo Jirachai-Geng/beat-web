@@ -44,23 +44,22 @@ export const useContainerDimensions = (myRef: any) => {
     return dimensions;
 };
 
-const images = [
-    '/assets/press/press_select.svg', '/assets/events/kids.svg', '/assets/events/novice.svg', '/assets/events/advance.svg'];
+const imagePress1 = ['/assets/press/1_01.jpg', '/assets/press/1_02.jpg', '/assets/press/1_03.jpg', '/assets/press/1_04.jpg'];
 
 
-const useRouterTitle = (router: any) => {
-    const [title, setTitle] = useState(router.query.title);
+const useRouterIndex = (router: any) => {
+    const [index, setIndex] = useState(router.query.index);
 
     useEffect(() => {
         const handleRouteChange = (url: string) => {
-            const newTitle = new URL(url, window.location.href).searchParams.get('title');
-            if (newTitle) {
-                setTitle(newTitle);
+            const newIndex = new URL(url, window.location.href).searchParams.get('index');
+            if (newIndex) {
+                setIndex(newIndex);
             }
         };
 
-        if (!title && typeof window !== "undefined") {
-            setTitle(new URL(window.location.href).searchParams.get('title'));
+        if (!index && typeof window !== "undefined") {
+            setIndex(new URL(window.location.href).searchParams.get('index'));
         }
 
         router.events.on('routeChangeComplete', handleRouteChange);
@@ -68,15 +67,30 @@ const useRouterTitle = (router: any) => {
         return () => {
             router.events.off('routeChangeComplete', handleRouteChange);
         };
-    }, [router, title]);
+    }, [router, index]);
 
-    return title;
+    return index;
+};
+
+const useTitleAndText = (index: number) => {
+    const { t } = useTranslation();
+    const title = t(`press.press${index}_title`);
+    const text = t(`press.press${index}_text`);
+
+    return { title, text };
 };
 
 
 const PressSelect = () => {
     const router = useRouter();
-    const showTitle = useRouterTitle(router);
+    const index = useRouterIndex(router);
+    const { title, text } = useTitleAndText(parseInt(index));
+    let images: any[] = ['/assets/press/2_01.jpg', '/assets/press/2_01.jpg', '/assets/press/2_01.jpg', '/assets/press/2_01.jpg']
+    let imagesTop = '/assets/press/2_01.jpg'
+    if (index === '1') {
+        images = imagePress1
+        imagesTop = '/assets/press/1_01.jpg'
+    }
 
     const [showModal, setShowModal] = useState(false);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -95,6 +109,7 @@ const PressSelect = () => {
             query: { lang: i18next.language }
         });
     }
+
     return (
         <div>
             <Menu />
@@ -105,16 +120,16 @@ const PressSelect = () => {
                     <span style={{ padding: '0px 23px', color: '#9E9E9E' }}> {'>'} </span>
                     <span style={{ color: '#9E9E9E', cursor: 'pointer' }} onClick={() => { onNewpage('/press') }}> Press </span>
                     <span style={{ padding: '0px 23px', color: '#FFFFFF' }}> {'>'} </span>
-                    <span style={{ color: '#FFFFFF' }}> {showTitle} </span>
+                    <span style={{ color: '#FFFFFF' }}> {title} </span>
                 </div>
 
                 <Container className={(width > 992) ? styles.scrollbar : styles.scrollbarMoblie}
                     style={{ backgroundColor: 'dark', paddingLeft: (width > 992) ? '125px' : '60px' }}>
                     <Row style={{ width: '100%', height: '800px' }} ref={componentRef} >
                         <Col lg={6}>
-                            {(width < 992) ? <p className={styles.titleMoblie}> {showTitle} </p> : null}
+                            {(width < 992) ? <p className={styles.titleMoblie}> {title} </p> : null}
 
-                            <img style={{ height: (width > 992) ? '526px' : 'auto', width: '100%' }} src='\assets\press\press_select.svg' onClick={() => handleImageClick(0)} />
+                            <img style={{ maxWidth: (width > 992) ? '422px' : '252px', height: 'auto' }} src={imagesTop} onClick={() => handleImageClick(0)} />
 
                             <div style={{
                                 padding: '60px 0px', display: 'flex', flexWrap: 'nowrap'
@@ -136,14 +151,14 @@ const PressSelect = () => {
                         {(width < 992) ? <ImageModalMobile
                             images={images}
                             initialSlide={selectedImageIndex}
-                            title={showTitle}
+                            title={title}
                             show={showModal}
                             onHide={() => setShowModal(false)}
                         /> :
                             <ImageModal
                                 images={images}
                                 initialSlide={selectedImageIndex}
-                                title={showTitle}
+                                title={title}
                                 show={showModal}
                                 onHide={() => setShowModal(false)}
                             />
@@ -151,8 +166,10 @@ const PressSelect = () => {
 
 
                         <Col lg={6}>
-                            {(width > 992) ? <p className={styles.title}> {showTitle}</p> : null}
-                            <p className={styles.textSelect}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit egestas augue interdum bibendum. Duis eget ex a tortor rhoncus pharetra a varius nunc. Nunc vestibulum commodo libero, vel venenatis nulla laoreet vitae. Donec non sem velit. Pellentesque non varius ex. Quisque eu mi sapien. Aliquam interdum pellentesque mauris ut blandit. Curabitur nec semper est, et posuere est. Etiam suscipit, dolor eget dapibus finibus, velit lacus dictum mi, ac sodales dolor lacus quis eros. Nullam eget mi sed dui aliquet mollis. Nunc id facilisis eros, vehicula elementum est. Phasellus et Cras et efficitur ipsum, et aliquet est. Sed ut porta odio. Nam feugiat augue nulla, quis efficitur elit viverra ac. Donec finibus, ante id euismod fermentummagna non sem ultrices hendrerit et eget nisl. Donec egestas dignissim lacus a ultrices. Sed posuere vel metus eu auctor. Nullam egestas facilisis augue luctus pellentesque. Aliquam vitae purus vitae quam maximus elementum. Cras id rhoncus ante. Aenean sollicitudin risus vel posuere auctor. Duis quis tortor nec lacus varius scelerisque ac nec velit. Pellentesque at luctus sapien. Praesent et dignissim nisl. Integer sagittis, eros dictum facilisis maximus, leo velit fermentum est, eu euismod dui velit eu dui. Nunc sodales id nulla sit amet ultrices. Proin elementum velit eget libero euismod, eu laoreet turpis lacinia. Fusce rhoncus viverra nulla, ac facilisis nisl ornare et. Donec interdum libero a sollicitudin vehicula. Nullam at lectus et enim pulvinar cursus eget at arcu. Suspendisse lobortis accumsan ligula eu tincidunt. Cras tincidunt eros sit amet magna rutrum vestibulum.</p>
+                            {(width > 992) ? <p className={styles.title}> {title}</p> : null}
+                            <p className={styles.textSelect} dangerouslySetInnerHTML={{ __html: text }}></p>
+
+                            {/* <p className={styles.textSelect}> {showText} </p> */}
                         </Col>
 
                     </Row>

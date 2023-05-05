@@ -28,7 +28,6 @@
 
 .text_titleMobile {
     width: 343px;
-    padding-top: 339px;
     font-family: 'SpaceAge';
     font-style: normal;
     font-weight: 400;
@@ -99,13 +98,4 @@
     flex-grow: 0;
 }
 
-
-.background_safety{
-    background: url(/assets/safety.svg) no-repeat;
-}
-
-.background_safetyMobile{
-    width: 343px;
-    background: url(/assets/safety.svg) no-repeat;
-}
 

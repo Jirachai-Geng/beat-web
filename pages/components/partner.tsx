@@ -98,7 +98,7 @@ const Partner = () => {
                     </Col>
 
                     <Col lg={4} >
-                        <img className={`${styles.responsive} mx-auto`} style={{ height: (width > 922) ? "300px" : "200px" }} src="/assets/price.svg" alt="" />
+                        <img className={`${styles.responsive} mx-auto`} style={{ height: (width > 922) ? "300px" : "200px" }} src="/assets/Price.jpg" alt="" />
                     </Col>
                 </Row>
             </Container>

@@ -40,19 +40,12 @@ export const useContainerDimensions = (myRef: any) => {
 };
 
 
-const images = [
-    '/assets/activity/activity1.png', '/assets/activity/activity2.png', '/assets/activity/activity3.png', '/assets/activity/activity4.png', '/assets/activity/activity5.png',
-    '/assets/activity/activity6.png', '/assets/activity/activity7.png', '/assets/activity/activity8.png', '/assets/activity/activity9.png', '/assets/activity/activity10.png',
-    '/assets/activity/activity11.png', '/assets/activity/activity12.png', '/assets/activity/activity13.png', '/assets/activity/activity14.png', '/assets/activity/activity15.png',
-    '/assets/activity/activity1.png', '/assets/activity/activity2.png', '/assets/activity/activity3.png', '/assets/activity/activity4.png', '/assets/activity/activity5.png',
-    '/assets/activity/activity1.png', '/assets/activity/activity2.png', '/assets/activity/activity3.png', '/assets/activity/activity4.png', '/assets/activity/activity5.png',
-    '/assets/activity/activity1.png', '/assets/activity/activity2.png', '/assets/activity/activity3.png', '/assets/activity/activity4.png', '/assets/activity/activity5.png',
-    '/assets/activity/activity1.png', '/assets/activity/activity2.png', '/assets/activity/activity3.png', '/assets/activity/activity4.png', '/assets/activity/activity5.png',
-    '/assets/activity/activity1.png', '/assets/activity/activity2.png', '/assets/activity/activity3.png', '/assets/activity/activity4.png', '/assets/activity/activity5.png',
-    '/assets/activity/activity1.png', '/assets/activity/activity2.png', '/assets/activity/activity3.png', '/assets/activity/activity4.png', '/assets/activity/activity5.png',
-    '/assets/activity/activity1.png', '/assets/activity/activity2.png', '/assets/activity/activity3.png', '/assets/activity/activity4.png', '/assets/activity/activity5.png',
-    '/assets/activity/activity1.png', '/assets/activity/activity2.png', '/assets/activity/activity3.png', '/assets/activity/activity4.png', '/assets/activity/activity5.png',
-];
+
+const images: string[] = [];
+
+for (let i = 1; i <= 55; i++) {
+    images.push(`/assets/activity/activity${i}.jpg`);
+}
 
 
 const ViewAll: React.FC = () => {

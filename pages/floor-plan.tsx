@@ -96,7 +96,7 @@ const FloorPLan = () => {
           <Row style={{ width: '100%' }} ref={componentRef}>
             <div>
               <p className={(width > 992) ? styles.title_food : styles.title_foodMobile}> Floor Plan </p>
-              <p className={(width > 992) ? styles.text : styles.textMobileFloorplan}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit egestas augue interdum bibendum. Duis eget ex a tortor rhoncus pharetra a varius nunc. Nunc vestibulum commodo libero, vel venenatis nulla laoreet vitae. Donec non sem velit. Pellentesque non varius ex. Quisque eu mi sapien. Aliquam interdum pellentesque mauris ut blandit.</p>
+              <p className={(width > 992) ? styles.text : styles.textMobileFloorplan}> {t('floor_plan.title')} </p>
               <img className={(width > 992) ? styles.imgFloorplan : styles.imgMobileFloorplan} src='\assets\floorplan.jpg' alt='floorplan' />
             </div>
           </Row>
