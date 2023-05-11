@@ -41,7 +41,7 @@ export const useContainerDimensions = (myRef: any) => {
 const images: string[] = [];
 
 for (let i = 1; i <= 55; i++) {
-    images.push(`/assets/activity/activity${i}.jpg`);
+    images.push(`/assets/activity/activity${i}.webp`);
 }
 
 

@@ -102,7 +102,7 @@ const Safety = () => {
 
                         <Col lg={7}>
                             <img style={{ maxWidth: (width > 992) ? '668px' : '307px', paddingBottom: (width > 992) ? '' : '40px' }}
-                                src='/assets/Safety.jpg' alt='Safety' />
+                                src='/assets/Safety.webp' alt='Safety' />
                         </Col>
                     </Row>
                 </Container>

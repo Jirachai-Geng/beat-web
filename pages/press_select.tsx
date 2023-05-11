@@ -44,7 +44,7 @@ export const useContainerDimensions = (myRef: any) => {
     return dimensions;
 };
 
-const imagePress1 = ['/assets/press/1_01.jpg', '/assets/press/1_02.jpg', '/assets/press/1_03.jpg', '/assets/press/1_04.jpg'];
+const imagePress1 = ['/assets/press/1_01.webp', '/assets/press/1_02.webp', '/assets/press/1_03.webp', '/assets/press/1_04.webp'];
 
 
 const useRouterIndex = (router: any) => {
@@ -85,11 +85,11 @@ const PressSelect = () => {
     const router = useRouter();
     const index = useRouterIndex(router);
     const { title, text } = useTitleAndText(parseInt(index));
-    let images: any[] = ['/assets/press/2_01.jpg', '/assets/press/2_01.jpg', '/assets/press/2_01.jpg', '/assets/press/2_01.jpg']
-    let imagesTop = '/assets/press/2_01.jpg'
+    let images: any[] = ['/assets/press/2_01.webp', '/assets/press/2_02.webp', '/assets/press/2_03.webp', '/assets/press/2_04.webp']
+    let imagesTop = '/assets/press/2_01.webp'
     if (index === '1') {
         images = imagePress1
-        imagesTop = '/assets/press/1_01.jpg'
+        imagesTop = '/assets/press/1_01.webp'
     }
 
     const [showModal, setShowModal] = useState(false);
@@ -124,17 +124,16 @@ const PressSelect = () => {
                 </div>
 
                 <Container className={(width > 992) ? styles.scrollbar : styles.scrollbarMoblie}
-                    style={{ backgroundColor: 'dark', paddingLeft: (width > 992) ? '125px' : '60px' }}>
+                    style={{ backgroundColor: 'dark', paddingLeft: (width > 992) ? '125px' : '20px' }}>
                     <Row style={{ width: '100%', height: '800px' }} ref={componentRef} >
-                        <Col lg={6}>
+                        <Col lg={6} style={{ textAlign: 'center' }}>
                             {(width < 992) ? <p className={styles.titleMoblie}> {title} </p> : null}
 
                             <img style={{ maxWidth: (width > 992) ? '422px' : '252px', height: 'auto' }} src={imagesTop} onClick={() => handleImageClick(0)} />
 
                             <div style={{
-                                padding: '60px 0px', display: 'flex', flexWrap: 'nowrap'
+                                padding: (width > 992) ? '60px 0px' : '20px 0px', display: 'flex', flexWrap: 'nowrap'
                                 , maxWidth: (width > 992) ? '526px' : 'auto'
-                                , width: '100%'
                                 , justifyContent: 'space-between'
                             }}>
                                 {images.slice(1).map((image, index) => (
@@ -142,7 +141,7 @@ const PressSelect = () => {
                                         <img
                                             src={image}
                                             alt={`Image ${index}`}
-                                            style={{ maxHeight: (width > 992) ? '222px' : '108px' }}
+                                            style={{ maxWidth: (width > 992) ? '165px' : '115px', textAlign: 'center' }}
                                         />
                                     </div>
                                 ))}

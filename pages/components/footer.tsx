@@ -59,7 +59,7 @@ const Footer = () => {
                         </div>
                         <div >
                             <p className={(width > 992) ? styles.footer_text : styles.footer_textMobile}>
-                            BEAT Active, BITEC BURI, 88 Debaratna Road Bangna Tai.Bangna, Bangkok 10260, Thailand                            </p>
+                            BEAT Active, BITEC BURI, 88 Debaratna Road Bangna Tai Bangna, Bangkok 10260, Thailand                        </p>
                             <Row style={{ display: 'flex', justifyContent: 'space-between' }}>
                                 <p className={(width > 992) ? styles.footer_textB : styles.footer_textBMobile} style={{ display: 'flex', alignItems: 'center' }}>
                                     <img src="\assets\partner\footer\calenda.svg" alt="calenda" style={{ paddingRight: '8px' }} />

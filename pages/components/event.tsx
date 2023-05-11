@@ -44,24 +44,6 @@ const Event = () => {
     }
   }, [router.query.lang]);
 
-  const images = [
-    '/assets/events/kids.svg',
-    '/assets/events/novice.svg',
-    '/assets/events/advance.svg',
-    '/assets/events/extreme.svg',
-    '/assets/events/thaifight.svg'
-  ];
-
-  const title = ['KIDS', 'NOVICE', 'ADVANCE', 'EXTREME', 'THAIFIGHT'];
-
-  const text = [
-    t('event.text_kid'),
-    t('event.text_novice'),
-    t('event.text_advance'),
-    t('event.text_extreme'),
-    t('event.text_thaifight')
-  ];
-
   const componentRef = useRef();
   const { width, height } = useContainerDimensions(componentRef);
 
@@ -88,31 +70,31 @@ const Event = () => {
 
   const events = [
     {
-      src: '/assets/events/kids.jpg',
+      src: '/assets/events/kids.webp',
       alt: 'kids',
       title: 'KID',
       text: t('event.text_kid')
     },
     {
-      src: '/assets/events/novice.jpg',
+      src: '/assets/events/novice.webp',
       alt: 'novice',
       title: 'NOVICE',
       text: t('event.text_novice')
     },
     {
-      src: '/assets/events/advance.jpg',
+      src: '/assets/events/advance.webp',
       alt: 'advance',
       title: 'ADVANCE',
       text: t('event.text_advance')
     },
     {
-      src: '/assets/events/extreme.jpg',
+      src: '/assets/events/extreme.webp',
       alt: 'extreme',
       title: 'EXTREME',
       text: t('event.text_extreme')
     },
     {
-      src: '/assets/events/thaifight.jpg',
+      src: '/assets/events/thaifight.webp',
       alt: 'thaifight',
       title:
         'THAI FIGHT',
@@ -144,11 +126,11 @@ const Event = () => {
   ];
 
   const activitiesImage = [
-    '/assets/events/activity/kids.jpg',
-    '/assets/events/activity/novice.jpg',
-    '/assets/events/activity/advance.jpg',
-    '/assets/events/activity/extreme.jpg',
-    '/assets/events/activity/thaifight.jpg'
+    '/assets/events/activity/kids.webp',
+    '/assets/events/activity/novice.webp',
+    '/assets/events/activity/advance.webp',
+    '/assets/events/activity/extreme.webp',
+    '/assets/events/activity/thaifight.webp'
   ];
 
   return (

@@ -47,14 +47,14 @@ export const useContainerDimensions = (myRef: any) => {
 };
 
 const images = [
-  '/assets/services/service1.png',
-  '/assets/services/service1.png',
-  '/assets/services/service1.png',
-  '/assets/services/service1.png',
+  '/assets/services/team_building.webp',
+  '/assets/services/schools_group.webp',
+  '/assets/services/birthday_party.webp',
+  '/assets/services/event.webp',
 ];
 const images2 = [
-  '/assets/services/foods/1.jpg', '/assets/services/foods/2.jpg', '/assets/services/foods/3.jpg',
-  '/assets/services/foods/4.jpg', '/assets/services/foods/5.jpg'
+  '/assets/services/foods/1.webp', '/assets/services/foods/2.webp', '/assets/services/foods/3.webp',
+  '/assets/services/foods/4.webp', '/assets/services/foods/5.webp'
 ];
 
 const resources = {

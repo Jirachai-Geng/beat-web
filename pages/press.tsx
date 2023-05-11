@@ -61,8 +61,8 @@ i18next
 
 
 const images = [
-    '/assets/press/1_01.jpg',
-    '/assets/press/2_01.jpg',
+    '/assets/press/1_01.webp',
+    '/assets/press/2_01.webp',
 ];
 
 
@@ -101,13 +101,13 @@ const Press = () => {
                 </div>
 
                 <Container className={(width > 992) ? styles.scrollbar : styles.scrollbarMoblie}
-                    style={{ backgroundColor: 'dark', paddingLeft: (width > 992) ? '175px' : '60px' }}>
+                    style={{ backgroundColor: 'dark', paddingLeft: (width > 992) ? '175px' : '20px' }}>
                     {images.map((image, index) => (
                         <Row key={index} style={{ width: '100%', height: '800px' }} ref={componentRef} >
                             <Col lg={6}>
                                 {(width < 992) ? <p className={styles.titleMoblie}> {title[index]}</p> : null}
 
-                                <img style={{ maxWidth: (width > 992) ? '422px' : '352px' }} src={image} alt={text[index]} />
+                                <img style={{ maxWidth: (width > 992) ? '422px' : '352px' }} src={image} alt={title[index]} />
                             </Col>
                             <Col lg={6}>
                                 {(width > 992) ? <p className={styles.title}> {title[index]}</p> : null}
