@@ -61,7 +61,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ images, initialSlide, show, tit
         <Slider {...settings}>
           {images && images.map((image, index) => (
             <div key={index} style={{ display: 'flex', alignItems: 'center' }}>
-              <img src={image} alt={`Slide ${index}`} style={{ maxHeight: '502px', margin: 'auto' }} />
+              <img src={image} alt={`Slide ${index}`} style={{ maxHeight: '502px', margin: 'auto' , width: '100%'}} />
             </div>
           ))}
         </Slider>
