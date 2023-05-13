@@ -31,7 +31,7 @@
         "Event": "组织活动",
         "Event_text": "多功能活动场地有圆形剧场形式的座位可容纳500人。配备大型舞台和完整的声光系统。 适合演唱会、产品发布会和组织活动。",
         "Food": "Food & Beverage",
-        "Food_text": "ลานจัดกิจกรรมอเนกประสงค์มาพร้อมที่นั่งในรูป แบบอัฒจันทร์ที่สามารถรองรับคนได้ถึง 500 ที่นั่ง พร้อมเวทีขนาดใหญ่ และระบบ แสงสีเสียงที่ครบครัน เหมาะกับการจัดคอนเสิร์ต การเปิดตัวสินค้า และการจัด Event ลานจัดกิจกรรมอเนกประสงค์มาพร้อม ที่นั่ง ในรูป แบบอัฒจันทร์ที่สามารถรองรับคนได้ถึง 500 ที่นั่ง พร้อมเวทีขนาดใหญ่ และระบบแสงสีเสียงที่ครบครันเหมาะกับการจัด คอนเสิร์ต การเปิดตัวสินค้า และการจัด Event"
+        "Food_text": "We have many kinds of food & beverages to serve you. And for your activities, you can request a special menu that we can create for you too."
     },
     "event": {
         "text_kid": "带您儿子离开手机 来参加我们娱乐活动并提高技能身体与冥想 提升他们的想象力。活动例如：BEAT Racing Active, Active Ball Pit, BEAT the Step, BEAT Space City, BEAT The Trap Challenge 等等",
@@ -104,7 +104,7 @@
         "BEAT_Active_Climbing": "10米爬墙，设备自动保护技术，保护您的安全。",
         "BEAT_Extreme_Climbing": "为了新手想尝试攀岩，这里有贝拉尔技术保护您",
         "BEAT_Speed_Climbing": "谁想挑战？来这里！让您们来比赛谁能爬得最快",
-        "BEAT_Active_Ninja_Warrior": "速度训练并增加身体的力量由忍者站",
+        "BEAT_Active_Parkour": "速度训练并增加身体的力量由忍者站",
         "BEAT_Flying_Space": "室内滑索，让你享受而无需长途跋涉",
         "BEAT_the_Rope": "各种健身站由绳索建造，让您无限次地冒险。<br/>",
         "BEAT_Military_Active": "极限活动站，谁能通过它，你最厉害！",
@@ -113,13 +113,7 @@
         "BEAT_Ice_Cosmic": "大型溜冰场，尽你最大的能力展示你的动作。",
         "BEAT_Active_Skooting": "滑板场与滑板车场",
         "Hole_in_One_Beat": "你会的！全力击退，一次下洞！",
-        "BEAT_Active_Gym1": "设备齐全的健身区，完整集合到BEAT Active这里",
-        "BEAT_Active_Gym2": "设备齐全的健身区，完整集合到BEAT Active这里",
-        "BEAT_Active_Gym3": "设备齐全的健身区，完整集合到BEAT Active这里",
-        "BEAT_Active_Gym4": "设备齐全的健身区，完整集合到BEAT Active这里",
-        "BEAT_Active_Gym5": "设备齐全的健身区，完整集合到BEAT Active这里",
-        "BEAT_Active_Gym6": "设备齐全的健身区，完整集合到BEAT Active这里",
-        "BEAT_Active_Gym7": "设备齐全的健身区，完整集合到BEAT Active这里",
+        "BEAT_Active_Gym": "设备齐全的健身区，完整集合到BEAT Active这里",
         "BEAT_Boxing_Bot": "强大的对手，将衡量您的精度和力量水平。",
         "BEAT_Boxing_Bag": "沙袋，给您练拳击并释放您的压力",
         "BEAT_Boxing_Ball": "练拳击求，速度和精确训练",

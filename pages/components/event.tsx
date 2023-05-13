@@ -72,7 +72,7 @@ const Event = () => {
     {
       src: '/assets/events/kids.webp',
       alt: 'kids',
-      title: 'KID',
+      title: 'KIDS',
       text: t('event.text_kid')
     },
     {

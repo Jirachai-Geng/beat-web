@@ -92,7 +92,7 @@ const Safety = () => {
                     <span style={{ color: '#FFFFFF' }}> Safety Standard  </span>
                 </div>
 
-                <Container fluid style={{ backgroundColor: 'dark', paddingLeft: (width > 992) ? '175px' : '40px' }}>
+                <Container fluid style={{ backgroundColor: 'dark', paddingLeft: (width > 992) ? '175px' : '40px' , paddingBottom:  (width > 992) ? '38px' : '0px'}}>
                     <Row ref={componentRef}>
                         <Col lg={5}>
                             <p className={(width > 992) ? styles.text_title : styles.text_titleMobile}> {t('safety.title')}</p>

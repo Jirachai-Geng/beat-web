@@ -43,7 +43,7 @@ export const useContainerDimensions = (myRef: any) => {
 
 const images: string[] = [];
 
-for (let i = 1; i <= 55; i++) {
+for (let i = 1; i <= 49; i++) {
     images.push(`/assets/activity/activity${i}.webp`);
 }
 
@@ -52,6 +52,7 @@ const ViewAll: React.FC = () => {
     const componentRef = useRef()
     const FooterRef = useRef(null)
     const router = useRouter();
+    const { t, i18n } = useTranslation();
 
     const { width, height } = useContainerDimensions(componentRef)
     const [title, setTitle] = useState<string[]>([]);

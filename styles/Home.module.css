@@ -5,7 +5,7 @@
 
 .AppContent {
   background-color: #000;
-  overflow: auto;
+  /* overflow: auto; */
   height: auto;
 }
 

@@ -103,7 +103,7 @@ const Home = () => {
               <div className={styles.dropdown_contentMobile} style={{ display: "block" }}>
                 <a onClick={() => { setShowLangMobile(!showLangMobile), SelectedLanguage('us') }} href="#">
                   <img className={styles.img_language} src="/assets/pic_i18/America.svg" alt="" />
-                  <span className={styles.text_languageSelectMobile}>English (US)</span>
+                  <span className={styles.text_languageSelectMobile}>English (UK)</span>
                 </a>
 
                 <a onClick={() => { setShowLangMobile(!showLangMobile), SelectedLanguage('th') }} href="#">
@@ -143,7 +143,7 @@ const Home = () => {
 
                     <a onClick={() => { setShowLang(!showLang), SelectedLanguage('us') }} href="#">
                       <img className={`${styles.img_language} ${i18next.language === 'us' ? styles.selected : ''}`} src="/assets/pic_i18/America.svg" alt="" />
-                      <span className={styles.text_language}>English (US)</span>
+                      <span className={styles.text_language}>English (UK)</span>
                     </a>
 
                     <a onClick={() => { setShowLang(!showLang), SelectedLanguage('th') }} href="#">

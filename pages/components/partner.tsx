@@ -48,7 +48,7 @@ const Partner = () => {
 
     return (
         <div >
-            <Container fluid style={{ width: '100%', padding: (width > 992) ? "120px 120px 175px 88px" : "0 16px 72px" }}
+            {/* <Container fluid style={{ width: '100%', padding: (width > 992) ? "120px 120px 175px 88px" : "0 16px 72px" }}
                 ref={containerRef} className={styles.containerbackgroud_price}>
                 <Row>
                     <Col lg={8}>
@@ -101,7 +101,7 @@ const Partner = () => {
                         <img className={`${styles.responsive} mx-auto`} style={{ height: (width > 922) ? "300px" : "200px" }} src="/assets/Price.jpg" alt="" />
                     </Col>
                 </Row>
-            </Container>
+            </Container> */}
 
             <Container>
                 <Row className={styles.line} style={{ padding: (width > 992) ? "0px 64px" : "0 16px" }}>
@@ -112,11 +112,11 @@ const Partner = () => {
                         </div>
                     </Col>
                     <Col className={styles.OurPartner} lg={3}>
-                        <img className={styles.responsive} style={{ height: (width > 922) ? "300px" : "200px" }} src="/assets/partner/Plantoys.svg" alt="" /></Col>
+                        <img className={styles.responsive} style={{ height: (width > 922) ? "300px" : "200px" }} src="/assets/partner/Thaifight.svg" alt="" /></Col>
                     <Col className={styles.OurPartner} lg={3}>
                         <img className={styles.responsive} style={{ height: (width > 922) ? "300px" : "200px" }} src="/assets/partner/Berg.svg" alt="" /></Col>
                     <Col className={styles.OurPartner} lg={3}>
-                        <img className={styles.responsive} style={{ height: (width > 922) ? "300px" : "200px" }} src="/assets/partner/Thaifight.svg" alt="" /></Col>
+                        <img className={styles.responsive} style={{ height: (width > 922) ? "300px" : "200px" }} src="/assets/partner/Plantoys.svg" alt="" /></Col>
                 </Row>
             </Container>
 

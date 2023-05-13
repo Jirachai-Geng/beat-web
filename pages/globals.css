@@ -50,7 +50,7 @@ a {
   }
 
   .App-logo {
-    max-height: 44px;
+    max-height: 60px;
     margin-left: 0px;
     cursor: pointer !important;
   }
@@ -183,8 +183,8 @@ a {
 
 @font-face {
   font-family: "SpaceAge";
-  src: url('/assets/fonts/Space_age/space-age.ttf');
-  font-weight: 400;
+  src: url('/assets/fonts/Changeling_Neo/Changeling Neo Regular.otf');
+  font-weight: 300;
   font-style: normal;
 }
 
@@ -284,32 +284,32 @@ td {
 
 .containerbeyond_us {
   height: 837px;
-  background: url(/assets/beyond/beyond_us.svg) no-repeat;
+  background: url(/assets/beyond/beyond_us.webp) no-repeat;
 }
 
 .containerbeyond_th {
   height: 837px;
-  background: url(/assets/beyond/beyond_th.svg) no-repeat;
+  background: url(/assets/beyond/beyond_th.webp) no-repeat;
 }
 
 .containerbeyond_cn {
   height: 837px;
-  background: url(/assets/beyond/beyond_cn.svg) no-repeat;
+  background: url(/assets/beyond/beyond_cn.webp) no-repeat;
 }
 
 .containerbeyondMobile_us {
-  height: 837px;
-  background: url(/assets/beyond/beyondMobile_us.svg) no-repeat;
+  background-size: 100% 100%;
+  background: url(/assets/beyond/beyondMobile_us.webp) no-repeat;
 }
 
 .containerbeyondMobile_th {
   height: 837px;
-  background: url(/assets/beyond/beyondMobile_th.svg) no-repeat;
+  background: url(/assets/beyond/beyondMobile_th.webp) no-repeat;
 }
 
 .containerbeyondMobile_cn {
   height: 837px;
-  background: url(/assets/beyond/beyondMobile_cn.svg) no-repeat;
+  background: url(/assets/beyond/beyondMobile_cn.webp) no-repeat;
 }
 
 

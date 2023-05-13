@@ -45,33 +45,21 @@ const Beyond = () => {
     const componentRef = useRef()
     const { width, height } = useContainerDimensions(componentRef)
 
-    let containerClass = "containerbeyond_us";
-    if (i18next.language === "us") {
-        containerClass = "containerbeyond_us";
-    } else if (i18next.language === "th") {
-        containerClass = "containerbeyond_th";
-    } else if (i18next.language === "cn") {
-        containerClass = "containerbeyond_cn";
-    }
-
-    let containerClassMobile = "containerbeyondMobile_us";
-    if (i18next.language === "us") {
-        containerClassMobile = "containerbeyondMobile_us";
-    } else if (i18next.language === "th") {
-        containerClassMobile = "containerbeyondMobile_th";
-    } else if (i18next.language === "cn") {
-        containerClassMobile = "containerbeyondMobile_cn";
-    }
-    
+    const backgroundImage = `/assets/beyond/beyond_${i18next.language}.webp`;
+    const backgroundImageMobile = `/assets/beyond/beyondMobile_${i18next.language}.webp`;
 
     return (
         <div className='backgroundDark d-flex align-items-center'>
-            <Container>
-                <Row className={(width > 992) ? containerClass : containerClassMobile}  ref={componentRef}>
-
+            <Container fluid style={{ padding: '0px'}}>
+                <Row ref={componentRef}>
+                    <img
+                        src={(width > 992) ? backgroundImage : backgroundImageMobile} 
+                        alt="Background"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
                 </Row>
             </Container>
-        </div >
+        </div>
     )
 }
 

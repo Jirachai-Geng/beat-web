@@ -59,7 +59,8 @@ const Footer = () => {
                         </div>
                         <div >
                             <p className={(width > 992) ? styles.footer_text : styles.footer_textMobile}>
-                            BEAT Active, BITEC BURI, 88 Debaratna Road Bangna Tai Bangna, Bangkok 10260, Thailand                        </p>
+                                BEAT Active, BITEC BURI, 88 Debaratana Road Bangna Tai. Bangna, Bangkok 10260, Thailand
+                            </p>
                             <Row style={{ display: 'flex', justifyContent: 'space-between' }}>
                                 <p className={(width > 992) ? styles.footer_textB : styles.footer_textBMobile} style={{ display: 'flex', alignItems: 'center' }}>
                                     <img src="\assets\partner\footer\calenda.svg" alt="calenda" style={{ paddingRight: '8px' }} />
@@ -99,11 +100,11 @@ const Footer = () => {
                                 <img src="\assets\partner\footer\line.svg" alt="line" />
                                 <span className={(width > 992) ? styles.footer_textB : styles.footer_textBMobile} style={{ paddingLeft: '10px' }}>  @beatactive </span> </a></p>
 
-                            <p> <a className={styles.no_decoration} href=" https://www.facebook.com/BEATActiveThailand" target="_blank" rel="noreferrer noopener">
+                            <p> <a className={styles.no_decoration} href="https://www.facebook.com/BEATActiveThailand/" target="_blank" rel="noreferrer noopener">
                                 <img src="\assets\partner\footer\facebook.svg" alt="facebook" />
                                 <span className={(width > 992) ? styles.footer_textB : styles.footer_textBMobile} style={{ paddingLeft: '10px' }}>  BEAT Active </span> </a></p>
 
-                            <p> <a className={styles.no_decoration} href="https://www.instagram.com/beatactive.thailand/" target="_blank" rel="noreferrer noopener">
+                            <p> <a className={styles.no_decoration} href="https://www.instagram.com/beatactive.thailand/?fbclid=IwAR2qWKAY8CTyz6Ic1S8TSHTBUIaqWVsh251whXQzVuK4OJe70fmlYAPrXlg" target="_blank" rel="noreferrer noopener">
                                 <img src="\assets\partner\footer\ig.svg" alt="ig" />
                                 <span className={(width > 992) ? styles.footer_textB : styles.footer_textBMobile} style={{ paddingLeft: '10px' }}>  @BEATACTIVE_ </span> </a></p>
 
@@ -111,7 +112,7 @@ const Footer = () => {
                                 <img src="\assets\partner\footer\twitter.svg" alt="twitter" />
                                 <span className={(width > 992) ? styles.footer_textB : styles.footer_textBMobile} style={{ paddingLeft: '10px' }}>  beatactive.thailand </span> </a></p>
 
-                            <p> <a className={styles.no_decoration} href="https://www.tiktok.com/@beatactive.thailand?lang=en" target="_blank" rel="noreferrer noopener">
+                            <p> <a className={styles.no_decoration} href="https://www.tiktok.com/@beatactive.thailand" target="_blank" rel="noreferrer noopener">
                                 <img src="\assets\partner\footer\tiktok.png" style={{ maxWidth: '25px' }} alt="TikTok" />
                                 <span className={(width > 992) ? styles.footer_textB : styles.footer_textBMobile} style={{ paddingLeft: '10px' }}>  @beatactive.thailand </span> </a></p>
 
@@ -153,7 +154,7 @@ const Footer = () => {
                             , marginBottom: "0px", display: "flex", alignItems: "end", justifyContent: "flex-end"
                         }} sm={1}>
                         <Row className={(width < 992) ? styles.boxRelative : ""} style={{ position: "absolute" }}>
-                            <div onClick={goToTop} style={{cursor: "pointer"}}>
+                            <div onClick={goToTop} style={{ cursor: "pointer" }}>
                                 <img src='\assets\activity\icons\hide_all.svg' alt='btnGoTop' />
                             </div>
                         </Row>
