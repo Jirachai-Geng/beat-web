@@ -96,10 +96,12 @@ const Menu: React.FC = () => {
                             <Nav.Link className={styles.text_link} onClick={() => { onNewpage('faq') }}> FAQ </Nav.Link>
                             <Nav.Link className={styles.text_link} onClick={() => { scrollToBottom() }}> Contact Us </Nav.Link>
 
-                            <button className={styles.btnTicket} >
-                                <span>Buy Ticket</span>
+                            <button className={styles.btnTicket}>
+                                <a href="https://beatactive-online.globaltix.com/" target="beatactive-online.globaltix.com"
+                                    rel="https://beatactive-online.globaltix.com/" style={{ textDecoration: 'none', color: 'white' }}>
+                                    <span>Buy Ticket</span>
+                                </a>
                             </button>
-
                             <div className={styles.dropdown}>
                                 <div onClick={() => setShowLang(!showLang)} className={styles.dropbtn} id='lingo-desktop'>
                                     <img className={styles.img_languageSelectShow}

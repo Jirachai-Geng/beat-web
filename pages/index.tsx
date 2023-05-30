@@ -129,8 +129,11 @@ const Home = () => {
               {/* <Nav.Link className={styles.text_link} onClick={ScrollCareer}> Career </Nav.Link> */}
               <Nav.Link className={styles.text_link} onClick={ScrollFooter}> Contact Us </Nav.Link>
 
-              <button className={styles.btnTicket} >
-                <span>Buy Ticket</span>
+              <button className={styles.btnTicket}>
+                <a href="https://beatactive-online.globaltix.com/" target="beatactive-online.globaltix.com"
+                  rel="https://beatactive-online.globaltix.com/" style={{ textDecoration: 'none', color: 'white' }}>
+                  <span>Buy Ticket</span>
+                </a>
               </button>
 
               <div className={styles.dropdown}>

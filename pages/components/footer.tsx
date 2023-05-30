@@ -106,11 +106,11 @@ const Footer = () => {
 
                             <p> <a className={styles.no_decoration} href="https://www.instagram.com/beatactive.thailand/?fbclid=IwAR2qWKAY8CTyz6Ic1S8TSHTBUIaqWVsh251whXQzVuK4OJe70fmlYAPrXlg" target="_blank" rel="noreferrer noopener">
                                 <img src="\assets\partner\footer\ig.svg" alt="ig" />
-                                <span className={(width > 992) ? styles.footer_textB : styles.footer_textBMobile} style={{ paddingLeft: '10px' }}>  @BEATACTIVE_ </span> </a></p>
+                                <span className={(width > 992) ? styles.footer_textB : styles.footer_textBMobile} style={{ paddingLeft: '10px' }}>  beatactive.thailand </span> </a></p>
 
                             <p> <a className={styles.no_decoration} href="https://twitter.com/BEATACTIVE_" target="_blank" rel="noreferrer noopener">
                                 <img src="\assets\partner\footer\twitter.svg" alt="twitter" />
-                                <span className={(width > 992) ? styles.footer_textB : styles.footer_textBMobile} style={{ paddingLeft: '10px' }}>  beatactive.thailand </span> </a></p>
+                                <span className={(width > 992) ? styles.footer_textB : styles.footer_textBMobile} style={{ paddingLeft: '10px' }}>  @BEATACTIVE_ </span> </a></p>
 
                             <p> <a className={styles.no_decoration} href="https://www.tiktok.com/@beatactive.thailand" target="_blank" rel="noreferrer noopener">
                                 <img src="\assets\partner\footer\tiktok.png" style={{ maxWidth: '25px' }} alt="TikTok" />
