@@ -68,7 +68,7 @@ const Footer = () => {
                                 </p>
                                 <p className={(width > 992) ? styles.footer_textB : styles.footer_textBMobile} style={{ display: 'flex', alignItems: 'center' }}>
                                     <img src="\assets\partner\footer\clock.svg" alt="clock" style={{ paddingRight: '8px' }} />
-                                    <span> 9:00 AM - 9:00 PM </span>
+                                    <span> 10:00 AM - 9:00 PM </span>
                                 </p>
                             </Row>
                         </div>

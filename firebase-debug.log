@@ -1,0 +1,20 @@
+[debug] [2023-08-11T05:50:09.684Z] ----------------------------------------------------------------------
+[debug] [2023-08-11T05:50:09.686Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Jirachai\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-08-11T05:50:09.686Z] CLI Version:   11.30.0
+[debug] [2023-08-11T05:50:09.686Z] Platform:      win32
+[debug] [2023-08-11T05:50:09.686Z] Node Version:  v16.16.0
+[debug] [2023-08-11T05:50:09.695Z] Time:          Fri Aug 11 2023 12:50:09 GMT+0700 (Indochina Time)
+[debug] [2023-08-11T05:50:09.695Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-08-11T05:50:09.698Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-08-11T05:50:09.787Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-08-11T05:50:09.788Z] > authorizing via signed-in user (jirachai.geng@gmail.com)
+[debug] [2023-08-11T05:50:09.788Z] [iam] checking project beat-web-8026d for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-08-11T05:50:09.789Z] > refreshing access token with scopes: []
+[debug] [2023-08-11T05:50:09.790Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-08-11T05:50:09.790Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-08-11T05:50:09.949Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-08-11T05:50:09.949Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-08-11T05:50:09.956Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/beat-web-8026d:testIamPermissions [none]
+[debug] [2023-08-11T05:50:09.957Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/beat-web-8026d:testIamPermissions x-goog-quota-user=projects/beat-web-8026d
+[debug] [2023-08-11T05:50:09.957Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/beat-web-8026d:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
